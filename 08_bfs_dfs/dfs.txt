@@ -1,0 +1,24 @@
+// DFS (Stack based) (Depth-First Search) vs. BFS (Queue based) (Breadth-first search)
+
+// Most problems with distance computation use bfs algorithms.
+// DFS algorithms are mainly used in graph-related problems.
+
+/*
+* BFS
+  |  |  |11|  |  |  |
+18|  |  | 7|  |  |  |
+15|  |  | 3|  |  |17|
+10| 6| 2| 1| 4| 8|12|
+16|  |  | 5|  |13|  |
+  |  |  | 9|  |  |  |
+  |  |  |14|  |  |  |
+
+* DFS
+  |  |  |10|  |  |  |
+ 6|  |  | 9|  |  |  |
+ 5|  |  | 8|  |  |14|
+ 4| 3| 2| 1|11|12|13|
+ 7|  |  |16|  |15|  |
+  |  |  |17|  |  |  |
+  |  |  |18|  |  |  |
+  */
