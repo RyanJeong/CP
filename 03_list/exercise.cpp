@@ -4,41 +4,41 @@ using namespace std;
 
 int main(void)
 {
-  ios::sync_with_stdio(false);
-  cin.tie(NULL);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
 
-  // In C++, an iterator is any object that, pointing to some element in a range of elements 
-  // (such as an array or a container), has the ability to iterate through the elements 
-  // of that range using a set of operators (at least, the increment (++) and dereference 
-  // (*) operators).
-  list<int> l = { 1, 2 }; // 1 -> 2
-  list<int>::iterator p = l.begin(); // p points to '1'
+    // In C++, an iterator is any object that, pointing to some element in a range of elements 
+    // (such as an array or a container), has the ability to iterate through the elements 
+    // of that range using a set of operators (at least, the increment (++) and dereference 
+    // (*) operators).
+    list<int> l = {1,2}; // 1 -> 2
+    list<int>::iterator p = l.begin(); // p points to '1'
 
-  l.push_front(10); // { 10, 1, 2 } 
-  cout << *p << '\n'; // p still points to '1'
+    l.push_front(10);   // { 10, 1, 2 } 
+    cout << *p << '\n'; // p still points to '1'
 
-  l.push_back(5); // { 10, 1, 2, 5 }; 
-  l.insert(p, 6); // { 10, 6, 1, 2, 5 }, insert where p is pointing
-                  // p still points to '1'
-  ++p; // now p points from '1' to '2'
-       // function erase() returns an iterator pointing to the element in the list
-       // container which followed the 'last' element erased from the list container 
-       // erased from the list container.
+    l.push_back(5); // { 10, 1, 2, 5 }; 
+    l.insert(p,6);  // { 10, 6, 1, 2, 5 }, insert where p is pointing
+                    // p still points to '1'
+    ++p; // now p points from '1' to '2'
+        // function erase() returns an iterator pointing to the element in the list
+        // container which followed the 'last' element erased from the list container 
+        // erased from the list container.
 
-  p = l.erase(p); // { 10, 6, 1, 5 }, erase where p is pointing
-  cout << *p << '\n';  // now p points to '5'
-  p = l.end(); // now p points to the element after '5' that we don't know what the value is.
-  cout << *p << '\n';  
-  for (int i : l) {
-    cout << i << ' ';
-  }
-  cout << '\n';
+    p = l.erase(p); // { 10, 6, 1, 5 }, erase where p is pointing
+    cout << *p << '\n';  // now p points to '5'
+    p = l.end(); // now p points to the element after '5' that we don't know what the value is.
+    cout << *p << '\n';  
+    for (int i : l) {
+        cout << i << ' ';
+    }
+    cout << '\n';
 
-  // usage function begin() and end()
-  for (auto ptr = l.begin(); ptr != l.end(); ++ptr) {
-    cout << *ptr << '_';
-  } 
-  cout << '\n';
+    // usage function begin() and end()
+    for (auto ptr = l.begin(); ptr!=l.end(); ++ptr) {
+        cout << *ptr << '_';
+    } 
+    cout << '\n';
 
-  return 0;
+    return 0;
 }
