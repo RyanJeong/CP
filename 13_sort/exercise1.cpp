@@ -5,25 +5,24 @@ using namespace std;
 
 int main(void)
 {
-  ios::sync_with_stdio(false);
-  cin.tie(NULL);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
 
-  int n;
+    int n;
+    cin>>n;
+    vector<long long> v;
+    for (int i = 0; i < n; ++i) {
+        string str;
+        cin>>str;
 
-  cin >> n;
-  vector<long long> v;
+        reverse(str.begin(),str.end());
+        v.push_back(atoll(str.c_str()));
+    }
 
-  for (int i = 0; i < n; ++i) {
-    string str;
+    sort(v.begin(),v.end());
+    for (long long i : v) {
+        cout << i << '\n';
+    }
 
-    cin >> str;
-    reverse(str.begin(), str.end());
-    v.push_back(atoll(str.c_str()));
-  }
-  sort(v.begin(), v.end());
-  for (long long i : v) {
-    cout << i << '\n';
-  }
-
-  return 0;
+    return 0;
 }

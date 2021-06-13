@@ -11,8 +11,9 @@ int main(void)
     int n;
     cin>>n;
     vector<int> v(n); // size
-
-    for (int i = 0; i<n; ++i) cin>>v[i];        
+    for (int i = 0; i<n; ++i) {
+        cin>>v[i];        
+    }
     vector<int> v_buf{v}; // copy
     sort(v_buf.begin(),v_buf.end());
 
@@ -21,7 +22,7 @@ int main(void)
     for (int i = 0; i<n; ++i) {
         auto p = lower_bound(v_buf.begin(),v_buf.end(),v[i]);
 
-        cout << p - v_buf.begin() << ' ';
+        cout << p-v_buf.begin() << ' ';
     }
 
     return 0;

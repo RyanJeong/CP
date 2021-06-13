@@ -5,21 +5,20 @@ using namespace std;
 
 int main(void)
 {
-  ios::sync_with_stdio(false);
-  cin.tie(NULL);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
 
-  string str;
+    string str;
+    cin>>str;
+    int size = str.size();
+    vector<string> v;
+    for (int i = 0; i<size; ++i) {
+        v.push_back(str.substr(i,size));
+    }
+    sort(v.begin(),v.end());
+    for (string s : v) {
+        cout << s << '\n';
+    }
 
-  cin >> str;
-  vector<string> v;
-  int            size = str.size();
-  for (int i = 0; i < size; ++i) {
-    v.push_back(str.substr(i, size));
-  }
-  sort(v.begin(), v.end());
-  for (string s : v) {
-    cout << s << '\n';
-  }
-
-  return 0;
+    return 0;
 }

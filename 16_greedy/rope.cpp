@@ -7,22 +7,21 @@ int d[100'002]; // 0, 1 ~ 100,000, OOB
 
 int main(void)
 {
-  ios::sync_with_stdio(false);
-  cin.tie(NULL);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
 
-  int n;
+    int ans = 0;
+    int n;
+    cin>>n;
+    for (int i = 0; i<n; ++i) {
+        cin>>d[i];
+    }
 
-  cin >> n;
-  for (int i = 0; i < n; ++i) {
-    cin >> d[i];
-  }
-  sort(d, d + n);
-  int ans = 0;
+    sort(d,d+n);
+    for (int i = 1; i<=n; ++i) {
+        ans = max(ans,d[n-i]*i);
+    }
+    cout << ans;
 
-  for (int i = 1; i <= n; ++i) {
-    ans = max(ans, d[n-i] * i);
-  }
-  cout << ans;
-
-  return 0;
+    return 0;
 }

@@ -3,35 +3,32 @@
 
 using namespace std;
 
-typedef long long ll;
-
-ll pow(ll, ll, ll);
+long long pow(long long, long long, long long);
 
 int main(void)
 {
-  ios::sync_with_stdio(false);
-  cin.tie(NULL);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
 
-  ll a, b, c;
+    long long a, b, c;
+    cin>>a>>b>>c;
+    cout << pow(a,b,c);
 
-  cin >> a >> b >> c;
-  cout << pow(a, b, c);
-
-  return 0;
+    return 0;
 }
 
-// 7 -> 3 -> 1, 9 -> 4 -> 2 ->1
-ll pow(ll a, ll b, ll c)
+// b: 7 -> 3 -> 1 
+// b: 9 -> 4 -> 2 -> 1
+long long pow(long long a, long long b, long long c)
 {
-  if (b == 1) {
+    if (b==1) {
 
-    return a % c;
-  }
-  ll val;
+        return a%c;
+    }
 
-  val = pow(a, b/2, c);
-  val = val * val % c;
+    long long val = pow(a,b/2,c);
+    val = val*val%c;
 
-  // odd? b^2*a, else b^2
-  return (b & 01) ? val * a % c : val;
+    // odd? b^2*a, else b^2
+    return (b&01) ? val*a%c : val;
 }

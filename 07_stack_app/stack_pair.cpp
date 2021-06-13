@@ -5,29 +5,29 @@ using namespace std;
 
 int main(void)
 {
-  ios::sync_with_stdio(false);
-  cin.tie(NULL);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
 
-  stack<pair<int, int>> s; // <index, value>
-  int                   n;
+    int n;
+    cin >> n;
+    stack<pair<int, int>> s; // <index, value>
 
-  cin >> n;
-  for (int i = 1; i <= n; ++i) {
-    int num;
+    for (int i = 1; i<=n; ++i) {
+        int num;
+        cin>>num;
 
-    cin >> num;
-    while (!s.empty()) {
-      if (s.top().second > num) {
-        cout << s.top().first << ' ';
-        break;
-      }
-      s.pop();
+        while (!s.empty()) {
+            if (s.top().second>num) {
+                cout << s.top().first << ' ';
+                break;
+            }
+            s.pop();
+        }
+        if (s.empty()) {
+            cout << 0 << ' ';
+        }
+        s.push(make_pair(i,num));
     }
-    if (s.empty()) {
-      cout << 0 << ' ';
-    }
-    s.push(make_pair(i, num));
-  }
 
-  return 0;
+    return 0;
 }

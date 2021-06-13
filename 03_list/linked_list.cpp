@@ -18,10 +18,11 @@ int main(void)
     cin>>cnt;
     cin.get(); // '\n'
 
-    for (int i=0; i<cnt; ++i) {
+    for (int i = 0; i<cnt; ++i) {
         string ops;
         getline(cin, ops);
         char op = ops[0];
+
         switch (op) {
         case 'L':
             if (ptr!=l.begin()) --ptr;

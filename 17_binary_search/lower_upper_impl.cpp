@@ -12,66 +12,67 @@ int highest(int target, int len);
 
 int main(void) 
 {
-  ios::sync_with_stdio(false);
-  cin.tie(NULL);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
 
-  int n;
+    int n;
+    cin>>n;
 
-  cin >> n;
+    for (int i = 0; i<n; ++i) {
+        cin>>arr[i];
+    } 
+    int m;
+    cin>>m;
 
-  for (int i = 0; i < n; ++i) {
-    cin >> arr[i];
-  } 
-  sort(arr, arr + n);
-  int m;
+    sort(arr,arr+n);
+    while (m--) {
+        int t;
+        cin>>t;
 
-  cin >> m;
-  while (m--) {
-    int t;
+        cout << highest(t,n)-lowest(t,n) << ' ';
+    }    
 
-    cin >> t;
-    cout << highest(t, n) - lowest(t, n) << ' ';
-  }    
-
-  return 0;
+    return 0;
 }
 
 // if target: 4
 // 1 2 3 '4' 4 4 4 5 6
 int lowest(int target, int len)
 {
-  int low  = 0;
-  int high = len;
+    int low = 0;
+    int high = len;
 
-  while (low < high) {
-    int mid = (low + high) / 2;
+    while (low<high) {
+        int mid = (low+high)/2;
 
-    if (arr[mid] >= target) {
-      high = mid;
-    } else {
-      low = mid + 1;
+        if (arr[mid]>=target) {
+            high=mid;
+        } 
+        else {
+            low=mid+1;
+        }
     }
-  }
 
-  return low;
+    return low;
 }
 
 // if target: 4
 // 1 2 3 4 4 4 4 '5' 6
 int highest(int target, int len)
 {
-  int low  = 0;
-  int high = len;
+    int low = 0;
+    int high = len;
 
-  while (low < high) {
-    int mid = (low + high) / 2;
+    while (low<high) {
+        int mid = (low+high)/2;
 
-    if (arr[mid] <= target) {
-      low = mid + 1;
-    } else {
-      high = mid;
+        if (arr[mid] <= target) {
+            low=mid+1;
+        } 
+        else {
+            high=mid;
+        }
     }
-  }
 
-  return low;
+    return low;
 }

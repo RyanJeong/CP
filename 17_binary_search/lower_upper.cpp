@@ -12,26 +12,24 @@ int arr[500005];
 
 int main(void) 
 {
-  ios::sync_with_stdio(false);
-  cin.tie(NULL);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
 
-  int n;
+    int n;
+    cin>>n;
+    for (int i = 0; i<n; ++i) {
+        cin >> arr[i];
+    } 
+    int m;
+    cin>>m;
 
-  cin >> n;
+    sort(arr,arr+n);
+    while (m--) {
+        int t;
+        cin>>t;
 
-  for (int i = 0; i < n; ++i) {
-    cin >> arr[i];
-  } 
-  sort(arr, arr + n);
-  int m;
+        cout << upper_bound(arr,arr+n,t)-lower_bound(arr,arr+n,t) << ' ';
+    }    
 
-  cin >> m;
-  while (m--) {
-    int t;
-
-    cin >> t;
-    cout << upper_bound(arr, arr + n, t) - lower_bound(arr, arr + n, t) << ' ';
-  }    
-
-  return 0;
+    return 0;
 }

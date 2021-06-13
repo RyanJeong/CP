@@ -17,26 +17,24 @@ using namespace std;
 int a[100'005];
 
 int main(void) {
-  ios::sync_with_stdio(false);
-  cin.tie(NULL);
-  
-  int n;
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
 
-  cin >> n;
+    int n;
+    cin>>n;
+    for (int i = 0; i<n; ++i) {
+        cin>>a[i];
+    }
+    int m;
+    cin>>m;
 
-  for (int i = 0; i < n; ++i) {
-    cin >> a[i];
-  }
-  sort(a, a + n);
-  int m;
+    sort(a,a+n);
+    while (m--) {
+        int t;
+        cin>>t;
 
-  cin >> m;
-  while (m--) {
-    int t;
+        cout << binary_search(a,a+n,t) << '\n';
+    }
 
-    cin >> t;
-    cout << binary_search(a, a + n, t) << '\n';
-  }
-
-  return 0;
+    return 0;
 }

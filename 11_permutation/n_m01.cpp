@@ -5,25 +5,24 @@ using namespace std;
 
 int main(void)
 {
-  ios::sync_with_stdio(false);
-  cin.tie(NULL);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
 
-  int n, m;
-  int arr[8];
-
-  // nPm
-  cin >> n >> m;
-  for (int i = 0; i < n; ++i) {
-    arr[i] = i + 1;
-  }
-  do {
-    for (int i = 0; i < m; ++i) {
-      cout << arr[i] << ' ';
+    // nPm
+    int n, m;
+    cin>>n>>m;
+    int arr[8];
+    for (int i = 0; i<n; ++i) {
+        arr[i]=i+1;
     }
-    cout << '\n';
-    // 1 2 3 4 5 -> 1 2 5 4 3, 1 3 2 4 5 -> 1 3 5 4 2, ...
-    reverse(arr + m, arr + n);
-  } while (next_permutation(arr, arr + n));
+    do {
+        for (int i = 0; i<m; ++i) {
+            cout << arr[i] << ' ';
+        }
+        cout << '\n';
+        // 1 2 3 4 5 -> 1 2 5 4 3, 1 3 2 4 5 -> 1 3 5 4 2, ...
+        reverse(arr+m, arr+n);
+    } while (next_permutation(arr,arr+n));
 
-  return 0;
+    return 0;
 }

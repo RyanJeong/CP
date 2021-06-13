@@ -21,7 +21,9 @@ int main(void)
     while (k--) {
         cin>>r>>c;
         for (int i = 0; i<r; ++i) {
-            for (int j = 0; j<c; ++j) cin>>sticker[i][j];
+            for (int j = 0; j<c; ++j) {
+                cin>>sticker[i][j];
+            }
         }
         // clockwise, 0, 90, 180, 270
         for (int clockwise = 0; clockwise<4; ++clockwise) {
@@ -84,13 +86,15 @@ void rotate(void)
     int temp[12][12];
 
     for (int i = 0; i<r; ++i) {
-        for (int j = 0; j<c; ++j) 
+        for (int j = 0; j<c; ++j) {
             temp[i][j]=sticker[i][j];
+        }
     }
     // i -> j, j -> i
     for (int i = 0; i<c; ++i) {
-        for (int j = 0; j<r; ++j)
+        for (int j = 0; j<r; ++j) {
             sticker[i][j] = temp[r-j-1][i];
+        }
     }
     swap(r,c);
 

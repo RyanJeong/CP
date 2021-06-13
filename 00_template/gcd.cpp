@@ -2,7 +2,8 @@
 
 using namespace std;
 
-vector<int> getPrime(int n) {
+vector<int> getPrime(int n) 
+{
     vector<int> primes;
     vector<bool> state(n+1,true); // 0, 1 ~ n
 
@@ -11,7 +12,10 @@ vector<int> getPrime(int n) {
         if (!state[i]) {
             continue;
         }
-        for (int j = i*i; j<=n; j+=i) state[j]=false;
+
+        for (int j = i*i; j<=n; j+=i) {
+            state[j]=false;
+        }
     }
     for (int i = 1; i<=n; ++i) {
         if (state[i]) {
@@ -28,7 +32,10 @@ int main(void)
     cin.tie(NULL);
 
     vector<int> v = getPrime(289);
-    for (int n : v) cout << n << '\n';
+
+    for (int n : v) {
+        cout << n << '\n';
+    }
 
     return 0;
 }

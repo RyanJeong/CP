@@ -5,39 +5,40 @@ using namespace std;
 
 int main(void)
 {
-  ios::sync_with_stdio(false);
-  cin.tie(NULL);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
 
-  int n;
+    int n;
+    cin>>n;
 
-  cin >> n;
-  while(n--) {
-    string ps;
+    while(n--) {
+        string ps;
+        cin>>ps;
+        bool is_vps = true;
+        stack<int> s;
 
-    cin >> ps;
-    stack<int> s;
-    bool       is_vps;
+        for (char c : ps) {
+            if (c=='(') {
+                s.push(c);
+            } 
+            else {
+                if (s.empty()) {
+                    is_vps=false;
+                    break;
+                } 
+                else { // ')'
+                    if (s.top()!='(') {
+                        is_vps=false;
+                        break;
+                    } 
+                    else { // s.top() is '('
+                        s.pop();
+                    }
+                }
+            }
+        }    
+        cout << ((s.empty() && is_vps) ? "YES" : "NO") << '\n';
+    }
 
-    is_vps = true;
-    for (char c : ps) {
-      if (c == '(') {
-        s.push(c);
-      } else {
-        if (s.empty()) {
-          is_vps = false;
-          break;
-        } else { // ')'
-          if (s.top() != '(') {
-            is_vps = false;
-            break;
-          } else { // s.top() is '('
-            s.pop();
-          }
-        }
-      }
-    }    
-    cout << (s.empty() && is_vps ? "YES" : "NO") << '\n';
-  }
-
-  return 0;
+    return 0;
 }

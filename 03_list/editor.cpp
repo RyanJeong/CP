@@ -10,7 +10,9 @@ int main(void)
     string s;
     cin>>s;
     list<char> l;
-    for (char c : s) l.push_back(c);
+    for (char c : s) {
+        l.push_back(c);
+    }
     list<char>::iterator ptr = l.end();
     int cnt;
     cin>>cnt;
@@ -20,6 +22,7 @@ int main(void)
         string ops;
         getline(cin,ops);
         char op = ops[0];
+
         switch (op) {
         case 'L':
             if (ptr!=l.begin()) --ptr;

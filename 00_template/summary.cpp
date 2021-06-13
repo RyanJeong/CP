@@ -63,8 +63,9 @@ int main(void)
 
     cout << v1.size() << '\n'; // 5, the return type of size() is 'unsigned'
     v1.push_back(4); // { 5, 5, 5, 4 }
-    for (int v : v1)
+    for (int v : v1) {
         cout << v << ' ';
+    }
     cout << '\n';
     //---------------------------------------------
     vector<int> v2(2); // { 0, 0 }

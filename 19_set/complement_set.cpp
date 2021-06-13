@@ -5,33 +5,33 @@ using namespace std;
 
 int main(void)
 {
-  ios::sync_with_stdio(false);
-  cin.tie(NULL);
-  
-  int a, b;
-  
-  cin >> a >> b;
-  set<int> s;
-  
-  while (a--) {
-    int temp;
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
 
-    cin >> temp;
-    s.insert(temp);
-  }
-  while (b--) {
-    int temp;
+    int a, b;
+    cin>>a>>b;
+    set<int> s;
 
-    cin >> temp;
-    auto cur = s.find(temp);
-    if (cur != s.end()) {
-      s.erase(cur);
+    while (a--) {
+        int temp;
+        cin>>temp;
+
+        s.insert(temp);
     }
-  }
-  cout << s.size() << '\n';
-  for (int i : s) {
-    cout << i << ' ';
-  }
+    while (b--) {
+        int temp;
+        cin>>temp;
+        auto cur = s.find(temp);
 
-  return 0;
+        if (cur!=s.end()) {
+            s.erase(cur);
+        }
+    }
+
+    cout << s.size() << '\n';
+    for (int i : s) {
+        cout << i << ' ';
+    }
+
+    return 0;
 }
