@@ -6,24 +6,23 @@ using namespace std;
 
 int main(void)
 {
-  ios::sync_with_stdio(false);
-  cin.tie(NULL);
-  
-  int n, k;
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    
+    int res = 1;
+    int n, k;
+    cin>>n>>k;
 
-  cin >> n >> k;
-  int res = 1;
+    for (int i = 1; i<=n; ++i) {
+        res*=i; // n!
+    }
+    for (int i = 1; i<=k; ++i) {
+        res/=i; // n! / k!
+    }
+    for (int i = 1; i<=n - k; ++i) {
+        res/=i; // n! / k!(n-k)!
+    }
+    cout << res;
 
-  for (int i = 1; i <= n; ++i) {
-    res *= i; // n!
-  }
-  for (int i = 1; i <= k; ++i) {
-    res /= i; // n! / k!
-  }
-  for (int i = 1; i <= n - k; ++i) {
-    res /= i; // n! / k!(n-k)!
-  }
-  cout << res;
-
-  return 0;
+    return 0;
 }

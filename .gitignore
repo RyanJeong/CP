@@ -9,3 +9,6 @@
 
 # Ignore .vscode
 .vscode
+
+# Ignore .exse files
+*.exe

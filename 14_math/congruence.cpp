@@ -18,37 +18,37 @@ int solve(int m, int n, int x, int y);
 
 int main(void)
 {
-  ios::sync_with_stdio(false);
-  cin.tie(NULL);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
 
-  int t;
+    int t;
+    cin>>t;
 
-  cin >> t;
-  while (t--) {
-    int m, n, x, y;
+    while (t--) {
+        int m, n, x, y;
+        cin>>m>>n>>x>>y;
 
-    cin >> m >> n >> x >> y;
-    cout << solve(m, n, x, y) << '\n';
-  }
+        cout << solve(m,n,x,y) << '\n';
+    }
 
-  return 0;
+    return 0;
 }
 
 int solve(int m, int n, int x, int y)
 {
-  // search from the first possible case
-  if (x == m) {
-    x = 0;
-  }
-  if (y == n) {
-    y = 0;
-  }
-  for (int i = x; i <= m * n; i += m) {
-    if (i % n == y) {
-      
-      return i;
+    // search from the first possible case
+    if (x==m) {
+        x = 0;
     }
-  }
+    if (y==n) {
+        y = 0;
+    }
+    for (int i = x; i<=m*n; i+=m) {
+        if (i%n==y) {
+            
+            return i;
+        }
+    }
 
-  return -1;
+    return -1;
 }

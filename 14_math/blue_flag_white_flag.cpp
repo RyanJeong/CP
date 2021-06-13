@@ -5,14 +5,14 @@ using namespace std;
 
 int main(void)
 {
-  ios::sync_with_stdio(false);
-  cin.tie(NULL);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
 
+	int res = 0;
 	long long n;
-	int       res = 0;
-
 	cin >> n;
-	for (long long i = 1; i * i <= n; ++i) {
+
+	for (long long i = 1; i*i<=n; ++i) {
 		++res;
 	}
 	cout << res;

@@ -10,25 +10,24 @@ int mod = 10'007;
 
 int main(void)
 {
-  ios::sync_with_stdio(false);
-  cin.tie(NULL);
-  
-  int n, k;
-
-  cin >> n >> k;
-  /*
-        1      
-      1   1
-    1   2   1
-  1   3   3   1
-  */
-  for (int i = 1; i <= 1000; ++i) {
-    arr[i][0] = arr[i][i] = 1;
-    for (int j = 1; j < i; ++j) {
-      arr[i][j] = (arr[i-1][j] + arr[i-1][j-1]) % mod;
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    
+    int n, k;
+    cin>>n>>k;
+    /*
+               1            
+             1   1
+           1   2   1
+         1   3   3   1
+    */
+    for (int i = 1; i<=1000; ++i) {
+        arr[i][0]=arr[i][i]=1;
+        for (int j = 1; j<i; ++j) {
+            arr[i][j] = (arr[i-1][j]+arr[i-1][j-1])%mod;
+        }
     }
-  }
-  cout << arr[n][k];
+    cout << arr[n][k];
 
-  return 0;
+    return 0;
 }
