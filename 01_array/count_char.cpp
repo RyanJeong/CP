@@ -1,3 +1,4 @@
+/* Use fill function rather than memset function */
 #include <bits/stdc++.h>
 
 using namespace std;
