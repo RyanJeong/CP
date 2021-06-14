@@ -26,7 +26,7 @@ int main(void)
 	}
 
     int max_area = 0;
-    // min_height-1:No area may be flooded.
+    // min_height-1 : No area may be flooded.
     for (int h = min_height-1; h<=max_height; ++h) {
         int area = 0;
         for (int i = 1; i<=n; ++i) {
