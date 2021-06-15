@@ -1,64 +1,97 @@
-//http://icpc.me/6593
+//http://icpc.me/1600
 #include <bits/stdc++.h>
 
 using namespace std;
+
+// { w, h, k }
+int dist[201][201][31]; // 0, 1 ~ w | h | k
 
 int main(void)
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-	const int dx[] = {1,0,-1,0,0,0};
-	const int dy[] = {0,1,0,-1,0,0}; 
-	const int dz[] = {0,0,0,0,1,-1}; 
+    // movement
+    int dx[] = {-1,0,1,0};
+    int dy[] = {0,-1,0,1};
+	// knight's movement
+	const int knight_dx[] = {1,2,2,1,-1,-2,-2,-1};
+	const int knight_dy[] = {2,1,-1,-2,-2,-1,1,2};
 
-	while (1) {
-		int l, r, c;
-		cin>>l>>r>>c;
-		if (!l && !r && !c) {
-			break;
-		}
-		// Init.
-		int arr[31][31][31]; // 0, 1 ~ 30
-		bool is_visited[31][31][31];
-		memset(is_visited, 0, sizeof is_visited);
+	int k;
+	cin>>k;
+    int w, h;
+    cin>>w>>h;
+	bool arr[201][201]; 
+    for (int i = 1; i<=w; ++i) {
+        for (int j = 1; j<=h; ++j) {
+            cin>>arr[i][j];
+        }
+    }
+    queue<pair<pair<int, int>, int>> q;
+    q.push({make_pair(0,0),0});
+    
+    //bfs
+    while (!q.empty()) {
+        auto cur = q.front();
+        q.pop();
 
-		// dimension, x, y
-		queue<pair<int, pair<int, int>>> q;
-		for (int i = 1; i<=l; ++i) {
-			for (int j = 1; j<=r; ++j) {
-				string str;
-				cin>>str;
-				int k = 1;
+        //1. general movement
+        for (int d = 0; d<4; ++d) {
+            int x = cur.first.first+dx[d];
+            int y = cur.first.second+dy[d];
+            int z = cur.second;
 
-				for (char c : str) {
-					switch (c) {
-					// 'S' '.' -> 0, '#' -> -1, 'E' -> 1
-					case 'S':
-						arr[i][j][k]=0;
-						q.push({i,make_pair(j,k)});
-						is_visited[j][k];
-						break;
-					case '.':
-						arr[i][j][k]=0;
-						break;
-					case '#':
-						arr[i][j][k]=-1;
-						break;
-					case 'E':
-						arr[i][j][k]=1;
-						break;
-					default:
-						break;
-					}
-					++k;
-				}
-			}
-		}
-		// is_escaped
-		// while (!q.empty()
-		// int minute
-	}
+            if (x<1 || x>w) {
+                continue;
+            }
+            if (y<1 || y>h) {
+                continue;
+            }
+            // wall
+            if (arr[x][y]) {
+                continue;
+            }
+            if (dist[x][y][z]>=dist[cur.first.first][cur.first.second][z]+1) {
+                continue;
+            }
+            dist[x][y][z]=dist[cur.first.first][cur.first.second][z]+1;
+            q.push({make_pair(x,y),z});
+        }
+        //2. knight's movement
+        for (int d = 0; d<8; ++d) {
+            int x = cur.first.first+knight_dx[d];
+            int y = cur.first.second+knight_dy[d];
+            int z = cur.second;
 
-	return 0;
+            if (x<1 || x>w) {
+                continue;
+            }
+            if (y<1 || y>h) {
+                continue;
+            }
+            // wall
+            if (arr[x][y]) {
+                continue;
+            }
+            // no longer available
+            if (z>=k) {
+                continue;
+            }
+            if (dist[x][y][z+1]>=dist[cur.first.first][cur.first.second][z]+1) {
+                continue;
+            }
+            dist[x][y][z+1]=dist[cur.first.first][cur.first.second][z]+1;
+            q.push({make_pair(x,y),z+1});
+        }
+    }
+    int min_movement = dist[w][h][0];
+    for (int i = 1; i<=k; ++i) {
+        if (dist[w][h][i]) {
+            min_movement=min(min_movement,dist[w][h][i]);
+        }
+    }
+    cout << ((min_movement) ? min_movement : -1);
+
+    return 0;
 }
