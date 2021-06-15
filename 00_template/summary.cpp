@@ -20,7 +20,7 @@ using namespace std;
 
 int main(void) 
 {
-  // Fast I/O for CP
+	// Fast I/O for CP
     ios::sync_with_stdio(false); // off the syncronization of all
                                  // the C++ standard streams with
                                  // their corresponding standard
@@ -63,9 +63,8 @@ int main(void)
 
     cout << v1.size() << '\n'; // 5, the return type of size() is 'unsigned'
     v1.push_back(4); // { 5, 5, 5, 4 }
-    for (int v : v1) {
+    for (int v : v1)
         cout << v << ' ';
-    }
     cout << '\n';
     //---------------------------------------------
     vector<int> v2(2); // { 0, 0 }
