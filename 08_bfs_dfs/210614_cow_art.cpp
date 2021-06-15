@@ -3,6 +3,13 @@
 
 using namespace std;
 
+enum {
+	RED,
+	GREEN,
+	RED_GREEN,
+	BLUE
+};
+
 void bfs(int, int, int);
 
 // { x, y }
