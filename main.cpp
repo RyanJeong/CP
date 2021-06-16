@@ -1,100 +1,91 @@
-//http://icpc.me/1600
+//http://icpc.me/11967
 #include <bits/stdc++.h>
 
 using namespace std;
-
-// { h, w, k }
-int dist[201][201][31]; // 0, 1 ~ w | h | k
 
 int main(void)
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    memset(dist,-1,sizeof dist);
-    // movement
-    int dx[] = {-1,0,1,0};
-    int dy[] = {0,-1,0,1};
-	// knight's movement
-	const int knight_dx[] = {1,2,2,1,-1,-2,-2,-1};
-	const int knight_dy[] = {2,1,-1,-2,-2,-1,1,2};
+	// right, botq_tom, left, top
+	const int dx[4] = {1,0,-1,0};
+	const int dy[4] = {0,-1,0,1};
 
-	int k;
-	cin>>k;
-    int w, h;
-    cin>>w>>h;
-	bool arr[201][201]; 
-    for (int i = 1; i<=h; ++i) {
-        for (int j = 1; j<=w; ++j) {
-            cin>>arr[i][j];
-        }
-    }
-    queue<pair<pair<int, int>, int>> q;
-    q.push({make_pair(1,1),0});
-    dist[1][1][0]=0;
-    
-    //bfs
-    while (!q.empty()) {
-        auto cur = q.front();
-        q.pop();
+	int arr[101][101]; // 1 ~ n
+	// -1: no light, 0: visited, 1: light
+	memset(arr,-1,sizeof arr);
+	arr[1][1] = 1;
+	int n, m;
+	cin>>n>>m;
+	queue<pair<int, int>> q;
+	q.push({1,1});
+	arr[1][1]=0;
+	vector<pair<pair<int, int>, pair<int, int>>> v;
+	while (m--) {
+		int x, y, a, b;
+		cin>>x>>y>>a>>b;
+		v.push_back({make_pair(x,y),make_pair(a,b)});
+	}
 
-        //1. general movement
-        for (int d = 0; d<4; ++d) {
-            int x = cur.first.first+dx[d];
-            int y = cur.first.second+dy[d];
-            int z = cur.second;
+	int room = 1;
+	while (!q.empty()) {
+		for (auto l : v) {
+			if (arr[l.first.first][l.first.second]!=-1) {
+				for (int d = 0; d<4; ++d) {
+					int x = l.first.first+dx[d];
+					int y = l.first.second+dy[d];
 
-            if (x<1 || x>h) {
-                continue;
-            }
-            if (y<1 || y>w) {
-                continue;
-            }
-            // wall
-            if (arr[x][y] || dist[x][y][z]) {
-                continue;
-            }
-            dist[x][y][z]=dist[cur.first.first][cur.first.second][z]+1;
-            q.push({make_pair(x,y),z});
-        }
+					if (arr[x][y]==0) {
+						q.push({x,y});
+						break;
+					}
+				}
+			}
+		}
+	}
 
-        //2. knight's movement
-        for (int d = 0; d<8; ++d) {
-            int x = cur.first.first+knight_dx[d];
-            int y = cur.first.second+knight_dy[d];
-            int z = cur.second;
+/*
+	int room = 0;
+	do {
+		int size=l.size();
 
-            // no longer available
-            if (z>=k) {
-                break;
-            }
-            if (x<1 || x>h) {
-                continue;
-            }
-            if (y<1 || y>w) {
-                continue;
-            }
-            // wall
-            if (arr[x][y] || dist[x][y][z]) {
-                continue;
-            }
-            dist[x][y][z+1]=dist[cur.first.first][cur.first.second][z]+1;
-            q.push({make_pair(x,y),z+1});
-        }
-    }
-    // -1, min_movement=2e9
-    // 1
-    // 1 1
-    // 0
-    // expected: 0
-    // result: -1
-    int min_movement = dist[h][w][0];
-    for (int i = 1; i<=k; ++i) {
-        if (dist[h][w][i]) {
-            min_movement=min(min_movement,dist[h][w][i]);
-        }
-    }
-    cout << ((min_movement>=0) ? min_movement : -1);
+		for (auto iter = l.begin(); iter!=l.end(); ++iter) {
+			auto it = *iter;
+			auto from = it.first;
+			auto to = it.second;
 
-    return 0;
+			if (arr[from.first][from.second]!=-1) {
+				for (int d = 0; d<4; ++d) {
+					int x = to.first+dx[d];
+					int y = to.second+dy[d];
+
+					if (x<1 || x>n) {
+						continue;
+					}
+					if (y<1 || y>n) {
+						continue;
+					}
+					if (arr[x][y]==-1) {
+						continue;
+					}
+					if (arr[to.first][to.second]==-1) {
+						arr[to.first][to.second]=1;
+						++room;
+					}
+					else {
+						arr[to.first][to.second]=0;
+					}
+					iter = l.erase(iter);
+				}
+			}
+		}
+		if (size==l.size()) {
+			break;
+		}
+	} while (!l.empty());
+	cout << room;
+	*/
+
+	return 0;
 }
