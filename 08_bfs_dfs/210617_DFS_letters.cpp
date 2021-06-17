@@ -48,7 +48,7 @@ int dfs(int i, int j)
 			continue;
 		}
 		is_visited[arr[x][y]-'A']=true;
-		movement = max(movement,dfs(x,y)+1);
+		movement=max(movement,dfs(x,y)+1);
 		is_visited[arr[x][y]-'A']=false;
 	}
 	
