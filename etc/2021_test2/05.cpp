@@ -15,16 +15,21 @@ float getY(float x, float x1, float x2, float y1, float y2)
 }
 
 string interpolate(int n, vector<int> instances, vector<float> price) {
-// debug
-for (int i = 0; i<instances.size(); ++i) {
-    cout << instances[i] << ' ' << price[i] <<'\n';
-}
-
+    // preprocess, erase zero or negative prices
+    for (int i = 0; i<price.size(); ++i) {
+        if (price[i]<=0) {
+            instances.erase(instances.begin()+i);
+            price.erase(price.begin()+i);
+            --i;
+        }
+    }
+    
+    // get a plot(price) associated with the number of instance(n)
     const int m = price.size();
     char arr[8]; //  1999.99 + '\0'
     memset(arr,0,sizeof arr);
     do {
-        if (instances.size()==1) {
+        if (m==1) {
             snprintf(arr,sizeof arr,"%.2f",price.front());
             break;
         }
@@ -34,12 +39,6 @@ for (int i = 0; i<instances.size(); ++i) {
             float y1 = price[0];
             float x2 = instances[1];
             float y2 = price[1];
-
-// debug
-cout << x1 << ' '
-    << y1 << ' ' 
-    << x2 << ' '
-    << y2 << ' ' << '\n';
 
             snprintf(arr,sizeof arr,"%.2f",getY(n,x1,x2,y1,y2));
             break;
@@ -51,12 +50,6 @@ cout << x1 << ' '
             float x2 = instances[m-1];
             float y2 = price[m-1];
             
-// debug
-cout << x1 << ' '
-    << y1 << ' ' 
-    << x2 << ' '
-    << y2 << ' ' << '\n';
-
             snprintf(arr,sizeof arr,"%.2f",getY(n,x1,x2,y1,y2));
             break;
         }
@@ -75,11 +68,6 @@ cout << x1 << ' '
                 float x2 = instances[i];
                 float y2 = price[i];
 
-// debug
-cout << x1 << ' '
-    << y1 << ' ' 
-    << x2 << ' '
-    << y2 << ' ' << '\n';
                 snprintf(arr,sizeof arr,"%.2f",getY(n,x1,x2,y1,y2));
                 break;
             }    
@@ -95,10 +83,10 @@ int main(void)
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int m;
-    cin>>m;
     int n;
     cin>>n;
+    int m;
+    cin>>m;
     vector<int> instances;
     for (int i = 0; i<m; ++i) {
         int temp;
@@ -106,6 +94,7 @@ int main(void)
 
         instances.push_back(temp);
     }
+    cin>>m;
     vector<float> price;
     for (int i = 0; i<m; ++i) {
         float temp;
@@ -113,103 +102,6 @@ int main(void)
 
         price.push_back(temp);
     }
-    /*
-
-    vector<int> instances = {
-        5,
-        10,
-        25,
-        50,
-        100,
-        500,
-    };
-    vector<float> price = {
-        5,
-        2.46,
-        2.58,
-        2.0,
-        2.25,
-        3.0
-    };
-    cout << 4 << ' ' << interpolate(4,instances,price) << '\n';
-    cout << 25 << ' ' << interpolate(25,instances,price) << '\n';
-    cout << 499 << ' ' << interpolate(499,instances,price) << '\n';
-    cout << 501 << ' ' << interpolate(501,instances,price) << '\n';
-    
-    int n = 2;
-    vector<float> price1={
-        5,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        54.25
-    };
-    //cout << n << ' ' << interpolate(n,instances,price1) << '\n';
-
-    n=1999;
-    vector<float> price2={
-        5,
-        27.32,
-        23.13,
-        21.25,
-        18.0,
-        15.5
-    };
-    //cout << n << ' ' << interpolate(n,instances,price2) << '\n';
-
-    */
-    /*
-    case #1
-        25
-        5
-        10
-        25
-        50
-        100
-        500
-        5
-        2.46
-        2.58
-        2.0
-        2.25
-        3.0
-    */
-
-    /*
-    case #2
-        1999
-        5
-        10
-        25
-        50
-        100
-        500
-        5
-        27.32
-        23.13
-        21.25
-        18.0
-        15.5
-    */
-
-    /* 
-    case #3
-        2
-        5
-        10
-        25
-        50
-        100
-        500
-        5
-        0.0
-        0.0
-        0.0
-        0.0
-        54.25
-    */
-
     cout << interpolate(n,instances,price);
 
     return 0;

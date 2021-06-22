@@ -15,11 +15,8 @@ type StringsCollection interface {
 	GetAllStrings() []string
 }
 
-
-// NewStringsCollection 함수가 StringsCollection 의 구현체를 생성하여 리턴해야 합니다.
-// StringsCollection 인터페이스를 구현해 주세요
 func NewStringsCollection() StringsCollection {
-    return nil
+	return nil
 }
 
 func main() {

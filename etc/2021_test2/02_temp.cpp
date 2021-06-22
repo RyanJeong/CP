@@ -3,14 +3,6 @@
 
 using namespace std;
 
-
-/*
- * Complete the 'b2s' function below.
- *
- * The function is expected to return a STRING.
- * The function accepts STRING b as parameter.
- */
-
 string b2s(string b) 
 {
     // erase postfix zeros

@@ -2,15 +2,6 @@
 
 using namespace std;
 
-/*
- * Complete the 'decode' function below.
- *
- * The function is expected to return a STRING.
- * The function accepts following parameters:
- *  1. STRING_ARRAY codes
- *  2. STRING encoded
- */
-
 enum {
     LEFT,
     RIGHT
