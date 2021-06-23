@@ -64,7 +64,7 @@ int main(void)
 ```
 
 ### Using `memset` for array initialization
-#### `void* memset (void* ptr, int value, size_t num);`
+#### `void* memset(void* ptr, int value, size_t num);`
 ##### Sets the first <i>num</i> bytes of the block of memory pointed by <i>ptr</i> to the specified <i>value</i> (interpreted as an `unsigned char`).
 ```c++
     int arr[100][100];

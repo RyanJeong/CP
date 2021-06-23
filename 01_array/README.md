@@ -1,7 +1,7 @@
 #  Array
 * 메모리 상에 요소(element)를 연속적으로 배치한 자료구조
 * 추천 문제
-	* [미로 탐색](https://www.acmicpc.net/problem/10808)
+	* [알파벳 개수](https://www.acmicpc.net/problem/10808) [(소스코드)](./src/count_char.cpp)
 
 ## 배열 선언
 * 배열 선언식이 T <i>name</i>[SIZE]라면, 해당 배열의 필요한 메모리 크기는 `sizeof(T)*SIZE`
