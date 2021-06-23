@@ -1,44 +1,95 @@
-// http://icpc.me/2565
 #include <bits/stdc++.h>
 
 using namespace std;
 
-int arr[501][2]; // [0] -> to, [1] -> tangled
+int insert(int[], const int, int&, int, int);
+int erase(int[], const int, int&, int);
+
 int main(void)
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int n;
-    cin>>n;
-    for (int i = 1; i<=n; ++i) {
-        int a, b;
-        cin>>a>>b;
-        arr[a][0]=b;
+    const int cap = 10;
+    // An array that can store only positive numbers;
+    int arr[cap] = { 1, 2, 4, 8, 16, 32 };
+    int len = 0;
+    for (int i = 0; i<cap; ++i) {
+        if (arr[i]) {
+            ++len;
+        }
     }
+    cout << "capacity: " << cap << ", length: " << len << '\n';
+    for (int i = 0; i<len; ++i) {
+        cout << arr[i] << ' ';
+    }
+    cout << '\n';
 
-    // 1. get number of tangled line per position
-    for (int i = 1; i<=n; ++i) {
-        if (!arr[i][0]) {
-            continue;
-        }
-        int to = arr[i][0];
-        for (int j = i+1; j < to; ++j) {
-            ++arr[j][1];
-        }
+    // 1. insert
+    insert(arr,cap,len,0,50);
+    cout << "capacity: " << cap << ",length: " << len << '\n';
+    for (int i = 0; i<len; ++i) {
+        cout << arr[i] << ' ';
     }
-    for (int i = 1; i<=n; ++i) {
-        cout << arr[i][1] << '\n';
+    cout << '\n';
+    insert(arr,cap,len,len,60);
+    cout << "capacity: " << cap << ",length: " << len << '\n';
+    for (int i = 0; i<len; ++i) {
+        cout << arr[i] << ' ';
     }
-    /*
-    int max_tangled_line = -1;
-    int min_line = 0;
-    while (!max_tangled_line) {
-        for (int i = 1; i<=n; ++i) {
-        }
+    cout << '\n';
+
+    // 2. erase
+    erase(arr,cap,len,1);
+    cout << "capacity: " << cap << ",length: " << len << '\n';
+    for (int i = 0; i<len; ++i) {
+        cout << arr[i] << ' ';
     }
-    cout << min_line;
-    */
+    cout << '\n';
+    erase(arr,cap,len,len);
+    cout << "capacity: " << cap << ",length: " << len << '\n';
+    for (int i = 0; i<len; ++i) {
+        cout << arr[i] << ' ';
+    }
+    cout << '\n';
 
     return 0;
+}
+
+int insert(int arr[],const int cap,int& len,int idx,int val)
+{
+    if (len==cap) {
+        
+        return 0;
+    }
+    if (idx>len) {
+
+        return 0;
+    }
+    for (int i = len; i>idx; --i) {
+        arr[i]=arr[i-1];
+    }
+    arr[idx]=val;
+    ++len;
+
+    return val;
+}
+
+int erase(int arr[],const int cap,int& len,int idx)
+{
+    if (len==0) {
+
+        return 0;
+    }
+    if (idx>len) {
+
+        return 0;
+    }
+    --len;
+    int val = arr[idx];
+    for (int i = idx; i<len; ++i) {
+        arr[i]=arr[i+1];
+    }
+
+    return val;
 }
