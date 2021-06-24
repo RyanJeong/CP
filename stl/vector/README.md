@@ -2,11 +2,11 @@
     * Sequence Container
         * [Vector](./stl/vector/)
         * [List](./stl/list/)
-        * [Double-ended Queue(Deque)](./stl/deque)
+        * [Double-ended Queue(Deque)](./stl/deque/)
     * Container Adaptor
         * [Stack](./stl/stack/)
         * [Queue](./stl/queue/)
-        * [Priority Queue](./stl/priority_queue_heap)
+        * [Priority Queue](./stl/priority_queue_heap/)
     * Associative Container
         * [Set & Multiset](./stl/set/)
         * [Map & Multimap](./stl/map/)
@@ -22,3 +22,4 @@
     * 벡터의 저장 공간에 여유가 있을 때, 새로운 요소 추가 시 시간복잡도는 `O(1)`
     * https:/modoocode.com/223
     * https:/boycoding.tistory.com/236?category=1011971
+    * https://thuthi.tistory.com/entry/vector-pushback%EC%9D%80-%EB%8A%90%EB%A6%AC%EB%8B%A4-reserve
