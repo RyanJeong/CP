@@ -1,5 +1,5 @@
-* Container classes:
-    * Sequence Container: 
+* STL - Container Classes:
+    * Sequence Container
         * [Vector](../02_vector/)
         * [List](../03_list/)
         * [Double-ended Queue(Deque)](../06_deque)
