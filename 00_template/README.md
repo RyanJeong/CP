@@ -253,3 +253,7 @@ Editor: Auto Closing Brackets
 Controls whether the editor should automatically close brackets after the user adds an opening bracket.
 : never
 ```
+
+---
+|이전 - 없음|[목록](https://github.com/RyanJeong/CP#index)|[다음 - Array](../01_array/)|
+|-|-|-|

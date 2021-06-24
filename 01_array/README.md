@@ -130,7 +130,7 @@ int erase(int arr[],const int cap,int& len,int idx)
 ```
 ---
 |[이전 - Template](../00_template/)|[목록](https://github.com/RyanJeong/CP#index)|[다음 - Vector(STL)](../02_vector/)|
-|----|---|----|
+|-|-|-|
 
 
 

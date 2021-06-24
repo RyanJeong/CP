@@ -11,13 +11,24 @@ Resources for competitive programming
 * STL - Container Classes:
     * Sequence Container
         * [Vector](./02_vector/)
-        * [List](./03_list/)
-        * [Double-ended Queue(Deque)](./06_deque)
+        * [[WIP]List](./03_list/)
+        * [[WIP]Double-ended Queue(Deque)](./06_deque)
     * Container Adaptor
-        * [Stack](./04_stack/)
-        * [Queue](./05_queue/)
-        * [Priority Queue](./21_priority_queue_heap)
+        * [[WIP]Stack](./04_stack/)
+        * [[WIP]Queue](./05_queue/)
+        * [[WIP]Priority Queue](./21_priority_queue_heap)
     * Associative Container
-        * [Set & Multiset](./19_set/)
-        * [Map & Multimap](./20_map/)
-
+        * [[WIP]Set & Multiset](./19_set/)
+        * [[WIP]Map & Multimap](./20_map/)
+* [BFS & DFS](./08_bfs_dfs/)
+* [[WIP]Recursion](./09_recursion/)
+* [[WIP]Backtracking](./10_backtracking)
+* [[WIP]Dynamic Programming](./15_dp/)
+* [[WIP]Greedy Algorithm](./16_greedy/)
+* [[WIP]Binary Search](./17_binary_search)
+* [[WIP]Two Pointer](./18_two_pointer/)
+* [[WIP]String](./22_string/)
+* Mathematics
+	* [[WIP] Permutation & Combination](./11_permutation/)
+* Simulation
+	* [[WIP] [BOJ]CCTV]
