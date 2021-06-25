@@ -6,7 +6,7 @@ Resources for competitive programming
 ## Index
 * [Template](./template/)
 * [Array](./array/)
-* [[WIP]STL - Container Classes:](./stl/)
+* [STL - Container Classes:](./stl/)
     * Sequence Container
         * [[WIP]Vector](./stl/vector/)
         * [[WIP]List](./stl/list/)

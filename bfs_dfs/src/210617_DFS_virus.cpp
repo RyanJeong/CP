@@ -1,4 +1,4 @@
-//http://icpc.me/1260
+//http://icpc.me/2606
 #include <bits/stdc++.h>
 
 using namespace std;
