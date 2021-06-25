@@ -23,7 +23,7 @@
 <br>
 
 ### How to compare two double values
-#### This code, it looks like it will print `same!`, but it actually prints 'NOT same!'. Why?
+#### This code, it looks like it will print `same!`, but it actually prints 'NOT same!'. [Why?](https://www.cs.technion.ac.il/users/yechiel/c++-faq/floating-point-arith.html)
 ```c++
     double a = 0.1+0.1+0.1;
     double b = 0.3;
@@ -35,7 +35,9 @@
         cout << "NOT same!\n";
     }
 ```
-#### Comparing floating point numbers for <b>depends on the context</b>. Since even changing the order of operations <b>can produce different results</b>. So, MUST be careful about comparing floating-point values.
+> Floating point math is not exact. Simple values like 0.1 cannot be precisely represented using binary floating point numbers, and the limited precision of floating point numbers means that slight changes in the order of operations or the precision of intermediates can change the result. That means that comparing two floats to see if they are equal is usually not what you want (GCC even has a warning for this: `warning: comparing floating point with == or != is unsafe`). 
+
+#### Epsilon comparisons can solve the problem.
 ```c++
     // `epsilon zero` is approximately 8.854e-12
     if (abs(a-b)<1e-12) {
