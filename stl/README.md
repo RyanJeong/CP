@@ -19,10 +19,10 @@
     * the number of items to be maintained by a collection is at least approximately known in advance.
     * As with arrays, vector elements can be directly indexed.
     * The sorting operation can be used to place the elements of a vector in order.
-    * Accessing an element of a vector, read/write, can be performed in constant that is <b>O(1)</b> time.
-    * Searching an unordered vector can be accomplished in <b>O(<i>n</i>)</b> time.
-    * Searching a sorted vector can be accomplished in <b>O(<i>logn</i>)</b> time using binary search.
-    * A notable operation on vectors, not possible with arrays, is that the size of the vector can dynamically be increased or decrease. Such operation may take <b>O(<i>n</i>)</b> worst case scenario.
+    * Accessing an element of a vector, read/write, can be performed in constant that is <b><i>O</i>(1)</b> time.
+    * Searching an unordered vector can be accomplished in <b><i>O</i>(<i>n</i>)</b> time.
+    * Searching a sorted vector can be accomplished in <b><i>O</i>(<i>log n</i>)</b> time using binary search.
+    * A notable operation on vectors, not possible with arrays, is that the size of the vector can dynamically be increased or decrease. Such operation may take <b><i>O</i>(<i>n</i>)</b> worst case scenario.
 
 		|Operation|Capacity|Cost||
 		|:-:|:-:|-:|-|
@@ -35,7 +35,9 @@
 		|`push_back(7)`|8|1|`1` `2` `3` `4` `5` `6` `7` `⠀`|
 		|`push_back(8)`|8|1|`1` `2` `3` `4` `5` `6` `7` `8`|
 		|`push_back(9)`|16|<b>8</b>+1|`1` `2` `3` `4` `5` `6` `7` `8` `9` `⠀` `⠀` `⠀` `⠀` `⠀` `⠀` `⠀`|
-		* <b>amortized O(<i>n</i>)</b>
+		* [<b>amortized <i>O</i>(<i>n</i>)</b>](https://cs.stackexchange.com/questions/9380/why-is-push-back-in-c-vectors-constant-amortized)
+        > Amortized analysis is an analysis technique that examines a sequence of <i>n</i> operations. If the whole sequence runs in <b><i>T</i>(<i>n</i>)</b> time, then each operation in the sequence runs in <b><i>T</i>(<i>n</i>)/<i>n</i></b>. The idea is that while a few operations in the sequence might be costly, they can't happen often enough to weigh down the program. It's important to note that this is different from average case analysis over some input distribution or randomized analysis. Amortized analysis established a <i>worst case</i> bound for the performance of an algorithm irrespective of the inputs. It's most commonly used to analyse data structures, which have a persistent state throughout the program.
+
         * Assume that you call `push_back(x)` <i>N</i> times.
         * The total cost comprises of:
             * Cost of adding an element
@@ -44,8 +46,8 @@
             * Cost of moving elements when vector is <b>full</b>
                 * 1, 2, 4, 8, ..., 2<sup><i>k</i></sup> (where 2<sup><i>k</i></sup> < <i>N</i>)
                 * The sum of above = <b>2<sup><i>k</i>+1</sup>-1 < 2<i>N</i></b>
-        * Total cost for <i>N</i> `push_back(x)` = <i>N</i> + (<2<i>N</i>) < 3<i>N</i>, and therefore is <b>O(<i>N</i>)</b>.
-        * We can say that `push_back(x)` is <b>amortized O(1)</b>
+        * Total cost for <i>N</i> `push_back(x)` = <i>N</i> + (<2<i>N</i>) < 3<i>N</i>, and therefore is <b><i>O</i>(<i>N</i>)</b>.
+        * We can say that `push_back(x)` is <b>amortized <i>O</i>(1)</b>
 
 
 ### [List](/stl/list/)

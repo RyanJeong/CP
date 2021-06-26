@@ -244,7 +244,6 @@ int main(void)
     "when": "terminalFocus"
   }
 ]
-*/
 ```
 <br>
 
