@@ -9,9 +9,9 @@ int main(void)
 
     stack<int> s;
 
-    s.push(10); // 10
-    s.push(20); // 10 20
-    s.push(30); // 10 20 30
+    s.push(10); // { 10 }
+    s.push(20); // { 10 20 }
+    s.push(30); // { 10 20 30 }
     cout << s.size() << '\n'; // 3
     if (s.empty()) {
         cout << "Stack is empty!\n";
@@ -19,12 +19,13 @@ int main(void)
     else {
         cout << "Stack is not empty!\n"; // print "Stack is not empty!"
     }
-    s.pop(); // 10 20, return type is void
+    cout << s.top() << '\n'; // 30
+    s.pop(); // { 10 20 }, return value is none!
     cout << s.top() << '\n'; // 20
-    s.pop(); // 10
-    s.pop(); // NULL
+    s.pop(); // { 10 }
+    s.pop(); // (empty)
     if (s.empty()) {
-        cout << "Stack is empty!\n"; // print "Stack not empty!"
+        cout << "Stack is empty!\n"; // print "Stack is empty!"
     } 
     else {
         cout << "Stack is not empty!\n"; 

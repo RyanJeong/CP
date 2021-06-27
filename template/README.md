@@ -102,13 +102,13 @@ int main(void)
     // s1: ABC
     // s2:  DEF GHI
 ```
-#### input buffer: `'A' 'B' 'C' ' ' 'D' 'E' 'F' ' ' 'G' 'H' 'I'`
+#### input buffer: `A` `B` `C` `⠀` `D` `E` `F` `⠀` `G` `H` `I`
 <br>
 
 #### `cin` will skip any leading whitespace (tab spaces, carriage returns and blank spaces), then start reading when it comes to the first non-whitespace character and then stop reading when it comes to the next whitespace. 
-#### input buffer after call `cin`: `' ' 'D' 'E' 'F' ' ' 'G' 'H' 'I'`
+#### input buffer after call `cin`: `⠀` `D` `E` `F` `⠀` `G` `H` `I`
 #### Trailing whitespace left in the input stream, so `getline` extracts characters from <i>input stream</i>, which includes the whitespace.
-#### input buffer after call `getline`: (empty)
+#### input buffer after call `getline`: `(empty)`
 <br>
 
 #### In general, if you want to immediately throw away the whitespace that follows using `cin` to not mess things up when you later use `getline`, then use `cin.ignore()` immediately after a `cin` to discard the next value.

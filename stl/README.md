@@ -8,10 +8,12 @@
         * [Queue](/stl/queue/)
         * [Priority Queue](/stl/priority_queue_heap/)
     * Associative Container
-        * [Set & Multiset](/stl/set/)
-        * [Map & Multimap](/stl/map/)
+        * [Set](/stl/set/)
+        * [Map](/stl/map/)
 
 # STL - Container Classes:
+* Calling a function that accesses a element of a container while <b>the container is empty</b> is <b>UB(<i>undefined behavior</i>)</b>.
+
 ## Sequence Container
 ### [Vector](/stl/vector/)
 * A vector is a fixed length group of elements of uniform type, indexed by integer keys. Vectors can be considered to be a generalization of the built-in C++ array type.
@@ -52,26 +54,65 @@
 
 ### [List](/stl/list/)
 * A list is a data structure of choice when the number of elements in a collection <b>cannot be bounded</b>, or varies widely during the course of execution. 
-* Like a vector, a list maintains values of uniform type. Lists are not indexed, instead elements must be examined one by one in sequence.
+* <b>Like a vector, a list maintains values of uniform type</b>. Lists are <b>not indexed</b>, instead elements must be examined one by one in sequence.
 ### [Double-ended Queue(Deque)](/stl/deque/)
-* A deque or double ended queue is a data structure of an arbitrary size, growing and shrinking as elements are added or removed. The deque is optimized for insertion or removal of elements from either end. This operation can be performed in constant time.
-* Like a vector dequeue is an indexed structure, allowing rapid access to any element. As values are inserted into the front of the structure, the index positions by which an element is accessed will constantly change to reflect the inclusion of the new values. Deques can be ordered and use binary search to locate a specific element, otherwise linear search is necessary.
+* A deque or double ended queue is a data structure of an arbitrary size, growing and shrinking as elements are added or removed. <b>The deque is optimized for insertion or removal of elements from either end</b>. This operation can be performed in constant time.
+* Like a vector dequeue is an <b>indexed</b> structure, allowing rapid access to any element. As values are inserted into the front of the structure, the index positions by which an element is accessed will constantly change to reflect the inclusion of the new values. <b>Deques can be ordered and use binary search</b> to locate a specific element, otherwise linear search is necessary.
 ---
 
 ## Container Adaptor
 ### [Stack](/stl/stack/)
-*
+* Elements in a stack obey the <b>last-in first-out</b>, or <b>LIFO</b> protocol, in that elements can be added or removed only from the front of the stack.
+
 ### [Queue](/stl/queue/)
-*
+* A queue maintains a <b>first-in, first-out</b> protocol or <b>FIFO</b>. Elements are inserted in the back of the queue and removed from the front. <b>The element removed from the queue is the one that was held the longest</b>.
 ### [Priority Queue](/stl/priority_queue_heap)
-*
+* <b>A priority queue is optimized for insertion of arbitrary new elements and for removal of the largest element</b>, both operations can be performed in <b><i>O</i>(<i>log n</i>)</b> time.
 ---
 
 ## Associative Container
-### [Set & Multiset](/stl/set/)
-*
-### [Map & Multimap](/stl/map/)
-*
+### [Set](/stl/set/)
+* <b>A set is a simple collection of unique values</b>. The set data structure <b>maintains values in an ordered representation</b>. This permits rapid insertion, removal and testing for inclusion of a specific element. All operations can be performed in <b><i>O</i>(<i>log n</i>)</b> time. In addition, <b>operations are provided for forming the intersection and union of two sets</b>.
+
+### [Map](/stl/map/)
+* A map (sometimes called a <b>dictionary</b> or a <b>table</b>) is, like a vector, an <b>indexed</b> collection. However, unlike a vector, the <b>index values need not be integer</b>, but can be any ordered data values. A map can therefore be thought of as a collection of associations of keys and value pairs.
+---
+
+## Selecting a container:
+### How are values going to be accessed?
+* If <b>random access</b> is important, then `vector` or `deque` should be used.
+* If values are going to <b>be accessed in order</b> then `set` should be used. 
+* If <b>sequential access</b> is sufficient then any other structure is suitable.
+
+### Is the order in which values are maintained important?
+* If <b>strict ordering is important</b>, then `set` is the best choice.
+* If the order that values are <b>held in the structure is related to the order of insertion</b>, then `stack`, `queue` or `list` may be the best choice.
+
+### Will the size of the structure vary widely over the course of execution?
+* If true, then `list` or `set` may be suitable, as they only use memory to <b>hold currently stored values</b>, while a `vector` or `deque` will continue to maintain a large buffer <b>even after elements have been removed</b>.
+
+### Is it possible to estimate the size of the collection of values?
+* `vector` provides a way to pre-allocate a block of memory of a given size (`reserve()`).
+
+### Is testing whether a value is contained in the collection a frequent operation?
+* If so, then the `set` or `map` would be a good choice. Testing to see whether a value is contained in `set` or `map` can be performed in a very small number of steps.
+
+### Is the collection indexed: Can it be viewed as a series of key/value pairs?
+* If the keys are between 0 and some upper limit, then `vector` or `deque` should be employed. If on the other hand, the key values are some other ordered data type, then `map` can be used.
+
+### Can values be related to each other?
+* If values cannot be ordered using `≤` operator, then we should use `set` or `map`.
+
+### Is finding and removing the largest value from the collection a frequent operation?
+* `priority_queue`
+
+### At what positions are values inserted into or removed from the structure?
+* Insertion/removal from the middle: `list`
+* Insertion from beginning: `list` or `deque`
+* Insertion/deletion from the end: `stack` or `queue`
+
+### Is the merging of two or more sequences into one a frequent operation?
+* `set` or `list` are best choice.
 
 ---
 |[이전 - Array](../Array/)|[목록](https://github.com/RyanJeong/CP#index)|[다음 - BFS & DFS](../bfs_dfs/)|

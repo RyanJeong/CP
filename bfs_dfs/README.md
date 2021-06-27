@@ -27,7 +27,7 @@
 * BFS는 모든 정점이 인접한 정점과의 거리 차가 1임을 보장 
 * `queue`에 입력되는 정점은 시작 정점으로부터 거리 순임을 보장
 
-### 코드
+### 연습문제
 * [[BOJ] 그림](https://www.acmicpc.net/problem/1926) - BFS 사용
 ###### Memory: 3,248 KB, Time: 24 ms
 ```c++
@@ -125,7 +125,7 @@ int main(void)
 * BFS는 모든 정점이 인접한 정점과의 거리 차가 1임을 <b>보장하지 않음</b>
 * <b>다차원 배열에서의 flood fill은 BFS, DFS 둘 다 가능하지만, 다차원 배열에서의 최단경로 찾기는 BFS만 가능하므로, 다차원 배열에서의 순회 문제는 주로 BFS만 사용됨</b>
 
-### 코드
+### 연습문제
 * [[BOJ] 그림](https://www.acmicpc.net/problem/1926) - DFS(stack) 사용
 ###### Memory: 4,312 KB, Time: 24 ms
 ```c++

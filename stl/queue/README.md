@@ -8,10 +8,48 @@
         * [Queue](/stl/queue/)
         * [Priority Queue](/stl/priority_queue_heap/)
     * Associative Container
-        * [Set & Multiset](/stl/set/)
-        * [Map & Multimap](/stl/map/)
+        * [Set](/stl/set/)
+        * [Map](/stl/map/)
 
-# Qeueue
+# [Qeueue](https://cplusplus.com/reference/queue/queue/)
+* Restricted Structure
+* FILO (First In Last Out)
+* `push`의 시간 복잡도는 <b><i>O</i>(1)</b>
+* `pop`의 시간 복잡도는 <b><i>O</i>(1)</b>
+* `front`, `back`의 시간 복잡도는 <b><i>O</i>(1)</b>
+
+```c++
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(void)
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    queue<int> q;
+
+    q.push(10); // { 10 }
+    q.push(20); // { 10 20 } 
+    q.push(30); // { 10 20 30 }
+    cout << q.size() << '\n'; // 3
+    if (q.empty()) {
+        cout << "Queue is empty!\n";
+    } 
+    else {
+        cout << "Queue is not empty!\n"; // print "Queue is not empty!"
+    }
+    cout << q.front() << '\n'; // 10
+    cout << q.back() << '\n';  // 30
+    q.pop();    // { 20 30 }
+    q.push(40); // { 20 30 40 }
+    cout << q.front() << '\n'; // 20
+    cout << q.back() << '\n';  // 40
+
+    return 0;
+}
+```
 
 ---
 |[이전 - Array](../Array/)|[목록](https://github.com/RyanJeong/CP#index)|[다음 - BFS & DFS](../bfs_dfs/)|
