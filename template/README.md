@@ -256,5 +256,5 @@ Controls whether the editor should automatically close brackets after the user a
 ```
 
 ---
-|이전 - 없음|[목록](https://github.com/RyanJeong/CP#index)|[다음 - Array](../array/)|
+|이전 - 없음|[목록](https://github.com/RyanJeong/CP#index)|[다음 - Array](/array/)|
 |-|-|-|

@@ -270,5 +270,5 @@ int dfs(int i, int j)
 ```
 
 ---
-|[이전 - STL - Container Classes:](../stl/)|[목록](https://github.com/RyanJeong/CP#index)|[다음 - Recursion](../recursion/)|
+|[이전 - STL - Container Classes:](/stl/)|[목록](https://github.com/RyanJeong/CP#index)|[다음 - Recursion](/recursion/)|
 |-|-|-|
