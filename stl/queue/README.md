@@ -11,7 +11,7 @@
         * [Set](/stl/set/)
         * [Map](/stl/map/)
 
-# [Qeueue](https://cplusplus.com/reference/queue/queue/)
+# [Queue](https://cplusplus.com/reference/queue/queue/)
 * Restricted Structure
 * FILO (First In Last Out)
 * `push`의 시간 복잡도는 <b><i>O</i>(1)</b>
