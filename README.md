@@ -16,8 +16,8 @@ Resources for competitive programming
         * [Queue](./stl/queue/)
         * [Priority Queue](./stl/priority_queue_heap)
     * Associative Container
-        * [Set & Multiset](./stl/set/)
-        * [Map & Multimap](./stl/map/)
+        * [Set](./stl/set/)
+        * [Map](./stl/map/)
 * [BFS & DFS](./bfs_dfs/)
 * [[WIP]Recursion](./recursion/)
 * [[WIP]Backtracking](./backtracking)
