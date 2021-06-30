@@ -201,7 +201,8 @@ int main(void)
 
     // The base it_enderator refers to the element that is next to the element the reverse_it_enderator is currently pointing to.
     // v4.erase(v4.end()-1);
-    v4.erase((v4.rbegin()).base()-1);
+    // Modern style: v4.erase(prev(v4.end()));
+    v4.erase((v4.rbegin()).base()-1); 
     cout << v4.size() << ' ' << v4.capacity() << '\n'; // 4 5
     cout << &(*it_begin) << '\n';   // 0x7ffff727deb0
     cout << &(*v4.begin()) << '\n'; // 0x7ffff727deb0
