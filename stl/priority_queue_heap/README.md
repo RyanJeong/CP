@@ -51,6 +51,132 @@ int main(void)
     return 0;
 }
 ```
+### 연습문제
+* [[BOJ] 최대 힙](https://www.acmicpc.net/problem/11279)
+###### Memory: 2,916 KB, Time: 16 ms
+```c++
+// https://www.acmicpc.net/problem/11279
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(void)
+{
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+
+	int n;
+	cin >> n;
+	// https://en.cppreference.com/w/cpp/container/priority_queue 
+	// priority_queue<int, vector<int>, greater<int>> -> min heap
+	// priority_queue<int> -> max heap
+	priority_queue<int> max_heap;
+
+	while (n--) {
+		int x;
+		cin >> x;
+
+		if (!x) {
+			if (max_heap.empty()) {
+				cout << "0\n";
+			} 
+			else {
+				cout << max_heap.top() << '\n';
+				max_heap.pop();
+			}
+		} 
+		else {
+			max_heap.push(x);
+		}
+	}
+
+	return 0;
+}
+```
+
+* [[BOJ] 최소 힙](https://www.acmicpc.net/problem/1927)
+###### Memory: 2,916 KB, Time: 12 ms
+```c++
+// https://www.acmicpc.net/problem/1927
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(void)
+{
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+
+	int n;
+	cin >> n;
+	// https://en.cppreference.com/w/cpp/container/priority_queue 
+	// priority_queue<int, vector<int>, greater<int>> -> min heap
+	// priority_queue<int> -> max heap
+	priority_queue<int, vector<int>, greater<int>> min_heap;
+
+	while (n--) {
+		int x;
+		cin >> x;
+
+		if (!x) {
+			if (min_heap.empty()) {
+				cout << "0\n";
+			} 
+			else {
+				cout << min_heap.top() << '\n';
+				min_heap.pop();
+			}
+		} 
+		else {
+			min_heap.push(x);
+		}
+	}
+
+	return 0;
+}
+```
+
+* [[BOJ] 절댓값 힙](https://www.acmicpc.net/problem/11286)
+	* 기본 자료형이 아닌 형에서의 최소 힙
+###### Memory: 2,916 KB, Time: 16 ms
+```c++
+// https://www.acmicpc.net/problem/11286
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(void)
+{
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+
+	int n;
+	cin >> n;
+	priority_queue<pair<int, int>, 
+		vector<pair<int, int>>, 
+		greater<pair<int, int>>> min_heap;
+
+	while (n--) {
+		int x;
+		cin >> x;
+
+		if (!x) {
+			if (min_heap.empty()) {
+				cout << "0\n";
+			} 
+			else {
+				cout << min_heap.top().second << '\n';
+				min_heap.pop();
+			}
+		} 
+		else {
+			min_heap.push({abs(x),x});
+		}
+	}
+
+	return 0;
+}
+```
 
 ---
 |[이전 - Array](/array/)|[목록](https://github.com/RyanJeong/CP#index)|[다음 - BFS & DFS](/bfs_dfs/)|
