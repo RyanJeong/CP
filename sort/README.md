@@ -182,8 +182,14 @@ int main(void)
 ```
 
 ## 기타 정렬 (Non-comparison Sort)
-###  Counting Sort
-* 배열을 이용한 정렬
+###  Counting Sort (계수 정렬)
+* [동작 애니메이션](http://www.cs.miami.edu/home/burt/learning/Csc517.091/workbook/countingsort.html)
+* 시간복잡도는 <b><i>O</i>(<i>n</i>)</b>
+* 비교를 하지 않으며, 빈도를 기록할 배열과 정렬 결과를 기록할 배열이 추가로 필요
+* 정렬하는 대상이 특정 범위 내에 있을 경우 굉장히 효율적인 방법이지만, 범위가 특정하지 않거나 범위가 너무 넓을 경우 불필요한 메모리 낭비 발생
+	* 정렬 대상이 8, 2, 1, 4, 64, 128일 경우, 빈도를 기록할 배열의 크기는 128
+	* 정렬 대상 안에 10,000,000와 같이 큰 수가 포함되어 있다면, 배열의 크기는 최소 10,000,000 이상이여야 함
+	
 * [[BOJ] 수 정렬하기 5](https://www.acmicpc.net/problem/15688)
 ###### Memory: 9,828 KB, Time: 4,632 ms
 ```c++
