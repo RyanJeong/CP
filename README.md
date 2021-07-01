@@ -10,21 +10,21 @@ Resources for competitive programming
     * Sequence Container
         * [Vector](/stl/vector/)
         * [List](/stl/list/)
-        * [Double-ended Queue(Deque)](/stl/deque)
+        * [Double-ended Queue(Deque)](/stl/deque/)
     * Container Adaptor
         * [Stack](/stl/stack/)
         * [Queue](/stl/queue/)
-        * [Priority Queue](/stl/priority_queue_heap)
+        * [Priority Queue](/stl/priority_queue_heap/)
     * Associative Container
         * [Set](/stl/set/)
         * [Map](/stl/map/)
 * [BFS & DFS](/bfs_dfs/)
 * [Recursion](/recursion/)
-* [[WIP]Backtracking](/backtracking)
+* [[WIP]Backtracking](/backtracking/)
 * [[WIP]Dynamic Programming](/dp/)
 * [[WIP]Greedy](/greedy/)
 * [[WIP]Sort](/sort/)
-* [[WIP]Binary Search](/binary_search)
+* [[WIP]Binary Search](/binary_search/)
 * [[WIP]Two Pointer](/two_pointer/)
 * [[WIP]String](/string/)
 * [WIP]Mathematics

@@ -3,12 +3,6 @@
 
 using namespace std;
 
-void merge_sort(int, int);
-void merge(int, int);
-
-int arr[1'000];
-int res[1'000];
-
 int main(void) 
 {
 	ios::sync_with_stdio(false);
@@ -27,23 +21,4 @@ int main(void)
 	}
 
 	return 0;
-}
-
-void merge_sort(int s, int t)
-{
-	if (s+1==t) {
-		
-		return;
-	}
-	int mid = (s+t)/2;
-	merge_sort(s,mid);
-	merge_sort(mid,t);
-	merge(s,t);
-}
-
-void merge(int s, int t)
-{
-	int mid = (s+t)/2;
-	
-	return;
 }

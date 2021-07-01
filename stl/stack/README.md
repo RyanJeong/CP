@@ -17,6 +17,8 @@
 * `push`의 시간 복잡도는 <b><i>O</i>(1)</b>
 * `pop`의 시간 복잡도는 <b><i>O</i>(1)</b>
 * `top`의 시간 복잡도는 <b><i>O</i>(1)</b>
+* 추천 문제
+	* [[BOJ] 오큰수](https://www.acmicpc.net/problem/17298) [(소스코드)](./src/nge.cpp)
 
 ```c++
 #include <bits/stdc++.h>
