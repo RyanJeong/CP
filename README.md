@@ -23,11 +23,11 @@ Resources for competitive programming
 * [[WIP]Backtracking](/backtracking/)
 * [[WIP]Dynamic Programming](/dp/)
 * [[WIP]Greedy](/greedy/)
-* [[WIP]Sort](/sort/)
+* [Sort](/sort/)
 * [[WIP]Binary Search](/binary_search/)
 * [[WIP]Two Pointer](/two_pointer/)
 * [[WIP]String](/string/)
-* [WIP]Mathematics
+* [WIP]Mathematics:
 	* [[WIP] Permutation & Combination](#)
-* [WIP]Simulations
+* [WIP]Simulations:
 	* [[WIP] [BOJ]CCTV](#)

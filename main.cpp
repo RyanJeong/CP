@@ -3,11 +3,10 @@
 
 using namespace std;
 
-void merge_sort(int, int);
-void merge(int, int);
+void quicksort(int, int);
+void swap(int, int);
 
-int arr[1'000];
-int res[1'000];
+int arr[1'000'000];
 
 int main(void) 
 {
@@ -16,12 +15,11 @@ int main(void)
 	
 	int n;
 	cin>>n;
-	static int arr[1'000'000];
 	for (int i = 0; i<n; ++i) {
 		cin>>arr[i];
 	}
 
-	sort(arr,arr+n);
+    quicksort(0,n);    
 	for (int i = 0; i<n; ++i) {
 		cout << arr[i] << '\n';
 	}
@@ -29,21 +27,32 @@ int main(void)
 	return 0;
 }
 
-void merge_sort(int s, int t)
+void quicksort(int left, int right)
 {
-	if (s+1==t) {
-		
-		return;
-	}
-	int mid = (s+t)/2;
-	merge_sort(s,mid);
-	merge_sort(mid,t);
-	merge(s,t);
+    if (left>=right) {
+        
+        return;
+    }
+
+    swap(left,(left+right)/2);
+    int last = left;
+    for (int i = left+1; i<right; ++i) {
+        if (arr[left]>arr[i]) {
+            swap(++last,i);
+        }
+    }
+    swap(left,last);
+    quicksort(left,last);
+    quicksort(last+1,right);
+
+    return;
 }
 
-void merge(int s, int t)
+void swap(int i, int j)
 {
-	int mid = (s+t)/2;
-	
-	return;
+    int temp = arr[i];
+    arr[i]=arr[j];
+    arr[j]=temp;
+
+    return;
 }
