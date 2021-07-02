@@ -3,7 +3,12 @@ Resources for competitive programming
 
 [![profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=msjeong)](https://www.acmicpc.net/user/msjeong)
 
-## Index
+* Programming Contest Sites:
+	* [Baekjoon Online Judge](https://www.acmicpc.net/)
+	* [AtCoder](https://atcoder.jp/)
+	* [HackerRank](https://www.hackerrank.com/dashboard/)
+
+## Algorithm
 * [Template](/template/)
 * [Array](/array/)
 * [STL - Container Classes:](/stl/)
@@ -31,3 +36,9 @@ Resources for competitive programming
 	* [[WIP] Permutation & Combination](#)
 * [WIP]Simulations:
 	* [[WIP] [BOJ]CCTV](#)
+
+## Reference
+* [cppreference.com](https://en.cppreference.com/w/)
+* [cplusplus.com - The C++ Resources Network](https://cplusplus.com/)
+* [Standard C++](https://isocpp.org/)
+* [Bjarne Stroustrup's Homepage](https://www.stroustrup.com/)

@@ -1,22 +1,3 @@
-* [STL - Container Classes:](/stl/)
-    * Sequence Container
-        * [Vector](/stl/vector/)
-        * [List](/stl/list/)
-        * [Double-ended Queue(Deque)](/stl/deque/)
-    * Container Adaptor
-        * [Stack](/stl/stack/)
-        * [Queue](/stl/queue/)
-        * [Priority Queue](/stl/priority_queue_heap/)
-    * Associative Container
-        * [Set](/stl/set/)
-        * [Map](/stl/map/)
-
-# [List](https://cplusplus.com/reference/list/list/)
-* 연결 리스트(linked list)
-* 요소들은 메모리 상에 불연속적으로 위치할 수 있음
-
-### [소스코드](./src/exam.cpp)
-```c++
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -62,8 +43,3 @@ int main(void)
 
     return 0;
 }
-```
-
----
-|[이전 - Array](/array/)|[목록](https://github.com/RyanJeong/CP#index)|[다음 - BFS & DFS](/bfs_dfs/)|
-|-|-|-|

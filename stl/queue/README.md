@@ -18,6 +18,7 @@
 * `pop`의 시간 복잡도는 <b><i>O</i>(1)</b>
 * `front`, `back`의 시간 복잡도는 <b><i>O</i>(1)</b>
 
+### [소스코드](./src/exam.cpp)
 ```c++
 #include <bits/stdc++.h>
 

@@ -25,6 +25,7 @@ template<
     * 균형 이진 트리를 사용하는 것보다 힙을 사용하는 것이 메모리를 적게 차지하고 동작 속도도 더 빠름
 * Note that the [<i>Compare</i>](https://en.cppreference.com/w/cpp/named_req/Compare) parameter is defined such that it returns `true` if its first argument comes <i>before</i> its second argument in a <b>weak ordering</b>. But because the priority queue outputs largest elements first, <b>the elements that "come before" are actually output last</b>. That is, the front of the queue contains the "last" element according to the weak ordering imposed by [<i>Compare</i>](https://en.cppreference.com/w/cpp/named_req/Compare).
 
+### [소스코드](./src/exam.cpp)
 ```c++
 #include <bits/stdc++.h>
 
@@ -60,7 +61,7 @@ int main(void)
 }
 ```
 ### 연습문제
-* [[BOJ] 최대 힙](https://www.acmicpc.net/problem/11279)
+* [[BOJ] 최대 힙](https://www.acmicpc.net/problem/11279) [(소스코드)](./src/exer1.cpp)
 ###### Memory: 2,916 KB, Time: 16 ms
 ```c++
 // https://www.acmicpc.net/problem/11279
@@ -102,7 +103,7 @@ int main(void)
 }
 ```
 
-* [[BOJ] 최소 힙](https://www.acmicpc.net/problem/1927)
+* [[BOJ] 최소 힙](https://www.acmicpc.net/problem/1927) [(소스코드)](./src/exer2.cpp)
 ###### Memory: 2,916 KB, Time: 12 ms
 ```c++
 // https://www.acmicpc.net/problem/1927
@@ -144,8 +145,7 @@ int main(void)
 }
 ```
 
-* [[BOJ] 절댓값 힙](https://www.acmicpc.net/problem/11286)
-	* 기본 자료형이 아닌 형에서의 최소 힙
+* [[BOJ] 절댓값 힙](https://www.acmicpc.net/problem/11286) [(소스코드)](./src/exer3.cpp) - 기본 자료형이 아닌 형에서의 최소 힙
 ###### Memory: 2,916 KB, Time: 16 ms
 ```c++
 // https://www.acmicpc.net/problem/11286
@@ -186,7 +186,7 @@ int main(void)
 }
 ```
 
-* 직접 비교 연산자를 구현한 예
+* 직접 비교 연산자를 구현한 예 [(소스코드)](./src/exer4.cpp)
 ```c++
 // 비교 대상은 node class에서의 value임
 #include <bits/stdc++.h>
@@ -243,7 +243,7 @@ int main(void)
 }
 ```
 
-* [[BOJ] 가운데를 말해요](https://www.acmicpc.net/problem/1655) - 최소 힙과 최대 힙을 활용한 중앙값 출력 문제
+* [[BOJ] 가운데를 말해요](https://www.acmicpc.net/problem/1655) [(소스코드)](./src/exer5.cpp) - 최소 힙과 최대 힙을 활용한 중앙값 출력 문제
 	* 조건:
 	1. `max_heap.size()>=min_heap.size()`
 	2. `if max_heap.top()>min_heap.top() then swap`

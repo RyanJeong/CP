@@ -12,14 +12,17 @@
         * [Map](/stl/map/)
 
 # [Stack](https://cplusplus.com/reference/stack/stack)
+* 추천 문제
+	* [[BOJ] 오큰수](https://www.acmicpc.net/problem/17298) [(소스코드)](./src/nge.cpp)
+
+## 특징
 * Restricted Structure
 * FIFO (First In First Out)
 * `push`의 시간 복잡도는 <b><i>O</i>(1)</b>
 * `pop`의 시간 복잡도는 <b><i>O</i>(1)</b>
 * `top`의 시간 복잡도는 <b><i>O</i>(1)</b>
-* 추천 문제
-	* [[BOJ] 오큰수](https://www.acmicpc.net/problem/17298) [(소스코드)](./src/nge.cpp)
 
+### [소스코드](./src/exam.cpp)
 ```c++
 #include <bits/stdc++.h>
 
@@ -57,7 +60,10 @@ int main(void)
 }
 ```
 
-## 올바른 괄호 쌍 구하기
+## 스택 응용: 올바른 괄호 쌍 구하기
+* 추천 문제
+	* [[BOJ] 괄호의 값](https://www.acmicpc.net/problem/2504) [(소스코드)](./stack_app/exercise.cpp)
+
 * 괄호로만 구성된 문자열이 주어졌다면:
 1. 여는 괄호는 스택에 `push`
 2. 닫는 괄호가 나오면:
@@ -65,8 +71,56 @@ int main(void)
     2. 스택의 `top` 결과와 닫는 괄호가 대응되지 않으면 틀린 괄호 쌍
     3. 스택의 `top` 결과와 닫는 괄호가 대응되면 `pop`
 3. 해당 문자열을 모두 처리한 뒤에 스택에 괄호가 남아있다면 틀린 괄호 쌍이며, 스택이 비어있으면 올바른 괄호 쌍
+
+### [소스코드](./src/exam.cpp)
+```c++
+// http://icpc.me/9012
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(void)
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int n;
+    cin>>n;
+
+    while(n--) {
+        string ps;
+        cin>>ps;
+        bool is_vps = true;
+        stack<int> s;
+
+        for (char c : ps) {
+            if (c=='(') {
+                s.push(c);
+            } 
+            else {
+                if (s.empty()) {
+                    is_vps=false;
+                    break;
+                } 
+                else { // ')'
+                    if (s.top()!='(') {
+                        is_vps=false;
+                        break;
+                    } 
+                    else { // s.top() is '('
+                        s.pop();
+                    }
+                }
+            }
+        }    
+        cout << ((s.empty() && is_vps) ? "YES" : "NO") << '\n';
+    }
+
+    return 0;
+}
+```
+
 ### 연습문제
-* [[BOJ] 괄호의 값](https://www.acmicpc.net/problem/2504)
 ###### Memory: 2,024 KB, Time: 0 ms
 ```c++
 // https://www.acmicpc.net/problem/2504

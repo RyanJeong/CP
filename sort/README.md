@@ -183,46 +183,137 @@ int main(void)
 
 ## 기타 정렬 (Non-comparison Sort)
 ###  Counting Sort (계수 정렬)
-* [동작 애니메이션](http://www.cs.miami.edu/home/burt/learning/Csc517.091/workbook/countingsort.html)
-* 시간복잡도는 <b><i>O</i>(<i>n</i>)</b>
-* 비교를 하지 않으며, 빈도를 기록할 배열과 정렬 결과를 기록할 배열이 추가로 필요
-* 정렬하는 대상이 특정 범위 내에 있을 경우 굉장히 효율적인 방법이지만, 범위가 특정하지 않거나 범위가 너무 넓을 경우 불필요한 메모리 낭비 발생
+* 대상 간 비교를 직접 하지 않음
+* 비교해야 할 대상 수가 <i>n</i>이고, 대상의 범위가 <i>k</i>일 때, 시간복잡도는 <b><i>O</i>(<i>n</i>+<i>k</i>)</b>이고 공간복잡도는 <b><i>O</i>(<i>n</i>+<i>k</i>)</b>
+* 정렬하는 대상이 특정 범위 내에 있을 경우 굉장히 효율적인 방법이지만, 범위가 특정하지 않거나 범위가 너무 넓을 경우 불필요한 메모리 낭비가 발생함
 	* 정렬 대상이 8, 2, 1, 4, 64, 128일 경우, 빈도를 기록할 배열의 크기는 128
 	* 정렬 대상 안에 10,000,000와 같이 큰 수가 포함되어 있다면, 배열의 크기는 최소 10,000,000 이상이여야 함
-	
-* [[BOJ] 수 정렬하기 5](https://www.acmicpc.net/problem/15688)
-###### Memory: 9,828 KB, Time: 4,632 ms
+
+* 소스코드
 ```c++
-// http://icpc.me/15688
+// C++ implementation of Counting Sort
 #include <bits/stdc++.h>
 
 using namespace std;
 
-int arr[2'000'001]; // -1 000 000 ~ 1 000 000
-
-int main(void)
+int main(void) 
 {
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
 
-    int n;
-    cin>>n;
-    for (int i = 0; i<n; ++i) {
-        int temp;
-        cin>>temp;
-        ++arr[temp+1'000'000];
-    }
-    for (int i = 0; i<=2'000'000; ++i) {
-        while (arr[i]--) {
-            cout << i - 1'000'000 << '\n';
-        }
-    }
+	// k : 1 ~ 200
+    int arr[] = {174,84,75,22,123,24,2,78};
+	int freq[1+200]; // 0, 1 ~ k
+	memset(freq,0,sizeof freq);
+
+	// n times
+	for (int i : arr) {
+		++freq[i];
+	}
+	// k times + n times
+	// when for-statement completes k iterations, 
+	// while-loop executes a total of n operations
+	// => 2n + k, O(n + k)
+	for (int i = 1; i<=200; ++i) {
+		// 
+		while (freq[i]--) {
+			cout << i << ' ';
+		}
+	}
+	cout << '\n';
+
+	return 0;
+}
+```
+	
+* [[BOJ] 수 정렬하기 3](https://www.acmicpc.net/problem/10989) - 공간복잡도를 <b><i>O</i>(<i>k</i>)</b>로 절약한 예
+###### Memory: 2,060 KB, Time: 1,600 ms
+```c++
+// https://www.acmicpc.net/problem/10989
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(void) 
+{
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	
+	static int freq[10'001];
+	int low = 10'000;
+	int high = 1;
+	int n;
+	cin>>n;
+	// n times
+	for (int i = 0; i<n; ++i) {
+		int temp;
+		cin>>temp;
+		++freq[temp];
+		low=min(low,temp);
+		high=max(high,temp);
+	}
+	// k times + n times
+	for (int i = low; i<=high; ++i) {
+		while (freq[i]--) {
+			cout << i << '\n';
+		}
+	}
 
     return 0;
 }
 ```
 
-### Radix Sort
+### Radix Sort (기수 정렬)
+* 대상 간 비교를 직접 하지 않음
+* 비교해야 할 대상 수가 <i>n</i>이고, 기수(radix)의 수가 <i>l</i>, 대상의 범위가 <i>k</i>일 때, 시간복잡도는 <b><i>O</i>(<i>l</i>×(<i>n</i>+<i>k</i>))</b>이고 공간복잡도는 <b><i>O</i>(<i>n</i>+<i>k</i>)</b>
+* 기수 크기만큼의 메모리가 추가로 필요함  
+
+* 소스코드
+```c++
+// C++ implementation of Radix Sort
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(void) 
+{
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+
+    int arr[] = {174,84,75,22,723,24,2,78};
+    int n = sizeof arr/sizeof(int);
+	int max_n = 0;
+	for (int i : arr) {
+		max_n=max(max_n,i);	
+	}
+
+	// Radix Sort
+	// the digit represented by d
+	// l times
+	for (int d = 1; max_n/d>0; d*=10) {
+		vector<int> v[10];
+		// n times
+		for (int i = 0; i<n; ++i) {
+			int idx = (arr[i]/d)%10;
+			v[idx].push_back(arr[i]);
+		}
+		// k times
+		int i = 0;
+		for (int j = 0; j<10; ++j) {
+			for (auto elem : v[j]) {
+				arr[i++]=elem;
+			}
+		}
+	}
+	for (int i : arr) {
+		cout << i << ' ';
+	}
+	cout << '\n';
+
+	return 0;
+}
+```
+
 
 
 

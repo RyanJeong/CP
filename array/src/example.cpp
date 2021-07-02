@@ -1,33 +1,3 @@
-#  Array
-* 메모리 상에 요소(element)를 연속적으로 배치한 자료구조
-* 추천 문제
-	* [[BOJ] 알파벳 개수](https://www.acmicpc.net/problem/10808) [(소스코드)](./src/count_char.cpp)
-
-## 배열 선언
-* 배열 선언식이 T <i>name</i>[SIZE]라면, 해당 배열의 필요한 메모리 크기는 `sizeof(T)*SIZE`
-
-```c++
-    int arr[100]; // sizeof(int)*100 => 4*100, 400 bytes on a memory
-```
-<br>
-
-## 배열 특징
-* 배열의 요소 접근 시 시간복잡도는 <b><i>O</i>(1)</b>
-* 배열의 요소 수정 시 시간복잡도는 <b><i>O</i>(1)</b>
-* 배열은 연속된 메모리 공간을 사용하므로 캐시 지역성(cache locality) 증가에 따른 캐시 적중률(cache hit rate)가 높음
-* 추가적인 메모리가 발생하지 않음
-* 배열은 연속된 메모리 공간을 사용하므로 메모리 단편화(memory fragmentation)에 따른 할당 제약이 있을 수 있음
-
-## 배열 연산
-### 배열 요소의 개수가 <i>n</i>이라고 가정했을 때:
-* 배열의 요소 접근 시 시간복잡도는 <b><i>O</i>(1)</b>
-* 배열의 마지막 요소 뒤에 새로운 요소 추가 시 시간복잡도는 <b><i>O</i>(1)</b>
-* 배열의 마지막 요소 제거 시 시간복잡도는 <b><i>O</i>(1)</b>
-* 배열의 마지막 요소가 아닌 요소 뒤에 새로운 요소 추가 시 시간복잡도는 <b><i>O</i>(<i>n</i>)</b>
-* 배열의 마지막 요소가 아닌 요소 제거 시 시간복잡도는 <b><i>O</i>(<i>n</i>)</b>
-
-### [소스코드](./src/example.cpp)
-```c++
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -128,10 +98,3 @@ int erase(int arr[],const int cap,int& len,int idx)
 
     return val;
 }
-```
----
-|[이전 - Template](/template/)|[목록](https://github.com/RyanJeong/CP#index)|[다음 - STL - Container Classes:](/stl/)|
-|-|-|-|
-
-
-

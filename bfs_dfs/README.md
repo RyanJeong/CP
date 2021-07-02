@@ -167,7 +167,6 @@ int main(void)
 }
 ```
 
-
 ## DFS(Depth-first search)
 * 시작 정점으로부터 해당 분기 우선 방문
 * `stack` 또는 재귀함수 사용
