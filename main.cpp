@@ -1,47 +1,35 @@
-// https://www.acmicpc.net/problem/5397
+// https://www.acmicpc.net/problem/10814
 #include <bits/stdc++.h>
 
 using namespace std;
 
+bool cmp(pair<int, string>, pair<int, string>);
+
 int main(void) 
 {
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
     
-    int l;
-    cin>>l;
-    while (l--) {
-        string str;
-        cin>>str;
-        list<char> l;
-        auto it = l.begin();
-        for (char c : str) {
-            switch (c) {
-            case '-':
-                if (it!=l.begin()) {
-                    it=l.erase(prev(it));
-                }
-                break;
-            case '<':
-                if (it!=l.begin()) {
-                    --it;
-                }
-                break;
-            case '>':
-                if (it!=l.end()) {
-                    ++it;
-                }
-                break;
-            default:
-                l.insert(it,c);
-                break;
-            }
-        }
-        for (char c : l) {
-            cout << c;
-        }
-        cout << '\n';
+    int n;
+    cin>>n;
+    vector<pair<int, string>> v;
+    for (int i = 1; i<=n; ++i) {
+        int age;
+        cin>>age;
+        string name;
+        cin>>name;
+        v.push_back({age,name});
+    }
+    stable_sort(v.begin(),v.end(),cmp);
+    for (auto cur : v) {
+        cout << cur.first << ' ' << cur.second << '\n';
     }
 
-    return 0;
+	return 0;
+}
+
+bool cmp(pair<int, string> s, pair<int, string> t)
+{
+
+    return s.first<t.first;
 }

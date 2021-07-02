@@ -1,4 +1,5 @@
 // https://www.acmicpc.net/submit/2751
+// O(n log n), Worst case: O(n^2)
 #include <bits/stdc++.h>
 
 using namespace std;

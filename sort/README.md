@@ -1,8 +1,8 @@
 # [Sort](https://www.cplusplus.com/reference/algorithm/sort/)
 ## [Sort](https://en.cppreference.com/w/cpp/algorithm/sort), [Stable Sort](https://en.cppreference.com/w/cpp/algorithm/stable_sort) 
 * 추천 문제
-    * [[BOJ] 단어 정렬](https://www.acmicpc.net/problem/1181) [(소스코드)](./src/sort_word.cpp)
-    * [[BOJ] 나이순 정렬](https://www.acmicpc.net/problem/10814) [(소스코드)](./src/sort_age.cpp)
+    * [[BOJ] 단어 정렬](https://www.acmicpc.net/problem/1181) [(소스코드)](./src/sort_word.cpp) - `sort` 함수를 사용하며, 비교 함수를 직접 구현하는 예
+    * [[BOJ] 나이순 정렬](https://www.acmicpc.net/problem/10814) [(소스코드)](./src/sort_age.cpp) - `stable_sort` 함수를 사용하며, 비교 함수를 직접 구현하는 예
 * <i>iterator</i> 타입 `first`와 `last` 사이에 있는 요소들을 정렬 
 * `end`는 마지막 요소의 다음 요소를 가리킴에 주의
     * `[start, end)`
@@ -15,8 +15,8 @@
     * Complexity: It does at most <b>(<i>n log n</i>)<sup>2</sup></b> comparisons; if enough extra memory is available, it is <b><i>n log n</i></b>.
     * This function attempts to allocate a temporary buffer equal in size to the sequence to be sorted. If the allocation fails, the less efficient algorithm(<b>(<i>n log n</i>)<sup>2</sup></b>) is chosen.
 
-## 정렬 알고리즘 종류 (Comparison Sort)
-|[정렬 알고리즘](https://en.wikipedia.org/wiki/Sorting_algorithm#Comparison_of_algorithms)|시간복잡도:최선|시간복잡도:평균|시간복잡도:최악|필요메모리|
+## [정렬 알고리즘 종류 (Comparison Sort)](https://en.wikipedia.org/wiki/Sorting_algorithm#Comparison_of_algorithms)
+|정렬 알고리즘|시간복잡도:최선|시간복잡도:평균|시간복잡도:최악|필요메모리|
 |-------------|----|----|----|-|
 |Bubble Sort|<b><i>O</i>(<i>n</i>)</b>|<b><i>O</i>(<i>n</i><sup>2</sup>)</b>|<b><i>O</i>(<i>n</i><sup>2</sup>)</b>|<b><i>O</i>(1)</b>|
 |Quick Sort|<b><i>O</i>(<i>n log n</i>)</b>|<b><i>O</i>(<i>n log n</i>)</b>|<b><i>O</i>(<i>n</i><sup>2</sup>)</b>|<b><i>O</i>(<i>log n</i>)</b>|
@@ -26,23 +26,21 @@
 
 
 ### 정렬 알고리즘 성능 분석
-* [[BOJ] 수 정렬하기](https://www.acmicpc.net/problem/2750) 
-    * [Bubble Sort](./src/bubblesort.cpp) 
 * [[BOJ] 수 정렬하기2](https://www.acmicpc.net/problem/2751) 
-    * ~~[Bubble Sort](./src/bubblesort2.cpp)~~
+    * ~~Bubble Sort~~ [(소스코드)](./src/bubblesort2.cpp)
         ###### <b>TLE</b>
-    * ~~[Quick Sort](./src/quicksort.cpp)~~
+    * ~~Quick Sort~~ [(소스코드)](./src/quicksort.cpp)
         ###### <b>TLE</b>
-    * [Merge Sort](./src/mergesort.cpp)
+    * Merge Sort [(소스코드)](./src/mergesort.cpp)
         ###### Memory: 9,832 KB, Time: 332 ms
-    * [Heap Sort](./src/mergesort.cpp)
-    * [std::sort](./src/std_sort.cpp)
+    * [WIP] Heap Sort [(소스코드)](./src/mergesort.cpp)
+    * std::sort [(소스코드)](./src/std_sort.cpp)
         ###### Memory: 5,928 KB, Time: 288 ms
-    * [std::stable_sort](./src/std_stable_sort.cpp)
+    * std::stable_sort [(소스코드)](./src/std_stable_sort.cpp)
         ###### Memory: 7,888 KB, Time: 296 ms
 
 
-### `sort` 사용 예:
+### [소스코드](./src/exam1.cpp) - `sort` 사용 예:
 ```c++
 #include <bits/stdc++.h>
 
@@ -84,7 +82,7 @@ int main(void)
 }
 ```
 
-### 비교 함수를 직접 구현해 `sort` 사용:
+### [소스코드](./src/exam2.cpp) - 비교 함수를 직접 구현해 `sort` 사용:
 ```c++
 #include <bits/stdc++.h>
 
@@ -135,7 +133,7 @@ bool cmp_greater(int s, int t)
 ```
 
 ### 연습문제
-* [[BOJ] Printer Queue](https://www.acmicpc.net/problem/1966) - `queue`와 `sort`를 이용하는 문제 
+* [[BOJ] Printer Queue](https://www.acmicpc.net/problem/1966) [(소스코드)](./src/exer1.cpp) - `queue`와 `sort`를 이용하는 문제 
 ###### Memory: 2,024 KB, Time: 0 ms
 ```c++
 // https://www.acmicpc.net/problem/1966
@@ -192,7 +190,7 @@ int main(void)
 	* 정렬 대상이 8, 2, 1, 4, 64, 128일 경우, 빈도를 기록할 배열의 크기는 128
 	* 정렬 대상 안에 10,000,000와 같이 큰 수가 포함되어 있다면, 배열의 크기는 최소 10,000,000 이상이여야 함
 
-* 소스코드
+### [소스코드](./src/exam3.cpp)
 ```c++
 // C++ implementation of Counting Sort
 #include <bits/stdc++.h>
@@ -229,7 +227,7 @@ int main(void)
 }
 ```
 	
-* [[BOJ] 수 정렬하기 3](https://www.acmicpc.net/problem/10989) - 공간복잡도를 <b><i>O</i>(<i>k</i>)</b>로 절약한 예
+* [[BOJ] 수 정렬하기 3](https://www.acmicpc.net/problem/10989) [(소스코드)](./src/exer2.cpp) - 공간복잡도를 <b><i>O</i>(<i>k</i>)</b>로 절약한 예
 ###### Memory: 2,060 KB, Time: 1,600 ms
 ```c++
 // https://www.acmicpc.net/problem/10989
@@ -271,7 +269,7 @@ int main(void)
 * 비교해야 할 대상 수가 <i>n</i>이고, 기수(radix)의 수가 <i>l</i>, 대상의 범위가 <i>k</i>일 때, 시간복잡도는 <b><i>O</i>(<i>l</i>×(<i>n</i>+<i>k</i>))</b>이고 공간복잡도는 <b><i>O</i>(<i>n</i>+<i>k</i>)</b>
 * 기수 크기만큼의 메모리가 추가로 필요함  
 
-* 소스코드
+### [소스코드](./src/exam4.cpp)
 ```c++
 // C++ implementation of Radix Sort
 #include <bits/stdc++.h>
@@ -317,8 +315,9 @@ int main(void)
 }
 ```
 
-
-
+* [[BOJ] ](https://www.acmicpc.net/problem/) [(소스코드)](./src/exer3.cpp) - WIP
+```c++
+```
 
 ---
 |[이전 - Greedy](/greedy/)|[목록](https://github.com/RyanJeong/CP#index)|[다음 - Binary Search](/binary_search)|
