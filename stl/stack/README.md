@@ -13,6 +13,7 @@
 
 # [Stack](https://cplusplus.com/reference/stack/stack)
 * 추천 문제
+    * [[BOJ] 스택](https://www.acmicpc.net/problem/10828) [(소스코드)](./src/stack.cpp)
 	* [[BOJ] 오큰수](https://www.acmicpc.net/problem/17298) [(소스코드)](./src/nge.cpp)
 
 ## 특징

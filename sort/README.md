@@ -1,5 +1,8 @@
 # [Sort](https://www.cplusplus.com/reference/algorithm/sort/)
 ## [Sort](https://en.cppreference.com/w/cpp/algorithm/sort), [Stable Sort](https://en.cppreference.com/w/cpp/algorithm/stable_sort) 
+* 추천 문제
+    * [[BOJ] 단어 정렬](https://www.acmicpc.net/problem/1181) [(소스코드)](./src/sort_word.cpp)
+    * [[BOJ] 나이순 정렬](https://www.acmicpc.net/problem/10814) [(소스코드)](./src/sort_age.cpp)
 * <i>iterator</i> 타입 `first`와 `last` 사이에 있는 요소들을 정렬 
 * `end`는 마지막 요소의 다음 요소를 가리킴에 주의
     * `[start, end)`

@@ -12,6 +12,9 @@
         * [Map](/stl/map/)
 
 # [Queue](https://cplusplus.com/reference/queue/queue/)
+* 추천 문제
+    * [[BOJ] 큐](https://www.acmicpc.net/problem/10845) [(소스코드)](./src/queue.cpp)
+    * [[BOJ] 카드2](https://www.acmicpc.net/problem/2164) [(소스코드)](./src/card2.cpp)
 * Restricted Structure
 * FILO (First In Last Out)
 * `push`의 시간 복잡도는 <b><i>O</i>(1)</b>

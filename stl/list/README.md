@@ -12,6 +12,9 @@
         * [Map](/stl/map/)
 
 # [List](https://cplusplus.com/reference/list/list/)
+* 추천 문제
+    * [[BOJ] editor](https://www.acmicpc.net/problem/1406) [(소스코드)](./src/editor.cpp)
+    * [[BOJ] Keylogger](https://www.acmicpc.net/problem/5397) [(소스코드)](./src/keylogger.cpp)
 * 연결 리스트(linked list)
 * 요소들은 메모리 상에 불연속적으로 위치할 수 있음
 

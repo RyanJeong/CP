@@ -1,11 +1,12 @@
+// https://www.acmicpc.net/problem/1406
 #include <bits/stdc++.h>
 
 using namespace std;
 
 int main(void) 
 {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
 
     string s;
     cin>>s;
@@ -13,31 +14,32 @@ int main(void)
     for (char c : s) {
         l.push_back(c);
     }
-    list<char>::iterator ptr = l.end();
     int cnt;
     cin>>cnt;
-    cin.get(); // '\n'
+    cin.ignore(); // consume a '\n'
+    auto it = l.end();
 
     for (int i = 0; i<cnt; ++i) {
         string ops;
         getline(cin,ops);
-        char op = ops[0];
-
-        switch (op) {
+        switch (ops.front()) {
         case 'L':
-            if (ptr!=l.begin()) --ptr;
+            if (it!=l.begin()) {
+                --it;
+            }
             break;
         case 'D':
-            if (ptr!=l.end()) ++ptr;
+            if (it!=l.end()) {
+                ++it;
+            }
             break;
         case 'B':
-            if (ptr!=l.begin()) {
-                --ptr;
-                ptr=l.erase(ptr);
+            if (it!=l.begin()) {
+                it=l.erase(prev(it));
             }
             break;
         case 'P':
-            l.insert(ptr,ops[2]);
+            l.insert(it,ops[2]);
             break;
         default:
             break;
