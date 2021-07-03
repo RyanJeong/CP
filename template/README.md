@@ -159,7 +159,7 @@ int main(void)
 ---
 ## Visual Studio Code Settings
 ### <i>tasks.json</i>
-#### Select <i>C/C++: g++ build active file</i> after select <i>Terminal -> Configure Default Build Task...</i>
+#### select <i>C/C++: g++ build active file</i> after select <i>Terminal -> Configure Default Build Task...</i>
 ```text
 {
   "version": "2.0.0",
@@ -194,7 +194,7 @@ int main(void)
 <br>
 
 ### <i>launch.json</i> for using GDB
-#### Select <i>Run -> Add configuration...</i>
+#### select <i>Run -> Add configuration...</i>
 ```text
 {
   // Use IntelliSense to learn about possible attributes.
@@ -229,7 +229,7 @@ int main(void)
 <br>
 
 ### Terminal focus and roll back
-#### Select <i>Preferences: Open Keyboard Shortcuts (JSON)</i> after type `Ctrl + Shift + P`
+#### press `Ctrl + Shift + P` -> select <i>Preferences: Open Keyboard Shortcuts (JSON)</i> 
 ```text
 // Place your key bindings in this file to override the defaults
 [
@@ -248,7 +248,7 @@ int main(void)
 <br>
 
 ### Disable auto-insert pair brackets
-#### Type `Auto Closing Brackets` in Search settings after type `Ctrl + ,`
+#### press `Ctrl + ,` -> type `Auto Closing Brackets` in `Search settings`
 ```text
 Editor: Auto Closing Brackets
 Controls whether the editor should automatically close brackets after the user adds an opening bracket.

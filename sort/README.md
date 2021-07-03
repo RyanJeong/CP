@@ -33,7 +33,8 @@
         ###### <b>TLE</b>
     * Merge Sort [(소스코드)](./src/mergesort.cpp)
         ###### Memory: 9,832 KB, Time: 332 ms
-    * [WIP] Heap Sort [(소스코드)](./src/mergesort.cpp)
+    * Heap Sort [(소스코드)](./src/mergesort.cpp)
+        ###### Memory: 10,148 KB, Time: 360 ms
     * std::sort [(소스코드)](./src/std_sort.cpp)
         ###### Memory: 5,928 KB, Time: 288 ms
     * std::stable_sort [(소스코드)](./src/std_stable_sort.cpp)
@@ -227,6 +228,7 @@ int main(void)
 }
 ```
     
+### 연습문제
 * [[BOJ] 수 정렬하기 3](https://www.acmicpc.net/problem/10989) [(소스코드)](./src/exer2.cpp) - 공간복잡도를 <b><i>O</i>(<i>k</i>)</b>로 절약한 예
 ###### Memory: 2,060 KB, Time: 1,600 ms
 ```c++
@@ -315,7 +317,8 @@ int main(void)
 }
 ```
 
-* [(소스코드)](./src/exer4.cpp) - 1 byte를 기수로 사용해 정렬한 예 
+### 연습문제
+* 1 byte를 기수로 사용해 정렬 [(소스코드)](./src/exer3.cpp)
 ```c++
 // C++ implementation of Radix Sort
 #include <bits/stdc++.h>
@@ -360,10 +363,6 @@ int main(void)
 
     return 0;
 }
-```
-
-* [[BOJ] ](https://www.acmicpc.net/problem/) [(소스코드)](./src/exer3.cpp) - WIP
-```c++
 ```
 
 ---

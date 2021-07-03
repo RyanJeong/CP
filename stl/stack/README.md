@@ -63,7 +63,7 @@ int main(void)
 
 ## 스택 응용: 올바른 괄호 쌍 구하기
 * 추천 문제
-    * [[BOJ] 괄호의 값](https://www.acmicpc.net/problem/2504) [(소스코드)](./stack_app/exercise.cpp)
+    * [[BOJ] The Balance of the World](https://www.acmicpc.net/problem/4949) [(소스코드)](./stack_app/balance_world.cpp)
 
 * 괄호로만 구성된 문자열이 주어졌다면:
 1. 여는 괄호는 스택에 `push`
@@ -73,7 +73,7 @@ int main(void)
     3. 스택의 `top` 결과와 닫는 괄호가 대응되면 `pop`
 3. 해당 문자열을 모두 처리한 뒤에 스택에 괄호가 남아있다면 틀린 괄호 쌍이며, 스택이 비어있으면 올바른 괄호 쌍
 
-### [소스코드](./src/exam.cpp)
+### [소스코드](./stack_app/exam.cpp)
 ```c++
 // http://icpc.me/9012
 #include <bits/stdc++.h>
@@ -122,6 +122,7 @@ int main(void)
 ```
 
 ### 연습문제
+* [[BOJ] 괄호의 값](https://www.acmicpc.net/problem/2504) [(소스코드)](./stack_app/exercise.cpp)
 ###### Memory: 2,024 KB, Time: 0 ms
 ```c++
 // https://www.acmicpc.net/problem/2504
