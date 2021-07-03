@@ -1,4 +1,4 @@
-// https://www.acmicpc.net/submit/2751
+// https://www.acmicpc.net/problem/3190
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -7,25 +7,35 @@ int main(void)
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
-    
+
+    static int arr[101][101];
     int n;
     cin>>n;
-    priority_queue<int, vector<int>, greater<int>> pq;
-    for (int i = 0; i<n; ++i) {
-        int temp;
-        cin>>temp;
-        pq.push(temp);
+    int k;
+    cin>>k;
+    for (int i = 1; i<=k; ++i) {
+        int x;
+        cin>>x;
+        int y;
+        cin>>y;
+        arr[x][y]=-1;
+    }
+    int l;
+    queue<pair<int, char>> q;
+    for (int i = 1; i<=l; ++i) {
+        int time;
+        cin>>time;
+        char dir;
+        cin>>dir;
+        q.push({time,dir});
     }
 
-    vector<int> v(n);
-    v.reserve(n);
-    for (int i = 0; i<n; ++i) {
-        v[i]=pq.top();
-        pq.pop();
-    }
-    for (int i : v) {
-        cout << i << '\n';
-    }
+    const int dx[] = {1,0,-1,0};
+    const int dy[] = {0,-1,0,1};
+    int dir = 1;
+
+
+
 
     return 0;
 }

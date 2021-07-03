@@ -32,6 +32,7 @@ Resources for competitive programming
 * [[WIP]Binary Search](/binary_search/)
 * [[WIP]Two Pointer](/two_pointer/)
 * [[WIP]String](/string/)
+* [Disjoint-set](/disjoint-set/)
 * [WIP]Mathematics:
 	* [[WIP] Permutation & Combination](#)
 * [WIP]Simulations:
