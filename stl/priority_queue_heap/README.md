@@ -75,35 +75,35 @@ using namespace std;
 
 int main(void)
 {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
 
-	int n;
-	cin >> n;
-	// https://en.cppreference.com/w/cpp/container/priority_queue 
-	// priority_queue<int, vector<int>, greater<int>> -> min heap
-	// priority_queue<int> -> max heap
-	priority_queue<int> max_heap;
+    int n;
+    cin >> n;
+    // https://en.cppreference.com/w/cpp/container/priority_queue 
+    // priority_queue<int, vector<int>, greater<int>> -> min heap
+    // priority_queue<int> -> max heap
+    priority_queue<int> max_heap;
 
-	while (n--) {
-		int x;
-		cin >> x;
+    while (n--) {
+        int x;
+        cin >> x;
 
-		if (!x) {
-			if (max_heap.empty()) {
-				cout << "0\n";
-			} 
-			else {
-				cout << max_heap.top() << '\n';
-				max_heap.pop();
-			}
-		} 
-		else {
-			max_heap.push(x);
-		}
-	}
+        if (!x) {
+            if (max_heap.empty()) {
+                cout << "0\n";
+            } 
+            else {
+                cout << max_heap.top() << '\n';
+                max_heap.pop();
+            }
+        } 
+        else {
+            max_heap.push(x);
+        }
+    }
 
-	return 0;
+    return 0;
 }
 ```
 
@@ -117,35 +117,35 @@ using namespace std;
 
 int main(void)
 {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
 
-	int n;
-	cin >> n;
-	// https://en.cppreference.com/w/cpp/container/priority_queue 
-	// priority_queue<int, vector<int>, greater<int>> -> min heap
-	// priority_queue<int> -> max heap
-	priority_queue<int, vector<int>, greater<int>> min_heap;
+    int n;
+    cin >> n;
+    // https://en.cppreference.com/w/cpp/container/priority_queue 
+    // priority_queue<int, vector<int>, greater<int>> -> min heap
+    // priority_queue<int> -> max heap
+    priority_queue<int, vector<int>, greater<int>> min_heap;
 
-	while (n--) {
-		int x;
-		cin >> x;
+    while (n--) {
+        int x;
+        cin >> x;
 
-		if (!x) {
-			if (min_heap.empty()) {
-				cout << "0\n";
-			} 
-			else {
-				cout << min_heap.top() << '\n';
-				min_heap.pop();
-			}
-		} 
-		else {
-			min_heap.push(x);
-		}
-	}
+        if (!x) {
+            if (min_heap.empty()) {
+                cout << "0\n";
+            } 
+            else {
+                cout << min_heap.top() << '\n';
+                min_heap.pop();
+            }
+        } 
+        else {
+            min_heap.push(x);
+        }
+    }
 
-	return 0;
+    return 0;
 }
 ```
 
@@ -159,34 +159,34 @@ using namespace std;
 
 int main(void)
 {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
 
-	int n;
-	cin >> n;
-	priority_queue<pair<int, int>, 
-		vector<pair<int, int>>, 
-		greater<pair<int, int>>> min_heap;
+    int n;
+    cin >> n;
+    priority_queue<pair<int, int>, 
+        vector<pair<int, int>>, 
+        greater<pair<int, int>>> min_heap;
 
-	while (n--) {
-		int x;
-		cin >> x;
+    while (n--) {
+        int x;
+        cin >> x;
 
-		if (!x) {
-			if (min_heap.empty()) {
-				cout << "0\n";
-			} 
-			else {
-				cout << min_heap.top().second << '\n';
-				min_heap.pop();
-			}
-		} 
-		else {
-			min_heap.push({abs(x),x});
-		}
-	}
+        if (!x) {
+            if (min_heap.empty()) {
+                cout << "0\n";
+            } 
+            else {
+                cout << min_heap.top().second << '\n';
+                min_heap.pop();
+            }
+        } 
+        else {
+            min_heap.push({abs(x),x});
+        }
+    }
 
-	return 0;
+    return 0;
 }
 ```
 
@@ -219,45 +219,45 @@ struct cmp_greater {
 
 int main(void)
 {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
 
-	priority_queue<node, vector<node>, cmp_less> max_heap;
-	priority_queue<node, vector<node>, cmp_greater> min_heap;
+    priority_queue<node, vector<node>, cmp_less> max_heap;
+    priority_queue<node, vector<node>, cmp_greater> min_heap;
 
-	max_heap.push({1,1,4});
-	max_heap.push({1,2,1});
-	max_heap.push({2,1,3});
-	max_heap.push({1,3,5});
-	max_heap.push({3,3,2});
-	cout << "{ " << max_heap.top().from << ", "
-	     << max_heap.top().to << ", "
-		 << max_heap.top().value << " }\n"; // { 1, 3, 5 }
+    max_heap.push({1,1,4});
+    max_heap.push({1,2,1});
+    max_heap.push({2,1,3});
+    max_heap.push({1,3,5});
+    max_heap.push({3,3,2});
+    cout << "{ " << max_heap.top().from << ", "
+         << max_heap.top().to << ", "
+         << max_heap.top().value << " }\n"; // { 1, 3, 5 }
 
-	min_heap.push({1,1,4});
-	min_heap.push({1,2,1});
-	min_heap.push({2,1,3});
-	min_heap.push({1,3,5});
-	min_heap.push({3,3,2});
-	cout << "{ " << min_heap.top().from << ", "
-	     << min_heap.top().to << ", "
-		 << min_heap.top().value << " }\n"; // { 1, 2, 1 }
+    min_heap.push({1,1,4});
+    min_heap.push({1,2,1});
+    min_heap.push({2,1,3});
+    min_heap.push({1,3,5});
+    min_heap.push({3,3,2});
+    cout << "{ " << min_heap.top().from << ", "
+         << min_heap.top().to << ", "
+         << min_heap.top().value << " }\n"; // { 1, 2, 1 }
 
-	return 0;
+    return 0;
 }
 ```
 
 * [[BOJ] 가운데를 말해요](https://www.acmicpc.net/problem/1655) [(소스코드)](./src/exer5.cpp) - 최소 힙과 최대 힙을 활용한 중앙값 출력 문제
-	* 조건:
-	1. `max_heap.size()>=min_heap.size()`
-	2. `if max_heap.top()>min_heap.top() then swap`
-	* 두 조건을 만족한다면, 중앙값은 `max_heap.top()`
+    * 조건:
+    1. `max_heap.size()>=min_heap.size()`
+    2. `if max_heap.top()>min_heap.top() then swap`
+    * 두 조건을 만족한다면, 중앙값은 `max_heap.top()`
 
-	|input|execute|max_heap|min_heap|median|
-	|:---:|-------|-------:|-------:|:----:|
-	|1|insert to `max_heap`|`1`|`⠀`|1|
-	|4|insert to `min_heap`|`1`|`4`|1|
-	|6|insert to `max_heap`<br>swap|`6` `1`<br>`4` `1`|`4`<br>`6`|<br>4|
+    |input|execute|max_heap|min_heap|median|
+    |:---:|-------|-------:|-------:|:----:|
+    |1|insert to `max_heap`|`1`|`⠀`|1|
+    |4|insert to `min_heap`|`1`|`4`|1|
+    |6|insert to `max_heap`<br>swap|`6` `1`<br>`4` `1`|`4`<br>`6`|<br>4|
 
 ###### Memory: 2,792 KB, Time: 28 ms
 ```c++
@@ -268,32 +268,32 @@ using namespace std;
 
 int main(void) 
 {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
 
-	int n;
-	cin>>n;
-	priority_queue<int, vector<int>, less<int>> max_heap;
-	priority_queue<int, vector<int>, greater<int>> min_heap;
-	for (int i = 1; i<=n; ++i) {
-		int temp;
-		cin>>temp;
-		if (max_heap.size()<=min_heap.size()) {
-			max_heap.push(temp);
-		}
-		else {
-			min_heap.push(temp);
-		}
-		if (!max_heap.empty() && !min_heap.empty() && max_heap.top()>min_heap.top()) {
-			max_heap.push(min_heap.top());
-			min_heap.pop();
-			min_heap.push(max_heap.top());
-			max_heap.pop();
-		}
-		cout << max_heap.top() << '\n';
-	}
+    int n;
+    cin>>n;
+    priority_queue<int, vector<int>, less<int>> max_heap;
+    priority_queue<int, vector<int>, greater<int>> min_heap;
+    for (int i = 1; i<=n; ++i) {
+        int temp;
+        cin>>temp;
+        if (max_heap.size()<=min_heap.size()) {
+            max_heap.push(temp);
+        }
+        else {
+            min_heap.push(temp);
+        }
+        if (!max_heap.empty() && !min_heap.empty() && max_heap.top()>min_heap.top()) {
+            max_heap.push(min_heap.top());
+            min_heap.pop();
+            min_heap.push(max_heap.top());
+            max_heap.pop();
+        }
+        cout << max_heap.top() << '\n';
+    }
 
-	return 0;
+    return 0;
 }
 ```
 

@@ -15,15 +15,15 @@ int main(void)
     // movement
     const int dx[] = {-1,0,1,0};
     const int dy[] = {0,-1,0,1};
-	// knight's movement
-	const int knight_dx[] = {1,2,2,1,-1,-2,-2,-1};
-	const int knight_dy[] = {2,1,-1,-2,-2,-1,1,2};
+    // knight's movement
+    const int knight_dx[] = {1,2,2,1,-1,-2,-2,-1};
+    const int knight_dy[] = {2,1,-1,-2,-2,-1,1,2};
 
-	int k;
-	cin>>k;
+    int k;
+    cin>>k;
     int w, h;
     cin>>w>>h;
-	bool arr[201][201]; 
+    bool arr[201][201]; 
     for (int i = 1; i<=h; ++i) {
         for (int j = 1; j<=w; ++j) {
             cin>>arr[i][j];
@@ -83,31 +83,31 @@ int main(void)
         }
     }
 
-	/*
-	for (int d = 0; d<=k; ++d) {
-		cout << '\n';
-		for (int i = 1; i<=h; ++i) {
-			for (int j = 1; j<=w; ++j) {
-				cout << dist[i][j][d] << ' ';
-			}
-			cout << '\n';
-		}
-	}
-	*/
-
-	vector<int> min_movement;
-    for (int i = 0; i<=k; ++i) {
-        if (dist[h][w][i]!=-1) {
-			min_movement.push_back(dist[h][w][i]);
+    /*
+    for (int d = 0; d<=k; ++d) {
+        cout << '\n';
+        for (int i = 1; i<=h; ++i) {
+            for (int j = 1; j<=w; ++j) {
+                cout << dist[i][j][d] << ' ';
+            }
+            cout << '\n';
         }
     }
-	if (min_movement.empty()) {
-		cout << "-1";
-	}
-	else {
-		sort(min_movement.begin(),min_movement.end());
-		cout << min_movement.front();
-	}
+    */
+
+    vector<int> min_movement;
+    for (int i = 0; i<=k; ++i) {
+        if (dist[h][w][i]!=-1) {
+            min_movement.push_back(dist[h][w][i]);
+        }
+    }
+    if (min_movement.empty()) {
+        cout << "-1";
+    }
+    else {
+        sort(min_movement.begin(),min_movement.end());
+        cout << min_movement.front();
+    }
 
     return 0;
 }

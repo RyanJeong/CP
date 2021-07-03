@@ -8,28 +8,28 @@ int main(void)
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-	// right, botq_tom, left, top
-	const int dx[4] = {1,0,-1,0};
-	const int dy[4] = {0,-1,0,1};
+    // right, botq_tom, left, top
+    const int dx[4] = {1,0,-1,0};
+    const int dy[4] = {0,-1,0,1};
 
-	bool is_lighted[101][101]; 
+    bool is_lighted[101][101]; 
     memset(is_lighted,false,sizeof is_lighted);
     bool is_visited[101][101];
     memset(is_visited,false,sizeof is_visited);
-	queue<pair<int, int>> q;
-	q.push({1,1});
+    queue<pair<int, int>> q;
+    q.push({1,1});
     is_lighted[1][1]=true;
     is_visited[1][1]=true;
-	int n, m;
-	cin>>n>>m;
-	vector<pair<int, int>> v[101][101];
-	while (m--) {
-		int x, y, a, b;
-		cin>>x>>y>>a>>b;
+    int n, m;
+    cin>>n>>m;
+    vector<pair<int, int>> v[101][101];
+    while (m--) {
+        int x, y, a, b;
+        cin>>x>>y>>a>>b;
         v[x][y].push_back({a,b});
-	}
+    }
 
-	while (!q.empty()) {
+    while (!q.empty()) {
         auto cur = q.front();
         q.pop();
 

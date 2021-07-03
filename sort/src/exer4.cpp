@@ -5,14 +5,14 @@ using namespace std;
 
 int main(void) 
 {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
 
     int arr[] = {-25, 2, 56, 234, 563246, -14325, 2345, -2345};
     int n = sizeof arr/sizeof(int);
 
-	// Radix Sort
-	// use 8-bit as radix
+    // Radix Sort
+    // use 8-bit as radix
     for (int b = 0; b<4; ++b) {
         vector<int> v[256];
         for (int i = 0; i<n; ++i) {
@@ -34,10 +34,10 @@ int main(void)
             }
         }
     }
-	for (int i : arr) {
-		cout << i << ' ';
-	}
-	cout << '\n';
+    for (int i : arr) {
+        cout << i << ' ';
+    }
+    cout << '\n';
 
-	return 0;
+    return 0;
 }

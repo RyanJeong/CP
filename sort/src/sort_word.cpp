@@ -7,8 +7,8 @@ bool cmp(string, string);
 
 int main(void) 
 {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
     
     int n;
     cin>>n;
@@ -27,7 +27,7 @@ int main(void)
         cout << str << '\n';
     }
 
-	return 0;
+    return 0;
 }
 
 bool cmp(string s, string t)

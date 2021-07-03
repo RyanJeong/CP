@@ -17,7 +17,7 @@ int main(void)
 
     // init.
     cin>>n>>m;
-	for (int i = 1; i<=n; ++i) {
+    for (int i = 1; i<=n; ++i) {
         string str;
         cin>>str;
 
@@ -26,7 +26,7 @@ int main(void)
             arr[i][j]=c;
             ++j;
         }
-	}
+    }
     cout << bfs();
 
     return 0;
@@ -34,15 +34,15 @@ int main(void)
 
 int bfs(void)
 {
-	// right, bottom, left, top
-	const int dx[4] = {1,0,-1,0};
-	const int dy[4] = {0,-1,0,1};
-	queue<pair<pair<int, int>, int>> q;
-	q.push({make_pair(1,1),0});
+    // right, bottom, left, top
+    const int dx[4] = {1,0,-1,0};
+    const int dy[4] = {0,-1,0,1};
+    queue<pair<pair<int, int>, int>> q;
+    q.push({make_pair(1,1),0});
     dist[1][1][0]=1;
-	while (!q.empty()) {
-		auto cur = q.front();
-		q.pop();
+    while (!q.empty()) {
+        auto cur = q.front();
+        q.pop();
         int cur_x = cur.first.first;
         int cur_y = cur.first.second;
         int type = cur.second;
@@ -51,16 +51,16 @@ int bfs(void)
 
             return dist[cur_x][cur_y][type];
         }
-		for (int d = 0; d<4; ++d) {
-			int x = cur_x+dx[d];
-			int y = cur_y+dy[d];
+        for (int d = 0; d<4; ++d) {
+            int x = cur_x+dx[d];
+            int y = cur_y+dy[d];
 
-			if (x<1 || x>n) {
-				continue;
-			}
-			if (y<1 || y>m) {
-				continue;
-			}
+            if (x<1 || x>n) {
+                continue;
+            }
+            if (y<1 || y>m) {
+                continue;
+            }
             if (dist[x][y][type]) {
                 continue;
             }
@@ -72,8 +72,8 @@ int bfs(void)
                 dist[x][y][1]=dist[cur_x][cur_y][type]+1;
                 q.push({make_pair(x,y),1});
             }
-		}
-	}
+        }
+    }
 
     return -1;
 }

@@ -11,21 +11,21 @@ int arr[1'000'000];
 
 int main(void) 
 {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
-	
-	int n;
-	cin>>n;
-	for (int i = 0; i<n; ++i) {
-		cin>>arr[i];
-	}
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    
+    int n;
+    cin>>n;
+    for (int i = 0; i<n; ++i) {
+        cin>>arr[i];
+    }
 
     quicksort(0,n);    
-	for (int i = 0; i<n; ++i) {
-		cout << arr[i] << '\n';
-	}
+    for (int i = 0; i<n; ++i) {
+        cout << arr[i] << '\n';
+    }
 
-	return 0;
+    return 0;
 }
 
 void quicksort(int left, int right)

@@ -48,37 +48,37 @@ using namespace std;
 
 int main(void) 
 {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
-	vector<int> v;
-	v.push_back(3);
-	v.push_back(-2);
-	v.push_back(1);
-	v.push_back(5);
-	v.push_back(-1);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    vector<int> v;
+    v.push_back(3);
+    v.push_back(-2);
+    v.push_back(1);
+    v.push_back(5);
+    v.push_back(-1);
 
-	// non-descending order
-	sort(v.begin(),v.end()); // default comparison (operator <)
-	for (int i : v) {
-		cout << i << ' ';
-	}
-	cout << '\n';
+    // non-descending order
+    sort(v.begin(),v.end()); // default comparison (operator <)
+    for (int i : v) {
+        cout << i << ' ';
+    }
+    cout << '\n';
 
-	// descending order
-	sort(v.begin(),v.end(),greater<int>()); // the standard library compare function object
-	for (int i : v) {
-		cout << i << ' ';
-	}
-	cout << '\n';
+    // descending order
+    sort(v.begin(),v.end(),greater<int>()); // the standard library compare function object
+    for (int i : v) {
+        cout << i << ' ';
+    }
+    cout << '\n';
 
-	// non-descending order
-	sort(v.begin(),v.end(),less<int>()); // the standard library compare function object
-	for (int i : v) {
-		cout << i << ' ';
-	}
-	cout << '\n';
+    // non-descending order
+    sort(v.begin(),v.end(),less<int>()); // the standard library compare function object
+    for (int i : v) {
+        cout << i << ' ';
+    }
+    cout << '\n';
 
-	return 0;
+    return 0;
 }
 ```
 
@@ -93,42 +93,42 @@ bool cmp_greater(int, int);
 
 int main(void) 
 {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
-	vector<int> v;
-	v.push_back(3);
-	v.push_back(-2);
-	v.push_back(1);
-	v.push_back(5);
-	v.push_back(-1);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    vector<int> v;
+    v.push_back(3);
+    v.push_back(-2);
+    v.push_back(1);
+    v.push_back(5);
+    v.push_back(-1);
 
-	// non-descending order
-	sort(v.begin(),v.end(),cmp_less); // default comparison (operator <)
-	for (int i : v) {
-		cout << i << ' ';
-	}
-	cout << '\n';
+    // non-descending order
+    sort(v.begin(),v.end(),cmp_less); // default comparison (operator <)
+    for (int i : v) {
+        cout << i << ' ';
+    }
+    cout << '\n';
 
-	// descending order
-	sort(v.begin(),v.end(),cmp_greater); // the standard library compare function object
-	for (int i : v) {
-		cout << i << ' ';
-	}
-	cout << '\n';
+    // descending order
+    sort(v.begin(),v.end(),cmp_greater); // the standard library compare function object
+    for (int i : v) {
+        cout << i << ' ';
+    }
+    cout << '\n';
 
-	return 0;
+    return 0;
 }
 
 bool cmp_less(int s, int t)
 {
 
-	return s<t;
+    return s<t;
 }
 
 bool cmp_greater(int s, int t)
 {
 
-	return s>t;
+    return s>t;
 }
 ```
 
@@ -143,42 +143,42 @@ using namespace std;
 
 int main(void)
 {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
 
-	int t;
-	cin>>t;
-	while (t--) {
-		int n;
-		cin>>n;
-		int m;
-		cin>>m;
-		queue<pair<int, int>> q; // priority, index
-		vector<int> v; // priority
-		for (int i = 0; i<n; ++i) {
-			int p;
-			cin>>p;
-			v.push_back(p);
-			q.push({p,i});
-		}
-		sort(v.begin(),v.end(),greater<int>());
-		int cnt = 0;
-		for (int p : v) {
-			while (p!=q.front().first) {
-				auto cur = q.front();
-				q.pop();
-				q.push(cur);
-			}	
-			++cnt;
-			if (m==q.front().second) {
-				break;
-			}
-			q.pop();
-		}
-		cout << cnt << '\n';
-	}
+    int t;
+    cin>>t;
+    while (t--) {
+        int n;
+        cin>>n;
+        int m;
+        cin>>m;
+        queue<pair<int, int>> q; // priority, index
+        vector<int> v; // priority
+        for (int i = 0; i<n; ++i) {
+            int p;
+            cin>>p;
+            v.push_back(p);
+            q.push({p,i});
+        }
+        sort(v.begin(),v.end(),greater<int>());
+        int cnt = 0;
+        for (int p : v) {
+            while (p!=q.front().first) {
+                auto cur = q.front();
+                q.pop();
+                q.push(cur);
+            }    
+            ++cnt;
+            if (m==q.front().second) {
+                break;
+            }
+            q.pop();
+        }
+        cout << cnt << '\n';
+    }
 
-	return 0;
+    return 0;
 }
 ```
 
@@ -187,8 +187,8 @@ int main(void)
 * 대상 간 비교를 직접 하지 않음
 * 비교해야 할 대상 수가 <i>n</i>이고, 대상의 범위가 <i>k</i>일 때, 시간복잡도는 <b><i>O</i>(<i>n</i>+<i>k</i>)</b>이고 공간복잡도는 <b><i>O</i>(<i>n</i>+<i>k</i>)</b>
 * 정렬하는 대상이 특정 범위 내에 있을 경우 굉장히 효율적인 방법이지만, 범위가 특정하지 않거나 범위가 너무 넓을 경우 불필요한 메모리 낭비가 발생함
-	* 정렬 대상이 8, 2, 1, 4, 64, 128일 경우, 빈도를 기록할 배열의 크기는 128
-	* 정렬 대상 안에 10,000,000와 같이 큰 수가 포함되어 있다면, 배열의 크기는 최소 10,000,000 이상이여야 함
+    * 정렬 대상이 8, 2, 1, 4, 64, 128일 경우, 빈도를 기록할 배열의 크기는 128
+    * 정렬 대상 안에 10,000,000와 같이 큰 수가 포함되어 있다면, 배열의 크기는 최소 10,000,000 이상이여야 함
 
 ### [소스코드](./src/exam3.cpp)
 ```c++
@@ -199,34 +199,34 @@ using namespace std;
 
 int main(void) 
 {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
 
-	// k : 1 ~ 200
+    // k : 1 ~ 200
     int arr[] = {174,84,75,22,123,24,2,78};
-	int freq[1+200]; // 0, 1 ~ k
-	memset(freq,0,sizeof freq);
+    int freq[1+200]; // 0, 1 ~ k
+    memset(freq,0,sizeof freq);
 
-	// n times
-	for (int i : arr) {
-		++freq[i];
-	}
-	// k times + n times
-	// when for-statement completes k iterations, 
-	// while-loop executes a total of n operations
-	// => 2n + k, O(n + k)
-	for (int i = 1; i<=200; ++i) {
-		// 
-		while (freq[i]--) {
-			cout << i << ' ';
-		}
-	}
-	cout << '\n';
+    // n times
+    for (int i : arr) {
+        ++freq[i];
+    }
+    // k times + n times
+    // when for-statement completes k iterations, 
+    // while-loop executes a total of n operations
+    // => 2n + k, O(n + k)
+    for (int i = 1; i<=200; ++i) {
+        // 
+        while (freq[i]--) {
+            cout << i << ' ';
+        }
+    }
+    cout << '\n';
 
-	return 0;
+    return 0;
 }
 ```
-	
+    
 * [[BOJ] 수 정렬하기 3](https://www.acmicpc.net/problem/10989) [(소스코드)](./src/exer2.cpp) - 공간복잡도를 <b><i>O</i>(<i>k</i>)</b>로 절약한 예
 ###### Memory: 2,060 KB, Time: 1,600 ms
 ```c++
@@ -237,28 +237,28 @@ using namespace std;
 
 int main(void) 
 {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
-	
-	static int freq[10'001];
-	int low = 10'000;
-	int high = 1;
-	int n;
-	cin>>n;
-	// n times
-	for (int i = 0; i<n; ++i) {
-		int temp;
-		cin>>temp;
-		++freq[temp];
-		low=min(low,temp);
-		high=max(high,temp);
-	}
-	// k times + n times
-	for (int i = low; i<=high; ++i) {
-		while (freq[i]--) {
-			cout << i << '\n';
-		}
-	}
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    
+    static int freq[10'001];
+    int low = 10'000;
+    int high = 1;
+    int n;
+    cin>>n;
+    // n times
+    for (int i = 0; i<n; ++i) {
+        int temp;
+        cin>>temp;
+        ++freq[temp];
+        low=min(low,temp);
+        high=max(high,temp);
+    }
+    // k times + n times
+    for (int i = low; i<=high; ++i) {
+        while (freq[i]--) {
+            cout << i << '\n';
+        }
+    }
 
     return 0;
 }
@@ -278,40 +278,40 @@ using namespace std;
 
 int main(void) 
 {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
 
     int arr[] = {174,84,75,22,723,24,2,78};
     int n = sizeof arr/sizeof(int);
-	int max_n = 0;
-	for (int i : arr) {
-		max_n=max(max_n,i);	
-	}
+    int max_n = 0;
+    for (int i : arr) {
+        max_n=max(max_n,i);    
+    }
 
-	// Radix Sort
-	// the digit represented by d
-	// l times
-	for (int d = 1; max_n/d>0; d*=10) {
-		vector<int> v[10];
-		// n times
-		for (int i = 0; i<n; ++i) {
-			int idx = (arr[i]/d)%10;
-			v[idx].push_back(arr[i]);
-		}
-		// k times
-		int i = 0;
-		for (int j = 0; j<10; ++j) {
-			for (auto elem : v[j]) {
-				arr[i++]=elem;
-			}
-		}
-	}
-	for (int i : arr) {
-		cout << i << ' ';
-	}
-	cout << '\n';
+    // Radix Sort
+    // the digit represented by d
+    // l times
+    for (int d = 1; max_n/d>0; d*=10) {
+        vector<int> v[10];
+        // n times
+        for (int i = 0; i<n; ++i) {
+            int idx = (arr[i]/d)%10;
+            v[idx].push_back(arr[i]);
+        }
+        // k times
+        int i = 0;
+        for (int j = 0; j<10; ++j) {
+            for (auto elem : v[j]) {
+                arr[i++]=elem;
+            }
+        }
+    }
+    for (int i : arr) {
+        cout << i << ' ';
+    }
+    cout << '\n';
 
-	return 0;
+    return 0;
 }
 ```
 
@@ -324,14 +324,14 @@ using namespace std;
 
 int main(void) 
 {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
 
     int arr[] = {-25, 2, 56, 234, 563246, -14325, 2345, -2345};
     int n = sizeof arr/sizeof(int);
 
-	// Radix Sort
-	// use 8-bit as radix
+    // Radix Sort
+    // use 8-bit as radix
     for (int b = 0; b<4; ++b) {
         vector<int> v[256];
         for (int i = 0; i<n; ++i) {
@@ -353,12 +353,12 @@ int main(void)
             }
         }
     }
-	for (int i : arr) {
-		cout << i << ' ';
-	}
-	cout << '\n';
+    for (int i : arr) {
+        cout << i << ' ';
+    }
+    cout << '\n';
 
-	return 0;
+    return 0;
 }
 ```
 

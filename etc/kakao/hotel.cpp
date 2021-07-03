@@ -8,12 +8,12 @@ map<ll, ll> room;
 
 ll check(ll num) 
 { 
-	if (!room[num]) { // is empty
+    if (!room[num]) { // is empty
 
     return num;
   } else {
 
-		return room[num] = check(room[num]);
+        return room[num] = check(room[num]);
   }
 }
 
@@ -21,7 +21,7 @@ ll check(ll num)
 vector<long long> solution(long long k, vector<long long> room_number) 
 {
   vector<long long> answer;
-	
+    
   for (ll num = 0; num < room_number.size(); ++num) {
     ll temp = check(room_number[num]);
 
@@ -29,7 +29,7 @@ vector<long long> solution(long long k, vector<long long> room_number)
     room[temp] = temp + 1;
   }
 
-	return answer;
+    return answer;
 }
 
 int main(void)

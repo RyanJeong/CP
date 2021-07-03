@@ -16,38 +16,38 @@ int tmp[1'000'000];
 
 int main(void) 
 {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
-	
-	int n;
-	cin>>n;
-	for (int i = 0; i<n; ++i) {
-		cin>>arr[i];
-	}
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    
+    int n;
+    cin>>n;
+    for (int i = 0; i<n; ++i) {
+        cin>>arr[i];
+    }
 
     mergesort(0,n);    
-	for (int i = 0; i<n; ++i) {
-		cout << arr[i] << '\n';
-	}
+    for (int i = 0; i<n; ++i) {
+        cout << arr[i] << '\n';
+    }
 
-	return 0;
+    return 0;
 }
 
 void mergesort(int s, int t)
 {
-	if (s+1==t) {
-		
-		return;
-	}
-	int mid = (s+t)/2;
-	mergesort(s,mid);
-	mergesort(mid,t);
-	merge(s,t);
+    if (s+1==t) {
+        
+        return;
+    }
+    int mid = (s+t)/2;
+    mergesort(s,mid);
+    mergesort(mid,t);
+    merge(s,t);
 }
 
 void merge(int s, int t)
 {
-	int mid = (s+t)/2;
+    int mid = (s+t)/2;
     int idx1 = s; // [s, mid)
     int idx2 = mid; // [mid, t)
     for (int i = s; i<t; ++i) {
@@ -68,6 +68,6 @@ void merge(int s, int t)
     for (int i = s; i<t; ++i) {
         arr[i]=tmp[i];
     }
-	
-	return;
+    
+    return;
 }

@@ -53,33 +53,33 @@ int main(void)
 
 void bfs(int i, int j)
 {
-	// right, bottom, left, top
-	const int dx[4] = {1,0,-1,0};
-	const int dy[4] = {0,-1,0,1};
-	queue<pair<int, int>> q;
+    // right, bottom, left, top
+    const int dx[4] = {1,0,-1,0};
+    const int dy[4] = {0,-1,0,1};
+    queue<pair<int, int>> q;
     q.push({i,j});
     is_visited[i][j]=true;
 
-	while (!q.empty()) {
-		auto cur = q.front();
-		q.pop();
-		for (int d = 0; d<4; ++d) {
-			int x = cur.first+dx[d];
-			int y = cur.second+dy[d];
+    while (!q.empty()) {
+        auto cur = q.front();
+        q.pop();
+        for (int d = 0; d<4; ++d) {
+            int x = cur.first+dx[d];
+            int y = cur.second+dy[d];
 
-			if (x<1 || x>n) {
-				continue;
-			}
-			if (y<1 || y>m) {
-				continue;
-			}
+            if (x<1 || x>n) {
+                continue;
+            }
+            if (y<1 || y>m) {
+                continue;
+            }
             if (is_visited[x][y] || !arr[x][y]) {
                 continue;
             }
             q.push({x,y});
             is_visited[x][y]=true;
-		}
-	}
+        }
+    }
 
     return;
 }

@@ -14,7 +14,7 @@
 # [Stack](https://cplusplus.com/reference/stack/stack)
 * 추천 문제
     * [[BOJ] 스택](https://www.acmicpc.net/problem/10828) [(소스코드)](./src/stack.cpp)
-	* [[BOJ] 오큰수](https://www.acmicpc.net/problem/17298) [(소스코드)](./src/nge.cpp)
+    * [[BOJ] 오큰수](https://www.acmicpc.net/problem/17298) [(소스코드)](./src/nge.cpp)
 
 ## 특징
 * Restricted Structure
@@ -63,7 +63,7 @@ int main(void)
 
 ## 스택 응용: 올바른 괄호 쌍 구하기
 * 추천 문제
-	* [[BOJ] 괄호의 값](https://www.acmicpc.net/problem/2504) [(소스코드)](./stack_app/exercise.cpp)
+    * [[BOJ] 괄호의 값](https://www.acmicpc.net/problem/2504) [(소스코드)](./stack_app/exercise.cpp)
 
 * 괄호로만 구성된 문자열이 주어졌다면:
 1. 여는 괄호는 스택에 `push`

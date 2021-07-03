@@ -24,29 +24,29 @@ struct cmp_greater {
 
 int main(void)
 {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
 
-	priority_queue<node, vector<node>, cmp_less> max_heap;
-	priority_queue<node, vector<node>, cmp_greater> min_heap;
+    priority_queue<node, vector<node>, cmp_less> max_heap;
+    priority_queue<node, vector<node>, cmp_greater> min_heap;
 
-	max_heap.push({1,1,4});
-	max_heap.push({1,2,1});
-	max_heap.push({2,1,3});
-	max_heap.push({1,3,5});
-	max_heap.push({3,3,2});
-	cout << "{ " << max_heap.top().from << ", "
-	     << max_heap.top().to << ", "
-		 << max_heap.top().value << " }\n"; // { 1, 3, 5 }
+    max_heap.push({1,1,4});
+    max_heap.push({1,2,1});
+    max_heap.push({2,1,3});
+    max_heap.push({1,3,5});
+    max_heap.push({3,3,2});
+    cout << "{ " << max_heap.top().from << ", "
+         << max_heap.top().to << ", "
+         << max_heap.top().value << " }\n"; // { 1, 3, 5 }
 
-	min_heap.push({1,1,4});
-	min_heap.push({1,2,1});
-	min_heap.push({2,1,3});
-	min_heap.push({1,3,5});
-	min_heap.push({3,3,2});
-	cout << "{ " << min_heap.top().from << ", "
-	     << min_heap.top().to << ", "
-		 << min_heap.top().value << " }\n"; // { 1, 2, 1 }
+    min_heap.push({1,1,4});
+    min_heap.push({1,2,1});
+    min_heap.push({2,1,3});
+    min_heap.push({1,3,5});
+    min_heap.push({3,3,2});
+    cout << "{ " << min_heap.top().from << ", "
+         << min_heap.top().to << ", "
+         << min_heap.top().value << " }\n"; // { 1, 2, 1 }
 
-	return 0;
+    return 0;
 }

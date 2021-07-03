@@ -20,7 +20,7 @@ using namespace std;
 
 int main(void) 
 {
-	// Fast I/O for CP
+    // Fast I/O for CP
     ios::sync_with_stdio(false); // off the syncronization of all
                                  // the C++ standard streams with
                                  // their corresponding standard
@@ -122,26 +122,26 @@ int main(void)
 
    /*
    std::skipws
-	ios_base& skipws (ios_base& str);
+    ios_base& skipws (ios_base& str);
 
-	Skip whitespaces
-	Sets the skipws format flag for the str stream.
+    Skip whitespaces
+    Sets the skipws format flag for the str stream.
 
-	When the skipws format flag is set, as many whitespace 
-	characters as necessary are read and discarded from the 
-	stream until a non-whitespace character is found before. 
-	This applies to every formatted input operation performed 
-	with operator>> on the stream.
+    When the skipws format flag is set, as many whitespace 
+    characters as necessary are read and discarded from the 
+    stream until a non-whitespace character is found before. 
+    This applies to every formatted input operation performed 
+    with operator>> on the stream.
 
-	Tab spaces, carriage returns and blank spaces are all 
-	considered whitespaces (see isspace).
+    Tab spaces, carriage returns and blank spaces are all 
+    considered whitespaces (see isspace).
 
-	This flag can be unset with the noskipws manipulator, 
-	forcing extraction operations to consider leading whitepaces 
-	as part of the content to be extracted.
+    This flag can be unset with the noskipws manipulator, 
+    forcing extraction operations to consider leading whitepaces 
+    as part of the content to be extracted.
 
-	For standard streams, the skipws flag is SET on initialization.
-	*/
+    For standard streams, the skipws flag is SET on initialization.
+    */
 
     return 0;
 }

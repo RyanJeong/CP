@@ -26,18 +26,18 @@
     * Searching a sorted vector can be accomplished in <b><i>O</i>(<i>log n</i>)</b> time using binary search.
     * A notable operation on vectors, not possible with arrays, is that the size of the vector can dynamically be increased or decrease. Such operation may take <b><i>O</i>(<i>n</i>)</b> worst case scenario.
 
-		|Operation|Capacity|Cost||
-		|:-:|:-:|-:|-|
-		|`push_back(1)`|1|1|`1`|
-		|`push_back(2)`|2|<b>1</b>+1|`1` `2`|
-		|`push_back(3)`|4|<b>2</b>+1|`1` `2` `3` `⠀`|
-		|`push_back(4)`|4|1|`1` `2` `3` `4` |
-		|`push_back(5)`|8|<b>4</b>+1|`1` `2` `3` `4` `5` `⠀` `⠀` `⠀`|
-		|`push_back(6)`|8|1|`1` `2` `3` `4` `5` `6` `⠀` `⠀`|
-		|`push_back(7)`|8|1|`1` `2` `3` `4` `5` `6` `7` `⠀`|
-		|`push_back(8)`|8|1|`1` `2` `3` `4` `5` `6` `7` `8`|
-		|`push_back(9)`|16|<b>8</b>+1|`1` `2` `3` `4` `5` `6` `7` `8` `9` `⠀` `⠀` `⠀` `⠀` `⠀` `⠀` `⠀`|
-		* [<b>amortized <i>O</i>(<i>n</i>)</b>](https://cs.stackexchange.com/questions/9380/why-is-push-back-in-c-vectors-constant-amortized)
+        |Operation|Capacity|Cost||
+        |:-:|:-:|-:|-|
+        |`push_back(1)`|1|1|`1`|
+        |`push_back(2)`|2|<b>1</b>+1|`1` `2`|
+        |`push_back(3)`|4|<b>2</b>+1|`1` `2` `3` `⠀`|
+        |`push_back(4)`|4|1|`1` `2` `3` `4` |
+        |`push_back(5)`|8|<b>4</b>+1|`1` `2` `3` `4` `5` `⠀` `⠀` `⠀`|
+        |`push_back(6)`|8|1|`1` `2` `3` `4` `5` `6` `⠀` `⠀`|
+        |`push_back(7)`|8|1|`1` `2` `3` `4` `5` `6` `7` `⠀`|
+        |`push_back(8)`|8|1|`1` `2` `3` `4` `5` `6` `7` `8`|
+        |`push_back(9)`|16|<b>8</b>+1|`1` `2` `3` `4` `5` `6` `7` `8` `9` `⠀` `⠀` `⠀` `⠀` `⠀` `⠀` `⠀`|
+        * [<b>amortized <i>O</i>(<i>n</i>)</b>](https://cs.stackexchange.com/questions/9380/why-is-push-back-in-c-vectors-constant-amortized)
         > Amortized analysis is an analysis technique that examines a sequence of <i>n</i> operations. If the whole sequence runs in <b><i>T</i>(<i>n</i>)</b> time, then each operation in the sequence runs in <b><i>T</i>(<i>n</i>)/<i>n</i></b>. The idea is that while a few operations in the sequence might be costly, they can't happen often enough to weigh down the program. It's important to note that this is different from average case analysis over some input distribution or randomized analysis. Amortized analysis established a <i>worst case</i> bound for the performance of an algorithm irrespective of the inputs. It's most commonly used to analyse data structures, which have a persistent state throughout the program.
 
         * Assume that you call `push_back(x)` <i>N</i> times.
