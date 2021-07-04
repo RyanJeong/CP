@@ -33,9 +33,9 @@ Resources for competitive programming
 * [[WIP]Two Pointer](/two_pointer/)
 * [[WIP]String](/string/)
 * [Disjoint-set](/disjoint-set/)
-* [WIP]Mathematics:
+* [[WIP]Mathematics:](/math/)
 	* [[WIP] Permutation & Combination](#)
-* [WIP]Simulations:
+* [[WIP]Simulations:](/simulation/)
 	* [[WIP] [BOJ]CCTV](#)
 
 ## Reference

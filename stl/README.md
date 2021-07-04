@@ -21,10 +21,10 @@
     * the number of items to be maintained by a collection is at least approximately known in advance.
     * As with arrays, vector elements can be directly indexed.
     * The sorting operation can be used to place the elements of a vector in order.
-    * Accessing an element of a vector, read/write, can be performed in constant that is <b><i>O</i>(1)</b> time.
-    * Searching an unordered vector can be accomplished in <b><i>O</i>(<i>n</i>)</b> time.
-    * Searching a sorted vector can be accomplished in <b><i>O</i>(<i>log n</i>)</b> time using binary search.
-    * A notable operation on vectors, not possible with arrays, is that the size of the vector can dynamically be increased or decrease. Such operation may take <b><i>O</i>(<i>n</i>)</b> worst case scenario.
+    * Accessing an element of a vector, read/write, can be performed in constant that is <b>O(1)</b> time.
+    * Searching an unordered vector can be accomplished in <b>O(<i>n</i>)</b> time.
+    * Searching a sorted vector can be accomplished in <b>O(<i>log n</i>)</b> time using binary search.
+    * A notable operation on vectors, not possible with arrays, is that the size of the vector can dynamically be increased or decrease. Such operation may take <b>O(<i>n</i>)</b> worst case scenario.
 
         |Operation|Capacity|Cost||
         |:-:|:-:|-:|-|
@@ -37,7 +37,7 @@
         |`push_back(7)`|8|1|`1` `2` `3` `4` `5` `6` `7` `⠀`|
         |`push_back(8)`|8|1|`1` `2` `3` `4` `5` `6` `7` `8`|
         |`push_back(9)`|16|<b>8</b>+1|`1` `2` `3` `4` `5` `6` `7` `8` `9` `⠀` `⠀` `⠀` `⠀` `⠀` `⠀` `⠀`|
-        * [<b>amortized <i>O</i>(<i>n</i>)</b>](https://cs.stackexchange.com/questions/9380/why-is-push-back-in-c-vectors-constant-amortized)
+        * [<b>amortized O(<i>n</i>)</b>](https://cs.stackexchange.com/questions/9380/why-is-push-back-in-c-vectors-constant-amortized)
         > Amortized analysis is an analysis technique that examines a sequence of <i>n</i> operations. If the whole sequence runs in <b><i>T</i>(<i>n</i>)</b> time, then each operation in the sequence runs in <b><i>T</i>(<i>n</i>)/<i>n</i></b>. The idea is that while a few operations in the sequence might be costly, they can't happen often enough to weigh down the program. It's important to note that this is different from average case analysis over some input distribution or randomized analysis. Amortized analysis established a <i>worst case</i> bound for the performance of an algorithm irrespective of the inputs. It's most commonly used to analyse data structures, which have a persistent state throughout the program.
 
         * Assume that you call `push_back(x)` <i>N</i> times.
@@ -48,8 +48,8 @@
             * Cost of moving elements when vector is <b>full</b>
                 * 1, 2, 4, 8, ..., 2<sup><i>k</i></sup> (where 2<sup><i>k</i></sup> < <i>N</i>)
                 * The sum of above = <b>2<sup><i>k</i>+1</sup>-1 < 2<i>N</i></b>
-        * Total cost for <i>N</i> `push_back(x)` = <i>N</i> + (<2<i>N</i>) < 3<i>N</i>, and therefore is <b><i>O</i>(<i>N</i>)</b>.
-        * We can say that `push_back(x)` is <b>amortized <i>O</i>(1)</b>
+        * Total cost for <i>N</i> `push_back(x)` = <i>N</i> + (<2<i>N</i>) < 3<i>N</i>, and therefore is <b>O(<i>N</i>)</b>.
+        * We can say that `push_back(x)` is <b>amortized O(1)</b>
 
 
 ### [List](/stl/list/)
@@ -67,12 +67,12 @@
 ### [Queue](/stl/queue/)
 * A queue maintains a <b>first-in, first-out</b> protocol or <b>FIFO</b>. Elements are inserted in the back of the queue and removed from the front. <b>The element removed from the queue is the one that was held the longest</b>.
 ### [Priority Queue](/stl/priority_queue_heap)
-* <b>A priority queue is optimized for insertion of arbitrary new elements and for removal of the largest element</b>, both operations can be performed in <b><i>O</i>(<i>log n</i>)</b> time.
+* <b>A priority queue is optimized for insertion of arbitrary new elements and for removal of the largest element</b>, both operations can be performed in <b>O(<i>log n</i>)</b> time.
 ---
 
 ## Associative Container
 ### [Set](/stl/set/)
-* <b>A set is a simple collection of unique values</b>. The set data structure <b>maintains values in an ordered representation</b>. This permits rapid insertion, removal and testing for inclusion of a specific element. All operations can be performed in <b><i>O</i>(<i>log n</i>)</b> time. In addition, <b>operations are provided for forming the intersection and union of two sets</b>.
+* <b>A set is a simple collection of unique values</b>. The set data structure <b>maintains values in an ordered representation</b>. This permits rapid insertion, removal and testing for inclusion of a specific element. All operations can be performed in <b>O(<i>log n</i>)</b> time. In addition, <b>operations are provided for forming the intersection and union of two sets</b>.
 
 ### [Map](/stl/map/)
 * A map (sometimes called a <b>dictionary</b> or a <b>table</b>) is, like a vector, an <b>indexed</b> collection. However, unlike a vector, the <b>index values need not be integer</b>, but can be any ordered data values. A map can therefore be thought of as a collection of associations of keys and value pairs.

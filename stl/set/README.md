@@ -14,7 +14,7 @@
 # [Set](https://cplusplus.com/reference/set/set/)
 * [이진 검색 트리](/binary_search/)로 구현된 자료구조
 * 컨테이너 안에는 하나의 값만 존재할 수 있음
-* `set`의 `insert`, `erase`, `find` 시간복잡도는 <b><i>O</i>(<i>log n</i>)</b>
+* `set`의 `insert`, `erase`, `find` 시간복잡도는 <b>O(<i>log n</i>)</b>
 ## [Multiple-key set](https://cplusplus.com/reference/set/multiset/)
 * `multiset`은 `set`에서 값의 중복을 허용하는 자료구조
 
@@ -60,10 +60,10 @@ int main(void)
 ```
 
 ## [Unordered Set](https://cplusplus.com/reference/unordered_set/unordered_set/)
-* `unordered_set`은 해시 함수를 사용하며, `insert`, `erase`, `find`의 시간복잡도는 <b><i>O</i>(1)</b>
+* `unordered_set`은 해시 함수를 사용하며, `insert`, `erase`, `find`의 시간복잡도는 <b>O(1)</b>
 * 컨테이너 안에는 하나의 값만 존재할 수 있음
     * 해시 충돌(hash collision)이 발생할 경우, 연결 리스트를 통해 값을 이어서 보관 ([chained hash](https://en.wikipedia.org/wiki/Hash_table#Separate_chaining))
-    * 해시 함수의 성능이 좋지 못해 해시 충돌이 빈번히 발생한다면, `find`의 시간복잡도는 최악의 경우 <b><i>O</i>(<i>n</i>)</b> (이때 <i>n</i>의 개수는 동일한 해시 값을 갖는 요소들의 수)
+    * 해시 함수의 성능이 좋지 못해 해시 충돌이 빈번히 발생한다면, `find`의 시간복잡도는 최악의 경우 <b>O(<i>n</i>)</b> (이때 <i>n</i>의 개수는 동일한 해시 값을 갖는 요소들의 수)
 
 ## [Unordered Multiset](https://cplusplus.com/reference/unordered_set/unordered_multiset/)
 * `unordered_multiset`은 `multiset`에서 값의 중복을 허용하는 자료구조

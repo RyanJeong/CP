@@ -19,9 +19,9 @@
 ## 특징
 * Restricted Structure
 * FIFO (First In First Out)
-* `push`의 시간 복잡도는 <b><i>O</i>(1)</b>
-* `pop`의 시간 복잡도는 <b><i>O</i>(1)</b>
-* `top`의 시간 복잡도는 <b><i>O</i>(1)</b>
+* `push`의 시간 복잡도는 <b>O(1)</b>
+* `pop`의 시간 복잡도는 <b>O(1)</b>
+* `top`의 시간 복잡도는 <b>O(1)</b>
 
 ### [소스코드](./src/exam.cpp)
 ```c++

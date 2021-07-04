@@ -1,41 +1,81 @@
-// https://www.acmicpc.net/problem/3190
+// https://www.acmicpc.net/problem/9938
 #include <bits/stdc++.h>
 
 using namespace std;
+
+int find(int);
+void merge(int, int);
+
+vector<int> parent, level;
 
 int main(void) 
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    static int arr[101][101];
     int n;
     cin>>n;
-    int k;
-    cin>>k;
-    for (int i = 1; i<=k; ++i) {
-        int x;
-        cin>>x;
-        int y;
-        cin>>y;
-        arr[x][y]=-1;
-    }
     int l;
-    queue<pair<int, char>> q;
+    cin>>l;
+    vector<bool> is_used(l+1,false);
+    parent=vector<int>(l+1);
     for (int i = 1; i<=l; ++i) {
-        int time;
-        cin>>time;
-        char dir;
-        cin>>dir;
-        q.push({time,dir});
+        parent[i]=i;
     }
-
-    const int dx[] = {1,0,-1,0};
-    const int dy[] = {0,-1,0,1};
-    int dir = 1;
-
-
-
+    level=vector<int>(l+1,1);
+    while (n--) {
+        int a, b;
+        cin>>a>>b;
+        if (!is_used[a]) {
+            is_used[a]=true;
+            merge(a,b);
+        }
+        else if (!is_used[b]) {
+            is_used[b]=true;
+            merge(b,a);
+        }
+        else if (!is_used[find(a)]) {
+            is_used[find(a)]=true;
+            merge(a,b);
+        }
+        else if (!is_used[find(b)]) {
+            is_used[find(b)]=true;
+            merge(b,a);
+        }
+        else {
+            cout << "SMECE" << '\n';
+        }
+    }
 
     return 0;
+}
+
+int find(int u)
+{
+    if (u==parent[u]) {
+        
+        return u;
+    }
+
+    return parent[u]=find(parent[u]);
+}
+
+void merge(int u, int v)
+{
+    cout << "LADICA" << '\n';
+    u=find(u); 
+    v=find(v); 
+    if (u==v) {
+        
+        return; 
+    }
+    if (level[u]>level[v]) {
+        swap(u,v); 
+    }
+    parent[u]=v;
+    if (level[u]==level[v]) {
+        ++level[v]; 
+    }
+
+    return;
 }

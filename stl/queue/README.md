@@ -17,9 +17,9 @@
     * [[BOJ] 카드2](https://www.acmicpc.net/problem/2164) [(소스코드)](./src/card2.cpp)
 * Restricted Structure
 * FILO (First In Last Out)
-* `push`의 시간 복잡도는 <b><i>O</i>(1)</b>
-* `pop`의 시간 복잡도는 <b><i>O</i>(1)</b>
-* `front`, `back`의 시간 복잡도는 <b><i>O</i>(1)</b>
+* `push`의 시간 복잡도는 <b>O(1)</b>
+* `pop`의 시간 복잡도는 <b>O(1)</b>
+* `front`, `back`의 시간 복잡도는 <b>O(1)</b>
 
 ### [소스코드](./src/exam.cpp)
 ```c++

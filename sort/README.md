@@ -8,7 +8,7 @@
     * `[start, end)`
 * `std:sort` is most likely to use [QuickSort](http://en.wikipedia.org/wiki/Quicksort), or at least a variation over QuickSort called [IntroSort](http://en.wikipedia.org/wiki/Introsort), which "degenerates" to [HeapSort](http://en.wikipedia.org/wiki/Heapsort) <b>when the recursion goes too deep</b>. From the standard:
     * The order of equal elements is not guaranteed to be preserved.
-    * Complexity: <b><i>O</i>(<i>n log n</i>)</b> comparisons.
+    * Complexity: <b>O(<i>n log n</i>)</b> comparisons.
 
 * `std::stable_sort` is most likely to use [MergeSort](http://en.wikipedia.org/wiki/Merge_sort), because of the stability requirement. However note that MergeSort <b>requires extra space in order to be efficient</b>. From the standard:
     * The order of equal elements is guaranteed to <b>be preserved</b>.
@@ -18,11 +18,11 @@
 ## [정렬 알고리즘 종류 (Comparison Sort)](https://en.wikipedia.org/wiki/Sorting_algorithm#Comparison_of_algorithms)
 |정렬 알고리즘|시간복잡도:최선|시간복잡도:평균|시간복잡도:최악|필요메모리|
 |-------------|----|----|----|-|
-|Bubble Sort|<b><i>O</i>(<i>n</i>)</b>|<b><i>O</i>(<i>n</i><sup>2</sup>)</b>|<b><i>O</i>(<i>n</i><sup>2</sup>)</b>|<b><i>O</i>(1)</b>|
-|Quick Sort|<b><i>O</i>(<i>n log n</i>)</b>|<b><i>O</i>(<i>n log n</i>)</b>|<b><i>O</i>(<i>n</i><sup>2</sup>)</b>|<b><i>O</i>(<i>log n</i>)</b>|
-|Merge Sort|<b><i>O</i>(<i>n log n</i>)</b>|<b><i>O</i>(<i>n log n</i>)</b>|<b><i>O</i>(<i>n log n</i>)</b>|<b><i>O</i>(<i>n<i>)</b>|
-|Heap Sort|<b><i>O</i>(<i>n log n</i>)</b>|<b><i>O</i>(<i>n log n</i>)</b>|<b><i>O</i>(<i>n log n</i>)</b>|<b><i>O</i>(1)</b>|
-* Quicksort is usually done in-place with <b><i>O</i>(<i>log n</i>)</b> stack space.
+|Bubble Sort|<b>O(<i>n</i>)</b>|<b>O(<i>n</i><sup>2</sup>)</b>|<b>O(<i>n</i><sup>2</sup>)</b>|<b>O(1)</b>|
+|Quick Sort|<b>O(<i>n log n</i>)</b>|<b>O(<i>n log n</i>)</b>|<b>O(<i>n</i><sup>2</sup>)</b>|<b>O(<i>log n</i>)</b>|
+|Merge Sort|<b>O(<i>n log n</i>)</b>|<b>O(<i>n log n</i>)</b>|<b>O(<i>n log n</i>)</b>|<b>O(<i>n<i>)</b>|
+|Heap Sort|<b>O(<i>n log n</i>)</b>|<b>O(<i>n log n</i>)</b>|<b>O(<i>n log n</i>)</b>|<b>O(1)</b>|
+* Quicksort is usually done in-place with <b>O(<i>log n</i>)</b> stack space.
 
 
 ### 정렬 알고리즘 성능 분석
@@ -186,7 +186,7 @@ int main(void)
 ## 기타 정렬 (Non-comparison Sort)
 ###  Counting Sort (계수 정렬)
 * 대상 간 비교를 직접 하지 않음
-* 비교해야 할 대상 수가 <i>n</i>이고, 대상의 범위가 <i>k</i>일 때, 시간복잡도는 <b><i>O</i>(<i>n</i>+<i>k</i>)</b>이고 공간복잡도는 <b><i>O</i>(<i>n</i>+<i>k</i>)</b>
+* 비교해야 할 대상 수가 <i>n</i>이고, 대상의 범위가 <i>k</i>일 때, 시간복잡도는 <b>O(<i>n</i>+<i>k</i>)</b>이고 공간복잡도는 <b>O(<i>n</i>+<i>k</i>)</b>
 * 정렬하는 대상이 특정 범위 내에 있을 경우 굉장히 효율적인 방법이지만, 범위가 특정하지 않거나 범위가 너무 넓을 경우 불필요한 메모리 낭비가 발생함
     * 정렬 대상이 8, 2, 1, 4, 64, 128일 경우, 빈도를 기록할 배열의 크기는 128
     * 정렬 대상 안에 10,000,000와 같이 큰 수가 포함되어 있다면, 배열의 크기는 최소 10,000,000 이상이여야 함
@@ -229,7 +229,7 @@ int main(void)
 ```
     
 ### 연습문제
-* [[BOJ] 수 정렬하기 3](https://www.acmicpc.net/problem/10989) [(소스코드)](./src/exer2.cpp) - 공간복잡도를 <b><i>O</i>(<i>k</i>)</b>로 절약한 예
+* [[BOJ] 수 정렬하기 3](https://www.acmicpc.net/problem/10989) [(소스코드)](./src/exer2.cpp) - 공간복잡도를 <b>O(<i>k</i>)</b>로 절약한 예
 ###### Memory: 2,060 KB, Time: 1,600 ms
 ```c++
 // https://www.acmicpc.net/problem/10989
@@ -268,7 +268,7 @@ int main(void)
 
 ### Radix Sort (기수 정렬)
 * 대상 간 비교를 직접 하지 않음
-* 비교해야 할 대상 수가 <i>n</i>이고, 기수(radix)의 수가 <i>l</i>, 대상의 범위가 <i>k</i>일 때, 시간복잡도는 <b><i>O</i>(<i>l</i>×(<i>n</i>+<i>k</i>))</b>이고 공간복잡도는 <b><i>O</i>(<i>n</i>+<i>k</i>)</b>
+* 비교해야 할 대상 수가 <i>n</i>이고, 기수(radix)의 수가 <i>l</i>, 대상의 범위가 <i>k</i>일 때, 시간복잡도는 <b>O(<i>l</i>×(<i>n</i>+<i>k</i>))</b>이고 공간복잡도는 <b>O(<i>n</i>+<i>k</i>)</b>
 * 기수 크기만큼의 메모리가 추가로 필요함  
 
 ### [소스코드](./src/exam4.cpp)
