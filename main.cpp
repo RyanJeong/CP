@@ -1,38 +1,33 @@
-// https://www.acmicpc.net/problem/10775
+// https://www.acmicpc.net/problem/3830
 #include <bits/stdc++.h>
 
 using namespace std;
 
 int find(int);
-void merge(int, int);
+void merge(int, int, int);
 
 vector<int> parent;
+vector<long long> diff;
 
 int main(void) 
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int g;
-    cin>>g;
-    for (int i = 0; i<=g; ++i) {
-        parent.push_back(i);
-    }
+    while (1) {
+        int n, m;
+        cin>>n>>m;
+        if (!n && !m) {
+            break;
+        }
+        parent=vector<int>(n+1);
+        for (int i = 1; i<=n; ++i) {
+            parent[i]=i;
+        }
+        for (int i = 1; i<=m; ++i) {
 
-	int p;
-	cin>>p;
-	int res=0;
-    for (int i = 1; i<=p; ++i) {
-        int gate;
-		cin>>gate;
-		int cur = find(gate);
-		if (!cur) {
-			break;
-		}
-		merge(cur,cur-1);
-		++res;
+        }
     }
-	cout << res;
 
     return 0;
 }
@@ -43,19 +38,19 @@ int find(int u)
         
         return u;
     }
+    int p_u = find(parent[u]);
+    diff[u]+=diff[parent[u]];
 
-    return parent[u]=find(parent[u]);
+    return parent[u]=p_u
 }
 
-void merge(int u, int v)
+void merge(int u, int v, int w)
 {
-    u=find(u); 
-    v=find(v); 
-    if (u==v) {
+    if (find(u)==find(v)) {
         
         return; 
     }
-    parent[u]=v;
+    parent[find(v)]=find(u);
 
     return;
 }
