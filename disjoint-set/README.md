@@ -2,10 +2,11 @@
 
 ## 서로소 집합
 * 추천 문제
-    * [[WIP][BOJ] Gates](https://www.acmicpc.net/problem/10775) [(소스코드)](./src/gate.cpp)
-    * [[BOJ] Virtual Friends](https://www.acmicpc.net/problem/4195) [(소스코드)](./src/virtual_friend.cpp)
+    * [[BOJ] Gates](https://www.acmicpc.net/problem/10775) [(소스코드)](./src/gate.cpp) - Rank(level)를 사용하지 않고 조건에 맞게 `union` 수행
+    * [[BOJ] Virtual Friends](https://www.acmicpc.net/problem/4195) [(소스코드)](./src/virtual_friend.cpp) - `hash` 사용
     * [[WIP][BOJ] 비용](https://www.acmicpc.net/problem/2463) [(소스코드)](./src/cost.cpp)
-    * [[WIP][BOJ] LADICE](https://www.acmicpc.net/problem/9938) [(소스코드)](./src/ladice.cpp)
+    * [[WIP][BOJ] Never Wait for Weights](https://www.acmicpc.net/problem/3830) [(소스코드)](./src/weight.cpp)
+    * [[BOJ] LADICE](https://www.acmicpc.net/problem/9938) [(소스코드)](./src/ladice.cpp) - Rank(level) compression을 사용하지 않고, 방문 여부에 따라 `union`을 수행
 
 
 * 서로소(disjoint)

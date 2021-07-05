@@ -1,4 +1,4 @@
-// https://www.acmicpc.net/problem/9938
+// https://www.acmicpc.net/problem/10775
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -6,46 +6,33 @@ using namespace std;
 int find(int);
 void merge(int, int);
 
-vector<int> parent, level;
+vector<int> parent;
 
 int main(void) 
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int n;
-    cin>>n;
-    int l;
-    cin>>l;
-    vector<bool> is_used(l+1,false);
-    parent=vector<int>(l+1);
-    for (int i = 1; i<=l; ++i) {
-        parent[i]=i;
+    int g;
+    cin>>g;
+    for (int i = 0; i<=g; ++i) {
+        parent.push_back(i);
     }
-    level=vector<int>(l+1,1);
-    while (n--) {
-        int a, b;
-        cin>>a>>b;
-        if (!is_used[a]) {
-            is_used[a]=true;
-            merge(a,b);
-        }
-        else if (!is_used[b]) {
-            is_used[b]=true;
-            merge(b,a);
-        }
-        else if (!is_used[find(a)]) {
-            is_used[find(a)]=true;
-            merge(a,b);
-        }
-        else if (!is_used[find(b)]) {
-            is_used[find(b)]=true;
-            merge(b,a);
-        }
-        else {
-            cout << "SMECE" << '\n';
-        }
+
+	int p;
+	cin>>p;
+	int res=0;
+    for (int i = 1; i<=p; ++i) {
+        int gate;
+		cin>>gate;
+		int cur = find(gate);
+		if (!cur) {
+			break;
+		}
+		merge(cur,cur-1);
+		++res;
     }
+	cout << res;
 
     return 0;
 }
@@ -62,20 +49,13 @@ int find(int u)
 
 void merge(int u, int v)
 {
-    cout << "LADICA" << '\n';
     u=find(u); 
     v=find(v); 
     if (u==v) {
         
         return; 
     }
-    if (level[u]>level[v]) {
-        swap(u,v); 
-    }
     parent[u]=v;
-    if (level[u]==level[v]) {
-        ++level[v]; 
-    }
 
     return;
 }
