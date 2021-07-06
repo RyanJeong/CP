@@ -34,60 +34,152 @@ unsigned int factorial(unsigned int n)
 > In computer science, a tail call is a subroutine call <b>performed as the final action of a procedure</b>. If a tail call might lead to the same subroutine being called again later in the call chain, the subroutine is said to be tail-recursive, which is a special case of recursion. Tail recursion (or tail-end recursion) is particularly useful, and often easy to handle in implementations.
 
 * 재귀 호출은 구현상 간결하다는 이점이 있지만, 재귀가 깊어짐에 따라 스택 영역 메모리를 사용하게 됨
-* 꼬리 재귀를 사용하면 스택 영역 메모리를 
+    * 재귀 함수가 호출될 때마다 새로운 스택 프레임을 만들어 사용
+    ```c++
+    // normal recursion:
+
+        factorial(10);
+        ...
+
+    unsigned int factorial(unsigned int n)
+    {
+        if (n<=1) {
+
+            return 1;
+        }
+        else {
+
+            return n*factorial(n-1);
+        }
+    }
+    ```
+    * Stack frame of the function when argument is 4:<br>
+    `factorial(4):(4*factorial(3))`<br>
+    `factorial(4):(4*factorial(3))`→`factorial(3):(3*factorial(2))`<br>
+    `factorial(4):(4*factorial(3))`→`factorial(3):(3*factorial(2))`→`factorial(2):(2*factorial(1))`<br>
+    `factorial(4):(4*factorial(3))`→`factorial(3):(3*factorial(2))`→`factorial(2):(2*factorial(1))`→`factorial(1):(1)`<br>
+    `factorial(4):(4*factorial(3))`→`factorial(3):(3*factorial(2))`→`factorial(2):(2*1)`<br>
+    `factorial(4):(4*factorial(3))`→`factorial(3):(3*2*1)`<br>
+    `factorial(4):(4*3*2*1)`<br>
+
+* 꼬리 재귀를 사용하면 스택 영역 메모리를 일정 크기만 사용하게 됨
+    * 꼬리 재귀는 처음 함수가 호출될 때 생성된 스택 프레임을 종료될 때까지 사용
+    ```c++
+    // tail recursion
+
+        factorial(10);
+        ...
+
+    unsigned int factorial(unsigned int n)
+    {
+        return fact(n,1);
+    }
+    
+    unsigned int fact(unsigned int n, unsigned int result)
+    {
+        if (n<=1) {
+
+            return result;
+        }
+        else {
+
+            return fact(n-1,n*result);
+        }
+    }
+    ```
+    * Stack frame of the function when argument is 4:<br>
+    * Stack frame of the function when argument is 4:<br>
+    `factorial(4, 1):(factorial(3, 4))`<br>
+    `factorial(3, 4):(factorial(2,12))`<br>
+    `factorial(2,12):(factorial(1,24))`<br>
+    `factorial(1,24):(24)`<br>
+
+    * `fact` 함수는 컴파일러에 의해 아래와 같이 최적화
+    ```c++
+    // goto
+    unsigned int fact(unsigned int n, unsigned int result)
+    {
+    BEGINNING:
+        if (n<=1) {
+            
+            return result;
+        }
+        else {
+            result*=n;
+            --n;
+            goto BEGINNING;
+        }
+    }
+    ```
+    ```c++
+    // while
+    unsigned int fact(unsigned int n, unsigned int result)
+    {
+        while (n) {
+            result*=n;
+            --n;
+        }
+
+        return result;
+    }
+    ```
 
 ### 연습문제
-* [[BOJ] 로마 숫자 만들기](https://www.acmicpc.net/problem/16922) - `stack`을 이용한 DFS
-    * <b>시간 초과</b>
-###### TLE(Time Limit Exceeded)
+* [[BOJ] EKO](https://www.acmicpc.net/problem/2805) [(소스코드)](./src/eko.cpp) - 꼬리재귀 형태로 함수 작성 
+###### Memory: 5,928 KB, Time: 248 ms
 ```c++
-// https://www.acmicpc.net/problem/16922
+// https://www.acmicpc.net/problem/2805
 #include <bits/stdc++.h>
 
 using namespace std;
+
+void rec(int, int, int); // low, high, target
+
+vector<int> v;
 
 int main(void)
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    const int add[] = {1,5,10,50};
-    static bool is_used[50*20+1];
-    int count = 0;
-    int n;
-    cin>>n;
+	int n, m;
+	cin>>n>>m;
+	v=vector<int>(n);
+	for (int i = 0; i<n; ++i) {
+		cin>>v[i];
+	}
+	sort(v.begin(),v.end());
+	rec(0,v.back(),m);
 
-    stack<pair<int, int>> s; // step, num
-    s.push({0,0});
-    while(!s.empty()) {
-        auto cur = s.top();
-        s.pop();
-
-        for (int d = 0; d<4; ++d) {
-            int step = cur.first+1;
-            int num = cur.second+add[d];
-
-            if (step==n) {
-                if (is_used[num]) {
-                    continue;
-                }
-                ++count;
-                is_used[num]=true;
-            }
-            else {
-                s.push({step,num});
-            }
-        }
-    }
-    cout << count;
-
-    return 0;
+	return 0;
 }
-```
 
-* [[BOJ] 로마 숫자 만들기](https://www.acmicpc.net/problem/16922) - 꼬리 재귀를 이용한 DFS
-###### Memory: KB, Time: ms
-```c++
+void rec(int low, int high, int target)
+{
+	if (low>high) {
+		cout << high;
+
+		return;
+	}
+	int mid = (low+high)/2;
+	long long total = 0;
+	for (int t : v) {
+		if (t>mid) {
+			total+=t-mid;
+		}
+	}
+	if (total==target) {
+		cout << mid;
+
+		return;
+	}
+	else if (total>target) {
+		rec(mid+1,high,target);
+	}
+	else {
+		rec(0,mid-1,target);
+	}
+}
 ```
 
 ---

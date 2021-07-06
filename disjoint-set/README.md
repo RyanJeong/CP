@@ -80,6 +80,7 @@ void merge(int u, int v)
 
 ### 연습문제
 * [[BOJ] 집합의 표현](https://www.acmicpc.net/problem/1717) [(소스코드)](./src/set.cpp)
+###### Memory: 12,520 KB, Time: 60 ms
 ```c++
 // https://www.acmicpc.net/problem/1717
 #include <bits/stdc++.h>
@@ -152,6 +153,7 @@ void merge(int u, int v)
 ```
 
 * [[BOJ] 여행 가자](https://www.acmicpc.net/problem/1976) [(소스코드)](./src/travel.cpp)
+###### Memory: 2,024 KB, Time: 0 ms
 ```c++
 // https://www.acmicpc.net/problem/1976
 #include <bits/stdc++.h>

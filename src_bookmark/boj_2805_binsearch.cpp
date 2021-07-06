@@ -26,6 +26,10 @@ int main(void)
 
 void rec(int low, int high, int target)
 {
+	// total의 수가 많아 mid를 늘리는 과정 중에
+	// low가 high를 벗어나는 경우이므로, 
+	// high 값이 문제에서 요구하는
+	// 가장 근접한 값이 됨
 	if (low>high) {
 		cout << high;
 
