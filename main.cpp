@@ -1,4 +1,10 @@
 // https://www.acmicpc.net/problem/12877
+// ex. n=3
+// 각 그룹은 경우의 수를 나타냄
+//   2(2A)        5(2B)        8(2C)
+//   /   \        /   \        /   \
+// 6(3B) 7(1C)  1(1A) 9(3C)  3(3A) 4(1B)
+
 #include <bits/stdc++.h>
 
 using namespace std;
