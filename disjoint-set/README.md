@@ -237,5 +237,5 @@ void merge(int u, int v)
 ```
 
 ---
-|[이전 - String](/string/)|[목록](https://github.com/RyanJeong/CP#index)|[다음 - Mathematics:](/math/)
+|[이전 - String](/string/)|[목록](https://github.com/RyanJeong/CP#index)|다음 - 없음|
 |-|-|-|

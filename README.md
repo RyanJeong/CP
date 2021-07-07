@@ -9,7 +9,7 @@ Resources for competitive programming
 	* [HackerRank](https://www.hackerrank.com/dashboard/)
 
 ## Algorithm
-* [Template](/template/)
+* [Intro.](/intro/)
 * [Array](/array/)
 * [STL - Container Classes:](/stl/)
     * Sequence Container
@@ -33,10 +33,14 @@ Resources for competitive programming
 * [[WIP]Two Pointer](/two_pointer/)
 * [[WIP]String](/string/)
 * [Disjoint-set](/disjoint-set/)
-* [[WIP]Mathematics:](/math/)
+---
+* [[WIP]Mathematics](/math/)
 	* [[WIP] Permutation & Combination](#)
-* [[WIP]Simulations:](/simulation/)
+---
+* [[WIP]Simulation](/simulation/)
 	* [[WIP] [BOJ]CCTV](#)
+---
+* [[WIP]Library](/library/)
 
 ## Reference
 * [cppreference.com](https://en.cppreference.com/w/)
