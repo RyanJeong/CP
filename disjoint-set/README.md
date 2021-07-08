@@ -7,6 +7,7 @@
     * [[BOJ] 비용](https://www.acmicpc.net/problem/2463) [(소스코드)](./src/cost.cpp) - 거꾸로 생각하기!
     * [[BOJ] Never Wait for Weights](https://www.acmicpc.net/problem/3830) [(소스코드)](./src/weight.cpp)
     * [[BOJ] LADICE](https://www.acmicpc.net/problem/9938) [(소스코드)](./src/ladice.cpp) - Rank(level) compression을 사용하지 않고, 방문 여부에 따라 <i>union</i> 을 수행
+    * [[BOJ] 먹이 사슬](https://www.acmicpc.net/problem/12877) [(소스코드)](./src/food_chain.cpp) - 발생할 수 있는 경우의수를 모두 고려해 서로소 집합으로 풀이
 
 
 * 서로소(disjoint)

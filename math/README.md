@@ -5,3 +5,10 @@
 * 추천 문제
     * [조합](https://www.acmicpc.net/problem/2407)
     * [큰 수 곱셈](https://www.acmicpc.net/problem/13277)
+
+## 기하학
+* [[BOJ] 선분 교차 1](https://www.acmicpc.net/problem/17386)
+* [[BOJ] 선분 교차 2](https://www.acmicpc.net/problem/17387)
+* [[BOJ] 선분 교차 3](https://www.acmicpc.net/problem/20149)
+* [[BOJ] 선분 교차 4](https://www.acmicpc.net/problem/20150)
+* [[BOJ] 선분 교차 5](https://www.acmicpc.net/problem/20151)
