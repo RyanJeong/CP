@@ -1,4 +1,4 @@
-// https://www.acmicpc.net/problem/14442
+// https://www.acmicpc.net/problem/16946
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -8,61 +8,104 @@ int main(void)
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-	static int dist[1001][1001][10]; // 0, 1 ~ 1000, OOB, cnt(0~k-1)
-	static string arr[1001];
-	int n, m, k;
-    cin>>n>>m>>k;
+    vector<vector<bool>> is_visited;
+    vector<vector<char>> arr;
+	int n, m;
+    cin>>n>>m;
+    is_visited=vector<vector<bool>>(n+1,vector<bool>(m+1,false));
+    arr=vector<vector<char>>(n+1,vector<char>(m+1));
     for (int i = 1; i<=n; ++i) {
-        cin>>(arr[i].begin()+1);
+        for (int j = 1; j<=m; ++j) {
+            cin>>arr[i][j];
+        }
     }
 
     const int dx[] = {1,0,-1,0};
     const int dy[] = {0,-1,0,1};
-    queue<pair<pair<int, int>, int>> q;
-    q.push({make_pair(1,1),0}); // {x,y}, cnt_wall_removed
-    dist[1][1][0]=1;
-	int res = 0;
-	bool is_possible = false;
-    while (!q.empty()) {
-        auto cur = q.front();
-        q.pop();
-        int cur_x = cur.first.first;
-        int cur_y = cur.first.second;
-        int cnt = cur.second;
+    vector<vector<int>> area_map(n+1,vector<int>(m+1,-1));
+    vector<int> area_size;
+    int area = 0;
+    queue<pair<int, int>> q;
+    for (int i = 1; i<=n; ++i) {
+        for (int j = 1; j<=m; ++j) {
+            if (arr[i][j]=='0') {
+                is_visited[i][j]=true;
+                q.push({i,j});
+                area_map[i][j]=area;
+                int size = 0;
+                while (!q.empty()) {
+                    auto cur = q.front();
+                    q.pop();
 
-        if (cur_x==n && cur_y==m) {
-			res=dist[cur_x][cur_y][cnt];	
-			is_possible=true;
-			break;
-        }
-        for (int d = 0; d<4; ++d) {
-            int x = cur_x+dx[d];
-            int y = cur_y+dy[d];
-
-            if (x<1 || x>n) {
-                continue;
-            }
-            if (y<1 || y>m) {
-                continue;
-            }
-            if (dist[x][y][cnt]) {
-                continue;
-            }
-            if (arr[x][y]=='0') {
-                dist[x][y][cnt]=dist[cur_x][cur_y][cnt]+1;
-                q.push({make_pair(x,y),cnt});
-				cout << cur_x << ' ' << cur_y << ' ' << cnt << '>'
-				<< x << ' ' << y << ' ' << cnt << '\n';
-            }
-            if (arr[x][y]=='1' && cnt<k) { // wall exists on the position
-                dist[x][y][cnt+1]=dist[cur_x][cur_y][cnt]+1;
-                q.push({make_pair(x,y),cnt+1});
-				cout << cur_x << ' ' << cur_y << ' ' << cnt << '>'
-				<< x << ' ' << y << ' ' << cnt+1 << '\n';
+                    ++size;
+                    for (int d = 0; d<4; ++d) {
+                        int x = cur.first+dx[d];
+                        int y = cur.second+dy[d];
+                    
+                        if (x<1 || x>n) {
+                            continue;
+                        }
+                        if (y<1 || y>m) {
+                            continue;
+                        }
+                        if (arr[x][y]!='0' || is_visited[x][y]) {
+                            continue;
+                        }
+                        is_visited[x][y]=true;
+                        q.push({x,y});
+                        area_map[x][y]=area;
+                    }
+                }
+                area_size.push_back(size);
             }
         }
     }
-	cout << ((is_possible) ? res : -1);
+
+    for (int i = 1; i<=n; ++i) {
+        for (int j = 1; j<=m; ++j) {
+            cout << area_map[i][j] << ' ';
+        }
+        cout << '\n';
+    }
+
+
+/*
+    for (int i = 1; i<=n; ++i) {
+        for (int j = 1; j<=m; ++j) {
+            if (arr[i][j]=='1') {
+                set<int> s;
+
+                for (int d = 0; d<4; ++d) {
+                    int x = i+dx[d];
+                    int y = i+dy[d];
+                
+                    if (x<1 || x>n) {
+                        continue;
+                    }
+                    if (y<1 || y>m) {
+                        continue;
+                    }
+                    if (area_map[x][y]==-1) {
+                        continue;
+                    }
+                    s.insert(area_map[x][y]);
+                }
+                int cnt = 1;
+                for (int i : s) {
+                    cnt += area_size[i];
+                }
+                arr[i][j]=cnt+'0';
+            }
+        }
+    }
+
+    for (int i = 1; i<=n; ++i) {
+        for (int j = 1; j<=m; ++j) {
+            cout << arr[i][j];
+        }
+        cout << '\n';
+    }
+    */
 
     return 0;
 }

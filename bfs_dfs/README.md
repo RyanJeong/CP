@@ -1,6 +1,7 @@
-# BFS_DFS
+# BFS & DFS
 
 ## BFS(Breadth-first search)
+* <b>가중치가 없는 최단 경로 문제 풀이에는 BFS를 사용해야 함</b>
 * 시작 정점으로부터 근접한 정점 우선 방문
 * `queue` 사용
 * 추천 문제
