@@ -9,6 +9,7 @@
     * [[BOJ] 영역 구하기](https://www.acmicpc.net/problem/2583) [(소스코드)](./src/area.cpp)
     * [[BOJ] 토마토](https://www.acmicpc.net/problem/7576) [(소스코드)](./src/tomato.cpp)
     * [[BOJ] Elevator Trouble](https://www.acmicpc.net/problem/5014) [(소스코드)](./src/210615_elevator.cpp)
+    * [[BOJ] 벽 부수고 이동하기 4](https://www.acmicpc.net/problem/16946) [(소스코드)](./src/210709_wall4.cpp)
 
 ### 동작
 * 시작 정점을 `queue`에 넣고, 방문했음을 기록
