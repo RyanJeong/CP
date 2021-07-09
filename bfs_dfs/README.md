@@ -30,7 +30,7 @@
 * `queue`에 입력되는 정점은 시작 정점으로부터 거리 순임을 보장
 
 ### 연습문제
-* [[BOJ] 그림](https://www.acmicpc.net/problem/1926) - BFS 사용
+* [[BOJ] 그림](https://www.acmicpc.net/problem/1926) [(소스코드)](./src/canvas.cpp) - BFS 사용
 ###### Memory: 3,248 KB, Time: 24 ms
 ```c++
 // https://www.acmicpc.net/problem/1926
@@ -100,7 +100,7 @@ int main(void)
     return 0;
 }
 ```
-* [[BOJ] 점프 게임](https://www.acmicpc.net/problem/15558) - 단계 별 BFS 순회
+* [[BOJ] 점프 게임](https://www.acmicpc.net/problem/15558) [(소스코드)](./src/210628_jumping_game.cpp) - 단계 별 BFS 순회
 ###### Memory: 2,836 KB, Time: 4 ms
 ```c++
 // https://www.acmicpc.net/problem/15558
@@ -196,7 +196,7 @@ int main(void)
 * <b>다차원 배열에서의 flood fill은 BFS, DFS 둘 다 가능하지만, 다차원 배열에서의 최단경로 찾기는 BFS만 가능하므로, 다차원 배열에서의 순회 문제는 주로 BFS만 사용됨</b>
 
 ### 연습문제
-* [[BOJ] 그림](https://www.acmicpc.net/problem/1926) - DFS(stack) 사용
+* [[BOJ] 그림](https://www.acmicpc.net/problem/1926) [(소스코드)](./src/dfs_canvas.cpp) - DFS(stack) 사용
 ###### Memory: 4,312 KB, Time: 24 ms
 ```c++
 // https://www.acmicpc.net/problem/1926
@@ -266,7 +266,7 @@ int main(void)
     return 0;
 }
 ```
-* [[BOJ] 그림](https://www.acmicpc.net/problem/1926) - DFS(recursion) 사용
+* [[BOJ] 그림](https://www.acmicpc.net/problem/1926) [(소스코드)](./src/dfs_rec_canvas.cpp) - DFS(recursion) 사용
 ###### Memory: 14,840 KB, Time: 28 ms
 ```c++
 // https://www.acmicpc.net/problem/1926

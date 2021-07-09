@@ -33,14 +33,14 @@ int main(void)
             }
             int area = 0;
             ++n_picture;
-            queue<pair<int, int>> q;
-            q.push({i,j});
+            stack<pair<int, int>> s;
+            s.push({i,j});
             is_visited[i][j]=true;
             
-            while (!q.empty()) {
+            while (!s.empty()) {
                 ++area;
-                auto cur = q.front();
-                q.pop();
+                auto cur = s.top();
+                s.pop();
                 for (int d = 0; d<4; ++d) {
                     int x = cur.first+dx[d];
                     int y = cur.second+dy[d];
@@ -53,7 +53,7 @@ int main(void)
                     if (is_visited[x][y] || !arr[x][y]) {
                         continue;
                     }
-                    q.push({x,y});
+                    s.push({x,y});
                     is_visited[x][y]=true;
                 }
             }
