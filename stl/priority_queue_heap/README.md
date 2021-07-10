@@ -205,14 +205,16 @@ struct node {
 };
 
 struct cmp_less {
-    bool operator()(node s, node t){
+    bool operator()(node s, node t)
+    {
 
         return s.value<t.value;
     }
 };
 
 struct cmp_greater {
-    bool operator()(node s, node t){
+    bool operator()(node s, node t)
+    {
 
         return s.value>t.value;
     }
