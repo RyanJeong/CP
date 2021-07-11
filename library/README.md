@@ -1,6 +1,17 @@
 * 2차원 배열 전환
 ...
 
+* Outer Product
+```c++
+typedef pair<long long, long long> Point;
+
+long long outer_product(Point u, Point v)
+{
+
+    return u.first*v.second-u.second*v.first;
+}
+```
+
 * CCW
 ```c++
 // 1: ccw, -1: cw, 0: on the line
