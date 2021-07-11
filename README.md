@@ -36,12 +36,9 @@ Resources for competitive programming
 * [Disjoint-set](/disjoint-set/)
 ---
 * [[WIP]Mathematics](/math/)
-	* [[WIP] Permutation & Combination](#)
----
 * [[WIP]Simulation](/simulation/)
-	* [[WIP] [BOJ]CCTV](#)
----
 * [[WIP]Library](/library/)
+---
 
 ## Reference
 * [cppreference.com](https://en.cppreference.com/w/)

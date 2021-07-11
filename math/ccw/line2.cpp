@@ -1,16 +1,12 @@
-// https://www.acmicpc.net/problem/20149
+// https://www.acmicpc.net/problem/17387
 #include <bits/stdc++.h>
 
 using namespace std;
 
 /*
-    A-C-B-D
-    A-B C-D
-    A-(B,C)-D
-    A-(B,D)
-       /
-      C
-      ...
+    A-B     C-D, y=c
+    A-BC-D,     y=c
+    A-C=B-D
 */
 int is_ccw(pair<int, int>, pair<int, int>, pair<int, int>);
 
