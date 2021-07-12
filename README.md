@@ -31,7 +31,7 @@ Resources for competitive programming
 * [[WIP]Greedy](/greedy/)
 * [Sort](/sort/)
 * [[WIP]Binary Search](/binary_search/)
-* [[WIP]Two Pointer](/two_pointer/)
+* [Two Pointer](/two_pointer/)
 * [[WIP]String](/string/)
 * [Disjoint-set](/disjoint-set/)
 ---

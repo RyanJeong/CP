@@ -1,35 +1,32 @@
-// https://www.acmicpc.net/problem/1806
+// https://www.acmicpc.net/problem/2239
 #include <bits/stdc++.h>
 
 using namespace std;
 
-int arr[100'001];
+int arr[9][9];
+int row_cond[9]; // sum by row is 45
+int col_cond[9]; // sum by col is 45
+int sqr_cond[3][3]; // sum by sqr
+
+void bt(int, int);
 
 int main(void)
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int n, s;
-    cin>>n>>s;
-    for (int i = 1; i<=n; ++i) {
-        cin >> arr[i];
-    }
+	for (int i = 0; i<9; ++i) {
+		for (int j = 0; j<9; ++j) {
+			char c;
+			cin>>c;
+			arr[i][j]=c-'0';
+			row_cond[i]+=arr[i][j];
+			col_cond[j]+=arr[i][j];
+			sqr_cond[i/3][j/3]+=arr[i][j];
+		}
+		cin.ignore();
+	}
+	
 
-    int low  = 1;
-    int high = 1;
-    int sum = 0;
-    int len = 2e9;
-    while (high<=n) {
-        if (sum<s) {
-            sum+=arr[high++];
-        }
-        else {
-            len=min(len,high-low);
-            sum-=arr[low++];
-        }
-    }
-    cout << ((len==2e9) ? 0 : len);
-
-    return 0;
+	return 0;
 }
