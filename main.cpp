@@ -1,6 +1,5 @@
 // https://www.acmicpc.net/problem/16920
-// double ceil (double x);
-// Rounds x upward, returning the smallest integral value that is not less than x.
+// https://codeforces.com/contest/1105/problem/D
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -43,9 +42,8 @@ int main(void)
 			turn[cur.first][cur.second]=1;
 			arr[cur.first][cur.second]=i;
 		}
+        int t = 1;
 		for (int j = 1; !q.empty(); ++j) {
-			// TODO: 10^9.. ceil?
-			int t = ceil((double) j/(double) mv);	
 			int cnt = q.size();
 			while (cnt--) {
 				auto cur = q.front();
@@ -72,6 +70,10 @@ int main(void)
 					arr[x][y]=i;
 				}
 			}
+            // 1 2 3 4 5 ...
+            // 1 1 2 2 3 ...
+            // 1 1 1 2 2 ...
+            t+=((j%mv) ? 0 : 1);
 		}
 	}
 	static int freq[10];
