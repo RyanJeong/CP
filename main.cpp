@@ -4,6 +4,20 @@
 
 using namespace std;
 
+struct Elem {
+	int _p;
+	int _x;
+	int _y;
+};
+
+struct Cmp {
+	bool operator()(Elem s, Elem t) 
+	{
+
+		return s._p>t._p;
+	}
+};
+
 int main(void)
 {
     ios::sync_with_stdio(false);
@@ -11,77 +25,78 @@ int main(void)
 
     int n, m, p;
     cin>>n>>m>>p;
-    static int movement[10];
+    int movement[10];
     for (int i = 1; i<=p; ++i) {
         cin>>movement[i];
     }
     static char arr[1001][1001];
-    vector<pair<int, int>> v[p+1];
+	static int freq[10];
+	priority_queue<Elem, vector<Elem>, Cmp> pq;
     for (int i = 1; i<=n; ++i) {
         for (int j = 1; j<=m; ++j) {
-			char& c = arr[i][j];
+			char c;
 			cin>>c;
 			if (isdigit(c)) {
-				c-='0';
-				v[(int) c].push_back({i,j});
+				int p = c-'0';
+				pq.push({p,i,j});
+				++freq[p];
+				arr[i][j]=p;
+			}
+			else {
+				arr[i][j]=c;
 			}
         }
         cin.ignore();
     }
 
-	static int turn[1001][1001];
-	for (int i = 1; i<=p; ++i) {
-		const int dx[] = {1,0,-1,0};
-		const int dy[] = {0,-1,0,1};
-		int mv = movement[i];
-		queue<pair<int, int>> q;
-		while (!v[i].empty()) {
-			auto cur = v[i].back();
-			v[i].pop_back();
-			q.push({cur.first,cur.second});
-			turn[cur.first][cur.second]=1;
-			arr[cur.first][cur.second]=i;
-		}
-        int t = 1;
-		for (int j = 1; !q.empty(); ++j) {
-			int cnt = q.size();
-			while (cnt--) {
-				auto cur = q.front();
-				q.pop();
+	while (!pq.empty()) {
+		priority_queue<Elem, vector<Elem>, Cmp> temp;
+		for (int i = 1; i<=p; ++i) {
+			queue<pair<int, int>> q;
+			while (!pq.empty()) {
+				if (pq.top()._p!=i) {
+					break;
+				}
+				auto cur = pq.top();
+				pq.pop();
+				q.push({cur._x,cur._y});
+			}
+			for (int mv = movement[i]; !q.empty() && mv; --mv) {
+				int cnt = q.size();
+				while (cnt--) {
+					auto cur = q.front();
+					q.pop();
 
-				for (int d = 0; d<4; ++d) {
-					int x = cur.first+dx[d];
-					int y = cur.second+dy[d];
+					for (int d = 0; d<4; ++d) {
+						const int dx[] = {1,0,-1,0};
+						const int dy[] = {0,-1,0,1};
+						int x = cur.first+dx[d];
+						int y = cur.second+dy[d];
 
-					if (x<1 || x>n) {
-						continue;
+						if (x<1 || x>n) {
+							continue;
+						}
+						if (y<1 || y>m) {
+							continue;
+						}
+						if (arr[x][y]!='.') {
+							continue;
+						}
+						arr[x][y]=i;
+						q.push({x,y});
+						++freq[i];
 					}
-					if (y<1 || y>m) {
-						continue;
-					}
-					if (arr[x][y]==i || arr[x][y]=='#') {
-						continue;
-					}
-					if (arr[x][y]!='.' && turn[x][y]<=t) {
-						continue;
-					}
-					q.push({x,y});
-					turn[x][y]=t;
-					arr[x][y]=i;
 				}
 			}
-            // 1 2 3 4 5 ...
-            // 1 1 2 2 3 ...
-            // 1 1 1 2 2 ...
-            t+=((j%mv) ? 0 : 1);
+			while (!q.empty()) {
+				auto cur = q.front();
+				q.pop();
+				temp.push({i,cur.first,cur.second});
+			}
 		}
+		pq=temp;
 	}
-	static int freq[10];
-	for (int i = 1; i<=n; ++i) {
-		for (int j = 1; j<=m; ++j) {
-			++freq[(int) arr[i][j]];
-		}
-	}
+
 	for (int i = 1; i<=p; ++i) {
 		cout << freq[i] << ' ';
 	}
