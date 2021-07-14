@@ -1,4 +1,10 @@
 # Recursion
+* 추천 문제
+    * [[BOJ] 곱셈](https://www.acmicpc.net/problem/1629) [(소스코드)](./src/mul.cpp)
+    * [[BOJ] 하노이 탑 이동 순서](https://www.acmicpc.net/problem/11729) [(소스코드)](./src/hanoi.cpp)
+    * [[BOJ] Z](https://www.acmicpc.net/problem/1074) [(소스코드)](./src/z.cpp)
+
+## 재귀 (Recursion)
 * 자신을 정의할 때 자기 자신을 재참조하는 방법
 * 수학적 귀납법에서 사용되는 논리 전개 방식이 재귀 함수 구현에 그대로 적용됨
     * [유한 귀납법](https://namu.wiki/w/%EC%88%98%ED%95%99%EC%A0%81%20%EA%B7%80%EB%82%A9%EB%B2%95#s-1.1)

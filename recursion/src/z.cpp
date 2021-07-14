@@ -1,4 +1,4 @@
-// http://icpc.me/1074
+// https://www.acmicpc.net/problem/1074
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -11,7 +11,6 @@ int main(void)
     cin.tie(NULL);
 
     int n, r, c;
-
     cin>>n>>r>>c;
     cout << rec(n,r,c);
 
@@ -26,7 +25,6 @@ int rec(int n, int r, int c)
     }
 
     int half = 1<<(n-1);
-
     if (r<half && c<half) {
 
         return rec(n-1,r,c);

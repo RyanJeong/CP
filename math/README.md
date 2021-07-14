@@ -1,7 +1,121 @@
 # Mathematics
-## [Index](#index)
+## Index
+* [Modulo](#modulo)
 * [Outer Product](#outer-product)
 * [Permutation and Combination](#permutation-and-combination)
+---
+
+## Modulo
+* 추천 문제
+    * [[BOJ] 곱셈](https://www.acmicpc.net/problem/1629) [(소스코드)](./modulo/mul.cpp)
+* Given <b>two positive numbers</b> <i>a</i> and <i>n</i>, <i>a</i> modulo <i>n</i> (abbreviated as <i>a</i> <b>mod</b> <i>n</i>) is the remainder of the Euclidean division of <i>a</i> by <i>n</i>, where <i>a</i> is the <b>dividend</b> and <i>n</i> is the <b>divisor</b>. 
+* The range of numbers for an integer modulo of <i>n</i> is 0 to <i>n</i> − 1 inclusive (<i>a</i> <b>mod</b> 1 is always 0; <i>a</i> <b>mod</b> 0 is <b>undefined</b>, possibly resulting in <b>a division by zero error</b> in some programming languages).
+
+### Distributive Property
+#### Modular Addition 
+`(A + B) mod C = (A mod C + B mod C) mod C`
+```c++
+    int A = 14;
+    int B = 17;
+    int C = 5;
+
+    // operator precedence
+    // * / % -> + -
+    cout << (A+B)%C << '\n'; // 1
+    cout << (A%C+B%C)%C << '\n'; // 1
+```
+![modulo](./modulo/img/1.jpg)
+><b>(A + B) mod C = (A mod C + B mod C) mod C</b><br><br>
+<b>A</b> = C * Q1 + R1 where 0 ≤ R1 < C and Q1 is some integer. <b>A mod C = R1</b><br>
+<b>B</b> = C * Q2 + R2 where 0 ≤ R2 < C and Q2 is some integer. <b>B mod C = R2</b><br>
+<b>(A + B) = C * (Q1 + Q2) + R1+R2</b><br><br>
+<b>LHS</b> = (A + B) mod C<br>
+<b>LHS</b> = (C * (Q1 + Q2) + R1+ R2) mod C<br>
+We can eliminate the multiples of C when we take the mod C<br>
+<b>LHS = (R1 + R2) mod C</b><br><br>
+<b>RHS</b> = (A mod C + B mod C) mod C<br>
+<b>RHS = (R1 + R2) mod C</b><br><br>
+<b>LHS=RHS= (R1 + R2) mod C</b>
+
+#### Modular Subtraction
+`(A - B) mod C = (A mod C - B mod C) mod C`
+```c++
+    int A = 14;
+    int B = 11;
+    int C = 7;
+
+    // operator precedence
+    // * / % -> + -
+    cout << (A-B)%C << '\n'; // 3 
+    cout << (A%C-B%C)%C << '\n'; // -4
+    // a dividend can't be negative
+    // A%C: 0
+    // B%C: 4
+    // A%C-B%C: -4
+    // so, add a divisor
+    cout << (A%C-B%C+C)%C << '\n'; // 3
+```
+
+#### Modular Multiplication
+`(A * B) mod C = (A mod C * B mod C) mod C`
+```c++
+    int A = 4;
+    int B = 7;
+    int C = 6;
+
+    // operator precedence
+    // * / % -> + -
+    cout << (A*B)%C << '\n'; // 4
+    cout << (A%C*B%C)%C << '\n'; // 4
+```
+
+#### ~~Modular Multiplication~~(NOT allow)
+<br>
+
+### Fast Modular Exponentiation
+`A^2 mod C = (A * A) mod C = ((A mod C) * (A mod C)) mod C`
+>7<sup>1</sup> <b>mod</b> 13 = 7<br><br>
+7<sup>2</sup> <b>mod</b> 13<br>
+= (7<sup>1</sup> * 7<sup>1</sup>) <b>mod</b> 13<br>
+= (7<sup>1</sup> <b>mod</b> 13 * 7<sup>1</sup> <b>mod</b> 13) <b>mod</b> 13<br><br>
+7<sup>4</sup> <b>mod</b> 13<br>
+= (7<sup>2</sup> * 7<sup>2</sup>) <b>mod</b> 13<br>
+= (7<sup>2</sup> <b>mod</b> 13 * 7<sup>2</sup> <b>mod</b> 13) <b>mod</b> 13<br><br>
+...
+
+#### ex. 10<sup>11</sup> <b>mod</b> 12
+```c++
+#include <bits/stdc++.h>
+
+using namespace std;
+
+long long pow(long long, long long, long long);
+
+int main(void)
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    long long a, b, c;
+    cin>>a>>b>>c;
+    cout << pow(a,b,c);
+
+    return 0;
+}
+
+long long pow(long long a, long long b, long long c)
+{
+    if (b==1) {
+
+        return a%c;
+    }
+
+    long long val = pow(a,b/2,c);
+    val = val*val%c;
+
+    return (b&01) ? (val*a%c)%c : val;
+}
+```
 ---
 
 ## Outer Product

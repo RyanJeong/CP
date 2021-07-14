@@ -1,4 +1,4 @@
-// http://icpc.me/11729
+// https://www.acmicpc.net/problem/11729
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -12,22 +12,23 @@ int main(void)
 
     int k;
     cin>>k;
-
+    // 2^n-1
     cout << (1<<k)-1 << '\n';
     move(1,3,k);
 
     return 0;
 }
 
-void move(int a, int b, int n)
+void move(int from, int to, int n)
 {
     if (n==1) {
-        cout << a << ' ' << b << '\n';
+        cout << from << ' ' << to << '\n';
     } 
+    //a+b+c=6
     else {
-        move(a,6-a-b,n-1);
-        cout << a << ' ' << b << '\n';
-        move(6-a-b,b,n-1);
+        move(from,6-from-to,n-1);
+        cout << from << ' ' << to << '\n';
+        move(6-from-to,to,n-1);
     }
 
     return;
