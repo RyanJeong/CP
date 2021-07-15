@@ -1,46 +1,30 @@
-// https://www.acmicpc.net/problem/1074
+// https://www.acmicpc.net/problem/1463
 #include <bits/stdc++.h>
 
 using namespace std;
 
-int rec(int, int, int);
+// 1. set dp table
+int d[1'000'001]; // 0, 1 ~ 1,000,000
 
 int main(void)
 {
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
 
-    int n, r, c;
-    cin>>n>>r>>c;
-    cout << rec(n,r,c);
+	int n;
+	cin>>n;
+	d[1]=0;
 
-    return 0;
-}
+	for (int i = 2; i <= n; ++i) {
+		d[i] = d[i-1] + 1;
+		if (!(i % 2)) {
+			d[i] = min(d[i], d[i/2] + 1);
+		}
+		if (!(i % 3)) {
+			d[i] = min(d[i], d[i/3] + 1);
+		}
+	}
+	cout << d[n];
 
-int rec(int n, int r, int c)
-{
-    if (n==0) {
-
-        return 0;
-    }
-
-    int half = 1<<(n-1);
-    if (r<half && c<half) {
-
-        return rec(n-1,r,c);
-    } 
-    else if (r<half && c>=half) {
-
-        return half*half+rec(n-1,r,c-half);
-    } 
-    else if (r>=half && c<half) {
-
-        return 2*half*half+rec(n-1,r-half,c);
-    } 
-    else if (r>=half && c>=half) {
-
-        return 3*half*half+rec(n-1,r-half,c-half);
-    }
-
-    return -1;
+	return 0;
 }

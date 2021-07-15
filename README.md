@@ -5,7 +5,11 @@ Resources for competitive programming
 
 * Programming Contest Sites:
 	* [Baekjoon Online Judge](https://www.acmicpc.net/)
+		* Handle: [msjeong](https://www.acmicpc.net/user/msjeong)
+	* [Codeforces](https://codeforces.com/)
+		* Handle: [msjeong](https://codeforces.com/profile/msjeong)
 	* [AtCoder](https://atcoder.jp/)
+		* Handle: [msjeong](https://atcoder.jp/users/msjeong)
 	* [HackerRank](https://www.hackerrank.com/dashboard/)
     * [프로그래머스](https://programmers.co.kr/)
 
@@ -26,7 +30,7 @@ Resources for competitive programming
         * [Map](/stl/map/)
 * [BFS & DFS](/bfs_dfs/)
 * [Recursion](/recursion/)
-* [[WIP]Backtracking](/backtracking/)
+* [Backtracking](/backtracking/)
 * [[WIP]Dynamic Programming](/dp/)
 * [[WIP]Greedy](/greedy/)
 * [Sort](/sort/)
@@ -35,9 +39,9 @@ Resources for competitive programming
 * [[WIP]String](/string/)
 * [Disjoint-set](/disjoint-set/)
 ---
-* [[WIP]Mathematics](/math/)
-* [[WIP]Simulation](/simulation/)
-* [[WIP]Library](/library/)
+* [Mathematics](/math/)
+* [Simulation](/simulation/)
+* [Library](/library/)
 ---
 
 ## Reference
