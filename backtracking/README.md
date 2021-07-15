@@ -47,7 +47,7 @@ void bt(int s)
     for (int i = 1; i<=n; ++i) {
         if (!is_used[i]) {
             arr[s]=i;
-			// Go as deeply as possible, backtrack if impossible
+            // Go as deeply as possible, backtrack if impossible
             is_used[i]=true;
             bt(s+1);
             is_used[i]=false;

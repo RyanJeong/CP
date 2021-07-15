@@ -23,7 +23,7 @@ int main(void)
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-	static int arr[10'000];
+    static int arr[10'000];
     int n, m;
     cin>>n>>m;
     for (int i = 0; i<n; ++i) {
@@ -31,18 +31,18 @@ int main(void)
     }
 
     int res = 0;
-	for (int i = 0; i<n; ++i) {
-		int sum = 0;
-		for (int j = i; j<n; ++j) {
-			sum+=arr[j];
-			if (sum==m) {
-				++res;
-			}
-			else if (sum>m) {
-				break;
-			}
-		}
-	}
+    for (int i = 0; i<n; ++i) {
+        int sum = 0;
+        for (int j = i; j<n; ++j) {
+            sum+=arr[j];
+            if (sum==m) {
+                ++res;
+            }
+            else if (sum>m) {
+                break;
+            }
+        }
+    }
     cout << res;
 
     return 0;
@@ -62,7 +62,7 @@ int main(void)
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-	static int arr[10'000];
+    static int arr[10'000];
     int n, m;
     cin>>n>>m;
     for (int i = 0; i<n; ++i) {
@@ -73,22 +73,22 @@ int main(void)
     int high = 0;
     int res = 0;
     int sum = 0;
-	while (low<=high) {
+    while (low<=high) {
         if (sum>m) {
             sum-=arr[low++];
         } 
-		else {
+        else {
             if (sum==m) {
-				++res;
-			}
-			// 0 1 2 3 '4'
-			// if high point to '4' -> break!
-			if (high==n) {
-				break;
-			}
+                ++res;
+            }
+            // 0 1 2 3 '4'
+            // if high point to '4' -> break!
+            if (high==n) {
+                break;
+            }
             sum+=arr[high++];
-		}
-	}
+        }
+    }
     cout << res;
 
     return 0;

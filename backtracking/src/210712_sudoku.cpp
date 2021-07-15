@@ -20,28 +20,28 @@ int main(void)
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-	for (int i = 0; i<9; ++i) {
-		for (int j = 0; j<9; ++j) {
-			char c;
-			cin>>c;
-			arr[i][j]=c-'0';
+    for (int i = 0; i<9; ++i) {
+        for (int j = 0; j<9; ++j) {
+            char c;
+            cin>>c;
+            arr[i][j]=c-'0';
 
             // subsquare|row|col, digit
             is_used1[i/3][j/3][arr[i][j]]=true;
             is_used2[i][arr[i][j]]=true;
             is_used3[j][arr[i][j]]=true;
-		}
-		cin.ignore();
-	}
+        }
+        cin.ignore();
+    }
     bt(0,0);
-	for (int i = 0; i<9; ++i) {
-		for (int j = 0; j<9; ++j) {
+    for (int i = 0; i<9; ++i) {
+        for (int j = 0; j<9; ++j) {
             cout << arr[i][j];
         }
         cout << '\n';
     }
 
-	return 0;
+    return 0;
 }
 
 bool bt(int i, int j)

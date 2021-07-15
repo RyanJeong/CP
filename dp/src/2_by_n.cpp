@@ -1,9 +1,11 @@
-// http://icpc.me/11726
+// https://www.acmicpc.net/problem/11726
 #include <bits/stdc++.h>
 
 using namespace std;
 
-int d[1'002]; // 0, 1 ~ 1,000, OOB
+// 1. 테이블 설정
+// d[i]: 2xi 크기의 직사각형을 채우는 방법 수
+int d[1'001]; // 0, 1 ~ 1,000
 
 int main(void)
 {
@@ -12,11 +14,19 @@ int main(void)
 
     int n;
     cin>>n;
-    d[1] = 1;
-    d[2] = 2;
-
+    // 2. 초기치 설정
+    // 타일 종류: 1x2, 2x1
+    // 2x1: 1 (|)
+    // 2x2: 2 (|| or =)
+    d[1]=1;
+    d[2]=2;
     for (int i = 3; i<=n; ++i) {
-        d[i] = (d[i-1]+d[i-2])%10'007;
+        // 3. 점화식 설계
+        // 2x3  (d[n-1]) + |
+        //      (d[n-2]) + =
+        // 2x4: (d[n-1]) + |
+        //      (d[n-2]) + =
+        d[i]=(d[i-1]+d[i-2])%10'007;
     }
     cout << d[n];
 

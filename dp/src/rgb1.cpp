@@ -1,10 +1,13 @@
-// http://icpc.me/1149
+// https://www.acmicpc.net/problem/1149
 #include <bits/stdc++.h>
 
 using namespace std;
 
-int r[1'002], g[1'002], b[1'002];
-int d[1'002][3]; // weight, num
+// 1. 테이블 정의
+// d[i][j]
+// i번째 집을 j 색으로 칠할 때의 최소 비용
+int d[1'001][3];
+int r[1'001], g[1'001], b[1'001];
 
 int main(void)
 {
@@ -17,10 +20,12 @@ int main(void)
     for (int i = 1; i<=n; ++i) {
         cin>>r[i]>>g[i]>>b[i];
     }
+    // 2. 초기치 설정
     d[1][0]=r[1];
     d[1][1]=g[1];
     d[1][2]=b[1];
     for (int i = 2; i<=n; ++i) {
+        // 3. 점화식 설계
         d[i][0]=min(d[i-1][1],d[i-1][2])+r[i];
         d[i][1]=min(d[i-1][0],d[i-1][2])+g[i];
         d[i][2]=min(d[i-1][0],d[i-1][1])+b[i];

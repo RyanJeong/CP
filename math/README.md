@@ -1,8 +1,16 @@
 # Mathematics
 ## Index
+* [[WIP] Lucas Theorem](#)
 * [Modulo](#modulo)
 * [Outer Product](#outer-product)
-* [Permutation and Combination](#permutation-and-combination)
+* [[WIP] Permutation and Combination](#permutation-and-combination)
+
+###### [ALPHABETIZE TOOL](https://wordcounter.net/alphabetize)
+---
+
+## Lucas Theorem
+
+### [Top](#index)
 ---
 
 ## Modulo
@@ -116,6 +124,8 @@ long long pow(long long a, long long b, long long c)
     return (b&01) ? (val*a%c)%c : val;
 }
 ```
+
+### [Top](#index)
 ---
 
 ## Outer Product
@@ -147,7 +157,6 @@ long long pow(long long a, long long b, long long c)
 
 ### 다각형의 면접
 
-### [Top](#index)
 ![ccw](./ccw/img/3.png)
 ![ccw](./ccw/img/4.png)
 ---
