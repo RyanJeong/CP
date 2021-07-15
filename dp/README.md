@@ -321,7 +321,41 @@ int main(void)
 
 ```
 
-## [WIP] 누적합(Prefix Sum)
+## 누적합(Prefix Sum)
+* 추천 문제
+    * [[BOJ] 두 배열의 합](https://www.acmicpc.net/problem/2143) [(소스코드)](./src/prefix_sum_matrix.cpp)
+    * [[BOJ] 색종이 - 3](https://www.acmicpc.net/problem/2571) [(소스코드)](./src/prefix_sum_colored_paper.cpp)
+    * [[BOJ] 수열의 구간 평균](https://www.acmicpc.net/problem/19566) [(소스코드)](./src/prefix_sum_seq_avg.cpp)
+
+### 정의
+* 배열 안 요소의 값이 변하지 않는다면, 임의의 연속된 구간 내 요소들의 합을 기록해 필요할 때 이를 활용하는 기법
+* 크기가 <i>n</i>인 1차원 배열에서의 누적합 <i>s<sub>i</sub></i> :
+
+    ![prefix_sum](./img/prefix_sum_1.png)
+
+* 크기가 <i>n</i>인 1차원 배열에서의 임의의 연속된 구간 내 요소들의 합:
+
+    ![prefix_sum](./img/prefix_sum_2.png)
+
+* 크기가 <i>n</i>×<i>m</i>인 2차원 배열에서의 누적합 <i>s<sub>i,j</sub></i> :
+
+    ![prefix_sum](./img/prefix_sum_3.png)
+
+* 크기가 <i>n</i>×<i>m</i>인 2차원 배열에서의 임의의 연속된 구간 내 요소들의 합:
+
+    ![prefix_sum](./img/prefix_sum_4.png)
+
+### 연습문제
+* [[BOJ] 구간 합 구하기 4](https://www.acmicpc.net/problem/11659) [(소스코드)](./src/prefix_sum_1d.cpp) - 1차원 배열에서의 구간 합
+###### Memory: 5,928 KB, Time: 4 ms
+```c++
+```
+
+* [[BOJ] 구간 합 구하기 5](https://www.acmicpc.net/problem/11660) [(소스코드)](./src/prefix_sum_2d.cpp) - 2차원 배열에서의 구간 합
+###### Memory: 5,928 KB, Time: 4 ms
+```c++
+```
+
 ## [WIP] 최장 증가 부분수열(Longest Increasing Subsequence, LIS)
 ## [WIP] 최장 공통 부분수열(Longest Common Subsequencd, LCS)
 ## [WIP] 비트마스크를 이용한 동적 계획법(Bit DP)
