@@ -217,7 +217,7 @@ int main(void)
 
 * [[BOJ] 2×n 타일링](https://www.acmicpc.net/problem/11726) [(소스코드)](./src/2_by_n.cpp)
 ###### Memory: 2,020 KB, Time: 0 ms
-![dp](./img/1.png)
+![dp](./img/dp_1.png)
 ```c++
 // https://www.acmicpc.net/problem/11726
 #include <bits/stdc++.h>
