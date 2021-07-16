@@ -30,7 +30,6 @@ Resources for competitive programming
         * [Map](/stl/map/)
 * [BFS & DFS](/bfs_dfs/)
 * [Recursion](/recursion/)
-* [Backtracking](/backtracking/)
 * [Dynamic Programming](/dp/)
 * [[WIP]Greedy](/greedy/)
 * [Sort](/sort/)

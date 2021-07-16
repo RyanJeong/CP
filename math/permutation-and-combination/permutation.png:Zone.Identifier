@@ -1,0 +1,4 @@
+[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=http://mathurl.com/
+HostUrl=http://mathurl.com/render.cgi?%7B%7D_n%7B%5Crm%20P%7D_r%20%3D%20n%20%5Ctimes%20%28%20n-1%20%29%20%5Ctimes%20%28%20n-2%20%29%20%5Ctimes%20%5Ccdots%5Ccdots%20%5Ctimes%20%28%20n-r+1%20%29%20%0A%5Cnocache

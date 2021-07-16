@@ -347,13 +347,67 @@ int main(void)
 
 ### 연습문제
 * [[BOJ] 구간 합 구하기 4](https://www.acmicpc.net/problem/11659) [(소스코드)](./src/prefix_sum_1d.cpp) - 1차원 배열에서의 구간 합
-###### Memory: 5,928 KB, Time: 4 ms
+###### Memory: 2,800 KB, Time: 40 ms
 ```c++
+// https://www.acmicpc.net/problem/11659
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(void)
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    static int s[100'001]; // s[i] = s_i-1 + a_i
+    int n, m;
+    cin>>n>>m;
+    for (int i = 1; i<=n; ++i) {
+        int a;
+        cin>>a;
+        s[i]=s[i-1]+a;
+    }
+    while (m--) {
+        int i, j;
+        cin>>i>>j;
+        cout << s[j]-s[i-1] << '\n';
+    }
+
+    return 0;
+}
 ```
 
 * [[BOJ] 구간 합 구하기 5](https://www.acmicpc.net/problem/11660) [(소스코드)](./src/prefix_sum_2d.cpp) - 2차원 배열에서의 구간 합
-###### Memory: 5,928 KB, Time: 4 ms
+###### Memory: 6,124 KB, Time: 124 ms
 ```c++
+// https://www.acmicpc.net/problem/11660
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(void)
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    static int s[1025][1025]; // s[i][j] = a_i,j+s_i-1,j+s_i,j-1-s_i-1,j-1
+    int n, m;
+    cin>>n>>m;
+    for (int i = 1; i<=n; ++i) {
+        for (int j = 1; j<=n; ++j) {
+            int a;
+            cin>>a;
+            s[i][j]=a+s[i-1][j]+s[i][j-1]-s[i-1][j-1];
+        }
+    }
+    while (m--) {
+        int x1, y1, x2, y2;
+        cin>>x1>>y1>>x2>>y2;
+        cout << s[x2][y2]-s[x1-1][y2]-s[x2][y1-1]+s[x1-1][y1-1] << '\n';
+    }
+
+    return 0;
+}
 ```
 
 ## [WIP] 최장 증가 부분수열(Longest Increasing Subsequence, LIS)
@@ -384,5 +438,5 @@ int main(void)
 ```
 
 ---
-|[이전 - Backtracking](/backtracking/)|[목록](https://github.com/RyanJeong/CP#index)|[다음 - Greedy](/greedy/)|
+|[이전 - Recursion](/recursion/)|[목록](https://github.com/RyanJeong/CP#index)|[다음 - Greedy](/greedy/)|
 |-|-|-|

@@ -1,6 +1,6 @@
 # Mathematics
 ## Index
-* [[WIP] Lucas Theorem](#)
+* [[WIP] Lucas's Theorem](#lucas-s-theorem)
 * [Modulo](#modulo)
 * [Outer Product](#outer-product)
 * [[WIP] Permutation and Combination](#permutation-and-combination)
@@ -9,7 +9,7 @@
 ###### [ALPHABETIZE TOOL](https://wordcounter.net/alphabetize)
 ---
 
-## Lucas Theorem
+## Lucas's Theorem
 
 ### [Top](#index)
 ---
@@ -162,6 +162,89 @@ long long pow(long long a, long long b, long long c)
 ![ccw](./outer-product/img/4.png)
 ---
 ## Permutation and Combination
+### Permutation <b><i><sub>n</sub></i>P<i><sub>r</sub></i></b>
+
+![permutation](./permutation-and-combination/img/permu.png)
+```c++
+// https://www.acmicpc.net/problem/15654
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(void)
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    // nPm
+    int n, m;
+    cin>>n>>m;
+    vector<int> v;
+
+    for (int i = 0; i<n; ++i) {
+        int temp;
+        cin>>temp;
+
+        v.push_back(temp);
+    }
+    sort(v.begin(),v.end());
+
+    do {
+        for (int i = 0; i<m; ++i) {
+            cout << v[i] << ' ';
+        }
+        cout << '\n';
+        // 1 2 3 4 5 -> 1 2 5 4 3, 1 3 2 4 5 -> 1 3 5 4 2, ...
+        reverse(v.begin()+m,v.end());
+    } while (next_permutation(v.begin(),v.end()));
+
+    return 0;
+}
+```
+
+### Combination <b><i><sub>n</sub></i>C<i><sub>r</sub></i></b>
+
+![combination](./permutation-and-combination/img/combi.png)
+```c++
+// https://www.acmicpc.net/problem/15650
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(void)
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    // nCm
+    int n, m;
+    cin>>n>>m;
+    int arr[8];
+    for (int i = 0; i<n; ++i) {
+        arr[i]=i+1;
+    }
+    vector<int> v;
+
+    // next_permutation, 0 0 1 1 => 1 1 0 0
+    // prev_permutation, 1 1 0 0 => 0 0 1 1
+    for (int i = 0; i<m; ++i) {
+        v.push_back(0);
+    }
+    for (int i = m; i<n; ++i) {
+        v.push_back(1);
+    }
+    do {
+        for (int i = 0; i<n; ++i) {
+            if (!v[i]) {
+                cout << arr[i] << ' ';
+            }
+        }
+        cout << '\n';
+    } while (next_permutation(v.begin(),v.end()));
+
+    return 0;
+}
+```
 
 ### [Top](#index)
 ---

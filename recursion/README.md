@@ -189,5 +189,5 @@ void rec(int low, int high, int target)
 ```
 
 ---
-|[이전 - BFS & DFS](/bfs_dfs/)|[목록](https://github.com/RyanJeong/CP#index)|[다음 - Backtracking](/backtracking/)|
+|[이전 - BFS & DFS](/bfs_dfs/)|[목록](https://github.com/RyanJeong/CP#index)|[다음 - Dynamic Programming](/dp/)|
 |-|-|-|
