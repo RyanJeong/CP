@@ -162,7 +162,7 @@ long long pow(long long a, long long b, long long c)
 ![ccw](./outer-product/img/4.png)
 ---
 ## Permutation and Combination
-### Permutation <b><i><sub>n</sub></i>P<i><sub>r</sub></i></b>
+### Permutation 
 
 ![permutation](./permutation-and-combination/img/permu.png)
 ```c++
@@ -202,7 +202,7 @@ int main(void)
 }
 ```
 
-### Combination <b><i><sub>n</sub></i>C<i><sub>r</sub></i></b>
+### Combination 
 
 ![combination](./permutation-and-combination/img/combi.png)
 ```c++

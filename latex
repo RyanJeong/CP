@@ -1,0 +1,7 @@
+% combination
+\begin{aligned}
+_n\rm C_r&\;=\;\frac{_n\rm P_r}{r!} \\
+& = \frac{n(n-1)(n-2)\cdots(n-r+1)}{r(r-1)(r-2)\cdots1} \\
+& = \frac{n(n-1)(n-2)\cdots(n-r+1)}{r(r-1)(r-2)\cdots1}\;\times\;\frac{(n-r)(n-r-1)(n-r-2)\cdots1}{(n-r)(n-r-1)(n-r-2)\cdots1}\\
+& = \frac{n!}{r!(n-r)!}
+\end{aligned}

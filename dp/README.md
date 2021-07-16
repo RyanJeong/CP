@@ -323,7 +323,7 @@ int main(void)
 
 ## 누적합(Prefix Sum)
 * 추천 문제
-    * [[BOJ] 두 배열의 합](https://www.acmicpc.net/problem/2143) [(소스코드)](./src/prefix_sum_matrix.cpp)
+    * [[BOJ] 두 배열의 합](https://www.acmicpc.net/problem/2143) [(소스코드)](./src/prefix_sum_matrix.cpp) - 부분합을 구한 뒤에 `lower_bound()`, `upper_boud()`를 이용해 조건을 만족하는 경우를 찾는 문제
     * [[BOJ] 색종이 - 3](https://www.acmicpc.net/problem/2571) [(소스코드)](./src/prefix_sum_colored_paper.cpp)
     * [[BOJ] 수열의 구간 평균](https://www.acmicpc.net/problem/19566) [(소스코드)](./src/prefix_sum_seq_avg.cpp)
 
