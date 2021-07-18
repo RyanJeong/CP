@@ -3,7 +3,7 @@
 * [[WIP] Lucas's Theorem](#lucas-s-theorem)
 * [Modulo](#modulo)
 * [Outer Product](#outer-product)
-* [[WIP] Permutation and Combination](#permutation-and-combination)
+* [Permutation and Combination](#permutation-and-combination)
 
 ###### [mathURL](http://mathurl.com/)
 ###### [ALPHABETIZE TOOL](https://wordcounter.net/alphabetize)
