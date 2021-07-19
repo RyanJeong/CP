@@ -410,7 +410,83 @@ int main(void)
 }
 ```
 
-## [WIP] 최장 증가 부분수열(Longest Increasing Subsequence, LIS)
+## 최장 증가 부분수열(Longest Increasing Subsequence, LIS)
+* 추천 문제
+    * [[BOJ] 전깃줄](https://www.acmicpc.net/problem/2565) [(소스코드)](./src/wire1.cpp) - <b>O(<i>n</i><sup>2</sup>)</b>로 해결할 수 있는 문제
+
+### 정의
+* 임의의 수열이 주어졌을 때, 수열의 요소 값이 오름차순으로 등장하는 가장 긴 구간을 의미
+* 구간 내 모든 요소들이 오름차순 상태가 아닐 수 있음
+    * 수열 <i>a</i> = {3,1,4,2,6,8,5}가 주여졌을 때, LIS는 {1,2,6,8}
+
+* 임의의 수열 내 LIS가 두 개 이상 존재할 수 있음
+    * 수열 <i>a</i> = {3,5,7,9,2,1,4,8}가 주어졌을 때, LIS는 {3,5,7,9}, {3,5,7,8}
+
+* 크기가 <i>n</i>인 수열 <i>a</i>에서의 LIS <i>l<sub>i</sub></i> :
+
+    ![LIS](./img/lis.png)
+
+### 연습문제
+* [[BOJ] 가장 긴 증가하는 부분 수열](https://www.acmicpc.net/problem/11053) [(소스코드)](./src/lis_1.cpp) - <b>O(<i>n</i><sup>2</sup>)</b>
+###### Memory: 2,028 KB, Time: 0 ms
+```c++
+// https://www.acmicpc.net/problem/11053
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(void)
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    static int arr[1'001];
+    static int lis[1'001];
+    int n;
+    cin>>n;
+    for (int i = 1; i<=n; ++i) {
+        cin>>arr[i];
+    }
+
+    // O(n^2)
+    int res = 1;
+    lis[1]=1;
+    for (int i = 2; i<=n; ++i) {
+        for (int j = 1; j<i; ++j) {
+            if (arr[i]>arr[j]) {
+                lis[i]=max(lis[i],lis[j]+1);
+            }
+            else {
+                lis[i]=max(lis[i],1);
+            }
+        }
+        res=max(res,lis[i]);
+    }
+    cout << res;
+
+    return 0;
+}
+```
+* [[BOJ] 가장 긴 증가하는 부분 수열 2](https://www.acmicpc.net/problem/12015) [(소스코드)](./src/lis_2.cpp) - 이분탐색을 사용하면 시간복잡도를 <b>O(<i>n</i> log <i>n</i>)</b>으로 줄일 수 있음 
+    * 전략:
+    1. 수열의 첫 요소를 `vector`에 넣는다.
+    2. 다음 요소와 `vector`의 끝 요소(`back()`)를 비교해 다음 요소가 더 크다면 `vector`에 삽입(`push_back()`)하고, 그렇지 않다면 `lower_bound()` 함수를 통해 해당 요소가 삽입될 위치를 찾는다.
+    * 예를 들어, 수열 <i>a</i> = {10,20,10,30,20,50}이 주어진다면, `vector`의 값은 아래와 같이 채워지게 됨:
+    ```text
+    a[1] = 10, vector = {10}
+    a[2] = 20, vector = {10,20}
+    a[3] = 10, vector = {10,20}
+               index 0 위치에 a[3] 삽입
+    a[4] = 30, vector = {10,20,30}
+    a[5] = 20, vector = {10,20,30}
+               index 1 위치에 a[5] 삽입
+    a[6] = 50, vector = {10,20,30,50}
+    ```
+
+###### Memory: 2,028 KB, Time: 0 ms
+```c++
+```
+
 ## [WIP] 최장 공통 부분수열(Longest Common Subsequencd, LCS)
 ## [WIP] 비트마스크를 이용한 동적 계획법(Bit DP)
 * 추천 문제
