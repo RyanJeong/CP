@@ -8,7 +8,7 @@ int main(void)
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    static int s[1025][1025]; // s[i][j] = a_i,j+s_i-1,j+s_i,j-1-s_i-1,j-1
+    static int s[1025][1025]; // s[i][j]=a[i][j]+s[i-1][j]+s[i][j-1]-s[i-1][j-1]
     int n, m;
     cin>>n>>m;
     for (int i = 1; i<=n; ++i) {

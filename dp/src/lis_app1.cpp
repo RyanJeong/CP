@@ -1,3 +1,4 @@
+// https://www.acmicpc.net/problem/11055
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -16,10 +17,10 @@ int main(void)
     }
 
     // O(n^2)
-    int res = arr[n];
-    dp[n] = arr[n];
-    for (int i = n-1; i>0; --i) {
-        for (int j = n; j>i; --j) {
+    int res = arr[1];
+    dp[1] = arr[1];
+    for (int i = 2; i<=n; ++i) {
+        for (int j = 1; j<i; ++j) {
             if (arr[i]>arr[j]) {
                 dp[i]=max(dp[i],dp[j]+arr[i]);
             }

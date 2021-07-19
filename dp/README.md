@@ -359,7 +359,7 @@ int main(void)
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    static int s[100'001]; // s[i] = s_i-1 + a_i
+    static int s[100'001]; // s[i] = s[i-1] + a[i]
     int n, m;
     cin>>n>>m;
     for (int i = 1; i<=n; ++i) {
@@ -390,7 +390,7 @@ int main(void)
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    static int s[1025][1025]; // s[i][j] = a_i,j+s_i-1,j+s_i,j-1-s_i-1,j-1
+    static int s[1025][1025]; // s[i][j]=a[i][j]+s[i-1][j]+s[i][j-1]-s[i-1][j-1]
     int n, m;
     cin>>n>>m;
     for (int i = 1; i<=n; ++i) {
@@ -412,7 +412,9 @@ int main(void)
 
 ## 최장 증가 부분수열(Longest Increasing Subsequence, LIS)
 * 추천 문제
+    * [[BOJ] 가장 큰 증가 부분 수열](https://www.acmicpc.net/problem/11055) [(소스코드)](./src/lis_app1.cpp) - LIS 응용1
     * [[BOJ] 전깃줄](https://www.acmicpc.net/problem/2565) [(소스코드)](./src/wire1.cpp) - <b>O(<i>n</i><sup>2</sup>)</b>로 해결할 수 있는 문제
+    * [[BOJ] 반도체 설계](https://www.acmicpc.net/problem/2352) [(소스코드)](./src/semiconductor.cpp) - 이분탐색을 이용해 시간복잡도를 <b>O(<i>n</i> log <i>n</i>)</b>로 낮추어 해결해야 하는 문제
 
 ### 정의
 * 임의의 수열이 주어졌을 때, 수열의 요소 값이 오름차순으로 등장하는 가장 긴 구간을 의미
@@ -471,7 +473,7 @@ int main(void)
     * 전략:
     1. 수열의 첫 요소를 `vector`에 넣는다.
     2. 다음 요소와 `vector`의 끝 요소(`back()`)를 비교해 다음 요소가 더 크다면 `vector`에 삽입(`push_back()`)하고, 그렇지 않다면 `lower_bound()` 함수를 통해 해당 요소가 삽입될 위치를 찾는다.
-    * 예를 들어, 수열 <i>a</i> = {10,20,10,30,20,50}이 주어진다면, `vector`의 값은 아래와 같이 채워지게 됨:
+    * 예를 들어, 수열 <i>a</i> = {10,20,10,30,20,50}가 주어진다면, `vector`의 값은 아래와 같이 채워지게 됨:
     ```text
     a[1] = 10, vector = {10}
     a[2] = 20, vector = {10,20}
@@ -482,9 +484,48 @@ int main(void)
                index 1 위치에 a[5] 삽입
     a[6] = 50, vector = {10,20,30,50}
     ```
-
-###### Memory: 2,028 KB, Time: 0 ms
+    * 수열 <i>a<sub>t</sub></i> = {3,4,5,1,2}가 주어졌을 때, <b>`vector`에 저장된 요소들은 수열 <i>a<sub>t</sub></i>의 부분수열이 아닐 수 있음</b>
+    ```text
+    vector = {2,4,5}
+    ```
+    * <b>`vector`의 의미는 길이가 <i>i</i>인 증가 부분수열 중에서 마지막 원소의 값이 가장 작은 값임을 의미</b>
+    * 수열의 다음 요소 중에서 증가 부분수열이 발견될 수 있기 때문에, 모든 경우를 처리하기 위한 정보를 기록
+    * <b>즉, {3,4,5}가 수열 <i>a<sub>t</sub></i>에서의 가장 긴 증가하는 부분 수열이지만, 혹시 모를 뒤따르는 증가 부분수열을 처리하기 위해 `vector`의 1 번째 요소를 `3`에서 `2`로 바꾸어놓은 것</b>
+    * 수열 <i>a<sub>s</sub></i> = {1,2,5,6,3}이 주어졌을 때, 4 번째 요소(`6`)까지 탐색을 마쳤을 경우 해당 수열에서의 증가 부분수열 후보는 {1,2}, {5,6}
+    * 만약, {5,6}에 대한 정보를 `vector`에 기록해 두었다면, 5 번째 요소(`3`)를 처리할 수 없음
+    * <b>`vector`에 {5,6}이 아닌 길이가 <i>i</i>인 증가부분 수열 중 마지막 원소의 값이 가장 작은 값인 {1,2}로 기록해 놓는다면, 5 번째 요소 `3`을 올바르게 처리할 수 있음</b>
+###### Memory: 12,200 KB, Time: 164 ms
 ```c++
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(void)
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int n;
+    cin>>n;
+    vector<int> v(n+1); // 1-based
+    for (int i = 1; i<=n; ++i) {
+        cin>>v[i];
+    }
+    vector<int> lis;
+    lis.push_back(v[1]);
+    for (int i = 2; i<=n; ++i) {
+        if (v[i]>lis.back()) {
+            lis.push_back(v[i]);
+        }
+        else {
+            auto cur = lower_bound(lis.begin(),lis.end(),v[i]);
+            lis[cur-lis.begin()]=v[i];
+        }
+    }
+    cout << lis.size();
+
+    return 0;
+}
 ```
 
 ## [WIP] 최장 공통 부분수열(Longest Common Subsequencd, LCS)

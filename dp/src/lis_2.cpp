@@ -1,4 +1,4 @@
-// https://www.acmicpc.net/problem/11053
+// https://www.acmicpc.net/problem/12015
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -8,29 +8,24 @@ int main(void)
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    static int arr[1'001];
-    static int lis[1'001];
     int n;
     cin>>n;
+    vector<int> v(n+1); // 1-based
     for (int i = 1; i<=n; ++i) {
-        cin>>arr[i];
+        cin>>v[i];
     }
-
-    // O(n^2)
-    int res = 1;
-    lis[1]=1;
+    vector<int> lis;
+    lis.push_back(v[1]);
     for (int i = 2; i<=n; ++i) {
-        for (int j = 1; j<i; ++j) {
-            if (arr[i]>arr[j]) {
-                lis[i]=max(lis[i],lis[j]+1);
-            }
-            else {
-                lis[i]=max(lis[i],1);
-            }
+        if (v[i]>lis.back()) {
+            lis.push_back(v[i]);
         }
-        res=max(res,lis[i]);
+        else {
+            auto cur = lower_bound(lis.begin(),lis.end(),v[i]);
+            lis[cur-lis.begin()]=v[i];
+        }
     }
-    cout << res;
+    cout << lis.size();
 
     return 0;
 }
