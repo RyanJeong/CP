@@ -34,16 +34,16 @@ int main(void)
     }
     int target = lis.size();
     cout << n-target << '\n';
-    stack<int> s;
     for (int i = n; i>0; --i) {
         if (len[i]==target) {
-            s.push(v[i].second);
+            v[i].first=0;
             --target;
         }
     }
-    while (!s.empty()) {
-        cout << s.top() << '\n';
-        s.pop();
+    for (int i = 1; i<=n; ++i) {
+        if (v[i].first) {
+            cout << v[i].first << '\n';
+        }
     }
 
     return 0;
