@@ -416,6 +416,7 @@ int main(void)
     * [[BOJ] 가장 큰 증가 부분 수열](https://www.acmicpc.net/problem/11055) [(소스코드)](./src/lis_app1.cpp) - LIS 응용, 조건을 만족하는 값들을 누적하는 문제
     * [[BOJ] 전깃줄](https://www.acmicpc.net/problem/2565) [(소스코드)](./src/wire1.cpp) - <b>O(<i>n</i><sup>2</sup>)</b>로 해결할 수 있는 문제
     * [[BOJ] 반도체 설계](https://www.acmicpc.net/problem/2352) [(소스코드)](./src/semiconductor.cpp) - 이분탐색을 이용해 시간복잡도를 <b>O(<i>n</i> log <i>n</i>)</b>로 낮추어 해결해야 하는 문제
+    * [[BOJ] 전깃줄 - 2](https://www.acmicpc.net/problem/2568) [(소스코드)](./src/wire2.cpp) - 이분탐색과 부분 수열을 출력해야 하는 문제
 
 ### 정의
 * 임의의 수열이 주어졌을 때, 수열의 요소 값이 오름차순으로 등장하는 가장 긴 구간을 의미
@@ -546,7 +547,7 @@ int main(void)
     ```text
     vector = {2,4,5}
     ```
-    * <b>`vector`의 의미는 길이가 <i>i</i>인 증가 부분수열 중에서 마지막 원소의 값이 가장 작은 값임을 의미</b>
+    * <b>`vector`의 의미는 길이가 <i>i</i>인 증가 부분수열 중에서 마지막 요소의 값이 가장 작은 값임을 의미</b>
     * 수열의 다음 요소 중에서 증가 부분수열이 발견될 수 있기 때문에, 모든 경우를 처리하기 위한 정보를 기록
     * <b>즉, {3,4,5}가 수열 <i>a<sub>t</sub></i>에서의 가장 긴 증가하는 부분 수열이지만, 혹시 모를 뒤따르는 증가 부분수열을 처리하기 위해 `vector`의 1 번째 요소를 `3`에서 `2`로 바꾸어놓은 것</b>
     * 수열 <i>a<sub>s</sub></i> = {1,2,5,6,3}이 주어졌을 때, 4 번째 요소(`6`)까지 탐색을 마쳤을 경우 해당 수열에서의 증가 부분수열 후보는 {1,2}, {5,6}
@@ -582,6 +583,87 @@ int main(void)
         }
     }
     cout << lis.size();
+
+    return 0;
+}
+```
+
+* [[BOJ] 가장 긴 증가하는 부분 수열 4](https://www.acmicpc.net/problem/14002) [(소스코드)](./src/lis_4.cpp) - 가장 긴 증가하는 부분 수열의 크기와 실제 부분수열을 출력하는 문제
+    * 전략:
+    1. <i>LIS</i>를 계산하면서 각 요소의 길이를 따로 기록
+    2. 마지막 요소에서부터 첫 번째 요소까지 순회하면서 부분수열의 크기와 일치하는 요소를 `stack`에 넣고, 다음에는 부분수열의 크기보다 1 작은 요소를 `stack`에 넣고, ..., 길이가 1인 요소를 `stack`에 삽입
+    ```text
+    a = {2 3 1 4}
+    subsequence: {2 3 4}, size: 3
+
+    idx   1 2 3 4 
+    a[i]  2 3 1 4 
+    len   1 2 1 3 
+
+    stack 4 3 2 <- top()
+    ```
+    ```text
+    a = {10 3 7 4 1 8}
+    subsequence: {3 4 8} or {3 7 8}, size: 3
+
+    idx    1 2 3 4 5 6
+    a[i]  10 3 7 4 1 8
+    len    1 1 2 2 1 3
+
+    stack 8 4 3 <- top()
+    ```
+    3. `stack`에 삽입된 값들을 출력하면 역순으로 입력된 부분 수열이 올바르게 출력됨
+
+###### Memory: 2,156 KB, Time: 0 ms
+```c++
+// https://www.acmicpc.net/problem/14002
+// v, len은 1-based, lis는 0-based임
+// lis는 실제 요소의 개수가 가장 긴 증가하는 부분 수열의 크기이므로, 0-based를 사용해야 함
+// cur-lis.size()+1을 해준 이유는, lis가 0-based이기 때문
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(void)
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int n;
+    cin>>n;
+    vector<int> v(n+1); // 1-based
+    for (int i = 1; i<=n; ++i) {
+        cin>>v[i];
+    }
+
+    vector<int> lis; // 0-based
+    lis.push_back(v[1]); 
+    vector<int> len(1);  // 1-based
+    len.push_back(1);
+    for (int i = 2; i<=n; ++i) {
+        if (v[i]>lis.back()) {
+            lis.push_back(v[i]);
+            len.push_back(lis.size());
+        }
+        else {
+            auto cur = lower_bound(lis.begin(),lis.end(),v[i]);
+            lis[cur-lis.begin()]=v[i];
+            len.push_back(cur-lis.begin()+1); // 0-based
+        }
+    }
+    int target = lis.size();
+    cout << target << '\n';
+    stack<int> s;
+    for (int i = n; i>0; --i) {
+        if (len[i]==target) {
+            s.push(v[i]);
+            --target;
+        }
+    }
+    while (!s.empty()) {
+        cout << s.top() << ' ';
+        s.pop();
+    }
 
     return 0;
 }
