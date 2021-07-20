@@ -6,6 +6,7 @@
 * 주어진 문제를 작은 단위로 나누어 각 단위에서의 결과를 계산하고, 이 계산한 결과를 원래 문제를 해결하는 데 사용
 * 작은 단위에서 계산한 결과를 저장해둔 뒤 원래 문제를 해결할 때 재사용
     * 작은 단위에서 계산한 결과를 저장함으로써, 계산 속도를 향상시킬 수 있음
+
 ### 전략
 1. 본래 문제를 작은 단위로 쪼개어 계산한 결과를 기록할 테이블 설정
     * 해당 테이블에서의 각 요소에 어떤 값을 기록할 것인지 정해야 함
@@ -412,7 +413,7 @@ int main(void)
 
 ## 최장 증가 부분수열(Longest Increasing Subsequence, LIS)
 * 추천 문제
-    * [[BOJ] 가장 큰 증가 부분 수열](https://www.acmicpc.net/problem/11055) [(소스코드)](./src/lis_app1.cpp) - LIS 응용1
+    * [[BOJ] 가장 큰 증가 부분 수열](https://www.acmicpc.net/problem/11055) [(소스코드)](./src/lis_app1.cpp) - LIS 응용, 조건을 만족하는 값들을 누적하는 문제
     * [[BOJ] 전깃줄](https://www.acmicpc.net/problem/2565) [(소스코드)](./src/wire1.cpp) - <b>O(<i>n</i><sup>2</sup>)</b>로 해결할 수 있는 문제
     * [[BOJ] 반도체 설계](https://www.acmicpc.net/problem/2352) [(소스코드)](./src/semiconductor.cpp) - 이분탐색을 이용해 시간복잡도를 <b>O(<i>n</i> log <i>n</i>)</b>로 낮추어 해결해야 하는 문제
 
@@ -469,6 +470,63 @@ int main(void)
     return 0;
 }
 ```
+
+* [[BOJ] 가장 긴 바이토닉 부분 수열](https://www.acmicpc.net/problem/11054) [(소스코드)](./src/bitonic.cpp) - 가장 긴 증가하는 부분 수열 + 가장 긴 감소하는 부분 수열
+###### Memory: 2,028 KB, Time: 0 ms
+```c++
+// https://www.acmicpc.net/problem/11054
+// {1 5 2 1 4 3 4 5 2 1}
+// {1  2      3 4 5}     -> +5(LIS)
+//               {5 2 1} -> +3(LDS)
+//               {5}     -> -1(DUP)
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(void)
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    static int arr[1'001];
+    static int lis[1'001];
+    static int lds[1'001];
+    int n;
+    cin>>n;
+    lis[1]=1;
+    for (int i = 1; i<=n; ++i) {
+        cin>>arr[i];
+        for (int j = 1; j<i; ++j) {
+            if (arr[i]>arr[j]) {
+                lis[i]=max(lis[i],lis[j]+1);
+            }
+            else {
+                lis[i]=max(lis[i],1);
+            }
+        }
+    }
+
+    lds[n]=1;
+    for (int i = n-1; i>0; --i) {
+        for (int j = n; j>i; --j) {
+            if (arr[i]>arr[j]) {
+                lds[i]=max(lds[i],lds[j]+1);
+            }
+            else {
+                lds[i]=max(lds[i],1);
+            }
+        }
+    }
+    int res = 1;
+    for (int i = 1; i<=n; ++i) {
+        res=max(res,lis[i]+lds[i]);
+    }
+    cout << res-1;
+
+    return 0;
+}
+```
+
 * [[BOJ] 가장 긴 증가하는 부분 수열 2](https://www.acmicpc.net/problem/12015) [(소스코드)](./src/lis_2.cpp) - 이분탐색을 사용하면 시간복잡도를 <b>O(<i>n</i> log <i>n</i>)</b>으로 줄일 수 있음 
     * 전략:
     1. 수열의 첫 요소를 `vector`에 넣는다.
@@ -511,6 +569,7 @@ int main(void)
     for (int i = 1; i<=n; ++i) {
         cin>>v[i];
     }
+
     vector<int> lis;
     lis.push_back(v[1]);
     for (int i = 2; i<=n; ++i) {

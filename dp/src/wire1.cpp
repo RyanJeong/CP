@@ -24,6 +24,7 @@ int main(void)
         cin>>a>>b;
         v.push_back({a,b});
     }
+
     sort(v.begin(),v.end());
     int res = 1;
     vector<int> lis(n+1); // 1-based

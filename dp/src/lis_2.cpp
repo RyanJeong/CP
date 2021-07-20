@@ -14,6 +14,7 @@ int main(void)
     for (int i = 1; i<=n; ++i) {
         cin>>v[i];
     }
+
     vector<int> lis;
     lis.push_back(v[1]);
     for (int i = 2; i<=n; ++i) {
