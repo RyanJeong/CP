@@ -417,6 +417,7 @@ int main(void)
     * [[BOJ] 전깃줄](https://www.acmicpc.net/problem/2565) [(소스코드)](./src/wire1.cpp) - <b>O(<i>n</i><sup>2</sup>)</b>로 해결할 수 있는 문제
     * [[BOJ] 반도체 설계](https://www.acmicpc.net/problem/2352) [(소스코드)](./src/semiconductor.cpp) - 이분탐색을 이용해 시간복잡도를 <b>O(<i>n</i> log <i>n</i>)</b>로 낮추어 해결해야 하는 문제
     * [[BOJ] 전깃줄 - 2](https://www.acmicpc.net/problem/2568) [(소스코드)](./src/wire2.cpp) - 이분탐색과 부분 수열을 출력해야 하는 문제
+    * [[BOJ] 이상한 전깃줄](https://www.acmicpc.net/problem/16474) [(소스코드)](./src/weird_wire.cpp) - 이분탐색과 부분 수열을 출력해야 하는 문제
 
 ### 정의
 * 임의의 수열이 주어졌을 때, 수열의 요소 값이 오름차순으로 등장하는 가장 긴 구간을 의미
@@ -668,6 +669,12 @@ int main(void)
     return 0;
 }
 ```
+
+* [[BOJ] 가장 긴 증가하는 부분 수열 6](https://www.acmicpc.net/problem/17411) [(소스코드)](./src/lis_6.cpp) - 가장 긴 증가하는 부분 수열의 크기와 부분 수열의 개수를 출력하는 문제
+###### Memory: 2,156 KB, Time: 0 ms
+```c++
+```
+
 
 ## [WIP] 최장 공통 부분수열(Longest Common Subsequencd, LCS)
 ## [WIP] 비트마스크를 이용한 동적 계획법(Bit DP)

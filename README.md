@@ -43,6 +43,13 @@ Resources for competitive programming
 * [Library](/library/)
 ---
 
+## 추천 문제집
+* [[BOJ] code.plus](https://www.acmicpc.net/workbook/codeplus)
+* [[BOJ] jinhan814의 공개 문제집](https://www.acmicpc.net/workbook/by/jinhan814)
+* [[BOJ] BaaaaaaaaaaarkingDog의 공개 문제집](https://www.acmicpc.net/workbook/by/BaaaaaaaaaaarkingDog)
+* [[BOJ] 프로그래밍 콘테스트 챌린징 책에 나오는 문제들](https://www.acmicpc.net/workbook/view/4912)
+
+
 ## Reference
 * [cppreference.com](https://en.cppreference.com/w/)
 * [cplusplus.com - The C++ Resources Network](https://cplusplus.com/)
