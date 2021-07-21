@@ -415,7 +415,8 @@ int main(void)
 * 추천 문제
     * [[BOJ] 가장 큰 증가 부분 수열](https://www.acmicpc.net/problem/11055) [(소스코드)](./src/lis_app1.cpp) - LIS 응용, 조건을 만족하는 값들을 누적하는 문제
     * [[BOJ] 전깃줄](https://www.acmicpc.net/problem/2565) [(소스코드)](./src/wire1.cpp) - <b>O(<i>n</i><sup>2</sup>)</b>로 해결할 수 있는 문제
-    * [[BOJ] 반도체 설계](https://www.acmicpc.net/problem/2352) [(소스코드)](./src/semiconductor.cpp) - 이분탐색을 이용해 시간복잡도를 <b>O(<i>n</i> log <i>n</i>)</b>로 낮추어 해결해야 하는 문제
+    * [[BOJ] 반도체 설계](https://www.acmicpc.net/problem/2352) [(소스코드)](./src/semiconductor.cpp) - 이분탐색을 이용해 시간복잡도를 <b>O(<i>n</i> log <i>n</i>)</b>로 낮추어 해결해야 하는 문제 1
+    * [[BOJ] 주식](https://www.acmicpc.net/problem/12014) [(소스코드)](./src/stock.cpp) - 이분탐색을 이용해 시간복잡도를 <b>O(<i>n</i> log <i>n</i>)</b>로 낮추어 해결해야 하는 문제 2
     * [[BOJ] 전깃줄 - 2](https://www.acmicpc.net/problem/2568) [(소스코드)](./src/wire2.cpp) - 이분탐색과 부분 수열을 출력해야 하는 문제
     * [[BOJ] 이상한 전깃줄](https://www.acmicpc.net/problem/16474) [(소스코드)](./src/weird_wire.cpp) - 이분탐색과 부분 수열을 출력해야 하는 문제
 
@@ -670,9 +671,10 @@ int main(void)
 }
 ```
 
-* [[BOJ] 가장 긴 증가하는 부분 수열 6](https://www.acmicpc.net/problem/17411) [(소스코드)](./src/lis_6.cpp) - 가장 긴 증가하는 부분 수열의 크기와 부분 수열의 개수를 출력하는 문제
-###### Memory: 2,156 KB, Time: 0 ms
+* [[WIP][BOJ] 가장 긴 증가하는 부분 수열 6](https://www.acmicpc.net/problem/17411) [(소스코드)](./src/lis_6.cpp) - 가장 긴 증가하는 부분 수열의 크기와 부분 수열의 개수를 출력하는 문제
+###### Memory:  KB, Time:  ms
 ```c++
+// WIP
 ```
 
 

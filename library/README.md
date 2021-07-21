@@ -1,18 +1,7 @@
 * 2차원 배열 전환
 ...
 
-* Outer Product
-```c++
-typedef pair<long long, long long> Point;
-
-long long outer_product(Point u, Point v)
-{
-
-    return u.first*v.second-u.second*v.first;
-}
-```
-
-* CCW
+* [CCW](./src/ccw.cpp)
 ```c++
 // 1: ccw, -1: cw, 0: on the line
 int is_ccw(pair<int, int> a, pair<int, int> b, pair<int, int> c)
@@ -24,5 +13,51 @@ int is_ccw(pair<int, int> a, pair<int, int> b, pair<int, int> c)
 	long long tmp = u1*v2-u2*v1;
 
 	return ((tmp>0) ? 1 : (tmp<0) ? -1 : 0);
+}
+```
+
+* [LIS](./src/lis.cpp)
+```c++
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(void)
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int n;
+    cin>>n;
+    vector<int> v(n+1); // 1-based
+    for (int i = 1; i<=n; ++i) {
+        cin>>v[i];
+    }
+
+    vector<int> lis;
+    lis.push_back(v[1]);
+    for (int i = 2; i<=n; ++i) {
+        if (v[i]>lis.back()) {
+            lis.push_back(v[i]);
+        }
+        else {
+            auto cur = lower_bound(lis.begin(),lis.end(),v[i]);
+            lis[cur-lis.begin()]=v[i];
+        }
+    }
+    cout << lis.size();
+
+    return 0;
+}
+```
+
+* [Outer Product](./src/outer_product.cpp)
+```c++
+typedef pair<long long, long long> Point;
+
+long long outer_product(Point u, Point v)
+{
+
+    return u.first*v.second-u.second*v.first;
 }
 ```

@@ -14,6 +14,7 @@
 # [Double-ended Queue(Deque)](https://www.cplusplus.com/reference/deque/deque/)
 * 추천 문제
     * [[BOJ] 덱](https://www.acmicpc.net/problem/10866) [(소스코드)](./src/deque.cpp)
+    * [[BOJ] 카드 놓기](https://www.acmicpc.net/problem/18115) [(소스코드)](./src/card.cpp)
     * [[BOJ] 회전하는 큐](https://www.acmicpc.net/problem/1021) [(소스코드)](./src/circular_queue.cpp) - `deque`를 이용한 회전하는 큐 구현
 * `deque` (usually pronounced like "deck") is an irregular acronym of <b>d</b>ouble-<b>e</b>nded <b>que</b>ue.
 * Restricted Structure
