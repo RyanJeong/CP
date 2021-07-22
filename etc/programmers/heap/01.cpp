@@ -1,5 +1,5 @@
-// https://programmers.co.kr/learn/courses/30/lessons/42748
-// K번째수
+// https://programmers.co.kr/learn/courses/30/lessons/42626
+// 더 맵게
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -22,6 +22,9 @@ vector<int> solution(vector<int> array, vector<vector<int>> commands)
 
 int main(void)
 {
+    ios::sync_with_stdio(false); 
+    cin.tie(NULL);
+
     int n;
     cin>>n;
     vector<int> a(n);

@@ -3,6 +3,8 @@
 * 추천 문제
     * [[BOJ] 단어 정렬](https://www.acmicpc.net/problem/1181) [(소스코드)](./src/sort_word.cpp) - `sort` 함수를 사용하며, 비교 함수를 직접 구현하는 예
     * [[BOJ] 나이순 정렬](https://www.acmicpc.net/problem/10814) [(소스코드)](./src/sort_age.cpp) - `stable_sort` 함수를 사용하며, 비교 함수를 직접 구현하는 예
+    * [[BOJ] Multi-key Sorting](https://www.acmicpc.net/problem/3340) [(소스코드)](./src/stable_sort_feat.cpp) - `stable_sort` 의 특징을 알 수 있는 문제
+    * [[Programmers] 전화번호 목록](https://programmers.co.kr/learn/courses/30/lessons/42577) [(소스코드)](./src/phone_book.cpp) - 문자열을 대상으로 정렬했을 때의 결과를 생각하면 답이 보이는 문제
 * <i>iterator</i> 타입 `first`와 `last` 사이에 있는 요소들을 정렬 
 * `end`는 마지막 요소의 다음 요소를 가리킴에 주의
     * `[start, end)`

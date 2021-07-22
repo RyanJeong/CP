@@ -26,6 +26,9 @@ string solution(vector<string> participant, vector<string> completion)
 
 int main(void)
 {
+    ios::sync_with_stdio(false); 
+    cin.tie(NULL);
+
     int n;
     cin>>n;
     vector<string> p(n);
@@ -42,5 +45,3 @@ int main(void)
 
     return 0;
 }
-
-        

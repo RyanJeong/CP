@@ -44,6 +44,7 @@ Resources for competitive programming
 ---
 
 ## 추천 문제집
+* [[Programmers] 코딩테스트 고득점 Kit](https://programmers.co.kr/learn/challenges?tab=algorithm_practice_kit)
 * [[BOJ] code.plus](https://www.acmicpc.net/workbook/codeplus)
 * [[BOJ] jinhan814의 공개 문제집](https://www.acmicpc.net/workbook/by/jinhan814)
 * [[BOJ] BaaaaaaaaaaarkingDog의 공개 문제집](https://www.acmicpc.net/workbook/by/BaaaaaaaaaaarkingDog)

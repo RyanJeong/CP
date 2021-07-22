@@ -12,10 +12,13 @@
         * [Map](/stl/map/)
 
 # [Map](https://cplusplus.com/reference/map/map/)
+* 추천 문제
+    * [[BOJ] MALCOLM](https://www.acmicpc.net/problem/3078) [(소스코드)](./src/malcolm.cpp) - 중복 `map` 처리 문제
 * [이진 검색 트리](/binary_search/)로 구현된 자료구조 (using highly balanced binary search trees, e.g. red-black tree, AVL tree)
 * { <i>key</i>, <i>value</i> } 형태로 값 저장
 * 컨테이너 안에는 하나의 <i>key</i>만 존재할 수 있음
 * `map`의 `insert`, `erase`, `find` 시간복잡도는 <b>O(<i>log n</i>)</b>
+
 ## [Multiple-key map](https://cplusplus.com/reference/map/multimap/)
 * `multimap`은 `map`에서 <i>key</i>의 중복을 허용하는 자료구조
 
