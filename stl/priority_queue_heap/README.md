@@ -22,6 +22,7 @@ template<
 * 추천 문제
     * [[BOJ] 최대 힙](https://www.acmicpc.net/problem/11279) [(소스코드)](./src/max_heap.cpp)
     * [[BOJ] 최소 힙](https://www.acmicpc.net/problem/1927) [(소스코드)](./src/min_heap.cpp)
+    * [[BOJ] Running Median](https://www.acmicpc.net/problem/2696) [(소스코드)](./src/median.cpp)
     * [[BOJ] N번째 큰 수](https://www.acmicpc.net/problem/2075) [(소스코드)](./src/nth.cpp)
     * [[BOJ] 강의실 배정](https://www.acmicpc.net/problem/11000) [(소스코드)](./src/210710_class.cpp)
     * [[BOJ] 문제집](https://www.acmicpc.net/problem/1766) [(소스코드)](./src/210721_textbook.cpp)
