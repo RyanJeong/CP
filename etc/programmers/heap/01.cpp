@@ -4,19 +4,26 @@
 
 using namespace std;
 
-vector<int> solution(vector<int> array, vector<vector<int>> commands)
+int solution(vector<int> scoville, int K) 
 {
-    vector<int> answer;
-    int t = commands.size();
-    for (int i = 0; i<t; ++i) {
-        vector<int> tmp(array);
-        int from = commands[i][0]-1;
-        int to = commands[i][1];
-        int idx = commands[i][2]-1;
-        sort(tmp.begin()+from,tmp.begin()+to);
-        answer.push_back(tmp[from+idx]);
+    priority_queue<int, vector<int>, greater<int>> pq;
+    for (int i : scoville) {
+        pq.push(i);
     }
-    
+    int answer = 0;
+    while (pq.top()<K) {
+        if (pq.size()<2) {
+            
+            return -1;
+        }
+        int a = pq.top(); 
+        pq.pop();
+        int b = pq.top();
+        pq.pop();
+        pq.push(a+b*2);
+        ++answer;
+    }
+
     return answer;
 }
 
@@ -27,25 +34,13 @@ int main(void)
 
     int n;
     cin>>n;
-    vector<int> a(n);
+    vector<int> s(n);
     for (int i = 0; i<n; ++i) {
-        cin>>a[i];
+        cin>>s[i];
     }
-    int m;
-    cin>>m;
-    vector<vector<int>> c(m, vector<int>(3));
-    for (int i = 0; i<m; ++i) {
-        for (int j = 0; j<3; ++j) {
-            cin>>c[i][j];
-        }
-    }
-    vector<int> res = solution(a,c);
-    for (auto i : res) {
-        cout << i << ' ';
-    }
+    int k;
+    cin>>k;
+    cout << solution(s,k);
 
     return 0;
 }
-
-        
-
