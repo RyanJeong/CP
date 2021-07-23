@@ -61,3 +61,18 @@ long long outer_product(Point u, Point v)
     return u.first*v.second-u.second*v.first;
 }
 ```
+
+* [`nth_element`](./src/nth_element.cpp)
+```c++
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+
+int kth(vector<int>& a, int k) 
+{
+	nth_element(a.begin(),a.begin()+k-1,a.end()); // 0-based
+	
+    return a[k-1];
+}
+```
