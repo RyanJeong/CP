@@ -1,5 +1,8 @@
 # DP
 * 추천 문제
+    * [[BOJ] Jump The Board!](https://www.acmicpc.net/problem/1890) [(소스코드)](./src/jump.cpp)
+        * 초기에 백트래킹을 사용해 접근했으나, [TLE](./src/jump_tle.cpp)가 발생
+        * 이처럼 탐색 경우의 수가 방대할 경우, DP를 사용해 해결해야 함
     * [[BOJ] 행렬 곱셈 순서](https://www.acmicpc.net/problem/11049) [(소스코드)](./src/210709_matrix.cpp)
 
 ## 다이나믹 프로그래밍(동적 계획법)

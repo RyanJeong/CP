@@ -2,6 +2,7 @@
 
 ## 서로소 집합
 * 추천 문제
+    * [[BOJ] 친구비](https://www.acmicpc.net/problem/16562) [(소스코드)](./src/friend.cpp) - Disjoint-set 기본 개념에 특정 조건이 추가된 문제
     * [[BOJ] Gates](https://www.acmicpc.net/problem/10775) [(소스코드)](./src/gate.cpp) - Rank(level)를 사용하지 않고 조건에 맞게 <i>union</i> 수행
     * [[BOJ] Virtual Friends](https://www.acmicpc.net/problem/4195) [(소스코드)](./src/virtual_friend.cpp) - 해쉬(`map`) 사용
     * [[BOJ] 비용](https://www.acmicpc.net/problem/2463) [(소스코드)](./src/cost.cpp) - 거꾸로 생각하기!
