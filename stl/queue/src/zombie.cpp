@@ -7,41 +7,42 @@ int main(void)
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
+
     int l, r, d, c;
     cin>>l>>r>>d>>c;
-	bool is_survived = true;
-	queue<int> mine;
-	for (int i = 1; i<=l; ++i) {
-		// 만약 지뢰를 사용하게 된다면 
-		// 공격 가능한 범위에 속한 나머지 좀비들은
-		// 공격을 한 회 덜 받게 된다.
-		if (!mine.empty() && mine.back()<i) {
-			mine.pop();
-		}
-		int hp;
-		cin>>hp;
-		if (i>r) {
-			hp-=d*(r-mine.size());
-		}
-		else {
-			hp-=d*(i-mine.size());
-		}
-		if (hp>0) {
-			if (c>0) {
-				// 지뢰를 사용해 공격을 덜 받는
-				// 마지막 인덱스를 값으로 queue에 삽입
-				mine.push(i+r-1);
-				--c;
-			}
-			else {
-				// 지뢰를 사용해야 하는 상황에서
-				// 지뢰가 더 이상 없을 경우
-				is_survived=false;
-				break;
-			}
-		}
-	}
-	cout << ((is_survived) ? "YES" : "NO");
+    int damage = 0;
+    // q 변수는 공격 시점에서 공격을 받는 좀비들 중 가장 멀리 떨어진 좀비의
+    // 바로 다음 인덱스(r+1)를 값으로 보관
+    // r+1 이후에는 해당 시점에서의 공격이 유효하지 않으므로, 
+    // damage에 d를 빼주어야 함
+    queue<int> q;
+    for (int i = 1; i<=l; ++i) {
+        if (!q.empty() && q.front()==i) {
+            q.pop();
+            damage-=d;
+        }
+        int hp;
+        cin>>hp;
+        // 수류탄을 사용해야 하는 경우에는
+        // 다른 좀비들을 공격할 수 없으므로,
+        // damage+d 부분은 조건을 만족할 때에만
+        // 수행해야 함
+        if (hp>damage+d) {
+            if (c>0) {
+                --c;
+            }
+            else {
+                cout << "NO";
 
-	return 0;
+                return 0;
+            }
+        }
+        else {
+            damage+=d;
+            q.push(i+r);
+        }
+    }
+    cout << "YES";
+
+    return 0;
 }

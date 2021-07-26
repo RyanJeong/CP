@@ -681,7 +681,176 @@ int main(void)
 ```
 
 
-## [WIP] 최장 공통 부분수열(Longest Common Subsequencd, LCS)
+## 최장 공통 부분수열(Longest Common Subsequencd, LCS)
+* 추천 문제
+    * [[Codeforces] B. Catching Cheaters](https://codeforces.com/contest/1446/problem/B) [(소스코드)](./src/cheater.cpp) - LCS를 이용한 기본 문제
+    * [[BOJ] LCS 4](https://www.acmicpc.net/problem/13711) [(소스코드)](./src/lcs4.cpp) - LIS와 LCS를 조합한 문제
+
+### 정의
+* 임의의 두 수열이 주어졌을 때, 어떠한 부분수열이 두 수열의 부분수열이라면 해당 부분수열을 두 수열의 공통 부분수열이라고 함
+* 공통 부분수열 중 길이가 가장 긴 것을 두 수열의 최장 공통 부분수열이라고 함
+    * 두 수열 <i>a</i> = {4,2,<b>10</b>,<b>3</b>,1,<b>7</b>,6,<b>8</b>,<b>5</b>,<b>9</b>}, <i>b</i> = {1,4,<b>10</b>,<b>3</b>,2,<b>7</b>,6,<b>8</b>,<b>5</b>,<b>9</b>}가 주어졌을 때, 두 수열의 최장 공통 부분수열 <i>c</i> = {10,3,7,8,5,9}
+* LIS처럼 두 수열의 LCS는 두 개 이상 존재할 수 있음
+
+* 크기가 <i>n</i>인 두 수열 <i>a</i>, <i>b</i>에서의 LCS <i>c<sub>i,j</sub></i> :
+
+    ![LIS](./img/lcs.png)
+
+    ![LIS](./img/lcs_exam.png)
+
+### 연습문제
+* [[BOJ] LCS](https://www.acmicpc.net/problem/9251) [(소스코드)](./src/lcs.cpp)
+###### Memory: 5,940 KB, Time: 4 ms
+```c++
+// https://www.acmicpc.net/problem/9251
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(void) 
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    string a, b;
+    cin>>a>>b;
+    int a_len = a.size();
+    int b_len = b.size();
+    a.insert(a.begin(), '\0'); // 1-based
+    b.insert(b.begin(), '\0'); // 1-based
+
+    static int c[1001][1001]; // init. all to zero
+    for (int i = 1; i<=a_len; ++i) {
+        for (int j = 1; j<=b_len; ++j) {
+            if (a[i]==b[j]) {
+                c[i][j]=c[i-1][j-1]+1;
+            }
+            else {
+                c[i][j]=max(c[i][j-1],c[i-1][j]);
+            }
+        }
+    }
+    cout << c[a_len][b_len];
+
+    return 0;
+}
+
+```
+
+* [[BOJ] LCS 2](https://www.acmicpc.net/problem/9252) [(소스코드)](./src/lcs_2.cpp) - LCS를 구한 방법의 반대로 역추적
+    1. `a[i]==b[j]`: `i-1, j-1`로 이동
+    2. `a[i]!=b[j]`: `c[i][j-1]`와 `c[i-1][j]` 두 값을 비교해 더 큰 방향으로 이동
+###### Memory:  KB, Time:  ms
+```c++
+// https://www.acmicpc.net/problem/9252
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(void) 
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    string a, b;
+    cin>>a>>b;
+    int a_len = a.size();
+    int b_len = b.size();
+    a.insert(a.begin(), '\0'); // 1-based
+    b.insert(b.begin(), '\0'); // 1-based
+
+    static int c[1001][1001]; // init. all to zero
+    for (int i = 1; i<=a_len; ++i) {
+        for (int j = 1; j<=b_len; ++j) {
+            if (a[i]==b[j]) {
+                c[i][j]=c[i-1][j-1]+1;
+            }
+            else {
+                c[i][j]=max(c[i][j-1],c[i-1][j]);
+            }
+        }
+    }
+    cout << c[a_len][b_len] << '\n';
+
+    // get lcs
+    stack<char> s;
+    int a_idx = a_len;
+    int b_idx = b_len;
+    while (c[a_idx][b_idx]) {
+        if (a[a_idx]==b[b_idx]) {
+            s.push(a[a_idx]);
+            --a_idx;
+            --b_idx;
+        }
+        else {
+            if (c[a_idx][b_idx-1]>c[a_idx-1][b_idx]) {
+                --b_idx;
+            }
+            else {
+                --a_idx;
+            }
+        }
+    }
+    while (!s.empty()) {
+        cout << s.top();
+        s.pop();
+    }
+
+    return 0;
+}
+```
+
+* [[BOJ] LCS 3](https://www.acmicpc.net/problem/1958) [(소스코드)](./src/lcs_3.cpp) - 두 문자열이 아닌 세 문자열에서의 LCS 계산 문제
+    * 두 문자열의 LCS를 구한 결과와 나머지 문자열 사이의 LCS를 구하는 방법을 시도했다가 실패했으며, 반례는 아래와 같음:
+    ```text
+    A: dababcf
+    B: ababdef
+    C: df
+
+    LCS(A,B)       : ababf
+    LCS(LCS(A,B),C): f
+    LCS(A,B,C)     : df
+    ```
+    * 따라서 세 문자열을 동시에 LCS 계산하는 데 사용해야 함
+###### Memory: 6,048 KB, Time: 4 ms
+```c++
+// https://www.acmicpc.net/problem/1958
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(void) 
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    string x, y, z;
+    cin>>x>>y>>z;
+    int x_len = x.size();
+    int y_len = y.size();
+    int z_len = z.size();
+    x.insert(x.begin(), '\0'); // 1-based
+    y.insert(y.begin(), '\0'); // 1-based
+    z.insert(z.begin(), '\0'); // 1-based
+    static int c[101][101][101]; // init. all to zero
+    for (int i = 1; i<=x_len; ++i) {
+        for (int j = 1; j<=y_len; ++j) {
+            for (int k = 1; k<=z_len; ++k) {
+                if (x[i]==y[j] && y[j]==z[k]) {
+                    c[i][j][k]=c[i-1][j-1][k-1]+1;
+                }
+                else {
+                    c[i][j][k]=max({c[i-1][j][k],c[i][j-1][k],c[i][j][k-1]});
+                }
+            }
+        }
+    }
+    cout << c[x_len][y_len][z_len];
+
+    return 0;
+}
+```
+
 ## [WIP] 비트마스크를 이용한 동적 계획법(Bit DP)
 * 추천 문제
     * [[BOJ] 행렬 곱셈 순서](https://www.acmicpc.net/problem/11049) [(소스코드)](./src/210709_matrix.cpp)
