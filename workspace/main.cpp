@@ -17,6 +17,7 @@ int main(void)
 		}
 		int hp;
 		cin>>hp;
+		cout << i << '\t' << mine.size() << '\t' << hp;
 		if (i>r) {
 			hp-=d*(r-mine.size());
 		}
@@ -33,6 +34,11 @@ int main(void)
 				break;
 			}
 		}
+		cout << '\t' << hp;
+		if (!mine.empty()) {
+			cout << '\t' << mine.back();
+		}
+		cout << '\n';
 	}
 	cout << ((is_survived) ? "YES" : "NO");
 
