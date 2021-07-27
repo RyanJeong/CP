@@ -683,7 +683,7 @@ int main(void)
 
 ## 최장 공통 부분수열(Longest Common Subsequencd, LCS)
 * 추천 문제
-    * [[Codeforces] B. Catching Cheaters](https://codeforces.com/contest/1446/problem/B) [(소스코드)](./src/cheater.cpp) - LCS를 이용한 기본 문제
+    * [[Codeforces] B. Catching Cheaters](https://codeforces.com/contest/1446/problem/B) [(소스코드)](./src/cheater.cpp) - LCS 개념을 기반으로 DP를 사용한 문제
     * [[BOJ] LCS 4](https://www.acmicpc.net/problem/13711) [(소스코드)](./src/lcs4.cpp) - LIS와 LCS를 조합한 문제
 
 ### 정의
@@ -699,7 +699,7 @@ int main(void)
     ![LIS](./img/lcs_exam.png)
 
 ### 연습문제
-* [[BOJ] LCS](https://www.acmicpc.net/problem/9251) [(소스코드)](./src/lcs.cpp)
+* [[BOJ] LCS](https://www.acmicpc.net/problem/9251) [(소스코드)](./src/lcs.cpp) - 시간복잡도 <b>O(<i>nm</i>)</b>
 ###### Memory: 5,940 KB, Time: 4 ms
 ```c++
 // https://www.acmicpc.net/problem/9251

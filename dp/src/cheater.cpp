@@ -1,4 +1,16 @@
-// https://www.acmicpc.net/problem/9251
+// https://codeforces.com/contest/1446/problem/B
+// S(C,D) = 4*LCS(C,D)-|C|-|D|
+//        = 2*LCS(C,D)-(LCS(C,D)-|C|)-(LCS(C,D)-|D|)
+//        = 2*LCS(C,D)+(|C|-LCS(C,D))+(|D|-LCS(C,D))
+// a[i]==b[j] => +2
+// else => -1 (LCS에서 길이가 1 늘어남)
+/*
+A        : abba
+B        : babab
+LCS(C,D) : abb
+|C|      : 3(abb)
+|D|      : 4(abab)
+*/
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -12,61 +24,25 @@ int main(void)
     cin>>a_len>>b_len;
     string a;
     cin>>a;
+    a.insert(a.begin(),'\0'); //1-based;
     string b;
     cin>>b;
+    b.insert(b.begin(),'\0'); //1-based;
 
-    a.insert(a.begin(), '\0'); // 1-based
-    b.insert(b.begin(), '\0'); // 1-based
-    static int c[1001][1001]; // init. all to zero
+    vector<vector<int>> dp(a_len+1,vector<int>(b_len+1));
+    int ans = 0;
     for (int i = 1; i<=a_len; ++i) {
         for (int j = 1; j<=b_len; ++j) {
             if (a[i]==b[j]) {
-                c[i][j]=c[i-1][j-1]+1;
+                dp[i][j]=max(dp[i-1][j-1]+2,dp[i][j]);
             }
             else {
-                c[i][j]=max(c[i][j-1],c[i-1][j]);
+                dp[i][j]=max(0,max(dp[i-1][j],dp[i][j-1])-1);
             }
+            ans=max(ans,dp[i][j]);
         }
     }
-
-    int a_idx = a_len;
-    int b_idx = b_len;
-    stack<char> s;
-    while (c[a_idx][b_idx]) {
-        if (a[a_idx]==b[b_idx]) {
-            s.push(a[a_idx]);
-            --a_idx;
-            --b_idx;
-        }
-        else {
-            if (c[a_idx][b_idx-1]>c[a_idx-1][b_idx]) {
-                --b_idx;
-            }
-            else {
-                --a_idx;
-            }
-        }
-    }
-
-/*
-    int a_to = a.rfind(s.top());
-    int b_to = b.rfind(s.top());
-    s.pop();
-    a_idx=a_to;
-    b_idx=b_to;
-    while (!s.empty()) {
-        while (a[a_idx--]!=s.top()) {
-            ;
-        }
-        while (b[b_idx--]!=s.top()) {
-            ;
-        }
-        s.pop();
-    }
-
-    cout << 4*c[a_len][b_len]-(a_to-a_idx)-(b_to-b_idx);
-    */
-   cout << c[a_len][b_len];
+    cout << ans;
 
     return 0;
 }
