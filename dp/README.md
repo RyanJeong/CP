@@ -684,7 +684,8 @@ int main(void)
 ## 최장 공통 부분수열(Longest Common Subsequencd, LCS)
 * 추천 문제
     * [[Codeforces] B. Catching Cheaters](https://codeforces.com/contest/1446/problem/B) [(소스코드)](./src/cheater.cpp) - LCS 개념을 기반으로 DP를 사용한 문제
-    * [[BOJ] LCS 4](https://www.acmicpc.net/problem/13711) [(소스코드)](./src/lcs4.cpp) - LIS와 LCS를 조합한 문제
+    * [[BOJ] LCS 4](https://www.acmicpc.net/problem/13711) [(소스코드)](./src/lcs_4.cpp) - LCS의 시간복잡도는 <b>O(<i>nm</i>)</b>이며, 간접 정렬(indirect sorting)을 사용해 LCS를 LIS 문제처럼 다루어 시간복잡도를 <b>O(<i>n</i> log <i>n</i>)</b>로 낮추어 해결해야 함 
+        * 두 수열의 LCS = 간접 정렬 후 두 수열의 LIS
 
 ### 정의
 * 임의의 두 수열이 주어졌을 때, 어떠한 부분수열이 두 수열의 부분수열이라면 해당 부분수열을 두 수열의 공통 부분수열이라고 함
@@ -811,7 +812,7 @@ int main(void)
     LCS(LCS(A,B),C): f
     LCS(A,B,C)     : df
     ```
-    * 따라서 세 문자열을 동시에 LCS 계산하는 데 사용해야 함
+    * 따라서 LCS 계산 시 세 문자열을 동시에 사용해야 함
 ###### Memory: 6,048 KB, Time: 4 ms
 ```c++
 // https://www.acmicpc.net/problem/1958

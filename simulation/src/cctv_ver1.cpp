@@ -1,4 +1,5 @@
-// http://icpc.me/15683
+// https://www.acmicpc.net/problem/15683
+// 2,020 KB, 24 ms
 #include <bits/stdc++.h>
 
 using namespace std;

@@ -1,48 +1,97 @@
-// https://codeforces.com/contest/1446/problem/B
-// S(C,D) = 4*LCS(C,D)-|C|-|D|
-//        = 2*LCS(C,D)-(LCS(C,D)-|C|)-(LCS(C,D)-|D|)
-//        = 2*LCS(C,D)+(|C|-LCS(C,D))+(|D|-LCS(C,D))
-// a[i]==b[j] => +2
-// else => -1 (LCS에서 길이가 1 늘어남)
-/*
-A        : abba
-B        : babab
-LCS(C,D) : abb
-|C|      : 3(abb)
-|D|      : 4(abab)
-*/
+// https://www.acmicpc.net/problem/15683
 #include <bits/stdc++.h>
 
 using namespace std;
 
-int main(void) 
+int main(void)
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int a_len, b_len;
-    cin>>a_len>>b_len;
-    string a;
-    cin>>a;
-    a.insert(a.begin(),'\0'); //1-based;
-    string b;
-    cin>>b;
-    b.insert(b.begin(),'\0'); //1-based;
-
-    vector<vector<int>> dp(a_len+1,vector<int>(b_len+1));
-    int ans = 0;
-    for (int i = 1; i<=a_len; ++i) {
-        for (int j = 1; j<=b_len; ++j) {
-            if (a[i]==b[j]) {
-                dp[i][j]=max(dp[i-1][j-1]+2,dp[i][j]);
+    int n, m;
+    cin>>n>>m; 
+    int arr[n+1][m+1];
+    int tmp[n+1][m+1];
+    vector<pair<int, int>> cam(1); // 1-based
+    for (int i = 1; i<=n; ++i) {
+        for (int j = 1; j<=m; ++j) {
+            cin>>arr[i][j];
+            if (arr[i][j]>=1 && arr[i][j]<=5) {
+                cam.push_back({i,j});
             }
-            else {
-                dp[i][j]=max(0,max(dp[i-1][j],dp[i][j-1])-1);
-            }
-            ans=max(ans,dp[i][j]);
         }
     }
-    cout << ans;
+
+    int min_area = 64;
+    // cam: 4 directions
+    // ex) n(cam): 3 -> 4x4x4
+    int cases = 1<<(cam.size()*2);
+    for (int c = 0; c<cases; ++c) {
+        memcpy(tmp,arr,sizeof tmp);
+        int dir = c;
+        for (int i = 1; i<=cam.size(); ++i) {
+            const int dx[] = {1,0,-1,0};
+            const int dy[] = {0,1,0,-1}; 
+            bool is_available[4] = {false,false,false,false};
+            switch (arr[cam[i].first][cam[i].second]) {
+            case 1: 
+                is_available[(dir+0)%4]=true;
+                break;
+            case 2: 
+                is_available[(dir+0)%4]=true;
+                is_available[(dir+2)%4]=true;
+                break;
+            case 3: 
+                is_available[(dir+0)%4]=true;
+                is_available[(dir+1)%4]=true;
+                break;
+            case 4: 
+                is_available[(dir+0)%4]=true;
+                is_available[(dir+1)%4]=true;
+                is_available[(dir+2)%4]=true;
+                break;
+            case 5: 
+                is_available[(dir+0)%4]=true;
+                is_available[(dir+1)%4]=true;
+                is_available[(dir+2)%4]=true;
+                is_available[(dir+3)%4]=true;
+                break;
+            default:
+                break;
+            }
+            for (int d = 0; d<4; ++d) {
+                if (!is_available[d]) {
+                    continue;
+                }
+                int x = cam[i].first;
+                int y = cam[i].second;
+                while (tmp[x][y]!=6) {
+                    x+=dx[d];
+                    y+=dy[d];
+                    if (x<1 || x>n) {
+                        break;
+                    }
+                    if (y<1 || y>m) {
+                        break;
+                    }
+                    if (tmp[x][y]==0) {
+                        tmp[x][y]=9; // p
+                    }
+                }
+            }
+            dir/=4;
+        }
+        int area = 0;
+        for (int i = 1; i<=n; ++i) {
+            for (int j = 1; j<=m; ++j) {
+                if (!tmp[i][j]) {
+                    ++area;
+                }
+            }
+        }
+        min_area=min(min_area,area);
+    }
+    cout << min_area;
 
     return 0;
 }
