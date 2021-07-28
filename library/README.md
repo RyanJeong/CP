@@ -1,6 +1,7 @@
-* 2차원 배열 전환
-...
+# Library
+#### This repository is a collection of useful code for CP.
 
+* [2-Dim. Rotation Matrix](./src/rotate.cpp)
 * [CCW](./src/ccw.cpp)
 * [Disjoint-Set](./src/disjoint-set.cpp)
 * [LIS](./src/lis.cpp)

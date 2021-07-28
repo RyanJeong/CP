@@ -1,112 +1,130 @@
-// https://www.acmicpc.net/problem/18808
+// https://www.acmicpc.net/problem/12094
 #include <bits/stdc++.h>
 
 using namespace std;
 
-bool is_suitable(int, int);
-void rotate(void);
-
-vector<vector<int>> notebook; // 1-based
-vector<vector<int>> sticker(10, vector<int>(10)); // 0-based
-int n, m, k; // notebook height & width, n_sticker
-int r, c;    // sticker height & width
+void dfs(vector<vector<int>>& arr, int n, int depth, int& res);
 
 int main(void)
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    cin>>n>>m>>k;
-    notebook=vector<vector<int>>(n+1,vector<int>(m+1)); // 1-based
-    while (k--) {
-        cin>>r>>c;
-        for (int i = 0; i<r; ++i) {
-            for (int j = 0; j<c; ++j) {
-                cin>>sticker[i][j];
-            }
-        }
-        // clockwise, 0:0, 1:90, 2:180, 3:270
-        for (int cw = 0; cw<4; ++cw) {
-            bool is_success = false;
-            for (int x = 1; !is_success && x<=n-(r-1); ++x) {
-                for (int y = 1; y<=m-(c-1); ++y) {
-                    if (is_suitable(x,y)) {
-                        is_success=true;
-                        break;
-                    }
-                }
-            }
-            if (is_success) {
-                break;
-            }
-            rotate();
-        }
-    }
-
+    int n;
+    cin>>n;
     int res = 0;
+    vector<vector<int>> arr(n+1,vector<int>(n+1)); // 1-based
     for (int i = 1; i<=n; ++i) {
-        for (int j = 1; j<=m; ++j) {
-            res+=notebook[i][j];
+        for (int j = 1; j<=n; ++j) {
+            cin>>arr[i][j];
         }
     }
+    dfs(arr,n,0,res);
     cout << res;
 
     return 0;
 }
 
-bool is_suitable(int x, int y) 
+void dfs(vector<vector<int>>& arr, int n, int depth, int& res)
 {
-    for (int i = 0; i<r; ++i) {
-        for (int j = 0; j<c; ++j) {
-            if (notebook[x+i][y+j] && sticker[i][j]) {
+    static vector<int> max_per_depth(n); // 0-based
 
-                return false;
-            }            
+    int max_val = 0;
+    for (int i = 1; i<=n; ++i) {
+        for (int j = 1; j<=n; ++j) {
+            max_val=max(max_val,arr[i][j]);
         }
     }
-    for (int i = 0; i<r; ++i) {
-        for (int j = 0; j<c; ++j) {
-            if (sticker[i][j]) {
-                notebook[x+i][y+j]=1;
+    // 현재 상태에서 최대값을 절대 만들 수 없는 경우
+    if (max_val<=max_per_depth[depth]) {
+        return;
+    }
+    // 최대 깊이일 때, 최대값을 구하고 해당 최대값을 구하기 위한 중간 과정값을 기록
+    if (depth==10) {
+        res=max(res,max_val);
+
+        int tmp = res;
+        while (depth--) {
+            max_per_depth[depth]=tmp;
+            tmp/=2;
+        }
+
+        return;
+    }
+
+    // backup
+    vector<vector<int>> tmp(arr);
+    for (int d = 0; d<4; ++d) { 
+        // move
+        switch (d) {
+        case 0: // left
+            for (int i = 1; i<=n; ++i) {
+                vector<int> ith_row(n+1);
+                int idx=1;
+                for (int j = 1; j<=n; ++j) {
+                    if (!tmp[i][j]) {
+                        continue;
+                    }
+                    if (!ith_row[idx]) {
+                        ith_row[idx]=tmp[i][j];
+                    } 
+                    else if (ith_row[idx]==tmp[i][j]) {
+                        ith_row[idx++]*=2;
+                    } 
+                    else {
+                        ith_row[++idx]=tmp[i][j];
+                    }
+                }
+                tmp[i]=ith_row;
+            }
+            break;
+        case 1: // bottom
+            break;
+        case 2: // right
+            for (int i = 1; i<=n; ++i) {
+                vector<int> ith_row(n+1);
+                int idx=n;
+                for (int j = 1; j<=n; ++j) {
+                    if (!tmp[i][j]) {
+                        continue;
+                    }
+                    if (!ith_row[idx]) {
+                        ith_row[idx]=tmp[i][j];
+                    } 
+                    else if (ith_row[idx]==tmp[i][j]) {
+                        ith_row[idx--]*=2;
+                    } 
+                    else {
+                        ith_row[--idx]=tmp[i][j];
+                    }
+                }
+                tmp[i]=ith_row;
+            }
+            break;
+        case 3: // up
+            break;
+        default:
+            break;
+        }
+
+        // 4방향 중 한 방향으로 이동했을 때 결과가 동일하다면, 
+        // depth를 1만큼 손해를 본다. 따라서 해당 경우는 더 이상
+        // 계산하지 않는다. 
+        bool is_same = true;
+        for (int i = 1; is_same && i<=n; ++i) {
+            for (int j = 1; j<=n; ++j) {
+                if (arr[i][j]!=tmp[i][j]) {
+                    is_same=false;
+                    break;
+                }
             }
         }
-    }
-
-    return true;
-}
-
-/*
-    90's degree clockwise rotation
-    (0 0) (0 1) (0 2)    (3 0) (2 0) (1 0) (0 0) 
-    (1 0) (1 1) (1 2) -> (3 1) (2 1) (1 1) (0 1)
-    (2 0) (2 1) (2 2)    (3 2) (2 2) (1 2) (0 2)
-    (3 0) (3 1) (3 2)
-
-    1. row -> col(in reverse)
-    (0 0) ...    (3 0) (2 0) (1 0) (0 0) 
-    (1 0) ... ->  ...   ...   ...   ...
-    (2 0) ...    
-    (3 0) ... 
-
-    2. col -> row
-    (0 0) (0 1) (0 2)    (3 0) ...
-     ...   ...   ...  -> (3 1) ...
-     ...   ...   ...     (3 2) ...
-     ...   ...   ... 
-    a -> b
-    a[i][j] => b[(r-1)-j][i] // 0-based
-                             // r: 3-> 0, 1, 2 => r-1
-*/
-void rotate(void)
-{
-    vector<vector<int>> tmp(sticker);
-
-    for (int i = 0; i<c; ++i) {
-        for (int j = 0; j<r; ++j) {
-            sticker[i][j] = tmp[(r-1)-j][i];
+        if (!is_same) {
+            dfs(arr,n,depth+1,res);
+            // recovery
+            arr=tmp;
         }
     }
-    swap(r,c);
 
     return;
 }
