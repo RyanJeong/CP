@@ -52,53 +52,53 @@ void dfs(vector<vector<int>>& arr, int n, int depth, int& res)
         return;
     }
 
-    // backup
+    // backup arr to tmp
     vector<vector<int>> tmp(arr);
     for (int d = 0; d<4; ++d) { 
         // move
+        vector<vector<int>> buf(arr);
         switch (d) {
         case 0: // left
             for (int i = 1; i<=n; ++i) {
-                vector<int> ith_row(n+1);
-                int idx=1;
+                int idx = 0;
                 for (int j = 1; j<=n; ++j) {
-                    if (!tmp[i][j]) {
+                    if (!arr[i][j]) {
                         continue;
                     }
-                    if (!ith_row[idx]) {
-                        ith_row[idx]=tmp[i][j];
-                    } 
-                    else if (ith_row[idx]==tmp[i][j]) {
-                        ith_row[idx++]*=2;
-                    } 
+                    if (idx==0) {
+                        ++idx;
+                    }
+                    if (!arr[i][idx]) {
+                        arr[i][idx]=arr[i][j];
+                    }
+                    else if (arr[i][idx]==arr[i][j]) {
+                        arr[i][idx++]*=2;
+                    }
                     else {
-                        ith_row[++idx]=tmp[i][j];
+                        arr[i][++idx]=arr[i][j];
                     }
                 }
-                tmp[i]=ith_row;
             }
             break;
         case 1: // bottom
             break;
         case 2: // right
             for (int i = 1; i<=n; ++i) {
-                vector<int> ith_row(n+1);
-                int idx=n;
-                for (int j = 1; j<=n; ++j) {
-                    if (!tmp[i][j]) {
+                int idx = n;
+                for (int j = n; j>0; --j) {
+                    if (!arr[i][j]) {
                         continue;
                     }
-                    if (!ith_row[idx]) {
-                        ith_row[idx]=tmp[i][j];
-                    } 
-                    else if (ith_row[idx]==tmp[i][j]) {
-                        ith_row[idx--]*=2;
-                    } 
+                    if (!arr[i][idx]) {
+                        arr[i][idx]=arr[i][j];
+                    }
+                    else if (arr[i][idx]==arr[i][j]) {
+                        arr[i][idx--]*=2;
+                    }
                     else {
-                        ith_row[--idx]=tmp[i][j];
+                        arr[i][--idx]=arr[i][j];
                     }
                 }
-                tmp[i]=ith_row;
             }
             break;
         case 3: // up
@@ -106,6 +106,7 @@ void dfs(vector<vector<int>>& arr, int n, int depth, int& res)
         default:
             break;
         }
+        arr=buf; // 계산 결과 전달 
 
         // 4방향 중 한 방향으로 이동했을 때 결과가 동일하다면, 
         // depth를 1만큼 손해를 본다. 따라서 해당 경우는 더 이상
@@ -121,7 +122,7 @@ void dfs(vector<vector<int>>& arr, int n, int depth, int& res)
         }
         if (!is_same) {
             dfs(arr,n,depth+1,res);
-            // recovery
+            // recovery arr from tmp
             arr=tmp;
         }
     }
