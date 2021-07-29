@@ -6,11 +6,18 @@
     * [[BOJ] Elevator Trouble](https://www.acmicpc.net/problem/5014) [(소스코드)](./src/210615_elevator.cpp)
     * [[BOJ] 벽 부수고 이동하기 4](https://www.acmicpc.net/problem/16946) [(소스코드)](./src/210709_wall4.cpp)
 ---
+
 * 추천 문제 - DFS
     * [[BOJ] DFS와 BFS](https://www.acmicpc.net/problem/1260) [(소스코드)](./src/210617_DFS_BFS.cpp)
     * [[BOJ] 바이러스](https://www.acmicpc.net/problem/2606) [(소스코드)](./src/210617_DFS_virus.cpp)
     * [[BOJ] 물통](https://www.acmicpc.net/problem/2251) [(소스코드)](./src/210617_DFS_bottle.cpp)
     * [[BOJ] Letters](https://www.acmicpc.net/problem/1987) [(소스코드)](./src/210617_DFS_letters.cpp)
+---
+
+* 추천 문제 - 백트래킹
+    * [[BOJ] N-Queen](https://www.acmicpc.net/problem/9663) [(소스코드)](./backtracking/src/n_queen.cpp)
+    * [[BOJ] 비숍](https://www.acmicpc.net/problem/1799) [(소스코드)](./backtracking/src/210618_bishop.cpp)
+    * [[BOJ] Sudoku](https://www.acmicpc.net/problem/2239) [(소스코드)](./backtracking/src/210712_sudoku.cpp)
 ---
 
 ## BFS(Breadth-first search)
@@ -345,10 +352,6 @@ int dfs(int i, int j)
 ## Backtracking
 * DFS(재귀)의 응용
 * <b>Go as deeply as possible, backtrack if impossible</b>
-* 추천 문제
-    * [[BOJ] N-Queen](https://www.acmicpc.net/problem/9663) [(소스코드)](./backtracking/src/n_queen.cpp)
-    * [[BOJ] 비숍](https://www.acmicpc.net/problem/1799) [(소스코드)](./backtracking/src/210618_bishop.cpp)
-    * [[BOJ] Sudoku](https://www.acmicpc.net/problem/2239) [(소스코드)](./backtracking/src/210712_sudoku.cpp)
 
 ### 연습문제
 * [[BOJ] N과 M (1)](https://www.acmicpc.net/problem/15649) [(소스코드)](./backtracking/src/n_m.cpp)

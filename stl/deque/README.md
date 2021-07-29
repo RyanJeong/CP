@@ -19,7 +19,7 @@
     * [[BOJ] 회전하는 큐](https://www.acmicpc.net/problem/1021) [(소스코드)](./src/circular_queue.cpp) - `deque`를 이용한 회전하는 큐 구현
 ---
 
-## [덱(Deque)](https://cplusplus.com/reference/deque/deque/)
+## [덱(deque)](https://cplusplus.com/reference/deque/deque/)
 * `deque` (usually pronounced like "deck") is an irregular acronym of <b>d</b>ouble-<b>e</b>nded <b>que</b>ue.
 * Restricted Structure
 * `push`의 시간 복잡도는 <b>O(1)</b>

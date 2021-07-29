@@ -12,10 +12,10 @@
         * [Map](/stl/map/)
 # Vector
 * 추천 문제
-    * [[BOJ] 애너그램 만들기](https://www.acmicpc.net/problem/1919) [(소스코드)](./src/anagram.cpp)
+    * [[BOJ] Strfry](https://www.acmicpc.net/problem/11328) [(소스코드)](./src/strfry.cpp)
 ---
 
-## [벡터(Vector)](https://cplusplus.com/reference/vector/vector/)
+## [벡터(vector)](https://cplusplus.com/reference/vector/vector/)
 * STL 컨테이너 중 하나
 * 요소들을 순차적으로 보관하는 sequence container
 * 벡터는 배열과 비슷하지만, 배열은 크기가 불변이지만 벡터는 크기가 가변임

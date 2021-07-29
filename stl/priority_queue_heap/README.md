@@ -22,7 +22,7 @@
     * [[BOJ] 화장실의 규칙](https://www.acmicpc.net/problem/19640) [(소스코드)](./src/210710_restroom.cpp) - 비교연산 직접 구현한 예
 ---
 
-## [우선 순위 큐(Priority Queue, Heap)](https://cplusplus.com/reference/queue/priority_queue/)
+## [우선 순위 큐(priority queue of heap)](https://cplusplus.com/reference/queue/priority_queue/)
 * 힙(heap): 최대값 또는 최소값을 빠르게 찾아내기 위한 이진 트리이며, <b>이진 탐색 트리가 아님에 유의할 것</b>
 * STL에서 제공하는 힙은 `priority_queue`이며, 최대힙을 나타냄
 * 최소값 또는 최대값을 확인하는 것이 목적이라면, 균형 이진 트리를 통해서도 해를 구할 수 있지만 힙을 사용하는 것이 더 유리함
