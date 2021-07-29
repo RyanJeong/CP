@@ -1,6 +1,4 @@
 # [서로소 집합(Disjoint-set)](https://en.wikipedia.org/wiki/Disjoint-set_data_structure)
-
-## 서로소 집합
 * 추천 문제
     * [[BOJ] 친구비](https://www.acmicpc.net/problem/16562) [(소스코드)](./src/friend.cpp) - Disjoint-set 기본 개념에 특정 조건이 추가된 문제
     * [[BOJ] Gates](https://www.acmicpc.net/problem/10775) [(소스코드)](./src/gate.cpp) - Rank(level)를 사용하지 않고 조건에 맞게 <i>union</i> 수행
@@ -9,11 +7,11 @@
     * [[BOJ] Never Wait for Weights](https://www.acmicpc.net/problem/3830) [(소스코드)](./src/weight.cpp)
     * [[BOJ] LADICE](https://www.acmicpc.net/problem/9938) [(소스코드)](./src/ladice.cpp) - Rank(level) compression을 사용하지 않고, 방문 여부에 따라 <i>union</i> 을 수행
     * [[BOJ] 먹이 사슬](https://www.acmicpc.net/problem/12877) [(소스코드)](./src/food_chain.cpp) - 발생할 수 있는 경우의수를 모두 고려해 서로소 집합으로 풀이
+---
 
-
+## 서로소 집합
 * 서로소(disjoint)
     * 공통으로 포함하는 원소가 없는 두 집합의 관계
-
 * 합집합-찾기(union–find) 또는 병합-찾기 집합(merge–find set)으로도 불림
 * 많은 서로소 부분 집합들로 나눠진 원소들에 대한 정보를 저장하고 조작하는 트리 형태의 자료 구조
 * `A ∩ B = 0, (A, B ⊂ C)`

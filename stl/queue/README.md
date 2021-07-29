@@ -11,12 +11,15 @@
         * [Set](/stl/set/)
         * [Map](/stl/map/)
 
-# [Queue](https://cplusplus.com/reference/queue/queue/)
+# Queue
 * 추천 문제
     * [[Programmers] 프린터](https://programmers.co.kr/learn/courses/30/lessons/42587) [(소스코드)](./src/printer.cpp)
     * [[BOJ] 큐](https://www.acmicpc.net/problem/10845) [(소스코드)](./src/queue.cpp)
     * [[BOJ] 카드2](https://www.acmicpc.net/problem/2164) [(소스코드)](./src/card2.cpp)
     * [[BOJ] 좀비 떼가 기관총 진지에도 오다니](https://www.acmicpc.net/problem/19644) [(소스코드)](./src/zombie.cpp) - 조건의 범위를 검사할 때 `queue` 사용
+---
+
+## [큐(queue)](https://cplusplus.com/reference/queue/queue/)
 * Restricted Structure
 * FILO (First In Last Out)
 * `push`의 시간 복잡도는 <b>O(1)</b>

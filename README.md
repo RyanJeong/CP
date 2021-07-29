@@ -31,7 +31,7 @@ Resources for competitive programming
 * [BFS & DFS](/bfs_dfs/)
 * [Recursion](/recursion/)
 * [Dynamic Programming](/dp/)
-* [[WIP]Greedy](/greedy/)
+* [Greedy](/greedy/)
 * [Sort](/sort/)
 * [[WIP]Binary Search](/binary_search/)
 * [Two Pointer](/two_pointer/)

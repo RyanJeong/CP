@@ -1,16 +1,52 @@
 # DP
-* 추천 문제
+* 추천 문제 - 다이나믹 프로그래밍(기본)
     * [[BOJ] Jump The Board!](https://www.acmicpc.net/problem/1890) [(소스코드)](./src/jump.cpp)
         * 초기에 백트래킹을 사용해 접근했으나, [TLE](./src/jump_tle.cpp)가 발생
         * 이처럼 탐색 경우의 수가 방대할 경우, DP를 사용해 해결해야 함
     * [[BOJ] 행렬 곱셈 순서](https://www.acmicpc.net/problem/11049) [(소스코드)](./src/210709_matrix.cpp)
+---
+
+* 추천 문제 - 누적합
+    * [[BOJ] 두 배열의 합](https://www.acmicpc.net/problem/2143) [(소스코드)](./src/prefix_sum_matrix.cpp) - 부분합을 구한 뒤에 `lower_bound()`, `upper_boud()`를 이용해 조건을 만족하는 경우를 찾는 문제
+    * [[BOJ] 색종이 - 3](https://www.acmicpc.net/problem/2571) [(소스코드)](./src/prefix_sum_colored_paper.cpp) - 2차원 배열에서의 구간 합을 계산한 뒤에, 조건을 만족하는 경우만 판별
+    * [[BOJ] 수열의 구간 평균](https://www.acmicpc.net/problem/19566) [(소스코드)](./src/prefix_sum_seq_avg.cpp)
+---
+
+* 추천 문제 - 최장 증가 부분수열
+    * [[BOJ] 가장 큰 증가 부분 수열](https://www.acmicpc.net/problem/11055) [(소스코드)](./src/lis_app1.cpp) - LIS 응용, 조건을 만족하는 값들을 누적하는 문제
+    * [[BOJ] 전깃줄](https://www.acmicpc.net/problem/2565) [(소스코드)](./src/wire1.cpp) - <b>O(<i>n</i><sup>2</sup>)</b>로 해결할 수 있는 문제
+    * [[BOJ] 반도체 설계](https://www.acmicpc.net/problem/2352) [(소스코드)](./src/semiconductor.cpp) - 이분탐색을 이용해 시간복잡도를 <b>O(<i>n</i> log <i>n</i>)</b>로 낮추어 해결해야 하는 문제 1
+    * [[BOJ] 주식](https://www.acmicpc.net/problem/12014) [(소스코드)](./src/stock.cpp) - 이분탐색을 이용해 시간복잡도를 <b>O(<i>n</i> log <i>n</i>)</b>로 낮추어 해결해야 하는 문제 2
+    * [[BOJ] 전깃줄 - 2](https://www.acmicpc.net/problem/2568) [(소스코드)](./src/wire2.cpp) - 이분탐색과 부분 수열을 출력해야 하는 문제
+    * [[BOJ] 이상한 전깃줄](https://www.acmicpc.net/problem/16474) [(소스코드)](./src/weird_wire.cpp) - 이분탐색과 부분 수열을 출력해야 하는 문제
+---
+
+* 추천 문제 - 최장 공통 부분수열
+    * [[Codeforces] B. Catching Cheaters](https://codeforces.com/contest/1446/problem/B) [(소스코드)](./src/cheater.cpp) - LCS 개념을 기반으로 DP를 사용한 문제
+    * [[BOJ] LCS 4](https://www.acmicpc.net/problem/13711) [(소스코드)](./src/lcs_4.cpp) - LCS의 시간복잡도는 <b>O(<i>nm</i>)</b>이며, 간접 정렬(indirect sorting)을 사용해 LCS를 LIS 문제처럼 다루어 시간복잡도를 <b>O(<i>n</i> log <i>n</i>)</b>로 낮추어 해결해야 함 
+        * 두 수열의 LCS = 간접 정렬 후 두 수열의 LIS
+---
+
+* 추천 문제 - 비트마스크를 이용한 동적 계획법
+    * [[BOJ] 행렬 곱셈 순서](https://www.acmicpc.net/problem/11049) [(소스코드)](./src/210709_matrix.cpp)
+---
+
+* 추천 문제 - 부분집합의 합
+    * [[BOJ] Binomial](https://www.acmicpc.net/problem/18719) [(소스코드)](./src/sos_dp_binomial.cpp)
+    * [[BOJ] KOŠARE](https://www.acmicpc.net/problem/2803) [(소스코드)](./src/sos_dp_toys.cpp)
+---
+
+* 추천 문제 - 냅색
+    * [[BOJ] 카우버거 알바생](https://www.acmicpc.net/problem/17208) [(소스코드)](./src/knapsack_cow.cpp)
+    * [[BOJ] 행운쿠키 제작소](https://www.acmicpc.net/problem/10982) [(소스코드)](./src/knapsack_cookie.cpp)
+---
 
 ## 다이나믹 프로그래밍(동적 계획법)
 * 주어진 문제를 작은 단위로 나누어 각 단위에서의 결과를 계산하고, 이 계산한 결과를 원래 문제를 해결하는 데 사용
 * 작은 단위에서 계산한 결과를 저장해둔 뒤 원래 문제를 해결할 때 재사용
     * 작은 단위에서 계산한 결과를 저장함으로써, 계산 속도를 향상시킬 수 있음
 
-### 전략
+## 전략
 1. 본래 문제를 작은 단위로 쪼개어 계산한 결과를 기록할 테이블 설정
     * 해당 테이블에서의 각 요소에 어떤 값을 기록할 것인지 정해야 함
 2. 초기치 설정
@@ -326,12 +362,6 @@ int main(void)
 ```
 
 ## 누적합(Prefix Sum)
-* 추천 문제
-    * [[BOJ] 두 배열의 합](https://www.acmicpc.net/problem/2143) [(소스코드)](./src/prefix_sum_matrix.cpp) - 부분합을 구한 뒤에 `lower_bound()`, `upper_boud()`를 이용해 조건을 만족하는 경우를 찾는 문제
-    * [[BOJ] 색종이 - 3](https://www.acmicpc.net/problem/2571) [(소스코드)](./src/prefix_sum_colored_paper.cpp) - 2차원 배열에서의 구간 합을 계산한 뒤에, 조건을 만족하는 경우만 판별
-    * [[BOJ] 수열의 구간 평균](https://www.acmicpc.net/problem/19566) [(소스코드)](./src/prefix_sum_seq_avg.cpp)
-
-### 정의
 * 배열 안 요소의 값이 변하지 않는다면, 임의의 연속된 구간 내 요소들의 합을 기록해 필요할 때 이를 활용하는 기법
 * 크기가 <i>n</i>인 1차원 배열에서의 누적합 <i>s<sub>i</sub></i> :
 
@@ -415,15 +445,6 @@ int main(void)
 ```
 
 ## 최장 증가 부분수열(Longest Increasing Subsequence, LIS)
-* 추천 문제
-    * [[BOJ] 가장 큰 증가 부분 수열](https://www.acmicpc.net/problem/11055) [(소스코드)](./src/lis_app1.cpp) - LIS 응용, 조건을 만족하는 값들을 누적하는 문제
-    * [[BOJ] 전깃줄](https://www.acmicpc.net/problem/2565) [(소스코드)](./src/wire1.cpp) - <b>O(<i>n</i><sup>2</sup>)</b>로 해결할 수 있는 문제
-    * [[BOJ] 반도체 설계](https://www.acmicpc.net/problem/2352) [(소스코드)](./src/semiconductor.cpp) - 이분탐색을 이용해 시간복잡도를 <b>O(<i>n</i> log <i>n</i>)</b>로 낮추어 해결해야 하는 문제 1
-    * [[BOJ] 주식](https://www.acmicpc.net/problem/12014) [(소스코드)](./src/stock.cpp) - 이분탐색을 이용해 시간복잡도를 <b>O(<i>n</i> log <i>n</i>)</b>로 낮추어 해결해야 하는 문제 2
-    * [[BOJ] 전깃줄 - 2](https://www.acmicpc.net/problem/2568) [(소스코드)](./src/wire2.cpp) - 이분탐색과 부분 수열을 출력해야 하는 문제
-    * [[BOJ] 이상한 전깃줄](https://www.acmicpc.net/problem/16474) [(소스코드)](./src/weird_wire.cpp) - 이분탐색과 부분 수열을 출력해야 하는 문제
-
-### 정의
 * 임의의 수열이 주어졌을 때, 수열의 요소 값이 오름차순으로 등장하는 가장 긴 구간을 의미
 * 구간 내 모든 요소들이 오름차순 상태가 아닐 수 있음
     * 수열 <i>a</i> = {3,1,4,2,6,8,5}가 주여졌을 때, LIS는 {1,2,6,8}
@@ -680,14 +701,7 @@ int main(void)
 // WIP
 ```
 
-
 ## 최장 공통 부분수열(Longest Common Subsequencd, LCS)
-* 추천 문제
-    * [[Codeforces] B. Catching Cheaters](https://codeforces.com/contest/1446/problem/B) [(소스코드)](./src/cheater.cpp) - LCS 개념을 기반으로 DP를 사용한 문제
-    * [[BOJ] LCS 4](https://www.acmicpc.net/problem/13711) [(소스코드)](./src/lcs_4.cpp) - LCS의 시간복잡도는 <b>O(<i>nm</i>)</b>이며, 간접 정렬(indirect sorting)을 사용해 LCS를 LIS 문제처럼 다루어 시간복잡도를 <b>O(<i>n</i> log <i>n</i>)</b>로 낮추어 해결해야 함 
-        * 두 수열의 LCS = 간접 정렬 후 두 수열의 LIS
-
-### 정의
 * 임의의 두 수열이 주어졌을 때, 어떠한 부분수열이 두 수열의 부분수열이라면 해당 부분수열을 두 수열의 공통 부분수열이라고 함
 * 공통 부분수열 중 길이가 가장 긴 것을 두 수열의 최장 공통 부분수열이라고 함
     * 두 수열 <i>a</i> = {4,2,<b>10</b>,<b>3</b>,1,<b>7</b>,6,<b>8</b>,<b>5</b>,<b>9</b>}, <i>b</i> = {1,4,<b>10</b>,<b>3</b>,2,<b>7</b>,6,<b>8</b>,<b>5</b>,<b>9</b>}가 주어졌을 때, 두 수열의 최장 공통 부분수열 <i>c</i> = {10,3,7,8,5,9}
@@ -853,18 +867,10 @@ int main(void)
 ```
 
 ## [WIP] 비트마스크를 이용한 동적 계획법(Bit DP)
-* 추천 문제
-    * [[BOJ] 행렬 곱셈 순서](https://www.acmicpc.net/problem/11049) [(소스코드)](./src/210709_matrix.cpp)
 
-### [WIP] 부분집합의 합(Sum over Subsets, SOS DP)
-* 추천 문제
-    * [[BOJ] Binomial](https://www.acmicpc.net/problem/18719) [(소스코드)](./src/sos_dp_binomial.cpp)
-    * [[BOJ] KOŠARE](https://www.acmicpc.net/problem/2803) [(소스코드)](./src/sos_dp_toys.cpp)
+## [WIP] 부분집합의 합(Sum over Subsets, SOS DP)
 
 ## [WIP] 냅색(Knapsack)
-* 추천 문제
-    * [[BOJ] 카우버거 알바생](https://www.acmicpc.net/problem/17208) [(소스코드)](./src/knapsack_cow.cpp)
-    * [[BOJ] 행운쿠키 제작소](https://www.acmicpc.net/problem/10982) [(소스코드)](./src/knapsack_cookie.cpp)
 
 ### 연습문제
 * [[BOJ] 평범한 배낭](https://www.acmicpc.net/problem/12865) [(소스코드)](./src/knapsack.cpp)

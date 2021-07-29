@@ -1,4 +1,4 @@
-// https://www.acmicpc.net/problem/12094
+// https://www.acmicpc.net/problem/12100
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -28,8 +28,8 @@ int main(void)
 
 void dfs(vector<vector<int>>& arr, int n, int depth, int& res)
 {
-    const int limit = 10;
-    static vector<int> max_per_depth(limit+1); // depth: 0~10
+    const int limit = 5;
+    static vector<int> max_per_depth(limit+1); // depth: 0~5
 
     int max_val = 0;
     for (int i = 1; i<=n; ++i) {

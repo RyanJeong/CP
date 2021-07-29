@@ -11,9 +11,12 @@
         * [Set](/stl/set/)
         * [Map](/stl/map/)
 
-# [Map](https://cplusplus.com/reference/map/map/)
+# Map
 * 추천 문제
     * [[BOJ] MALCOLM](https://www.acmicpc.net/problem/3078) [(소스코드)](./src/malcolm.cpp) - 중복 `map` 처리 문제
+---
+
+## [맵(map)](https://cplusplus.com/reference/map/map/)
 * [이진 검색 트리](/binary_search/)로 구현된 자료구조 (using highly balanced binary search trees, e.g. red-black tree, AVL tree)
 * { <i>key</i>, <i>value</i> } 형태로 값 저장
 * 컨테이너 안에는 하나의 <i>key</i>만 존재할 수 있음

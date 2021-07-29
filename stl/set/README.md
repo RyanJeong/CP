@@ -11,12 +11,16 @@
         * [Set](/stl/set/)
         * [Map](/stl/map/)
 
-# [Set](https://cplusplus.com/reference/set/set/)
+# Set
 * 추천 문제
     * [[BOJ] Easy work](https://www.acmicpc.net/problem/7785) [(소스코드)](./src/easy_work.cpp) - 비교 함수를 사용한 예
+---
+
+## [셋(set)](https://cplusplus.com/reference/set/set/)
 * [이진 검색 트리](/binary_search/)로 구현된 자료구조
 * 컨테이너 안에는 하나의 값만 존재할 수 있음
 * `set`의 `insert`, `erase`, `find` 시간복잡도는 <b>O(<i>log n</i>)</b>
+
 ## [Multiple-key set](https://cplusplus.com/reference/set/multiset/)
 * `multiset`은 `set`에서 값의 중복을 허용하는 자료구조
 

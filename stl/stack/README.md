@@ -11,13 +11,14 @@
         * [Set](/stl/set/)
         * [Map](/stl/map/)
 
-# [Stack](https://cplusplus.com/reference/stack/stack)
+# Stack
 * 추천 문제
     * [[BOJ] 스택](https://www.acmicpc.net/problem/10828) [(소스코드)](./src/stack.cpp)
     * [[BOJ] 오큰수](https://www.acmicpc.net/problem/17298) [(소스코드)](./src/nge.cpp)
     * [[BOJ] EKSPLOZIJA](https://www.acmicpc.net/problem/17298) [(소스코드)](./src/eksplozija.cpp) - 컨테이너를 응용한 스택 구현
+---
 
-## 특징
+# [스택(stack)](https://cplusplus.com/reference/stack/stack)
 * Restricted Structure
 * FIFO (First In First Out)
 * `push`의 시간 복잡도는 <b>O(1)</b>

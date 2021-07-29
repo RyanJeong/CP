@@ -1,11 +1,13 @@
 # [Sort](https://www.cplusplus.com/reference/algorithm/sort/)
-## [Sort](https://en.cppreference.com/w/cpp/algorithm/sort), [Stable Sort](https://en.cppreference.com/w/cpp/algorithm/stable_sort) 
 * 추천 문제
     * [[BOJ] 단어 정렬](https://www.acmicpc.net/problem/1181) [(소스코드)](./src/sort_word.cpp) - `sort` 함수를 사용하며, 비교 함수를 직접 구현하는 예
     * [[BOJ] 나이순 정렬](https://www.acmicpc.net/problem/10814) [(소스코드)](./src/sort_age.cpp) - `stable_sort` 함수를 사용하며, 비교 함수를 직접 구현하는 예
     * [[BOJ] Multi-key Sorting](https://www.acmicpc.net/problem/3340) [(소스코드)](./src/stable_sort_feat.cpp) - `stable_sort` 의 특징을 알 수 있는 문제
     * [[Programmers] 전화번호 목록](https://programmers.co.kr/learn/courses/30/lessons/42577) [(소스코드)](./src/phone_book.cpp) - 문자열을 대상으로 정렬했을 때의 결과를 생각하면 답이 보이는 문제
     * [[BOJ] K번째 수 찾는 함수](https://www.acmicpc.net/problem/16455) [(소스코드)](./src/nth_element.cpp) - `nth_element` 함수 사용 문제
+---
+
+## [Sort](https://en.cppreference.com/w/cpp/algorithm/sort), [Stable Sort](https://en.cppreference.com/w/cpp/algorithm/stable_sort) 
 * <i>iterator</i> 타입 `first`와 `last` 사이에 있는 요소들을 정렬 
 * `end`는 마지막 요소의 다음 요소를 가리킴에 주의
     * `[start, end)`
@@ -28,7 +30,7 @@
 * Quicksort is usually done in-place with <b>O(<i>log n</i>)</b> stack space.
 
 
-### 정렬 알고리즘 성능 분석
+## 정렬 알고리즘 성능 분석
 * [[BOJ] 수 정렬하기2](https://www.acmicpc.net/problem/2751) 
     * ~~Bubble Sort~~ [(소스코드)](./src/bubblesort2.cpp)
         ###### <b>TLE</b>
@@ -185,9 +187,8 @@ int main(void)
     return 0;
 }
 ```
-
-## 기타 정렬 (Non-comparison Sort)
-###  Counting Sort (계수 정렬)
+##  Counting Sort (계수 정렬)
+* 기타 정렬 (Non-comparison Sort)
 * 대상 간 비교를 직접 하지 않음
 * 비교해야 할 대상 수가 <i>n</i>이고, 대상의 범위가 <i>k</i>일 때, 시간복잡도는 <b>O(<i>n</i>+<i>k</i>)</b>이고 공간복잡도는 <b>O(<i>n</i>+<i>k</i>)</b>
 * 정렬하는 대상이 특정 범위 내에 있을 경우 굉장히 효율적인 방법이지만, 범위가 특정하지 않거나 범위가 너무 넓을 경우 불필요한 메모리 낭비가 발생함
@@ -269,7 +270,8 @@ int main(void)
 }
 ```
 
-### Radix Sort (기수 정렬)
+## Radix Sort (기수 정렬)
+* 기타 정렬 (Non-comparison Sort)
 * 대상 간 비교를 직접 하지 않음
 * 비교해야 할 대상 수가 <i>n</i>이고, 기수(radix)의 수가 <i>l</i>, 대상의 범위가 <i>k</i>일 때, 시간복잡도는 <b>O(<i>l</i>×(<i>n</i>+<i>k</i>))</b>이고 공간복잡도는 <b>O(<i>n</i>+<i>k</i>)</b>
 * 기수 크기만큼의 메모리가 추가로 필요함  
