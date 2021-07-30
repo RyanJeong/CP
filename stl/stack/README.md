@@ -18,7 +18,7 @@
     * [[BOJ] EKSPLOZIJA](https://www.acmicpc.net/problem/17298) [(소스코드)](./src/eksplozija.cpp) - 컨테이너를 응용한 스택 구현
 ---
 
-# [스택(stack)](https://cplusplus.com/reference/stack/stack)
+## [스택(stack)](https://cplusplus.com/reference/stack/stack)
 * Restricted Structure
 * FIFO (First In First Out)
 * `push`의 시간 복잡도는 <b>O(1)</b>

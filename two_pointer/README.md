@@ -1,4 +1,4 @@
-# Two Pointers
+# Two Pointer
 * 추천 문제
     * [[BOJ] Subsequence](https://www.acmicpc.net/problem/1806) [(소스코드)](./src/210712_subsequence.cpp) - 두 포인터를 이용해 조건을 만족하는 구간을 찾는 문제
     * [[BOJ] 용액 합성하기](https://www.acmicpc.net/problem/14921) [(소스코드)](./src/210712_two_liquids.cpp) - 탐색 대상이 정렬되었을 때의 두 포인터 사용 예

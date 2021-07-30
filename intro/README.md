@@ -1,5 +1,4 @@
-# Template for CP
-
+# Intro.
 ## Basic skills for CP
 ### Prevent Overflow
 ```c++

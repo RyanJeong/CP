@@ -1,4 +1,4 @@
-# DP
+# Dynamic Programming
 * 추천 문제 - 다이나믹 프로그래밍(기본)
     * [[BOJ] Jump The Board!](https://www.acmicpc.net/problem/1890) [(소스코드)](./src/jump.cpp)
         * 초기에 백트래킹을 사용해 접근했으나, [TLE](./src/jump_tle.cpp)가 발생
@@ -41,7 +41,7 @@
     * [[BOJ] 행운쿠키 제작소](https://www.acmicpc.net/problem/10982) [(소스코드)](./src/knapsack_cookie.cpp)
 ---
 
-## 다이나믹 프로그래밍(동적 계획법)
+## 다이나믹 프로그래밍(동적 계획법, DP)
 * 주어진 문제를 작은 단위로 나누어 각 단위에서의 결과를 계산하고, 이 계산한 결과를 원래 문제를 해결하는 데 사용
 * 작은 단위에서 계산한 결과를 저장해둔 뒤 원래 문제를 해결할 때 재사용
     * 작은 단위에서 계산한 결과를 저장함으로써, 계산 속도를 향상시킬 수 있음
