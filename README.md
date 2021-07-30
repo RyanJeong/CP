@@ -36,6 +36,12 @@ Resources for competitive programming
 * [[WIP]Binary Search](/binary_search/)
 * [Two Pointer](/two_pointer/)
 * [[WIP]String](/string/)
+* [[WIP]Graph](/graph/)
+* [[WIP]Tree](/tree/)
+* [[WIP]Topological Sort](/topological_sort/)
+* [[WIP]Minimum Spanning Tree](/mst/)
+* [[WIP]Floyd-Warshall](/floyd-warshall/)
+* [[WIP]Dijkstra](/dijkstra/)
 * [Disjoint-set](/disjoint-set/)
 ---
 * [Mathematics](/math/)

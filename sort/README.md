@@ -414,5 +414,5 @@ int main(void)
 
 
 ---
-|[이전 - Greedy](/greedy/)|[목록](https://github.com/RyanJeong/CP#index)|[다음 - Binary Search](/binary_search)|
+|[이전 - Greedy](/greedy/)|[목록](https://github.com/RyanJeong/CP#index)|[다음 - Binary Search](/binary_search/)|
 |-|-|-|

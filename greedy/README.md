@@ -1,6 +1,7 @@
 # Greedy
 * 추천 문제
-    * [[BOJ] ](https://www.acmicpc.net/problem/) [(소스코드)](./src/.cpp)
+    * [[BOJ] 주유소](https://www.acmicpc.net/problem/13305) [(소스코드)](./src/gas_station.cpp)
+---
 
 ## 그리디 알고리즘
 * 해를 구하기 위해 반복적으로 어떤 선택을 해야 하는 상황에서 가장 좋은(locally optimal) 것을 매번 선택하는 기법
