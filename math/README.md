@@ -1,7 +1,7 @@
 # Mathematics
 ## Index
 * [[WIP] Big Integer](#big-integer)
-* [[WIP] Lucas's Theorem](#lucas-s-theorem)
+* [[WIP] Lucas's Theorem](#lucass-theorem)
 * [Modulo](#modulo)
 * [Outer Product](#outer-product)
 * [Permutation and Combination](#permutation-and-combination)
