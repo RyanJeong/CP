@@ -51,10 +51,11 @@ Resources for competitive programming
 
 ## 추천 문제집
 * [[Programmers] 코딩테스트 고득점 Kit](https://programmers.co.kr/learn/challenges?tab=algorithm_practice_kit)
-* [[BOJ] code.plus](https://www.acmicpc.net/workbook/codeplus)
+* [[BOJ] 단계별로 풀어보기](https://www.acmicpc.net/step)
 * [[BOJ] jinhan814의 공개 문제집](https://www.acmicpc.net/workbook/by/jinhan814)
 * [[BOJ] BaaaaaaaaaaarkingDog의 공개 문제집](https://www.acmicpc.net/workbook/by/BaaaaaaaaaaarkingDog)
 * [[BOJ] 프로그래밍 콘테스트 챌린징 책에 나오는 문제들](https://www.acmicpc.net/workbook/view/4912)
+* [[BOJ] code.plus](https://www.acmicpc.net/workbook/codeplus)
 
 ## 유용한 사이트
 * [cppreference.com](https://en.cppreference.com/w/)
@@ -64,3 +65,5 @@ Resources for competitive programming
 * [알고리즘 문제 해결 전략](https://book.algospot.com/index.html)
     * [4.6 수행 시간 어림짐작하기](https://book.algospot.com/estimation.html)
         > 입력의 크기를 시간 복잡도에 대입해서 얻은 반복문 수행 횟수에 대해, 1초 당 반복문 수행 횟수가 1억(10<sup>8</sup>)을 넘어가면 시간 제한을 초과할 가능성이 있다.
+* [mathURL](http://mathurl.com/)
+* [Alphabetize Your Lists  - WordCounter.net](https://wordcounter.net/alphabetize)
