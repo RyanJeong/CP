@@ -1,6 +1,7 @@
 # Greedy
 * 추천 문제
     * [[BOJ] 주유소](https://www.acmicpc.net/problem/13305) [(소스코드)](./src/gas_station.cpp)
+    * [[BOJ] 멀티탭 스케줄링](https://www.acmicpc.net/problem/1700) [(소스코드)](./src/multitap.cpp)
 ---
 
 ## 그리디 알고리즘
