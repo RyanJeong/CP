@@ -5,6 +5,10 @@
 
 ## 최소 신장 트리(MST)
 
+## 크루스칼 알고리즘(Kruskal's algorithm)
+
+## 프림 알고리즘(Prim's algorithm)
+
 ### 연습문제
 * [[BOJ] ](https://www.acmicpc.net/problem/) [(소스코드)](./src/.cpp)
 ###### Memory:  KB, Time:  ms

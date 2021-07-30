@@ -1,6 +1,6 @@
 # Mathematics
 ## Index
-* [[WIP] Big Integer](#big_integer)
+* [[WIP] Big Integer](#big-integer)
 * [[WIP] Lucas's Theorem](#lucas-s-theorem)
 * [Modulo](#modulo)
 * [Outer Product](#outer-product)
