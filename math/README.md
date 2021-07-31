@@ -161,7 +161,7 @@ long long pow(long long a, long long b, long long c)
 
     * 평면위에 놓인 세 점이므로, <i>u</i><sub>3</sub>와 <i>v</i><sub>3</sub>는 둘 다 0
     * 행렬 표현식의 계산 결과는 <i>u</i><sub>1</sub><i>v</i><sub>2</sub>−<i>u</i><sub>2</sub><i>u</i><sub>1</sub>
-    * <b><i>u</i><sub>1</sub><i>v</i><sub>2</sub>−<i>u</i><sub>2</sub><i>u</i><sub>1</sub><b>의 계산 결과가 양수라면 반시계 방향, 음수라면 시계 방향</b>
+    * <b><i>u</i><sub>1</sub><i>v</i><sub>2</sub>−<i>u</i><sub>2</sub><i>u</i><sub>1</sub>의 계산 결과가 양수라면 반시계 방향, 음수라면 시계 방향</b>
 
 
 ### 다각형의 면접
@@ -260,8 +260,109 @@ int main(void)
 ## Prime Number
 
 * 소수 판정법
+
+    ![prime-number](./prime-number/img/demo.png)
+
     * 1과 자기 자신으로만 나누어 지는 수(약수가 2개인 수)
-    * 2부터 <i>n</i>-1까지의 수로 나누어지지 않는 수(1은 소수가 아님에 주의)
+    * 1이 아닌 양의 정수 <i>n</i>이 주어졌을 때, 2부터 <i>n</i>-1까지의 수로 나누어지지 않는 수(<b>1은 소수가 아님에 주의</b>)
+    * 시간복잡도 <b>O(<i>n</i>)</b>
+    ```c++
+    bool is_prime(int n)
+    {
+        if (n==1) { // 1 is not a prime number
+
+            return false;
+        }
+        for (int i = 2; i<n; ++i) {
+            if (n%i==0) { // none of the numbers 
+                          // 2, 3, ... n-1 divides n evenly
+
+                return false;
+            }
+        }
+
+        return true;
+    }
+    ```
+
+    * 합성수 <i>n</i>이 주어졌을 때, 1을 제외한 가장 작은 약수는 √<i>n</i> 이하라는 성질을 이용하면, 시간복잡도를 <b>(√<i>n</i>)</b>까지 낮출 수 있음
+        * 합성수 <i>n</i>에서 1을 제외한 가장 작은 약수가 <i>x</i>라면, <i>n</i>/<i>x</i>는 1이 아닌 <i>n</i>의 약수가 된다.
+            * 예를 들어, <i>n</i>이 4라면, 1이 아닌 가장 작은 약수 <i>x</i>는 2가 되고, <i>n</i>/<i>x</i> 결과는 2다.
+            * 예를 들어, <i>n</i>이 6라면, 1이 아닌 가장 작은 약수 <i>x</i>는 2가 되고, <i>n</i>/<i>x</i> 결과는 3이다.
+            * 따라서 식이 다음과 같이 유도된다:
+                * <i>x</i> ≤ <i>n</i>/<i>x</i>
+                * <i>x</i>가 1이 아닌 가장 작은 약수라고 정의했으므로, <i>x</i> > <i>n</i>/<i>x</i>가 된다면 이는 모순이다.
+        * 유도된 식에서 우변의 분모 <i>x</i>를 좌변으로 옮기면 x<sup>2</sup> ≤ <i>n</i>이므로 <i>x</i> ≤ √<i>n</i>가 된다. 
+    * 위 증명을 응용하면, 2부터 √<i>n</i>까지의 수로 나누어지지 않으면 1과 <i>n</i>이외의 약수가 존재하지 않으므로 소수임을 알 수 있음
+    ```c++
+    bool is_prime(int n)
+    {
+        if (n==1) { // 1 is not a prime number
+
+            return false;
+        }
+        for (int i = 2; i*i<=n; ++i) {
+            if (n%i==0) { // none of the numbers 
+                          // 2, 3, ... √n divides n evenly
+
+                return false;
+            }
+        }
+
+        return true;
+    }
+    ```
+    * 에라토스테네스의 체(Sieve of Eratosthenes)를 사용하면, 즉 합성수의 성질을 이용하면 범위 내에서의 소수 판정을 빠르게 처리할 수 있음
+
+    ![eratosthenes](./prime-number/img/eratosthenes.png)
+
+    * 불필요한 연산을 생략할 수 있어 범위 내에 존재하는 소수를 빠르게 찾을 수 있음
+    ```c++
+    vector<int> eratosthenes_sieve(int from, int to) 
+    {
+        static vector<bool> is_composition(to+1); // 1-based
+        vector<int> primes;
+
+        if (from<2) { // 1 is not a prime number
+            from=2;
+        }
+        for (int i = 2; i*i<=to; ++i) {
+            if (is_composition[i]) {
+                continue;
+            }
+            for (int j = i*i; j<=to; j+=i) {
+                is_composition[j]=true;
+            }
+        }
+        for (int i = from; i<=to; ++i) {
+            if (!is_composition[i]) {
+                primes.push_back(i);
+            }
+        }
+
+        return primes;
+    }
+    ```
+
+    * 소인수분해의 성질
+        * <b>[정수론의 기본 정리](https://ko.wikipedia.org/wiki/%EC%82%B0%EC%88%A0%EC%9D%98_%EA%B8%B0%EB%B3%B8_%EC%A0%95%EB%A6%AC)에 의해, 모든 자연수는 꼭 한가지 방법으로 소수의 곱으로 표현할 수 있고 이를 소인수 분해의 일의성이라고 한다.</b>
+    
+    ```c++
+    void prime_factorization(int n)
+    {
+        for (int i = 2; i*i<=n; ++i) { // 1 is not a prime number
+            while (n%i==0) {
+                cout << i << '\n';
+                n/=i;
+            }
+        }
+        if (n>1) {
+            cout << n; 
+        }
+
+        return;
+    }
+    ```
 
 ### [Top](#index)
 ---
