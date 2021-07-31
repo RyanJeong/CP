@@ -2,6 +2,7 @@
 * 추천 문제
     * [[BOJ] 주유소](https://www.acmicpc.net/problem/13305) [(소스코드)](./src/gas_station.cpp)
     * [[BOJ] 멀티탭 스케줄링](https://www.acmicpc.net/problem/1700) [(소스코드)](./src/multitap.cpp)
+    * [[BOJ] 중량제한](https://www.acmicpc.net/problem/1939) [(소스코드)](./src/weight_limit.cpp) - 분리집합을 이용한 문제
 ---
 
 ## 그리디 알고리즘

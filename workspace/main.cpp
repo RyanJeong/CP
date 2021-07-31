@@ -1,81 +1,80 @@
-// https://www.acmicpc.net/problem/1939
-// 중량제한
+/*
+성질 1. 두 수 A, B의 공약수들은 GCD(A, B)의 모든 약수들이다.
+
+성질 2. 두 수 A, B의 공배수들은 LCM(A, B)의 모든 배수들이다.
+
+성질 3. A × B = GCD(A, B) × LCM(A, B) 
+-> A X B ÷ GCD(A, B) = LCM(A, B);
+성질 4. GCD(n, n+1) = 1
+*/
+
 #include <bits/stdc++.h>
 
 using namespace std;
 
-int find(int);
-void merge(int, int);
+string solution(string s) 
+{
+    vector<int> v;
+    int sign = 1;
+    int tmp = 0;
+    s.push_back(' ');
+    for (char c : s) {
+        if (c=='-') {
+            sign=-1;
+        }
+        else if (c>='0' && c<='9') {
+            tmp=tmp*10+c-'0';
+        }
+        else { // ' '
+            v.push_back(sign*tmp);
+            sign=1;
+            tmp=0;
+        } 
+    }
+    sort(v.begin(),v.end());
+    string answer = "";
+    string buf;
+    int min = v.front();
+    if (min<0) {
+        min*=-1;
+    }
+    while (min) {
+        buf.push_back(min%10+'0');
+        min/=10;
+    }
+    if (v.front()<0) {
+        buf.push_back('-');
+    }
+    reverse(buf.begin(),buf.end());
+    answer+=buf;
+    answer.push_back(' ');
+    buf="";
+    int max = v.back();
+    if (max<0) {
+        max*=-1;
+    }
+    while (max) {
+        buf.push_back(max%10+'0');
+        max/=10;
+    }
+    if (v.back()<0) {
+        buf.push_back('-');
+    }
+    reverse(buf.begin(),buf.end());
+    answer+=buf;
+    
+    return answer;
+}
 
-vector<int> parent, level;
-
-int main(void) 
+int main(void)
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int n, m;
-    cin>>n>>m;
-    parent=vector<int>(n+1,0);
-    for (int i = 1; i<=n; ++i) {
-        parent[i]=i;
-    }
-    level=vector<int>(n+1,1);
-    vector<pair<int, pair<int, int>>> info(1);
-    for (int i = 1; i<=m; ++i) {
-        int u, v, w;
-        cin>>u>>v>>w;
-        info.push_back({w,make_pair(u,v)});
-    }
-    int a, b;
-    cin>>a>>b;
-
-    // 서로 다른 두 중량이 주어졌을 때
-    // 주어진 상황에서 적용되는 중량은 두 중량 중 낮은 중량임
-    // 따라서 중량제한이 높은 경우부터 차례대로 조사
-
-    // 문제에서 요구하는 섬이 연결되었을 때의 중량이
-    // 우리가 구하고자 하는 중량값임 
-    sort(info.begin(),info.end(),greater<>());
-    for (int i = 1; i<=m; ++i) {
-        int u = info[i].second.first;
-        int v = info[i].second.second;
-        int w = info[i].first;
-        merge(u,v);
-        if (find(a)==find(b)) {
-            cout << w;
-            break;
-        }
-    }
+    string s = "1 2 3 4";
+    cout << solution(s);
+    s="-1 -2 -3 -4";
+    cout << solution(s);
 
     return 0;
-}
-
-int find(int u)
-{
-    if (u==parent[u]) {
-        
-        return u;
-    }
-
-    return parent[u]=find(parent[u]);
-}
-
-void merge(int u, int v)
-{
-    u=find(u); 
-    v=find(v); 
-    if (u==v) {
-        
-        return; 
-    }
-    if (level[u]>level[v]) {
-        swap(u,v); 
-    }
-    parent[u]=v;
-    if (level[u]==level[v]) {
-        ++level[v]; 
-    }
-
-    return;
 }

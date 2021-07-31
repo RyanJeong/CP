@@ -5,6 +5,7 @@
 * [Modulo](#modulo)
 * [Outer Product](#outer-product)
 * [Permutation and Combination](#permutation-and-combination)
+* [Prime Number](#prime-number)
 ---
 
 ## Big Integer
@@ -252,6 +253,15 @@ int main(void)
     return 0;
 }
 ```
+
+### [Top](#index)
+---
+
+## Prime Number
+
+* 소수 판정법
+    * 1과 자기 자신으로만 나누어 지는 수(약수가 2개인 수)
+    * 2부터 <i>n</i>-1까지의 수로 나누어지지 않는 수(1은 소수가 아님에 주의)
 
 ### [Top](#index)
 ---
