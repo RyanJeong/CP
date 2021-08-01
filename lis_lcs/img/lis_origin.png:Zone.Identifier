@@ -1,0 +1,4 @@
+[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=http://mathurl.com/
+HostUrl=http://mathurl.com/render.cgi?l_1%3D1%2C%20l_i%3Dmax%20%0A%5Cbegin%7Bcases%7D%0A1%20%2C%20%26%20%28l_j%20%5Cgeq%20l_i%29%20%5C%5C%0Al_j+1%20%2C%20%26%20%28l_j%20%5Cle%20l_i%29%0A%5Cend%7Bcases%7D%5Ctext%5C%3B%28i%20%5Cleq%20j%20%5Cleq%20i%20%5Cleq%20n%29%0A%5Cnocache

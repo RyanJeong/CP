@@ -142,5 +142,5 @@ int main(void)
 ```
 
 ---
-|[이전 - Dynamic Programming](/dp/)|[목록](https://github.com/RyanJeong/CP#index)|[다음 - Sort](/sort/)|
+|[이전 - LIS & LCS](/lis_lcs/)|[목록](https://github.com/RyanJeong/CP#index)|[다음 - Sort](/sort/)|
 |-|-|-|
