@@ -56,6 +56,7 @@ Resources for competitive programming
 * [[BOJ] jinhan814의 공개 문제집](https://www.acmicpc.net/workbook/by/jinhan814)
 * [[BOJ] BaaaaaaaaaaarkingDog의 공개 문제집](https://www.acmicpc.net/workbook/by/BaaaaaaaaaaarkingDog)
 * [[BOJ] 프로그래밍 콘테스트 챌린징 책에 나오는 문제들](https://www.acmicpc.net/workbook/view/4912)
+* [[BOJ] rkm0959의 공개 문제집](https://www.acmicpc.net/workbook/by/rkm0959)
 * [[BOJ] code.plus](https://www.acmicpc.net/workbook/codeplus)
 
 ## 유용한 사이트

@@ -1,6 +1,7 @@
 # Mathematics
 ## Index
 * [[WIP] Big Integer](#big-integer)
+* [GCD & LCD](#gcd--lcd)
 * [[WIP] Lucas's Theorem](#lucass-theorem)
 * [Modulo](#modulo)
 * [Outer Product](#outer-product)
@@ -13,6 +14,51 @@
 * 추천 문제
     * [조합](https://www.acmicpc.net/problem/2407)
     * [큰 수 곱셈](https://www.acmicpc.net/problem/13277)
+
+### [Top](#index)
+---
+
+## GCD & LCM
+* 추천 문제
+    * [[BOJ] Cain Calendar](https://www.acmicpc.net/problem/6064) [(소스코드)](./gcd--lcm/src/cain.cpp)
+
+* 최대공약수(Greatest Common Divisor, GCD)
+    * 두 수, 혹은 그 이상의 여러 수의 <b>공통인 약수</b>
+    * 두 수 <i>a</i>, <i>b</i>의 최대공약수를 수학적 기호로 표시하면 gcd(<i>a</i>,<i>b</i>)이며, gcd(<i>a</i>,<i>b</i>) = 1이면 두 수 <i>a</i>, <i>b</i>는 서로소(relatively prime)
+    * (<i>a</i>, <i>b</i>)로 표기하기도 함 
+    * 유클리드 호제법(Euclidean algorithm)을 이용하면 두 수의 최대공약수 계산 가능
+
+    ![euclidean](./gcd--lcm/img/euclidean.png)
+
+    * 유클리드 호제법
+        * 두 양의 정수 <i>a</i>, <i>b</i> (<i>a</i> > <i>b</i>)에 대하여 <i>a</i> = <i>bq</i> + <i>r</i> (0 ≤ <i>r</i> < <i>b</i>)라 하면, <i>a</i>, <i>b</i>의 최대공약수는 <i>b</i>, <i>r</i>의 최대공약수와 같다. 
+        * gcd(<i>a</i>, <i>b</i>) = gcd(<i>b</i>, <i>r</i>)
+        * <i>r</i> = 0이라면, <i>a</i>, <i>b</i>의 최대공약수는 <i>b</i>가 된다. 
+    ```c++
+    int gcd(int a, int b)
+    {
+        
+        return ((b==0) ? a : gcd(b,a%b));
+    }
+    ```
+
+* 최소공배수(Least Common Multiple, LCM)
+    * 두 수, 혹은 그 이상의 여러 수의 <b>공통인 배수</b>
+    * 두 수 <i>a</i>, <i>b</i>의 최소공배수를 수학적 기호로 표시하면 lcm(<i>a</i>,<i>b</i>)
+    * [<i>a</i>, <i>b</i>]로 표기하기도 함 
+    * 최대공약수를 이용한 최소공배수 계산:
+        * <i>a</i> × <i>b</i> = gcd(<i>a</i>, <i>b</i>) × lcm(<i>a</i>, <i>b</i>)
+        * <i>a</i> × <i>b</i> ÷ gcd(<i>a</i>, <i>b</i>) = lcm(<i>a</i>, <i>b</i>)
+
+    ```c++
+    int gcd(int, int);
+
+    int lcm(int a, int b)
+    {
+        
+        return a/gcd(a,b)*b; // escape overflow
+    }
+    ```
 
 ### [Top](#index)
 ---
