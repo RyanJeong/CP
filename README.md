@@ -34,7 +34,7 @@ Resources for competitive programming
 * [LIS & LCS](/lis_lcs/)
 * [Greedy](/greedy/)
 * [Sort](/sort/)
-* [[WIP]Binary Search](/binary_search/)
+* [Binary Search](/binary_search/)
 * [Two Pointer](/two_pointer/)
 * [[WIP]String](/string/)
 * [[WIP]Graph](/graph/)
