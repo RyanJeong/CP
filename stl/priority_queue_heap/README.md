@@ -20,6 +20,7 @@
     * [[BOJ] 강의실 배정](https://www.acmicpc.net/problem/11000) [(소스코드)](./src/210710_class.cpp)
     * [[BOJ] 문제집](https://www.acmicpc.net/problem/1766) [(소스코드)](./src/210721_textbook.cpp)
     * [[BOJ] 화장실의 규칙](https://www.acmicpc.net/problem/19640) [(소스코드)](./src/210710_restroom.cpp) - 비교연산 직접 구현한 예
+    * [[BOJ] 문제 추천 시스템 Version 1](https://www.acmicpc.net/problem/21939) [(소스코드)](./src/recommendation1.cpp) - 힙 중간 요소를 제거해야 할 경우
 ---
 
 ## [우선 순위 큐(priority queue of heap)](https://cplusplus.com/reference/queue/priority_queue/)

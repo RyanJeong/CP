@@ -37,9 +37,6 @@ int main(void)
             cin>>g>>x;
             vector<pair<pair<int, int>, int>> tmp;
             if (x==1) {
-                if (max_heap.empty()) {
-                    continue;
-                }
                 while (max_heap.top().second!=g) {
                     tmp.push_back(max_heap.top());
                     max_heap.pop();
@@ -51,9 +48,6 @@ int main(void)
                 }
             }
             else {
-                if (min_heap.empty()) {
-                    continue;
-                }
                 while (min_heap.top().second!=g) {
                     tmp.push_back(min_heap.top());
                     min_heap.pop();
@@ -69,18 +63,12 @@ int main(void)
             int x;
             cin>>x;
             if (x==1) {
-                if (max_heap.empty()) {
-                    continue;
-                }
                 while (max_heap.top().first.first!=v[max_heap.top().first.second]) {
                     max_heap.pop();
                 }
                 cout << max_heap.top().first.second << '\n';
             }
             else {
-                if (min_heap.empty()) {
-                    continue;
-                }
                 while (min_heap.top().first.first!=v[min_heap.top().first.second]) {
                     min_heap.pop();
                 }
@@ -92,9 +80,6 @@ int main(void)
             cin>>x>>l;
             vector<pair<pair<int, int>, int>> tmp;
             if (x==1) {
-                if (min_heap.empty()) {
-                    continue;
-                }
                 while (min_heap.top().first.first<l) {
                     tmp.push_back(min_heap.top());
                     min_heap.pop();
@@ -106,9 +91,6 @@ int main(void)
                 }
             }
             else {
-                if (max_heap.empty()) {
-                    continue;
-                }
                 while (max_heap.top().first.first>=l) {
                     tmp.push_back(max_heap.top());
                     max_heap.pop();
