@@ -1,16 +1,4 @@
-// https://www.acmicpc.net/problem/6064
-/*
-식 A ≡ B(mod m) 은 A와 B가 M으로 나눈 나머지가 같음을 의미
-
-A ≡ B (mod m) 일 때
-1. A + C ≡ B + C (mod m)
-2. A - C ≡ B - C (mod m)
-3. AC ≡ BC (mod m)
-4. A ÷ C ≡ B ÷ C (mod m)은 성립하지 않음 ( A=6, B=2, C=2, M=4 )
-    
-    A ≡ x (mod M), A ≡ y (mod N)
- -> (x + M | x + 2M | ... ) ≡ y (mod N)
-*/
+// https://www.acmicpc.net/problem/21944
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -20,22 +8,130 @@ int main(void)
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int t;
-    cin>>t;
-    while (t--) {
-        int m, n, x, y;
-        cin>>m>>n>>x>>y;
-        if (y==n) {
-            y=0;
-        }
-        int res = -1;
-        for (int i = x; i<=m*n; i+=m) {
-            if (i%n==y) {
-                res=i;
-                break;
+    int n;
+    cin>>n;
+    // idx: p
+    vector<int> v(100'000+1);
+    // {{level,problem},group}
+    priority_queue<pair<pair<int, int>, int>, 
+                   vector<pair<pair<int, int>, int>>, 
+                   less<pair<pair<int, int>, int>>> max_heap;
+    priority_queue<pair<pair<int, int>, int>, 
+                   vector<pair<pair<int, int>, int>>, 
+                   greater<pair<pair<int, int>, int>>> min_heap;
+    while (n--) {
+        int p, l, g;
+        cin>>p>>l>>g;
+        max_heap.push({make_pair(l,p),g});
+        min_heap.push({make_pair(l,p),g});
+        v[p]=l;
+    }
+    
+    int m;
+    cin>>m;
+    while (m--) {
+        string str;
+        cin>>str;
+        if (str=="recommend") {
+            int g, x;
+            cin>>g>>x;
+            vector<pair<pair<int, int>, int>> tmp;
+            if (x==1) {
+                if (max_heap.empty()) {
+                    continue;
+                }
+                while (max_heap.top().second!=g) {
+                    tmp.push_back(max_heap.top());
+                    max_heap.pop();
+                }
+                cout << max_heap.top().first.second << '\n';
+                while (!tmp.empty()) {
+                    max_heap.push(tmp.back());
+                    tmp.pop_back();
+                }
+            }
+            else {
+                if (min_heap.empty()) {
+                    continue;
+                }
+                while (min_heap.top().second!=g) {
+                    tmp.push_back(min_heap.top());
+                    min_heap.pop();
+                }
+                cout << min_heap.top().first.second << '\n';
+                while (!tmp.empty()) {
+                    min_heap.push(tmp.back());
+                    tmp.pop_back();
+                }
             }
         }
-        cout << ((res<0) ? -1 : res) << '\n';
+        else if (str=="recommend2") {
+            int x;
+            cin>>x;
+            if (x==1) {
+                if (max_heap.empty()) {
+                    continue;
+                }
+                while (max_heap.top().first.first!=v[max_heap.top().first.second]) {
+                    max_heap.pop();
+                }
+                cout << max_heap.top().first.second << '\n';
+            }
+            else {
+                if (min_heap.empty()) {
+                    continue;
+                }
+                while (min_heap.top().first.first!=v[min_heap.top().first.second]) {
+                    min_heap.pop();
+                }
+                cout << min_heap.top().first.second << '\n';
+            }
+        }
+        else if (str=="recommend3") {
+            int x, l;
+            cin>>x>>l;
+            vector<pair<pair<int, int>, int>> tmp;
+            if (x==1) {
+                if (min_heap.empty()) {
+                    continue;
+                }
+                while (min_heap.top().first.first<l) {
+                    tmp.push_back(min_heap.top());
+                    min_heap.pop();
+                }
+                cout << ((min_heap.empty()) ? -1 : min_heap.top().first.second) << '\n';
+                while (!tmp.empty()) {
+                    min_heap.push(tmp.back());
+                    tmp.pop_back();
+                }
+            }
+            else {
+                if (max_heap.empty()) {
+                    continue;
+                }
+                while (max_heap.top().first.first>=l) {
+                    tmp.push_back(max_heap.top());
+                    max_heap.pop();
+                }
+                cout << ((max_heap.empty()) ? -1 : max_heap.top().first.second) << '\n';
+                while (!tmp.empty()) {
+                    max_heap.push(tmp.back());
+                    tmp.pop_back();
+                }
+            }
+        }
+        else if (str=="add") {
+            int p, l, g;
+            cin>>p>>l>>g;
+            max_heap.push({make_pair(l,p),g});
+            min_heap.push({make_pair(l,p),g});
+            v[p]=l;
+        }
+        else { // solved 
+            int p;
+            cin>>p;
+            v[p]=0;
+        }
     }
 
     return 0;
