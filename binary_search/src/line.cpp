@@ -54,12 +54,11 @@ int main(void)
     cin.tie(NULL);
     for (int i : solution(5,24)) {
         cout << i << ' ';
-    }
+    } // 1 5 4 3 2
     cout << '\n';
     for (int i : solution(5,25)) {
         cout << i << ' ';
-    }
-
+    } // 2 1 3 4 5
 
     return 0;
 }

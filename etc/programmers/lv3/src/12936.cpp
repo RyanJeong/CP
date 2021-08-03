@@ -47,19 +47,3 @@ vector<int> solution(int n, long long k)
 
     return answer;
 }
-
-int main(void)
-{
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
-    for (int i : solution(5,24)) {
-        cout << i << ' ';
-    }
-    cout << '\n';
-    for (int i : solution(5,25)) {
-        cout << i << ' ';
-    }
-
-
-    return 0;
-}

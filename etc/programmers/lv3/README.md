@@ -49,7 +49,7 @@
 * [거스름돈](https://programmers.co.kr/learn/courses/30/lessons/12907) - WIP
 * [멀리 뛰기](https://programmers.co.kr/learn/courses/30/lessons/12914) - WIP
 * [야근 지수](https://programmers.co.kr/learn/courses/30/lessons/12927) - WIP
-* [줄 서는 방법](https://programmers.co.kr/learn/courses/30/lessons/12936) - WIP
+* [줄 서는 방법](https://programmers.co.kr/learn/courses/30/lessons/12936) [(소스코드)](./src/12936.cpp) - 줄 서는 방법의 시간복잡도는 <b>O(<i>n</i>!)</b>이며, 이를 줄일 수 있는 방법
 * [최고의 집합](https://programmers.co.kr/learn/courses/30/lessons/12938) [(소스코드)](./src/12938.cpp) - 수학, 그리디
 * [하노이의 탑](https://programmers.co.kr/learn/courses/30/lessons/12946) [(소스코드)](./src/12946.cpp) - 재귀
 * [N-Queen](https://programmers.co.kr/learn/courses/30/lessons/12952) [(소스코드)](./src/12952.cpp) - 백트래킹
