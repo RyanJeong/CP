@@ -2,34 +2,28 @@
 
 using namespace std;
 
+vector<int> solution(int n, long long k) 
+{
+    vector<int> answer;
+    for (int i = 1; i<=n; ++i) {
+        answer.push_back(i);
+    }
+    int cnt=1;
+    do {
+        if (cnt++==k) {
+            break;
+        }
+    } while (next_permutation(answer.begin(),answer.end()));
+    return answer;
+}
+
 int main(void)
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
-
-    int n;
-    cin>>n;
-    vector<pair<int, int>> v;
-    while (n--) {
-        int p, d;
-        cin>>p>>d;
-        v.push_back({d,p});
-    }
-    sort(v.begin(),v.end());
-
-    priority_queue<int, vector<int>, greater<int>> pq;
-    for (auto cur : v) {
-        pq.push(cur.second);
-        if (pq.size()>cur.first) {
-            pq.pop();
-        }
-    }
-    int res = 0;
-    while (!pq.empty()) {
-        res+=pq.top();
-        pq.pop();
-    }
-    cout << res;
+    for (int i : solution(3,5)) {
+        cout << i << ' ';
+    } // 4 5
 
     return 0;
 }
