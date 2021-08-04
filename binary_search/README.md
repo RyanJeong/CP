@@ -1,6 +1,5 @@
 # Binary Search
 * 추천 문제 - 이분 탐색
-    * [[BOJ] LJUBOMORA](https://www.acmicpc.net/problem/2792) [(소스코드)](./src/marble.cpp) - [low, high) 조건 내 이분 탐색을 직접 구현한 예
     * [[BOJ] 좌표 압축](https://www.acmicpc.net/problem/18870) [(소스코드)](./src/compress.cpp)
     * [[BOJ] 세 수의 합](https://www.acmicpc.net/problem/2295) [(소스코드)](./src/sum_nums.cpp)
     * [[BOJ] 두 배열의 합](https://www.acmicpc.net/problem/2143) [(소스코드)](./src/matrix.cpp)
@@ -8,8 +7,9 @@
 ---
 
 * 추천 문제 - 파라메트릭 서치
+    * [[BOJ] LJUBOMORA](https://www.acmicpc.net/problem/2792) [(소스코드)](./src/marble.cpp) - [low, high) 조건 내 이분 탐색, 최소 조건 찾기
+    * [[BOJ] LJUBOMORA](https://www.acmicpc.net/problem/2792) [(소스코드)](./src/lan_cable.cpp) - [low, high) 조건 내 이분 탐색, 최대 조건 찾기
     * [[BOJ] 공유기 설치](https://www.acmicpc.net/problem/2110) - WIP
-    * [[BOJ] 랜선 자르기](https://www.acmicpc.net/problem/1654) - WIP
     * [[BOJ] 휴게소 세우기](https://www.acmicpc.net/problem/1477) - WIP
     * [[BOJ] 숫자 구슬](https://www.acmicpc.net/problem/2613) - WIP
 ---
@@ -229,7 +229,53 @@ int main(void)
 * 최적화 문제, 이를테면 주어진 조건을 만족하는 값 중에서 최소 혹은 최대값을 구하는 문제를 <b>결정 문제</b>로 바꾸어 푸는 것
     * 이분 탐색을 사용해 탐색 범위를 줄여놓고, 주어진 조건에 만족하는 결과를 찾는 것
 
+### 연습문제
+* [[BOJ] 랜선 자르기](https://www.acmicpc.net/problem/1654) [(소스코드)](./src/lan_cable.cpp)
+###### Memory: 2,180 KB, Time: 4 ms
+```c++
+// https://www.acmicpc.net/problem/1654
+#include <bits/stdc++.h>
 
+using namespace std;
+
+int main(void)
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    // 최적화 문제: 랜선 n개를 만들 때 각 랜선의 최대 길이
+    // 결정 문제: 각 랜선의 길이가 x일 때, 랜선이 n개 이상인가?
+    int k, n;
+    cin>>k>>n;
+    vector<int> v(k);
+    for (int i = 0; i<k; ++i) {
+        cin>>v[i];
+    }
+    sort(v.begin(),v.end());
+
+    int res = 0;
+    long long low = 1;
+    long long high = (long long) v.back()+1; // [low, high)
+    while (low<high) {
+        long long mid = (low+high)/2;
+        int cnt = 0;
+
+        for (int l : v) {
+            cnt+=l/mid;
+        }
+        if (cnt>=n) {
+            low=mid+1;
+            res=mid;
+        }
+        else {
+            high=mid;
+        }
+    }
+    cout << res;
+
+    return 0;
+}
+```
 
 ---
 |[이전 - Sort](/sort/)|[목록](https://github.com/RyanJeong/CP#index)|[다음 - Two Pointer](/two_pointer/)|
