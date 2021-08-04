@@ -45,9 +45,10 @@ Resources for competitive programming
 * [[WIP]Dijkstra](/dijkstra/)
 * [Disjoint-set](/disjoint-set/)
 ---
+* [Fast IO](./fastio/)
+* [Library](/library/)
 * [Mathematics](/math/)
 * [Simulation](/simulation/)
-* [Library](/library/)
 ---
 
 ## 추천 문제집

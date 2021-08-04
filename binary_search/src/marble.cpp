@@ -18,7 +18,7 @@ int main(void)
 
     int res = v.back();
     int low = 1;
-    int high = v.back()+1;
+    int high = v.back()+1; // [low, high)
     while (low<high) {
         int mid = (high+low)/2;
         int cnt = 0;
@@ -29,7 +29,7 @@ int main(void)
             }
         }
         if (cnt<=n) {
-            high=mid;
+            high=mid; // cnt ∝ mid
             res=min(res,mid);
         }
         else {
