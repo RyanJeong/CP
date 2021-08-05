@@ -8,28 +8,19 @@ int main(void)
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    static bool arr[2][100'001];
-    static bool is_visited[2][100'001];
-
     int n, k;
     cin>>n>>k;
-    for (int i = 0; i<2; ++i) {
-        string str;
-        cin>>str;
-
-        int j = 1;
-        for (char c : str) {
-            arr[i][j++]=c-'0';
+    vector<vector<char>> v(2+1,vector<char>(n+1));
+    vector<vector<bool>> is_visited(2+1,vector<bool>(n+1));
+    for (int i = 1; i<=2; ++i) {
+        for (int j = 1; j<=n; ++j) {
+            cin>>v[i][j];
         }
     }
-    const pair<int, int> jump_to[3] = {
-        {0,1},
-        {0,-1},
-        {1,k}
-    };
+
     queue<pair<int, int>> q;
-    q.push({0,1});
-    is_visited[0][1]=true;
+    q.push({1,1});
+    is_visited[1][1]=true;
     int time = 1;
     while (!q.empty()) {
         int cnt = q.size();
@@ -37,19 +28,20 @@ int main(void)
             auto cur = q.front();
             q.pop();
 
-            for (int d = 0; d<3; ++d) {
-                int x = (cur.first+jump_to[d].first)%2; // 0->1, 1->0
-                int y = cur.second+jump_to[d].second;
+            const vector<pair<int, int>> jump_to = {{1,1},{1,-1},{2,k}};
+            for (auto d : jump_to) {
+                int x = (cur.first+d.first)%2+1; // 1->2, 2->1
+                int y = cur.second+d.second;
                 
                 if (y>n) {
-                    cout << '1';
+                    cout << 1;
 
                     return 0;
                 }
                 if (y<1 || time>=y) {
                     continue;
                 }
-                if (!arr[x][y] || is_visited[x][y]) {
+                if (v[x][y]=='0' || is_visited[x][y]) {
                     continue;
                 }
                 q.push({x,y});
@@ -58,7 +50,7 @@ int main(void)
         }
         ++time;
     }
-    cout << '0';
+    cout << 0;
 
     return 0;
 }

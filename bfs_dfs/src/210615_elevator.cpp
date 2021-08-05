@@ -1,4 +1,4 @@
-//http://icpc.me/5014
+// https://www.acmicpc.net/problem/5014
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -10,43 +10,34 @@ int main(void)
 
     int f, s, g, u, d;
     cin>>f>>s>>g>>u>>d;
-    int arr[f+1]; // 0, 1 ~ f
-    memset(arr, -1, sizeof arr);
-    vector<int> dx;
-    dx.push_back(u);
-    dx.push_back(-d);
+    vector<int> v(f+1,-1);
 
     queue<int> q;
-    arr[s]=0;
     q.push(s);
-
-    bool is_reached = false;
-    while (!q.empty() && !is_reached) {
+    v[s]=0;
+    while (!q.empty()) {
         auto cur = q.front();
         q.pop();
 
-        if (cur==g) {
-            is_reached=true;
-            break;
-        }
+        const int dx[] = {u,-d};
         for (int d : dx) {
             int x = cur+d;
 
             if (x<1 || x>f) {
                 continue;
             }
-            if (arr[x]!=-1 || arr[x]>=arr[cur]+1) {
+            if (v[x]!=-1) {
                 continue;
             }
-            arr[x]=arr[cur]+1;
+            v[x]=v[cur]+1;
             q.push(x);
         }
     }
-    if (is_reached) {
-        cout << arr[g];
+    if (v[g]==-1) {
+        cout << "use the stairs";
     }
     else {
-        cout << "use the stairs";
+        cout << v[g];
     }
 
     return 0;

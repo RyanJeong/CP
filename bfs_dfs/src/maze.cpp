@@ -1,55 +1,53 @@
-// http://icpc.me/2178
+// https://www.acmicpc.net/problem/2178
 #include <bits/stdc++.h>
 
 using namespace std;
-
-// for pair
-#define X first  
-#define Y second
-
-string arr[100];       // '1' : path, '0': wall
-int dist[100][100]; // positive number: dist., 0: not visited
-
-// right -> bottom -> left -> top
-int dx[4] = {1,0,-1,0};
-int dy[4] = {0,1,0,-1}; 
 
 int main(void)
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    // warning, n, m <-> m, n
     int n, m;
     cin>>n>>m;
-    for (int i = 0; i<n; ++i) {
-        cin>>arr[i]; 
+    vector<vector<int>> dist(n+1,vector<int>(m+1));
+    vector<vector<char>> v(n+1,vector<char>(m+1)); // 1-based
+    for (int i = 1; i<=n; ++i) {
+        for (int j = 1; j<=m; ++j) {
+            cin>>v[i][j];
+        }
     }
-    queue<pair<int, int>> q;
-    q.push({0,0});
-    dist[0][0]=1;
 
+    queue<pair<int, int>> q;
+    q.push({1,1});
+    dist[1][1]=1;
     while (!q.empty()) {
-        pair<int, int> cur = q.front(); 
+        auto cur = q.front();
         q.pop();
 
-        for (int k = 0; k<4; ++k) {
-            int x = cur.X+dx[k];
-            int y = cur.Y+dy[k];
-            if (x<0 || x>=n) {
+        for (int d = 0; d<4; ++d) {
+            // right -> bottom -> left -> top
+            const int dx[] = {1,0,-1,0};
+            const int dy[] = {0,1,0,-1}; 
+
+            int x = cur.first+dx[d];
+            int y = cur.second+dy[d];
+            if (x<1 || x>n) {
                 continue;
             }
-            if (y<0 || y>=m) {
+            if (y<1 || y>m) {
                 continue;
             }
-            if (dist[x][y] || arr[x][y]=='0') {
+            // the vector `dist` can calculate distance
+            // and check visit status at the same time
+            if (dist[x][y] || v[x][y]=='0') {
                 continue;
             }
-            dist[x][y]=dist[cur.X][cur.Y]+1;
+            dist[x][y]=dist[cur.first][cur.second]+1;
             q.push({x,y});
         }
     }
-    cout << dist[n-1][m-1];
+    cout << dist[n][m];
 
     return 0;
 }

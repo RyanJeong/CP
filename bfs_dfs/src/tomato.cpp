@@ -1,19 +1,7 @@
-// http://icpc.me/7576
+// https://www.acmicpc.net/problem/7576
 #include <bits/stdc++.h>
 
 using namespace std;
-
-// for pair
-#define X first  
-#define Y second
-
-int arr[1001][1001]; //  1: object, 0: none
-int day[1001][1001]; // -1: not used yet
-
-// right -> bottom -> left -> top
-int dx[4] = {1,0,-1,0};
-int dy[4] = {0,1,0,-1}; 
-
 int main(void)
 {
     ios::sync_with_stdio(false);
@@ -21,53 +9,61 @@ int main(void)
 
     int m, n;
     cin>>m>>n;
+    vector<vector<int>> v(n+1,vector<int>(m+1));
+    vector<vector<bool>> is_visited(n+1,vector<bool>(m+1));
     queue<pair<int, int>> q;
-
-    for (int i = 0; i<n; ++i) {
-        for (int j = 0; j<m; ++j) {
-            cin>>arr[i][j];
-            if (arr[i][j]==1) {
+    for (int i = 1; i<=n; ++i) {
+        for (int j = 1; j<=m; ++j) {
+            cin>>v[i][j];
+            if (v[i][j]==1) {
+                --v[i][j];
                 q.push({i,j});
-            } 
-            else if (arr[i][j]==0) {
-                day[i][j]=-1;
+                is_visited[i][j]=true;
+            }
+            else if (v[i][j]==-1) {
+                is_visited[i][j]=true;
             }
         }
     }
+
     while (!q.empty()) {
         auto cur = q.front();
         q.pop();
 
-        for (int i = 0; i<4; ++i) {
-            int x = cur.X+dx[i];
-            int y = cur.Y+dy[i];
-            if (x<0 || x>=n) {
+        for (int d = 0; d<4; ++d) {
+            // right -> bottom -> left -> top
+            const int dx[] = {1,0,-1,0};
+            const int dy[] = {0,1,0,-1}; 
+
+            int x = cur.first+dx[d];
+            int y = cur.second+dy[d];
+            if (x<1 || x>n) {
                 continue;
             }
-            if (y<0 || y>=m) {
+            if (y<1 || y>m) {
                 continue;
             }
-            if (day[x][y]!=-1) { // con't care
+            if (is_visited[x][y]) {
                 continue;
             }
-            day[x][y]=day[cur.X][cur.Y]+1;
             q.push({x,y});
+            is_visited[x][y]=true;
+            v[x][y]=v[cur.first][cur.second]+1;
         }
     }
 
-    int n_day = 0;
-    bool is_error = false;
+    int max_day = 0;
+    for (int i = 1; i<=n; ++i) {
+        for (int j = 1; j<=m; ++j) {
+            if (!is_visited[i][j]) {
+                cout << -1;
 
-    for (int i = 0; i<n && !is_error; ++i) {
-        for (int j = 0; j<m; ++j) {
-            if (day[i][j]==-1) { // not spread accoress the area
-                is_error=true; 
-                break;
+                return 0;
             }
-            n_day = max(n_day,day[i][j]);
+            max_day=max(max_day,v[i][j]);
         }
     }
-    cout << ((is_error) ? -1 : n_day);
+    cout << max_day;
 
     return 0;
 }
