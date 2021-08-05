@@ -11,7 +11,7 @@
 * [디스크 컨트롤러](https://programmers.co.kr/learn/courses/30/lessons/42627) - WIP
 * [정수 삼각형](https://programmers.co.kr/learn/courses/30/lessons/43105) - WIP
 * [[카카오 인턴] 보석 쇼핑](https://programmers.co.kr/learn/courses/30/lessons/67258) - WIP
-* [불량 사용자](https://programmers.co.kr/learn/courses/30/lessons/64064) - WIP
+* [불량 사용자](https://programmers.co.kr/learn/courses/30/lessons/64064) [(소스코드)](./src/64064.cpp) - DFS 
 * [2 x n 타일링](https://programmers.co.kr/learn/courses/30/lessons/12900) - WIP
 * [등굣길](https://programmers.co.kr/learn/courses/30/lessons/42898) - WIP
 * [단어 변환](https://programmers.co.kr/learn/courses/30/lessons/43163) - WIP
@@ -23,7 +23,7 @@
 ---
 * [GPS](https://programmers.co.kr/learn/courses/30/lessons/1837) - WIP
 * [합승 택시 요금](https://programmers.co.kr/learn/courses/30/lessons/72413) - WIP
-* [보행자 천국](https://programmers.co.kr/learn/courses/30/lessons/1832) - WIP
+* [보행자 천국](https://programmers.co.kr/learn/courses/30/lessons/1832) [(소스코드)](./src/1832.cpp) - DP
 * [[카카오 인턴] 경주로 건설](https://programmers.co.kr/learn/courses/30/lessons/67259) - WIP
 * [베스트앨범](https://programmers.co.kr/learn/courses/30/lessons/42579) - WIP
 * [여행경로](https://programmers.co.kr/learn/courses/30/lessons/43164) - WIP
@@ -47,8 +47,8 @@
 * [숫자 게임](https://programmers.co.kr/learn/courses/30/lessons/12987) - WIP
 * [스티커 모으기(2)](https://programmers.co.kr/learn/courses/30/lessons/12971) - WIP
 * [거스름돈](https://programmers.co.kr/learn/courses/30/lessons/12907) - WIP
-* [멀리 뛰기](https://programmers.co.kr/learn/courses/30/lessons/12914) - WIP
-* [야근 지수](https://programmers.co.kr/learn/courses/30/lessons/12927) - WIP
+* [멀리 뛰기](https://programmers.co.kr/learn/courses/30/lessons/12914) [(소스코드)](./src/12914.cpp) - DP
+* [야근 지수](https://programmers.co.kr/learn/courses/30/lessons/12927) [(소스코드)](./src/12927.cpp) - 우선순위 큐 
 * [줄 서는 방법](https://programmers.co.kr/learn/courses/30/lessons/12936) [(소스코드)](./src/12936.cpp) - 줄 서는 방법의 시간복잡도는 <b>O(<i>n</i>!)</b>이며, 이를 줄일 수 있는 방법
 * [최고의 집합](https://programmers.co.kr/learn/courses/30/lessons/12938) [(소스코드)](./src/12938.cpp) - 수학, 그리디
 * [하노이의 탑](https://programmers.co.kr/learn/courses/30/lessons/12946) [(소스코드)](./src/12946.cpp) - 재귀
