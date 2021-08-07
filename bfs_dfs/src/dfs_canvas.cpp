@@ -8,59 +8,57 @@ int main(void)
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    // 1: object, 0: none
-    static int arr[501][501];        
-    // 1: true,   0: false
-    static bool is_visited[501][501];
-    // right -> bottom -> left -> top
-    const int dx[] = {1,0,-1,0};
-    const int dy[] = {0,1,0,-1}; 
-
     int n, m;
     cin>>n>>m;
+    vector<vector<int>> v(n+1,vector<int>(m+1));
+    vector<vector<bool>> is_visited(n+1,vector<bool>(m+1));
     for (int i = 1; i<=n; ++i) {
         for (int j = 1; j<=m; ++j) {
-            cin>>arr[i][j];
+            cin>>v[i][j];
         }
     }
 
-    int max_area = 0;
-    int n_picture = 0;
+    vector<int> areas;
     for (int i = 1; i<=n; ++i) {
         for (int j = 1; j<=m; ++j) {
-            if (is_visited[i][j] || !arr[i][j]) {
+            if (is_visited[i][j] || !v[i][j]) {
                 continue;
             }
+
             int area = 0;
-            ++n_picture;
             stack<pair<int, int>> s;
             s.push({i,j});
             is_visited[i][j]=true;
-            
             while (!s.empty()) {
                 ++area;
                 auto cur = s.top();
                 s.pop();
-                for (int d = 0; d<4; ++d) {
-                    int x = cur.first+dx[d];
-                    int y = cur.second+dy[d];
+
+                const vector<pair<int, int>> adjacency = {
+                    {1,0},{0,1},{-1,0},{0,-1} // horizontally, vertically
+                };
+                for (auto d : adjacency) {
+                    int x = cur.first+d.first;
+                    int y = cur.second+d.second;
+
                     if (x<1 || x>n) {
                         continue;
                     }
                     if (y<1 || y>m) {
                         continue;
                     }
-                    if (is_visited[x][y] || !arr[x][y]) {
+                    if (is_visited[x][y] || !v[x][y]) {
                         continue;
                     }
                     s.push({x,y});
                     is_visited[x][y]=true;
                 }
             }
-            max_area = max(max_area, area);
+            areas.push_back(area);
         }
     }
-    cout << n_picture << '\n' << max_area;
+    sort(areas.begin(),areas.end());
+    cout << areas.size()  << '\n' << ((!areas.empty()) ? areas.back() : 0);
 
     return 0;
 }

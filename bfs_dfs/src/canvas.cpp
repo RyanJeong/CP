@@ -34,12 +34,13 @@ int main(void)
                 auto cur = q.front();
                 q.pop();
 
-                for (int d = 0; d<4; ++d) {
-                    const int dx[] = {1,0,-1,0};
-                    const int dy[] = {0,1,0,-1}; 
+                const vector<pair<int, int>> adjacency = {
+                    {1,0},{0,1},{-1,0},{0,-1} // horizontally, vertically
+                };
+                for (auto d : adjacency) {
+                    int x = cur.first+d.first;
+                    int y = cur.second+d.second;
 
-                    int x = cur.first+dx[d];
-                    int y = cur.second+dy[d];
                     if (x<1 || x>n) {
                         continue;
                     }
