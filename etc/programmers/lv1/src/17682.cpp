@@ -1,5 +1,3 @@
-#include <iostream>
-
 #include <string>
 #include <stack>
 
@@ -55,17 +53,4 @@ int solution(string dartResult)
     }
 
     return answer;
-}
-
-int main(void)
-{
-    cout << solution("1S2D*3T") << '\n';;
-    cout << solution("1D2S#10S") << '\n';;;
-    cout << solution("1D2S0T") << '\n';;;
-    cout << solution("1S*2T*3S") << '\n';;;
-    cout << solution("1D#2S*3S") << '\n';;;
-    cout << solution("1T2D3D#") << '\n';;;
-    cout << solution("1D2S3T*") << '\n';;;
-
-    return 0;
 }
