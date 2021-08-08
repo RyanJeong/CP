@@ -1,5 +1,3 @@
-#include <iostream>
-
 #include <string>
 #include <vector>
 #include <algorithm>
@@ -45,13 +43,4 @@ vector<string> solution(vector<string> orders, vector<int> course)
     sort(answer.begin(),answer.end());
 
     return answer;
-}
-
-int main(void)
-{
-    for (string i : solution({"XYZ", "XWY", "WXA"},{2,3,4})) {
-        cout << i << ' ';
-    }
-
-    return 0;
 }
