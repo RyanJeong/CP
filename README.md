@@ -37,7 +37,7 @@ Resources for competitive programming
 * [Binary Search](/binary_search/)
 * [Two Pointer](/two_pointer/)
 * [[WIP]String](/string/)
-* [[WIP]Graph](/graph/)
+* [Graph](/graph/)
 * [[WIP]Tree](/tree/)
 * [[WIP]Topological Sort](/topological_sort/)
 * [[WIP]Minimum Spanning Tree](/mst/)
