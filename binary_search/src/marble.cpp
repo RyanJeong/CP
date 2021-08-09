@@ -8,6 +8,8 @@ int main(void)
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
+    // 최적화 문제: 보석을 어린이에게 나누어줄 때, 한 어린이가 표현할 수 있는 최소 질투 지수
+    // 결정 문제: 보석을 x개씩 나누어줬을 때의 대상 수가 n개 이하인가? (최소)
     int n, m;
     cin>>n>>m;
     vector<int> v(m);
@@ -30,7 +32,7 @@ int main(void)
         }
         if (cnt<=n) {
             high=mid; // cnt ∝ mid
-            res=min(res,mid);
+            res=mid;
         }
         else {
             low=mid+1;
