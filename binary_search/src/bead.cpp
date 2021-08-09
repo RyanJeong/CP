@@ -1,9 +1,7 @@
-// http://icpc.me/2613
+// https://www.acmicpc.net/problem/2613
 #include <bits/stdc++.h>
 
 using namespace std;
-
-int line[302]; // 0 ~ 299
 
 int main(void)
 {
@@ -12,45 +10,46 @@ int main(void)
 
     int n, m;
     cin>>n>>m;
+    vector<int> v(n);
     int sum = 0;
-    int low = 0;
-    int high = 1;
-    for (int i = 0; i < n; ++i) {
-        cin>>line[i];
-        sum+=line[i];
-        low=max(low,line[i]); // at least one element
+    int max_val = 0;
+    for (int i = 0; i<n; ++i) {
+        cin>>v[i];
+        sum+=v[i];
+        max_val=max(max_val,v[i]);
     }
 
-    high = sum;
-    while (low<=high) {
+    int low = max_val; // 구슬 개수가 4개고, 그룹 수가 4개라면, 
+                       // 하한은 각 구슬 중 가장 큰 값
+    int high = sum+1; // [low,high)
+    while (low<high) {
         int mid = (low+high)/2;
         int cnt = 1;
-
         sum=0;
         for (int i = 0; i<n; ++i) {
-            sum+=line[i];
+            sum+=v[i];
             if (sum>mid) {
-                sum=line[i];
                 ++cnt;
+                sum=v[i];
             }
         }
-        if (cnt > m) {
+        if (cnt>m) {
             low=mid+1;
-        } 
+        }
         else {
-            high=mid-1;
+            high=mid;
         }
     }
+    cout << low << '\n';
+
     int size = 0;
     sum=0;
-
-    cout << low << '\n';
-    for (int i = 0; i<n ; ++i) {
-        sum+=line[i];
+    for (int i = 0; i<n; ++i) {
+        sum+=v[i];
         if (sum>low) {
-            sum=line[i];
             cout << size << ' ';
             size=0;
+            sum=v[i];
             --m;
         }
         ++size;
@@ -62,6 +61,6 @@ int main(void)
         cout << size << ' ';
         size=1;
     }
-    
+
     return 0;
 }

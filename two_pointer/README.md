@@ -3,6 +3,8 @@
     * [[BOJ] Subsequence](https://www.acmicpc.net/problem/1806) [(소스코드)](./src/210712_subsequence.cpp) - 두 포인터를 이용해 조건을 만족하는 구간을 찾는 문제
     * [[BOJ] 용액 합성하기](https://www.acmicpc.net/problem/14921) [(소스코드)](./src/210712_two_liquids.cpp) - 탐색 대상이 정렬되었을 때의 두 포인터 사용 예
     * [[BOJ] 세 용액](https://www.acmicpc.net/problem/2473) [(소스코드)](./src/210712_two_liquids.cpp) - 세 포인터 예
+    * [[BOJ] 좋다](https://www.acmicpc.net/problem/1253) [(소스코드)](./src/good.cpp)
+    * [[BOJ] 고냥이](https://www.acmicpc.net/problem/16472) [(소스코드)](./src/cat.cpp)
 ---
 
 ## 두 포인터
