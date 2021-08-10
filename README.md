@@ -36,7 +36,6 @@ Resources for competitive programming
 * [Sort](/sort/)
 * [Binary Search](/binary_search/)
 * [Two Pointer](/two_pointer/)
-* [[WIP]String](/string/)
 * [Graph](/graph/)
 * [[WIP]Tree](/tree/)
 * [[WIP]Topological Sort](/topological_sort/)
@@ -44,6 +43,7 @@ Resources for competitive programming
 * [[WIP]Floyd-Warshall](/floyd-warshall/)
 * [[WIP]Dijkstra](/dijkstra/)
 * [Disjoint-set](/disjoint-set/)
+* [[WIP]String](/string/)
 ---
 * [Fast IO](./fastio/)
 * [Library](/library/)

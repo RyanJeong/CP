@@ -99,5 +99,5 @@ int main(void)
 ```
 
 ---
-|[이전 - Binary Search](/binary_search/)|[목록](https://github.com/RyanJeong/CP#index)|[다음 - String](/string/)|
+|[이전 - Binary Search](/binary_search/)|[목록](https://github.com/RyanJeong/CP#index)|[다음 - Graph](/graph/)|
 |-|-|-|

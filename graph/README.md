@@ -1,6 +1,6 @@
 # Graph
 * 추천 문제
-    * [[BOJ] ](https://www.acmicpc.net/problem/) [(소스코드)](./src/.cpp)
+    * [[BOJ] DFS와 BFS](https://www.acmicpc.net/problem/1260) [(소스코드 - DFS 재귀)](./src/dfs_bfs_1.cpp) [(소스코드 - DFS 비재귀)](./src/dfs_bfs_2.cpp)
 ---
 
 ## 그래프
@@ -29,28 +29,28 @@
         * 무방향 그래프를 인접 행렬로 표현 시 대칭 형태를 나타냄
         * 방향 그래프를 인접 행렬로 표현하면 행은 출발 정점, 열은 도착 정점을 나타냄
         ```c++
-        // n X m directed graph
-        vector<vector<int>> adj_matrix(n+1,vector(m+1)); // 1-based
+            // n X m directed graph
+            vector<vector<int>> adj_matrix(n+1,vector(m+1)); // 1-based
 
-        int e;
-        cin>>e;
-        for (int i = 1; i<=e; ++i) {
-            int u, v;
-            cin>>u>>v;
-            adj_matrix[u][v]=1;
-        }
+            int e;
+            cin>>e;
+            for (int i = 1; i<=e; ++i) {
+                int u, v;
+                cin>>u>>v;
+                adj_matrix[u][v]=1;
+            }
 
-        // n X m undirected graph
-        vector<vector<int>> adj_matrix(n+1,vector(m+1)); // 1-based
+            // n X m undirected graph
+            vector<vector<int>> adj_matrix(n+1,vector(m+1)); // 1-based
 
-        int e;
-        cin>>e;
-        for (int i = 1; i<=e; ++i) {
-            int u, v;
-            cin>>u>>v;
-            adj_matrix[u][v]=1;
-            adj_matrix[v][u]=1;
-        }
+            int e;
+            cin>>e;
+            for (int i = 1; i<=e; ++i) {
+                int u, v;
+                cin>>u>>v;
+                adj_matrix[u][v]=1;
+                adj_matrix[v][u]=1;
+            }
         ```
 
     * 인접 리스트(Adjacency Lists)
@@ -63,39 +63,471 @@
         ![adjacenty_lists_b](./img/Adjacency_lists_b.gif)
 
         ```c++
-        // n X m directed graph
-        vector<int> adj_list(n+1); // 1-based
+            // n X m directed graph
+            vector<vector<int>> adj_list(n+1); // 1-based
 
-        int e;
-        cin>>e;
-        for (int i = 1; i<=e; ++i) {
-            int u, v;
-            adj_list[u].push_back(v);
-        }
+            int e;
+            cin>>e;
+            for (int i = 1; i<=e; ++i) {
+                int u, v;
+                adj_list[u].push_back(v);
+            }
 
-        // n X m undirected graph
-        vector<int> adj_list(n+1); // 1-based
+            // n X m undirected graph
+            vector<vector<int>> adj_list(n+1); // 1-based
 
-        int e;
-        cin>>e;
-        for (int i = 1; i<=e; ++i) {
-            int u, v;
-            adj_list[u].push_back(v);
-            adj_list[v].push_back(u);
-        }
+            int e;
+            cin>>e;
+            for (int i = 1; i<=e; ++i) {
+                int u, v;
+                adj_list[u].push_back(v);
+                adj_list[v].push_back(u);
+            }
         ```
     
     * 비교
 
-    ![compare](./src/compare.jpg)
+    ![compare](./img/compare.jpg)
+
+## 그래프로 표현한 BFS
+* 모든 정점이 `queue`에 1번씩 들어가므로, 인접 행렬에서의 시간복잡도는 <b>O(<i>V</i><sup>2</sup>)</b>, 인접 리스트에서의 시간복잡도는 <b>O(<i>V</i>+<i>E</i>)</b>
+* 연결 그래프에서의 순회
+```c++
+    vector<vector<int>> adj_list(n+1); // 1-based
+    vector<bool> is_visited(n+1);
+
+    void bfs()
+    {
+        queue<int> q;
+        q.push(1);
+        is_visited[1]=true;
+        while (!q.empty()) {
+            int cur = q.front();
+            q.pop();
+            cout << cur << ' ';
+
+            for (int next : adj_list[cur]) {
+                if (is_visited[next]) {
+                    continue;
+                }
+                q.push(next);
+                is_visited[next]=true;
+            }
+        }
+
+        return;
+    }
+```
+
+* 연결 그래프에서 1번 정점과의 거리
+```c++
+    vector<vector<int>> adj_list(n+1); // 1-based
+    vector<int> dist(n+1);
+
+    void bfs()
+    {
+        for (int i = 1; i<=n; ++i) {
+            dist[i]=-1; // init.
+        }
+
+        queue<int> q;
+        q.push(1);
+        dist[1]=0;
+        while (!q.empty()) {
+            int cur = q.front();
+            q.pop();
+
+            for (int next : adj_list[cur]) {
+                if (dist[next]!=-1) {
+                    continue;
+                }
+                q.push(next);
+                dist[next]=dist[cur]+1;
+            }
+        }
+
+        return;
+    }
+```
+
+* 연결 그래프가 아닐 때의 순회
+```c++
+    vector<vector<int>> adj_list(n+1); // 1-based
+    vector<bool> is_visited(n+1);
+
+    void bfs(int v)
+    {
+        queue<int> q;
+        for (int i = 1; i<=v; ++i) {
+            if (is_visited[i]) {
+                continue;
+            }
+
+            q.push(i);
+            is_visited[i]=true;
+            while (!q.empty()) {
+                int cur = q.front();
+                q.pop();
+                cout << cur << ' ';
+
+                for (int next : adj_list[cur]) {
+                    if (is_visited[next]) {
+                        continue;
+                    }
+                    q.push(next);
+                    is_visited[next]=true;
+                }
+            }
+        }
+
+        return;
+    }
+```
+
+## 그래프로 표현한 DFS
+* 모든 정점이 `queue`에 1번씩 들어가므로, 인접 행렬에서의 시간복잡도는 <b>O(<i>V</i><sup>2</sup>)</b>, 인접 리스트에서의 시간복잡도는 <b>O(<i>V</i>+<i>E</i>)</b>
+* 연결 그래프에서의 순회(비재귀 방법)
+    * 연결된 정점이 여러 개일 때, <b>BFS</b>와 유사하게 동작
+    * <b>일반적인 DFS 동작과 차이가 있음</b>
+```c++
+    vector<vector<int>> adj_list(n+1); // 1-based
+    vector<bool> is_visited(n+1);
+
+    void dfs()
+    {
+        stack<int> s;
+        s.push(1);
+        is_visited[1]=true;
+        while (!s.empty()) {
+            int cur = s.top();
+            s.pop();
+            cout << cur << ' ';
+
+            for (int next : adj_list[cur]) {
+                if (is_visited[next]) {
+                    continue;
+                }
+                s.push(next);
+                is_visited[next]=true;
+            }
+        }
+
+        return;
+    }
+```
+
+* 연결 그래프에서의 순회(재귀 방법)
+    * 일반적인 DFS 동작 코드 I
+```c++
+    vector<vector<int>> adj_list(n+1); // 1-based
+    vector<bool> is_visited(n+1);
+
+    is_visited[1]=true;
+    dfs(1);
+   
+    ...
+
+    void dfs(int cur)
+    {
+        cout << cur << ' ';
+
+        for (int next : adj_list[cur]) {
+            if (is_visited[next]) {
+                continue;
+            }
+            is_visited[next]=true;
+            dfs(next);
+        }
+
+        return;
+    }
+```
+
+* 연결 그래프에서의 순회(비재귀 방법)
+    * 일반적인 DFS 동작 코드 II
+```c++
+    vector<vector<int>> adj_list(n+1); // 1-based
+    vector<bool> is_visited(n+1);
+
+    void dfs()
+    {
+        stack<int> s;
+        s.push(1);
+        while (!s.empty()) {
+            int cur = s.top();
+            s.pop();
+            if (is_visited[cur]) {
+                continue;
+            }
+            is_visited[cur]=true;
+            cout << cur << ' ';
+
+            for (int next : adj_list[cur]) {
+                if (is_visited[next]) {
+                    continue;
+                }
+                s.push(next);
+            }
+        }
+
+        return;
+    }
+```
+
+* 연결 그래프가 아닐 때의 순회
+```c++
+    vector<vector<int>> adj_list(n+1); // 1-based
+    vector<bool> is_visited(n+1);
+
+    void dfs(int v)
+    {
+        stack<int> s;
+        for (int i = 1; i<=v; ++i) {
+            if (is_visited[i]) {
+                continue;
+            }
+
+            s.push(i);
+            while (!s.empty()) {
+                int cur = s.top();
+                s.pop();
+                if (is_visited[cur]) {
+                    continue;
+                }
+                is_visited[cur]=true;
+                cout << cur << ' ';
+
+                for (int next : adj_list[cur]) {
+                    if (is_visited[next]) {
+                        continue;
+                    }
+                    s.push(next);
+                }
+            }
+        }
+
+        return;
+    }
+```
 
 
 ### 연습문제
-* [[BOJ] ](https://www.acmicpc.net/problem/) [(소스코드)](./src/.cpp)
-###### Memory:  KB, Time:  ms
+* [[BOJ] 연결 요소의 개수](https://www.acmicpc.net/problem/11724)<br>[(소스코드 - BFS)](./src/exam1_bfs.cpp)<br>[(소스코드 - DFS 비재귀 I)](./src/exam1_dfs1.cpp)<br>[(소스코드 - DFS 비재귀 II)](./src/exam1_dfs2.cpp)<br>[(소스코드 - DFS 재귀)](./src/exam1_dfs_rec.cpp)
+###### Memory: 6,392 KB, Time: 100 ms
 ```c++
+// BFS
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(void)
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    
+    int n, m;
+    cin>>n>>m;
+    vector<vector<int>> adj_list(n+1);
+    for (int i = 1; i<=m; ++i) {
+        int u, v;
+        cin>>u>>v;
+        adj_list[u].push_back(v);
+        adj_list[v].push_back(u);
+    }
+
+    vector<bool> is_visited(n+1);
+    queue<int> q;
+    int res = 0;
+    for (int i = 1; i<=n; ++i) {
+        if (is_visited[i]) {
+            continue;
+        }
+        
+        ++res;
+        q.push(i);
+        is_visited[i]=true;
+        while (!q.empty()) {
+            int cur = q.front();
+            q.pop();
+
+            for (int next : adj_list[cur]) {
+                if (is_visited[next]) {
+                    continue;
+                }
+                q.push(next);
+                is_visited[next]=true;
+            }
+        }
+    }
+    cout << res;
+
+    return 0;
+}
+```
+
+###### Memory: 6,392 KB, Time: 100 ms
+```c++
+// DFS 1 - BFS 유사 동작 
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(void)
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    
+    int n, m;
+    cin>>n>>m;
+    vector<vector<int>> adj_list(n+1);
+    for (int i = 1; i<=m; ++i) {
+        int u, v;
+        cin>>u>>v;
+        adj_list[u].push_back(v);
+        adj_list[v].push_back(u);
+    }
+
+    vector<bool> is_visited(n+1);
+    stack<int> s;
+    int res = 0;
+    for (int i = 1; i<=n; ++i) {
+        if (is_visited[i]) {
+            continue;
+        }
+
+        ++res;
+        s.push(i);
+        is_visited[i]=true;
+        while (!s.empty()) {
+            int cur = s.top();
+            s.pop();
+
+            for (int next : adj_list[cur]) {
+                if (is_visited[next]) {
+                    continue;
+                }
+                s.push(next);
+                is_visited[next]=true;
+            }
+        }
+    }
+    cout << res;
+
+    return 0;
+}
+```
+
+###### Memory: 8,248 KB, Time: 100 ms
+```c++
+// DFS 2 - 일반적인 DFS 동작
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(void)
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    
+    int n, m;
+    cin>>n>>m;
+    vector<vector<int>> adj_list(n+1);
+    for (int i = 1; i<=m; ++i) {
+        int u, v;
+        cin>>u>>v;
+        adj_list[u].push_back(v);
+        adj_list[v].push_back(u);
+    }
+
+    vector<bool> is_visited(n+1);
+    stack<int> s;
+    int res = 0;
+    for (int i = 1; i<=n; ++i) {
+        if (is_visited[i]) {
+            continue;
+        }
+
+        ++res;
+        s.push(i);
+        while (!s.empty()) {
+            int cur = s.top();
+            s.pop();
+            if (is_visited[cur]) {
+                continue;
+            }
+            is_visited[cur]=true;
+
+            for (int next : adj_list[cur]) {
+                if (is_visited[next]) {
+                    continue;
+                }
+                s.push(next);
+            }
+        }
+    }
+    cout << res;
+
+    return 0;
+}
+```
+
+###### Memory: 6,388 KB, Time: 92 ms
+```c++
+// DFS Rec.
+#include <bits/stdc++.h>
+
+using namespace std;
+
+void dfs(int cur);
+
+vector<bool> is_visited;
+vector<vector<int>> adj_list;
+
+int main(void)
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    
+    int n, m;
+    cin>>n>>m;
+    adj_list=vector<vector<int>>(n+1);
+    for (int i = 1; i<=m; ++i) {
+        int u, v;
+        cin>>u>>v;
+        adj_list[u].push_back(v);
+        adj_list[v].push_back(u);
+    }
+
+    is_visited=vector<bool>(n+1);
+    int res = 0;
+    for (int i = 1; i<=n; ++i) {
+        if (is_visited[i]) {
+            continue;
+        }
+        
+        ++res;
+        is_visited[i]=true;
+        dfs(i);
+    }
+    cout << res;
+
+    return 0;
+}
+
+void dfs(int cur)
+{
+    for (int next : adj_list[cur]) {
+        if (is_visited[next]) {
+            continue;
+        }
+        is_visited[next]=true;
+        dfs(next);
+    }
+
+    return;
+}
 ```
 
 ---
-|[이전 - String](/string/)|[목록](https://github.com/RyanJeong/CP#index)|[다음 - Tree](/tree/)|
+|[이전 - Two Pointer](/two_pointer/)|[목록](https://github.com/RyanJeong/CP#index)|[다음 - Tree](/tree/)|
 |-|-|-|
