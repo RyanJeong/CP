@@ -1,6 +1,8 @@
 # Graph
 * 추천 문제
     * [[BOJ] DFS와 BFS](https://www.acmicpc.net/problem/1260) [(소스코드 - DFS 재귀)](./src/dfs_bfs_1.cpp) [(소스코드 - DFS 비재귀)](./src/dfs_bfs_2.cpp)
+    * [[BOJ] パーティー](https://www.acmicpc.net/problem/5567) [(소스코드)](./src/party.cpp) - BFS + 단계 별 순회
+    * [[BOJ] Hide and Seek](https://www.acmicpc.net/problem/6118) [(소스코드)](./src/hide_and_seek.cpp) - 거리 계산에는 BFS 사용
 ---
 
 ## 그래프
@@ -312,7 +314,7 @@
 
 
 ### 연습문제
-* [[BOJ] 연결 요소의 개수](https://www.acmicpc.net/problem/11724)<br>[(소스코드 - BFS)](./src/exam1_bfs.cpp)<br>[(소스코드 - DFS 비재귀 I)](./src/exam1_dfs1.cpp)<br>[(소스코드 - DFS 비재귀 II)](./src/exam1_dfs2.cpp)<br>[(소스코드 - DFS 재귀)](./src/exam1_dfs_rec.cpp)
+* [[BOJ] 연결 요소의 개수](https://www.acmicpc.net/problem/11724)<br>[(소스코드 - BFS)](./src/exam1_bfs.cpp)<br>[(소스코드 - DFS 비재귀 I)](./src/exam1_dfs1.cpp)<br>[(소스코드 - DFS 비재귀 II)](./src/exam1_dfs2.cpp)<br>[(소스코드 - DFS 재귀)](./src/exam1_dfs_rec.cpp) - 추천
 ###### Memory: 6,392 KB, Time: 100 ms
 ```c++
 // BFS

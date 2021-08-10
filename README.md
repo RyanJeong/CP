@@ -70,3 +70,4 @@ Resources for competitive programming
         > 입력의 크기를 시간 복잡도에 대입해서 얻은 반복문 수행 횟수에 대해, 1초 당 반복문 수행 횟수가 1억(10<sup>8</sup>)을 넘어가면 시간 제한을 초과할 가능성이 있다.
 * [mathURL](http://mathurl.com/)
 * [Alphabetize Your Lists  - WordCounter.net](https://wordcounter.net/alphabetize)
+* [JOI過去問 - 情報オリンピック日本委員会](https://www.ioi-jp.org/problem_archive.php)

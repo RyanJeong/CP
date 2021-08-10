@@ -1,84 +1,108 @@
-// https://www.acmicpc.net/problem/11724
 #include <bits/stdc++.h>
 
 using namespace std;
 
-vector<vector<int>> adj_list;
-vector<bool> is_visited;
+int find(int);
+void merge(int, int);
 
-void dfs(int);
-void bfs(int);
+vector<int> parent, level;
 
-int main(void)
+int main(void) 
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
-    
-    int n, m, v;
-    cin>>n>>m>>v;
-    vector<pair<int, int>> tmp(m+1);
-    for (int i = 1; i<=m; ++i) {
-        cin>>tmp[i].first>>tmp[i].second;
+    int n, m;
+    cin>>n>>m;
+    int t;
+    cin>>t;
+    vector<int> v(t+1);
+    for (int i = 1; i<=t; ++i) {
+        cin>>v[i];
     }
-    sort(tmp.begin()+1,tmp.end(),greater<>());
+    vector<vector<int>> party(m+1);
+    for (int i = 1; i<=m; ++i) {
+        int size;
+        cin>>size;
+        while (size--) {
+            int tmp;
+            cin>>tmp;
+            party[i].push_back(tmp);
+        }
+    }
 
-    adj_list=vector<vector<int>>(n+1);
-    for (int i = 1; i<=m; ++i) {
-        adj_list[tmp[i].first].push_back(tmp[i].second);
-        adj_list[tmp[i].second].push_back(tmp[i].first);
+    if (!t) {
+        cout << m;
+
+        return 0;
     }
-    is_visited=vector<bool>(1001);
-    dfs(v);
-    is_visited=vector<bool>(1001);
-    bfs(v);
+    for (int i = 0; i<=n; ++i) {
+        parent.push_back(i);
+        level.push_back(1);
+    }
+    for (int i = 2; i<=t; ++i) {
+        merge(v[1],v[i]);
+    }
+    int group = v[1];
+
+    for (int i = 1; i<=m; ++i) {
+        bool is_found = false;
+        for (int e : party[i]) {
+            if (find(e)==find(group)) {
+                is_found=true;
+                break; 
+            }
+        }
+        if (!is_found) {
+            continue;
+        }
+        for (int e : party[i]) {
+            merge(group,e);
+        }
+    }
+
+    int cnt = 0;
+    for (int i = 1; i<=m; ++i) {
+        bool is_found = false;
+        for (int e : party[i]) {
+            if (find(e)==find(group)) {
+                is_found=true;
+                break; 
+            }
+        }
+        if (!is_found) {
+            ++cnt;
+        }
+    }
+    cout << cnt;
 
     return 0;
 }
 
-void dfs(int v)
+int find(int u)
 {
-    stack<int> s;
-    s.push(v);
-    while (!s.empty()) {
-        int cur = s.top();
-        s.pop();
-        if (is_visited[cur]) {
-            continue;
-        }
-        is_visited[cur]=true;
-        cout << cur << ' ';
-
-        for (int next : adj_list[cur]) {
-            if (is_visited[next]) {
-                continue;
-            }
-            s.push(next);
-        }
+    if (u==parent[u]) {
+        
+        return u;
     }
-    cout << '\n';
 
-    return;
+    return parent[u]=find(parent[u]);
 }
 
-void bfs(int v)
+void merge(int u, int v)
 {
-    queue<int> q;
-    q.push(v);
-    is_visited[v]=true;
-    while (!q.empty()) {
-        int cur = q.front();
-        q.pop();
-        cout << cur << ' ';
-
-        for (int next : adj_list[cur]) {
-            if (is_visited[next]) {
-                continue;
-            }
-            q.push(next);
-            is_visited[next]=true;
-        }
+    u=find(u); 
+    v=find(v); 
+    if (u==v) {
+        
+        return; 
     }
-    cout << '\n';
+    if (level[u]>level[v]) {
+        swap(u,v); 
+    }
+    parent[u]=v;
+    if (level[u]==level[v]) {
+        ++level[v]; 
+    }
 
     return;
 }
