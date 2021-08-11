@@ -15,7 +15,7 @@
 ## 트리를 사용한 BFS
 * 트리에서의 순회
     * 해당 정점을 기준으로 자식 정점만 `queue`에 넣고 순회
-    * 자식 정점들은 아직 방문 전상태임을 보장 받음
+    * 자식 정점들은 아직 방문 전 상태임을 보장 받음
 ```c++
     vector<vector<int>> adj_list(n+1); // 1-based
     vector<int> parent(n+1);
@@ -116,6 +116,7 @@
 ```
 
 * 트리에서의 순회 (비재귀)
+    * 해당 정점을 기준으로 자식 정점만 `stack`에 넣고 순회
 ```c++
     vector<vector<int>> adj_list(n+1); // 1-based
     vector<int> parent(n+1);
@@ -194,13 +195,24 @@
 ```
 
 ## 이진 트리 순회
-* Level-order traversal
 
-* Preorder traversal
-
-* Inorder traversal
+![tree](./img/tree.png)
 
 * Postorder traversal
+    * DFS 변형
+    * 선 순회 <b>후</b> 방문(왼쪽에서 오른쪽으로)
+
+* Preorder traversal
+    * 일반적인 DFS
+    * 후 순회 <b>선</b> 방문(왼쪽에서 오른쪽으로)
+
+* Inorder traversal
+    * 왼쪽 순회, 정점 방문, 오른쪽 순회 순
+    * 정점에 기록된 값을 오름차순 순회
+
+* Level-order traversal
+    * 일반적인 BFS
+
 
 ### 연습문제
 * [[BOJ] ](https://www.acmicpc.net/problem/) [(소스코드)](./src/.cpp)
