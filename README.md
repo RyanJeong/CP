@@ -59,6 +59,11 @@ Resources for competitive programming
 * [[BOJ] 프로그래밍 콘테스트 챌린징 책에 나오는 문제들](https://www.acmicpc.net/workbook/view/4912)
 * [[BOJ] rkm0959의 공개 문제집](https://www.acmicpc.net/workbook/by/rkm0959)
 * [[BOJ] code.plus](https://www.acmicpc.net/workbook/codeplus)
+* [[BOJ] 한국정보올림피아드](https://www.acmicpc.net/category/55)
+    * [한국정보올림피아드](https://koi.or.kr/)
+* [[BOJ] Japanese Olympiad in Informatics](https://www.acmicpc.net/category/100)
+    * [JOI過去問 - 情報オリンピック日本委員会](https://www.ioi-jp.org/problem_archive.php)
+
 
 ## 유용한 사이트
 * [cppreference.com](https://en.cppreference.com/w/)
@@ -70,4 +75,3 @@ Resources for competitive programming
         > 입력의 크기를 시간 복잡도에 대입해서 얻은 반복문 수행 횟수에 대해, 1초 당 반복문 수행 횟수가 1억(10<sup>8</sup>)을 넘어가면 시간 제한을 초과할 가능성이 있다.
 * [mathURL](http://mathurl.com/)
 * [Alphabetize Your Lists  - WordCounter.net](https://wordcounter.net/alphabetize)
-* [JOI過去問 - 情報オリンピック日本委員会](https://www.ioi-jp.org/problem_archive.php)
