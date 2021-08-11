@@ -213,9 +213,76 @@
 * Level-order traversal
     * 일반적인 BFS
 
+### 이진 트리 순회 구현
+
+![exam](./img/exam.png)
+```c++
+// root: 1
+vector<int> parent = {0,0,1,1,2,2,3,3,4,4,5,5,0,6,7};
+vector<int> left_child = {0,2,4,6,8,10,0,14,0,0,0,0,0,0,0};
+vector<int> right_child = {0,3,5,7,9,11,13,0,0,0,0,0,0,0,0};
+
+void postorder(int root)
+{
+    if (left_child[cur]) {
+        preorder(left_child[cur]);
+    }
+    if (right_child[cur]) {
+        preorder(right_child[cur]);
+    }
+    cout << cur << ' ';
+
+    return;
+}
+
+void preorder(int cur)
+{
+    cout << cur << ' ';
+    if (left_child[cur]) {
+        preorder(left_child[cur]);
+    }
+    if (right_child[cur]) {
+        preorder(right_child[cur]);
+    }
+
+    return;
+}
+
+int inorder(int root)
+{
+    if (left_child[cur]) {
+        preorder(left_child[cur]);
+    }
+    cout << cur << ' ';
+    if (right_child[cur]) {
+        preorder(right_child[cur]);
+    }
+
+    return;
+}
+
+int level_order(int root)
+{
+    queue<int> q;
+    q.push(root);
+    while (!q.empty()) {
+        auto cur = q.front();
+        q.pop();
+        cout << cur << ' ';
+        if (left_child[cur]) {
+            q.push(left_child[cur]);
+        }
+        if (right_child[cur]) {
+            q.push(right_child[cur]);
+        }
+    }
+
+    return;
+}
+```
 
 ### 연습문제
-* [[BOJ] ](https://www.acmicpc.net/problem/) [(소스코드)](./src/.cpp)
+* [[BOJ] 트리 순회](https://www.acmicpc.net/problem/1991) [(소스코드)](./src/tree.cpp)
 ###### Memory:  KB, Time:  ms
 ```c++
 ```
