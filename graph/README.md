@@ -3,6 +3,7 @@
     * [[BOJ] DFS와 BFS](https://www.acmicpc.net/problem/1260) [(소스코드 - DFS 재귀)](./src/dfs_bfs_1.cpp) [(소스코드 - DFS 비재귀)](./src/dfs_bfs_2.cpp)
     * [[BOJ] パーティー](https://www.acmicpc.net/problem/5567) [(소스코드)](./src/party.cpp) - BFS + 단계 별 순회
     * [[BOJ] Hide and Seek](https://www.acmicpc.net/problem/6118) [(소스코드)](./src/hide_and_seek.cpp) - 거리 계산에는 BFS 사용
+    * [[BOJ] HIPERCIJEVI](https://www.acmicpc.net/problem/5214) [(소스코드)](./src/hyper.cpp) - 정점 간 간선이 너무 많을 경우, 잉여 정점을 더 생성해 메모리 초과 문제를 해결할 수 있음
 ---
 
 ## 그래프
@@ -91,7 +92,7 @@
 
     ![compare](./img/compare.jpg)
 
-## 그래프로 표현한 BFS
+## 그래프를 사용한 BFS
 * 모든 정점이 `queue`에 1번씩 들어가므로, 인접 행렬에서의 시간복잡도는 <b>O(<i>V</i><sup>2</sup>)</b>, 인접 리스트에서의 시간복잡도는 <b>O(<i>V</i>+<i>E</i>)</b>
 * 연결 그래프에서의 순회
 ```c++
@@ -186,7 +187,7 @@
     }
 ```
 
-## 그래프로 표현한 DFS
+## 그래프를 사용한 DFS
 * 모든 정점이 `queue`에 1번씩 들어가므로, 인접 행렬에서의 시간복잡도는 <b>O(<i>V</i><sup>2</sup>)</b>, 인접 리스트에서의 시간복잡도는 <b>O(<i>V</i>+<i>E</i>)</b>
 * 연결 그래프에서의 순회(비재귀 방법)
     * 연결된 정점이 여러 개일 때, <b>BFS</b>와 유사하게 동작
