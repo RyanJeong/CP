@@ -16,6 +16,6 @@
 ```
 
 ---
-|[이전 - Two Pointer](/two_pointer/)|[목록](https://github.com/RyanJeong/CP#index)|[다음 - Graph](/graph/)|
+|[이전 - Dijkstra](/dijkstra/)|[목록](https://github.com/RyanJeong/CP#index)|다음 - 없음|
 |-|-|-|
 

@@ -1,0 +1,78 @@
+// https://www.acmicpc.net/problem/1197
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int find(int);
+void merge(int, int);
+
+vector<int> parent, level;
+
+int main(void) 
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int v, e;
+    cin>>v>>e;
+    for (int i = 0; i<=v; ++i) {
+        parent.push_back(i);
+        level.push_back(1);
+    }
+    vector<pair<int, pair<int, int>>> edge(e);
+    for (int i = 0; i<e; ++i) {
+        cin>>edge[i].second.first>>edge[i].second.second>>edge[i].first;
+    }
+
+    sort(edge.begin(),edge.end());
+    int cnt = 0;
+    int res = 0;
+    for (int i = 0; i<e; ++i) {
+        if (cnt==v-1) {
+            break;
+        }
+
+        int cost = edge[i].first;
+        int v1 = edge[i].second.first;
+        int v2 = edge[i].second.second;
+
+        if (find(v1)==find(v2)) {
+            continue;
+        }
+        merge(v1,v2);
+        ++cnt;
+        res+=cost;
+    }
+    cout << res;
+
+    return 0;
+}
+
+int find(int u)
+{
+    if (u==parent[u]) {
+        
+        return u;
+    }
+
+    return parent[u]=find(parent[u]);
+}
+
+void merge(int u, int v)
+{
+    u=find(u); 
+    v=find(v); 
+    if (u==v) {
+        
+        return; 
+    }
+    if (level[u]>level[v]) {
+        swap(u,v); 
+    }
+    parent[u]=v;
+    if (level[u]==level[v]) {
+        ++level[v]; 
+    }
+
+    return;
+}

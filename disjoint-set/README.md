@@ -238,5 +238,5 @@ void merge(int u, int v)
 ```
 
 ---
-|[이전 - Dijkstra](/dijkstra)|[목록](https://github.com/RyanJeong/CP#index)|다음 - 없음|
+|[이전 - Topological Sort](/topological_sort/)|[목록](https://github.com/RyanJeong/CP#index)|[다음 - Minimum Spanning Tree](/mst/)|
 |-|-|-|
