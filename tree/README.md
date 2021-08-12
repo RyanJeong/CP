@@ -1,6 +1,6 @@
 # Tree
 * 추천 문제
-    * [[BOJ] ](https://www.acmicpc.net/problem/) [(소스코드)](./src/.cpp)
+    * [[BOJ] 트리의 높이와 너비](https://www.acmicpc.net/problem/2250) [(소스코드)](./src/height_and_width.cpp)
 ---
 
 ## 트리
@@ -194,6 +194,56 @@
     }
 ```
 
+### 연습문제
+* [[BOJ] 트리의 부모 찾기](https://www.acmicpc.net/problem/11725) [(소스코드)](./src/parent.cpp)
+###### Memory:  KB, Time:  ms
+```c++
+#include <bits/stdc++.h>
+
+using namespace std;
+
+vector<vector<int>> adj_list;
+vector<int> parent;
+
+void dfs(int cur);
+
+int main(void)
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    
+    int n;
+    cin>>n;
+    adj_list=vector<vector<int>>(n+1);
+    parent=vector<int>(n+1);
+    for (int i = 1; i<n; ++i) {
+        int u, v;
+        cin>>u>>v;
+        adj_list[u].push_back(v);
+        adj_list[v].push_back(u);
+    }
+    dfs(1);
+    for (int i = 2; i<=n; ++i) { // E = V-1
+        cout << parent[i] << '\n';
+    }
+    
+    return 0;
+}
+
+void dfs(int cur)
+{
+    for (int next : adj_list[cur]) {
+        if (parent[cur]==next) {
+            continue;
+        }
+        parent[next]=cur;
+        dfs(next);
+    }
+
+    return;
+}
+```
+
 ## 이진 트리 순회
 
 ![tree](./img/tree.png)
@@ -222,13 +272,13 @@ vector<int> parent = {0,0,1,1,2,2,3,3,4,4,5,5,0,6,7};
 vector<int> left_child = {0,2,4,6,8,10,0,14,0,0,0,0,0,0,0};
 vector<int> right_child = {0,3,5,7,9,11,13,0,0,0,0,0,0,0,0};
 
-void postorder(int root)
+void postorder(int cur)
 {
     if (left_child[cur]) {
-        preorder(left_child[cur]);
+        postorder(left_child[cur]);
     }
     if (right_child[cur]) {
-        preorder(right_child[cur]);
+        postorder(right_child[cur]);
     }
     cout << cur << ' ';
 
@@ -248,14 +298,14 @@ void preorder(int cur)
     return;
 }
 
-int inorder(int root)
+void inorder(int cur)
 {
     if (left_child[cur]) {
-        preorder(left_child[cur]);
+        inorder(left_child[cur]);
     }
     cout << cur << ' ';
     if (right_child[cur]) {
-        preorder(right_child[cur]);
+        inorder(right_child[cur]);
     }
 
     return;
@@ -283,8 +333,96 @@ int level_order(int root)
 
 ### 연습문제
 * [[BOJ] 트리 순회](https://www.acmicpc.net/problem/1991) [(소스코드)](./src/tree.cpp)
-###### Memory:  KB, Time:  ms
+###### Memory: 2,020 KB, Time: 0 ms
 ```c++
+#include <bits/stdc++.h>
+
+using namespace std;
+
+void preorder(int cur);
+void inorder(int cur);
+void postorder(int cur);
+
+vector<int> left_child;
+vector<int> right_child;
+
+int main(void)
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    
+    int n;
+    cin>>n;
+    left_child=vector<int>(n+1);
+    right_child=vector<int>(n+1);
+    for (int i = 1; i<=n; ++i) {
+        char v, lc, rc;
+        cin>>v>>lc>>rc;
+
+        v=v-'A'+1;
+        if (lc!='.') {
+            left_child[v]=lc-'A'+1;
+        }
+        if (rc!='.') {
+            right_child[v]=rc-'A'+1;
+        }
+    }
+    // preorder
+    preorder(1);
+    cout << '\n';
+
+    // inorder
+    inorder(1);
+    cout << '\n';
+
+    // postorder
+    postorder(1);
+    cout << '\n';
+    
+    return 0;
+}
+
+void preorder(int cur)
+{
+    char c = cur+'A'-1;
+    cout << c;
+    if (left_child[cur]) {
+        preorder(left_child[cur]);
+    }
+    if (right_child[cur]) {
+        preorder(right_child[cur]);
+    }
+
+    return;
+}
+
+void inorder(int cur)
+{
+    if (left_child[cur]) {
+        inorder(left_child[cur]);
+    }
+    char c = cur+'A'-1;
+    cout << c;
+    if (right_child[cur]) {
+        inorder(right_child[cur]);
+    }
+
+    return;
+}
+
+void postorder(int cur)
+{
+    if (left_child[cur]) {
+        postorder(left_child[cur]);
+    }
+    if (right_child[cur]) {
+        postorder(right_child[cur]);
+    }
+    char c = cur+'A'-1;
+    cout << c;
+
+    return;
+}
 ```
 
 ---
