@@ -35,10 +35,6 @@ int main(void)
     int cnt = 0;
     int res = 0;
     for (int i = 0; i<e; ++i) {
-        if (cnt==v-1) {
-            break;
-        }
-
         int cost = edge[i].first;
         int v1 = edge[i].second.first;
         int v2 = edge[i].second.second;
@@ -47,8 +43,11 @@ int main(void)
             continue;
         }
         merge(v1,v2);
-        ++cnt;
         res+=cost;
+        ++cnt;
+        if (cnt==v-1) {
+            break;
+        }
     }
     cout << res;
 
@@ -83,5 +82,3 @@ void merge(int u, int v)
 
     return;
 }
-
-

@@ -15,9 +15,10 @@ int main(void)
 
     int v;
     cin>>v;
+    parent=vector<int>(v+1);
+    level=vector<int>(v+1,1);
     for (int i = 0; i<=v; ++i) {
-        parent.push_back(i);
-        level.push_back(1);
+        parent[i]=i;
     }
     vector<pair<double, double>> freckle(v+1);
     for (int i = 1; i<=v; ++i) {
@@ -34,16 +35,12 @@ int main(void)
             edge.push_back({cost,make_pair(i,j)});
         }
     }
-
     sort(edge.begin(),edge.end());
     int e = edge.size();
+
     int cnt = 0;
     double res = 0.0;
     for (int i = 0; i<e; ++i) {
-        if (cnt==v-1) {
-            break;
-        }
-
         double cost = edge[i].first;
         int v1 = edge[i].second.first;
         int v2 = edge[i].second.second;
@@ -52,8 +49,11 @@ int main(void)
             continue;
         }
         merge(v1,v2);
-        ++cnt;
         res+=cost;
+        ++cnt;
+        if (cnt==v-1) {
+            break;
+        }
     }
     cout << fixed;
     cout.precision(2);

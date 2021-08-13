@@ -36,19 +36,19 @@ int main(void)
         int cnt = 0;
         int res = 0;
         for (int i = 0; i<e; ++i) {
-            if (cnt==v-1) {
-                break;
-            }
-
             int cost = edge[i].first;
             int v1 = edge[i].second.first;
             int v2 = edge[i].second.second;
+
             if (find(v1)==find(v2)) {
                 continue;
             }
             merge(v1,v2);
-            ++cnt;
             res+=cost;
+            ++cnt;
+            if (cnt==v-1) {
+                break;
+            }
         }
         cout << sum-res << '\n';
     }

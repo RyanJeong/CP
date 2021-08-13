@@ -15,23 +15,20 @@ int main(void)
 
     int v, e;
     cin>>v>>e;
+    parent=vector<int>(v+1);
+    level=vector<int>(v+1,1);
     for (int i = 0; i<=v; ++i) {
-        parent.push_back(i);
-        level.push_back(1);
+        parent[i]=i;
     }
     vector<pair<int, pair<int, int>>> edge(e);
     for (int i = 0; i<e; ++i) {
         cin>>edge[i].second.first>>edge[i].second.second>>edge[i].first;
     }
-
     sort(edge.begin(),edge.end());
+    
     int cnt = 0;
     int res = 0;
     for (int i = 0; i<e; ++i) {
-        if (cnt==v-1) {
-            break;
-        }
-
         int cost = edge[i].first;
         int v1 = edge[i].second.first;
         int v2 = edge[i].second.second;
@@ -40,8 +37,11 @@ int main(void)
             continue;
         }
         merge(v1,v2);
-        ++cnt;
         res+=cost;
+        ++cnt;
+        if (cnt==v-1) {
+            break;
+        }
     }
     cout << res;
 
