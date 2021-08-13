@@ -97,13 +97,12 @@ int main(void)
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
-    int n;
-    cin>>n;
-    int m;
-    cin>>m;
+    int n, m;
+    cin>>n>>m;
+    parent=vector<int>(n+1);
+    level=vector<int>(n+1,1);
     for (int i = 0; i<=n; ++i) {
-        parent.push_back(i);
-        level.push_back(1);
+        parent[i]=i;
     }
     for (int i = 0; i<m; ++i) {
         int c;
