@@ -1,4 +1,4 @@
-// https://www.acmicpc.net/problem/11779
+// https://www.acmicpc.net/problem/1916
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -23,7 +23,6 @@ int main(void)
     // cost, v
     vector<int> d(v+1, 1e9);
     d[st]=0;
-    vector<int> p(v+1);
     priority_queue<pair<int, int>, 
         vector<pair<int, int>>, 
         greater<pair<int, int>>> pq;
@@ -34,7 +33,6 @@ int main(void)
         int dist = cur.first;
         int vtx = cur.second;
 
-        // 예전 정보는 무시
         if (d[vtx]!=dist) {
             continue;
         }
@@ -44,25 +42,10 @@ int main(void)
             if (d[nxt_vtx]>dist+cost) {
                 d[nxt_vtx]=dist+cost;
                 pq.push({d[nxt_vtx],nxt_vtx});
-                p[nxt_vtx]=vtx;
             }
         }
     }
-
     cout << d[en] << '\n';
-    stack<int> s;
-    int r = en;
-    s.push(r);
-    while (st!=p[r]) {
-        r=p[r];
-        s.push(r);
-    }
-    s.push(st);
-    cout << s.size() << '\n';
-    while (!s.empty()) {
-        cout << s.top() << ' ';
-        s.pop();
-    }
 
     return 0;
 }

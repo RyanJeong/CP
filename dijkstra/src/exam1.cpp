@@ -1,4 +1,4 @@
-// https://www.acmicpc.net/problem/11779
+// https://www.acmicpc.net/problem/1753
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -10,6 +10,8 @@ int main(void)
 
     int v, e;
     cin>>v>>e;
+    int start;
+    cin>>start;
     //u, {cost, v};
     vector<vector<pair<int, int>>> adj_list(v+1);
     while (e--) {
@@ -17,17 +19,14 @@ int main(void)
         cin>>u>>v>>w;
         adj_list[u].push_back({w,v});
     }
-    int st, en;
-    cin>>st>>en;
 
     // cost, v
     vector<int> d(v+1, 1e9);
-    d[st]=0;
-    vector<int> p(v+1);
+    d[start]=0;
     priority_queue<pair<int, int>, 
         vector<pair<int, int>>, 
         greater<pair<int, int>>> pq;
-    pq.push({d[st],st});
+    pq.push({d[start],start});
     while (!pq.empty()) {
         auto cur = pq.top();
         pq.pop();
@@ -44,24 +43,18 @@ int main(void)
             if (d[nxt_vtx]>dist+cost) {
                 d[nxt_vtx]=dist+cost;
                 pq.push({d[nxt_vtx],nxt_vtx});
-                p[nxt_vtx]=vtx;
             }
         }
     }
 
-    cout << d[en] << '\n';
-    stack<int> s;
-    int r = en;
-    s.push(r);
-    while (st!=p[r]) {
-        r=p[r];
-        s.push(r);
-    }
-    s.push(st);
-    cout << s.size() << '\n';
-    while (!s.empty()) {
-        cout << s.top() << ' ';
-        s.pop();
+    for (int i = 1; i<=v; ++i) {
+        if (d[i]==1e9) {
+            cout << "INF";
+        }
+        else {
+            cout << d[i];
+        }
+        cout << '\n';
     }
 
     return 0;
