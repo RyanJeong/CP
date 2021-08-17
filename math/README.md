@@ -4,7 +4,7 @@
 * [Binomial Coefficient](#binomial-coefficient)
 * [[WIP] Convex Hull](#convex-hull)
 * [[WIP] Freivalds' algorithm](#freivalds-algorithm)
-* [GCD & LCM](#gcd-&-lcM)
+* [GCD & LCM](#gcd--lcm)
 * [[WIP] Lucas's Theorem](#lucass-theorem)
 * [Modulo](#modulo)
 * [Outer Product](#outer-product)
@@ -53,6 +53,11 @@
 * 추천 문제
     * [[BOJ] 볼록 껍질](https://www.acmicpc.net/problem/1708) [(소스코드)](./convex-hull/src/convex_hull.cpp)
 ---
+1. 2차원 평면 상에 좌표 <i>x</i>, <i>y</i>가 주어질 때, <i>y</i> 좌표를 기준으로 오름차순 정렬하되, <i>y</i> 좌표가 동일하다면 <i>x</i> 좌표를 기준으로 오름차순 정렬한다.
+2. 기준 좌표(보통 0 번째 좌표를 기준으로 삼는다)를 기준으로 반시계 방향으로 정렬한다. 
+    * [CCW](#ccwcounterclockwise) 알고리즘을 사용했을 때 양수는 반시계 방향, 음수는 시계 방향을 나타냄
+    * 만약 0이 나온다면, 기준 좌표로부터 가까운 거리 순으로 정렬
+3. 컨벡스 헐 알고리즘([Graham's Scan](https://en.wikipedia.org/wiki/Graham_scan))을 사용해 외곽 좌표를 찾는다.
 
 ### [Top](#index)
 ---
