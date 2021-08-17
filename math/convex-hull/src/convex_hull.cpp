@@ -7,7 +7,6 @@ pair<int, int> start;
 
 bool cmp_coor(pair<int, int>, pair<int, int>);
 bool cmp_ccw(pair<int, int>, pair<int, int>);
-long long outer_product(pair<int, int>, pair<int, int>);
 int is_ccw(pair<int, int>, pair<int, int>, pair<int, int>);
 
 int main(void)

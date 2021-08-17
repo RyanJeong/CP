@@ -11,7 +11,7 @@ int main(void)
     int n = 3;
     int i, j, k;
 
-    /* invertible matrix A: 
+    /* matrix A: 
         {{1, 0, 0}, 
          {1, 1, 0}, 
          {1, 1, 1}} */
@@ -40,7 +40,7 @@ int main(void)
         }
     }
 
-    /* normalize */
+    /* normalize and get Q and R */
     for (i=1; i<=n; ++i) {
         tmp=sqrt(u_product[i]);
         for (j=1; j<=n; ++j) {

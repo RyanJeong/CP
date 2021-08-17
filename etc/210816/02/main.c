@@ -13,6 +13,11 @@ int main(void)
     int i, j;  
 
     scanf("%d",&n); /* range: 2 ~ 14 */
+    if (n<2 || n>14) {
+
+        return 1;
+    }
+
     arr=(int **) malloc(sizeof(int *)*n);
     *arr=(int *) malloc(sizeof(int)*n*n);
     for (i=1; i<n; ++i) {

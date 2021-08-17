@@ -2,7 +2,9 @@
 ## Index
 * [[WIP] Big Integer](#big-integer)
 * [Binomial Coefficient](#binomial-coefficient)
-* [GCD & LCD](#gcd--lcd)
+* [[WIP] Convex Hull](#convex-hull)
+* [[WIP] Freivalds' algorithm](#freivalds-algorithm)
+* [GCD & LCM](#gcd-&-lcM)
 * [[WIP] Lucas's Theorem](#lucass-theorem)
 * [Modulo](#modulo)
 * [Outer Product](#outer-product)
@@ -11,10 +13,12 @@
 ---
 
 ## Big Integer
-* `long long` 형의 값 표현 범위를 벗어나는 경우, `string` 형을 사용해 큰 수 계산을 구현하거나, 카라추바 또는 FFT(Fast Fourier Transform)을 사용해야 함
 * 추천 문제
     * [[BOJ] 조합](https://www.acmicpc.net/problem/2407) - WIP
     * [[BOJ] 큰 수 곱셈](https://www.acmicpc.net/problem/13277) - WIP
+---
+
+* `long long` 형의 값 표현 범위를 벗어나는 경우, `string` 형을 사용해 큰 수 계산을 구현하거나, 카라추바 또는 FFT(Fast Fourier Transform)을 사용해야 함
 
 ### [Top](#index)
 ---
@@ -27,6 +31,7 @@
     * [[BOJ] 이항 계수 4](https://www.acmicpc.net/problem/11402) - WIP
     * [[BOJ] 이항 계수 5](https://www.acmicpc.net/problem/11439) - WIP
     * [[BOJ] 이항 계수 6](https://www.acmicpc.net/problem/14854) - WIP
+---
 
 ![binomial-coefficient](./binomial-coefficient/img/binomial-coefficient.png)
 
@@ -44,9 +49,23 @@
 ### [Top](#index)
 ---
 
+## Convex Hull
+* 추천 문제
+    * [[BOJ] 볼록 껍질](https://www.acmicpc.net/problem/1708) [(소스코드)](./convex-hull/src/convex_hull.cpp)
+---
+
+### [Top](#index)
+---
+
+## Freivalds' algorithm
+
+### [Top](#index)
+---
+
 ## GCD & LCM
 * 추천 문제
     * [[BOJ] Cain Calendar](https://www.acmicpc.net/problem/6064) [(소스코드)](./gcd--lcm/src/cain.cpp)
+---
 
 * 최대공약수(Greatest Common Divisor, GCD)
     * 두 수, 혹은 그 이상의 여러 수의 <b>공통인 약수</b>
@@ -97,6 +116,8 @@
 ## Modulo
 * 추천 문제
     * [[BOJ] 곱셈](https://www.acmicpc.net/problem/1629) [(소스코드)](./modulo/src/mul.cpp)
+---
+
 * Given <b>two positive numbers</b> <i>a</i> and <i>n</i>, <i>a</i> modulo <i>n</i> (abbreviated as <i>a</i> <b>mod</b> <i>n</i>) is the remainder of the Euclidean division of <i>a</i> by <i>n</i>, where <i>a</i> is the <b>dividend</b> and <i>n</i> is the <b>divisor</b>. 
 * The range of numbers for an integer modulo of <i>n</i> is 0 to <i>n</i> − 1 inclusive (<i>a</i> <b>mod</b> 1 is always 0; <i>a</i> <b>mod</b> 0 is <b>undefined</b>, possibly resulting in <b>a division by zero error</b> in some programming languages).
 
@@ -215,6 +236,7 @@ long long pow(long long a, long long b, long long c)
     * [[BOJ] 다각형의 면적](https://www.acmicpc.net/problem/2166) [(소스코드)](./outer-product/src/polygon.cpp)
     * [[BOJ] 선분 교차 1](https://www.acmicpc.net/problem/17386) [(소스코드)](./outer-product/src/line1.cpp)
     * [[BOJ] 선분 교차 2](https://www.acmicpc.net/problem/17387) [(소스코드)](./outer-product/src/line2.cpp)
+---
 
 ### CCW(CounterClockWise)
 * 벡터의 외적을 이용하면 평면위에 위치한 세 점의 방향성을 판별할 수 있음
@@ -240,7 +262,10 @@ long long pow(long long a, long long b, long long c)
 
 ![ccw](./outer-product/img/3.png)
 ![ccw](./outer-product/img/4.png)
+
+### [Top](#index)
 ---
+
 ## Permutation and Combination
 ### Permutation 
 
