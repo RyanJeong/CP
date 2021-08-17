@@ -1,46 +1,46 @@
+// https://www.acmicpc.net/problem/2166
 #include <bits/stdc++.h>
 
 using namespace std;
 
-bool cmp_less(int, int);
-bool cmp_greater(int, int);
+typedef pair<long long, long long> Point;
+
+long long outer_product(Point, Point);
 
 int main(void) 
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
-    vector<int> v;
-    v.push_back(3);
-    v.push_back(-2);
-    v.push_back(1);
-    v.push_back(5);
-    v.push_back(-1);
 
-    // non-descending order
-    sort(v.begin(),v.end(),cmp_less); // default comparison (operator <)
-    for (int i : v) {
-        cout << i << ' ';
+    int n;
+    cin>>n;
+    vector<Point> v;
+    for (int i = 1; i<=n; ++i) {
+        long long x, y;
+        cin>>x>>y;
+        v.push_back({x,y});
     }
-    cout << '\n';
 
-    // descending order
-    sort(v.begin(),v.end(),cmp_greater); // the standard library compare function object
-    for (int i : v) {
-        cout << i << ' ';
+    double res;
+    for (int i = 1; i<n-1; ++i) {
+        Point p1, p2;
+        p1.first = v[i].first-v[0].first;
+        p1.second = v[i].second-v[0].second;
+        p2.first = v[i+1].first-v[0].first;
+        p2.second = v[i+1].second-v[0].second;
+        double tmp = (double) outer_product(p1,p2)/2.0;
+        res+=tmp;
     }
-    cout << '\n';
+    cout << fixed;
+    cout.precision(1);
+    cout << abs(res);
 
     return 0;
 }
 
-bool cmp_less(int s, int t)
+long long outer_product(Point u, Point v)
 {
 
-    return s<t;
+    return u.first*v.second-u.second*v.first;
 }
 
-bool cmp_greater(int s, int t)
-{
-
-    return s>t;
-}

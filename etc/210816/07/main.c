@@ -2,13 +2,15 @@
 #include <stdlib.h>
 #include <math.h>
 
+#define SIZE 3
+
 int main(void)
 {
     /* 1-based for readability */
-    double a[4][4];
-    double u[4][4], u_product[4], proj, tmp;
-    double q[4][4], r[4][4];
-    int n = 3;
+    double a[SIZE+1][SIZE+1];
+    double u[SIZE+1][SIZE+1], u_product[SIZE+1], proj, tmp;
+    double q[SIZE+1][SIZE+1], r[SIZE+1][SIZE+1];
+    int n = SIZE;
     int i, j, k;
 
     /* matrix A: 
