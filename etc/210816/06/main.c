@@ -63,13 +63,25 @@ int cmp_ccw(const void *s, const void *t)
     int cond = is_ccw(start,s,t);
     if (cond) {
         /* pos: ccw, neg: cw */
+        if (cond>0) {
 
-        return cond<0;
+            return 0;
+        }
+        else {
+
+            return 1;
+        }
     }
     else {
         /* x1==x2 or y1==y2 */
+        if (((Point *) s)->x==((Point *) t)->x) {
 
-        return ((Point *) s)->x+((Point *) s)->y<
+            return (((Point *) s)->y-((Point *) t)->y);
+        }
+        else {
+
+            return (((Point *) s)->x-((Point *) t)->x);
+        }
     }
 }
 
