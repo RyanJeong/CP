@@ -1,7 +1,6 @@
+// https://www.acmicpc.net/problem/1708
 #include <stdio.h>
 #include <stdlib.h>
-
-#define SIZE 8
 
 typedef struct {
     int x;
@@ -16,20 +15,16 @@ long long ccw(const Point *, const Point *, const Point *);
 
 int main(void)
 {
-    Point points[SIZE], buf[SIZE], p1, p2;
+    Point *points, *buf, p1, p2;
     int buf_size;
-    int n = SIZE;
-    double res = 0.0;
+    int n;
     int i;
 
-    points[0].x=-1, points[0].y=-2;
-    points[1].x= 2, points[1].y= 4;
-    points[2].x= 5, points[2].y= 3;
-    points[3].x= 3, points[3].y= 1;
-    points[4].x= 4, points[4].y= 4;
-    points[5].x= 6, points[5].y= 2;
-    points[6].x=-5, points[6].y=-1;
-    points[7].x=-2, points[7].y= 6;
+    scanf("%d", &n); /* n>=3 */
+    points=(Point *) malloc(sizeof(Point)*n);
+    for (i=0; i<n; ++i) {
+        scanf("%d %d",&points[i].x,&points[i].y);
+    }
 
     /* 1. sort */
     qsort(points,n,sizeof(Point),cmp_coor);
@@ -37,6 +32,7 @@ int main(void)
     qsort(points+1,n-1,sizeof(Point),cmp_ccw);
 
     /* 2. Graham scan */
+    buf=(Point *) malloc(sizeof(Point)*n);
     buf_size=0;
     buf[buf_size++]=points[0];
     buf[buf_size++]=points[1];
@@ -51,12 +47,10 @@ int main(void)
         }
         buf[buf_size++]=points[i];
     }
+    printf("%d\n", buf_size);
 
-    /* 3. calc area */
-    for (i=1; i<buf_size-1; ++i) {
-        res+=(double) ccw(start,&buf[i],&buf[i+1])/2.0;
-    }
-    printf("%6.3f\n",res);
+    free(buf);
+    free(points);
 
     return 0;
 }
@@ -98,8 +92,8 @@ long long ccw(const Point *a, const Point *b, const Point *c)
 {
     long long u1 = b->x-a->x;
     long long v1 = b->y-a->y;
-    long long u2 = c->x-a->x;
-    long long v2 = c->y-a->y;
-        
+    long long u2 = c->x-b->x;
+    long long v2 = c->y-b->y;
+    
     return u1*v2-u2*v1;
 }

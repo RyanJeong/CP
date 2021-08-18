@@ -15,12 +15,9 @@ int main(void)
     int i, j;
     int cnt = 0;
 
+    freopen("input.txt","r",stdin);
+
     scanf("%d",&n); /* range: 5 ~ 25 */
-    if (n<5 || n>25) {
-
-        return 1;
-    }
-
     arr=(int **) malloc(sizeof(int *)*n);
     *arr=(int *) malloc(sizeof(int)*n*n);
     for (i=1; i<n; ++i) {
@@ -38,6 +35,7 @@ int main(void)
     }
     memset(*areas,-1,sizeof(int)*n*n);
 
+    /* 1. DFS */
     for (i=0; i<n; ++i) {
         for (j=0; j<n; ++j) {
             if (!arr[i][j] || areas[i][j]!=-1) {
@@ -47,6 +45,7 @@ int main(void)
         }
     }
 
+    /* 2. calc number and size of areas */
     res=(int *) malloc(sizeof(int)*cnt);
     memset(res,0,sizeof(int)*cnt);
     for (i=0; i<n; ++i) {
@@ -58,6 +57,7 @@ int main(void)
         }
     }
 
+    /* 3. sort and print result */
     qsort(res,cnt,sizeof(int),cmp);
     printf("%d\n",cnt);
     for (i=0; i<cnt; ++i) {
@@ -99,6 +99,7 @@ void dfs(int i, int j, int area)
     return;
 }
 
+/* ascending order */
 int cmp(const void *s, const void *t)
 {
     

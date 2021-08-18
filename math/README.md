@@ -7,7 +7,7 @@
 * [GCD & LCM](#gcd--lcm)
 * [[WIP] Lucas's Theorem](#lucass-theorem)
 * [Modulo](#modulo)
-* [Outer Product](#outer-product)
+* [[WIP] Outer Product](#outer-product) - 내용 보강해야 함
 * [Permutation and Combination](#permutation-and-combination)
 * [Prime Number](#prime-number)
 ---
