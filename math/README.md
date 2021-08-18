@@ -53,6 +53,7 @@
 * 추천 문제
     * [[BOJ] 볼록 껍질](https://www.acmicpc.net/problem/1708) [(소스코드)](./convex-hull/src/convex_hull.cpp)
 ---
+
 1. 2차원 평면 상에 좌표 <i>x</i>, <i>y</i>가 주어질 때, <i>y</i> 좌표를 기준으로 오름차순 정렬하되, <i>y</i> 좌표가 동일하다면 <i>x</i> 좌표를 기준으로 오름차순 정렬한다.
 2. 기준 좌표(보통 0 번째 좌표를 기준으로 삼는다)를 기준으로 반시계 방향으로 정렬한다. 
     * [CCW](#ccwcounterclockwise) 알고리즘을 사용했을 때 양수는 반시계 방향, 음수는 시계 방향을 나타냄
@@ -63,6 +64,9 @@
 ---
 
 ## Freivalds' algorithm
+* 추천 문제
+    * [[CodeForces] Matrix God](http://codeforces.com/gym/101341/problem/I) [(소스코드)](./freivalds-algorithm/src/freivalds.cpp)
+---
 
 ### [Top](#index)
 ---

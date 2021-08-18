@@ -45,11 +45,13 @@ int main(void)
     int it = 20;
     bool is_same = true;
     while (--it && is_same) {
+        // set r
         vector<long long> r(n);
         for (long long& e : r) {
             e=rand()%2;
         }
 
+        // get Br
         vector<long long> br(n);
         /* overflow may occer :
         br[i]=inner_product(r.begin(),r.end(),b[i].begin(),0);
@@ -60,6 +62,7 @@ int main(void)
             }
         }
 
+        // get ABr
         vector<long long> abr(n);
         for (int i = 0; i<n; ++i) {
             for (int j = 0; j<n; ++j) {
@@ -68,6 +71,7 @@ int main(void)
             }
         }
 
+        // compare between ABr and Cr
         for (int i = 0; i<n; ++i) {
             long long cr_row = 0;
             for (int j = 0; j<n; ++j) {
