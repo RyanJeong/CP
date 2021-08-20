@@ -3,7 +3,7 @@
 * [[WIP] Big Integer](#big-integer)
 * [Binomial Coefficient](#binomial-coefficient)
 * [[WIP] Convex Hull](#convex-hull)
-* [[WIP] Freivalds' algorithm](#freivalds-algorithm)
+* [Freivalds' Algorithm](#freivalds-algorithm)
 * [GCD & LCM](#gcd--lcm)
 * [[WIP] Lucas's Theorem](#lucass-theorem)
 * [Modulo](#modulo)
@@ -63,10 +63,39 @@
 ### [Top](#index)
 ---
 
-## Freivalds' algorithm
+## [Freivalds' Algorithm](https://en.wikipedia.org/wiki/Freivalds%27_algorithm)
 * 추천 문제
     * [[CodeForces] Matrix God](http://codeforces.com/gym/101341/problem/I) [(소스코드)](./freivalds-algorithm/src/freivalds.cpp)
 ---
+
+### 프리발즈 알고리즘(Freivalds' algorithm)이란?
+* 행렬곱을 검증하기 위해 사용하는 <b>probabilistic randomized algorithm</b>이다. 
+    * 세 개의 <i>n</i> × <i>n</i> 행렬 <i>A</i>, <i>B</i>, 그리고 <i>C</i>가 주어졌을 때, 행렬곱 <i>A</i> × <i>B</i> = <i>C</i>를 검증하기 위한 일반적인 방법은 <i>A</i> × <i>B</i>의 결과와 <i>C</i>를 비교하면 된다. 
+    * 위 방법의 문제점은 <b>시간복잡도가 크다</b>는 데 있다. (일반적인 행렬곱 시간복잡도는 <b>O(<i>n</i><sup>3</sup>)</b>)
+        ```
+        input A and B, both n by n matrices
+        initialize C to be an n by n matrix of all zeros
+        for i from 1 to n:
+            for j from 1 to n:
+                for k from 1 to n:
+                    C[i][j] = C[i][j] + A[i][k]*B[k][j]
+        output C (as A*B)
+        ```
+    * 지금까지 알려진 [가장 효율적인 행렬곱 알고리즘](https://en.wikipedia.org/wiki/Computational_complexity_of_matrix_multiplication)의 시간복잡도는 <b>O(<i>n</i><sup>2.3728596</sup>)</b>이다. 
+    * Freivalds' algorithm을 사용하면 <b>randomization</b>을 이용해 <b>높은 확률</b>로 시간복잡도를 <b>O(<i>n</i><sup>2</sup>)</b>까지 낮출 수 있다. 
+        * <b>O(<i>kn</i><sup>3</sup>)</b> 번 알고리즘을 수행하면, 행렬곱 검증 시 실패 확률 2<sup>-<i>k</i></sup> 미만으로 행렬곱 검증을 수행할 수 있다.
+
+### 알고리즘 구조
+* 입력(input)
+    * 세 개의 <i>n</i> × <i>n</i> 행렬 <i>A</i>, <i>B</i>, <i>C</i>
+
+* 출력(output)
+    * <i>A</i> × <i>B</i> = <i>C</i>이라면 `true`, 아니라면 `false`
+
+* 과정(procedure)
+    
+
+
 
 ### [Top](#index)
 ---

@@ -10,44 +10,39 @@ int main(void)
 
     int n;
     cin>>n;
-    vector<int> v(n);
+    vector<vector<int>> v(n,vector<int>(n));
     for (int i = 0; i<n; ++i) {
-        cin>>v[i];
-    }
-    vector<int> op;
-    for (int i = 0; i<4; ++i) {
-        int tmp;
-        cin>>tmp;
-        while (tmp--) {
-            op.push_back(i);
+        for (int j = 0; j<n; ++j) {
+            cin>>v[i][j];
         }
     }
-    int min_val = 1e9;
-    int max_val = -1e9;
+
+    vector<int> is_used(n);
+    fill(is_used.begin()+n/2,is_used.end(),1);
+    int res = 190*100;
     do {
-        vector<int> tmp(v);
-        for (int i = 0; i<op.size(); ++i) {
-            switch (op[i]) {
-            case 0:
-                tmp[i+1]=tmp[i]+tmp[i+1];
-                break;
-            case 1:
-                tmp[i+1]=tmp[i]-tmp[i+1];
-                break;
-            case 2:
-                tmp[i+1]=tmp[i]*tmp[i+1];
-                break;
-            case 3:
-                tmp[i+1]=tmp[i]/tmp[i+1];
-                break;
-            default:
-                break;
+        vector<int> v1, v2;
+        for (int i = 0; i<n; ++i) {
+            if (is_used[i]) {
+                v1.push_back(i);
+            }
+            else {
+                v2.push_back(i);
             }
         }
-        min_val=min(min_val,tmp.back());
-        max_val=max(max_val,tmp.back());
-    } while (next_permutation(op.begin(),op.end()));
-    cout << max_val << '\n' << min_val;
 
+        int t1 = 0;
+        int t2 = 0;
+        for (int i = 0; i<n/2; ++i) {
+            for (int j = i+1; j<n/2; ++j) {
+                t1+=v[v1[i]][v1[j]]+v[v1[j]][v1[i]];
+                t2+=v[v2[i]][v2[j]]+v[v2[j]][v2[i]];
+            }
+        }
+
+        res=min(res,abs(t1-t2));
+    } while (next_permutation(is_used.begin(),is_used.end()));
+    cout << res;
+    
     return 0;
 }
