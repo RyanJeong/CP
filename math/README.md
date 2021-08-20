@@ -93,7 +93,48 @@
     * <i>A</i> × <i>B</i> = <i>C</i>이라면 `true`, 아니라면 `false`
 
 * 과정(procedure)
+1. 0과 1로 이루어진 <i>n</i> × <i>1</i> 크기의 random vector <i>r</i>생성
+2. 다음과 같이 계산해 벡터를 구함:
+
+    ![procedure](./freivalds-algorithm/img/procedure.png)
+
+3. 결과가 ![result](./freivalds-algorithm/img/result.png) 이라면 `true`, 그렇지 않으면 `false` 반환
+
+* 오류(error)
+    * 만약 <i>A</i> × <i>B</i> = <i>C</i>라면 이 알고리즘은 항상 `true`를 반환한다.
+    * 만약 <i>A</i> × <i>B</i> ≠ <i>C</i>라면 `true`를 반환할 확률(연산 결과가 zero vector가 되는 경우)은 절반 또는 그보다 낮다. 
+        * [one-sided error](https://en.wikipedia.org/wiki/Monte_Carlo_algorithm#One-sided_vs_two-sided_error)
+        * <i>n</i>이 2라면, random vector의 경우의 수는 4가지((0 0)<sup><i>T</i></sup>, (0 1)<sup><i>T</i></sup>, (1 0)<sup><i>T</i></sup>, (1 1)<sup><i>T</i></sup>이며, 이 경우들 중에서 `true`가 나올 경우는 절반이거나 이보다 낮을 수 있다. 아래 예를 보자:
+
+            ![example](./freivalds-algorithm/img/exam1.png)
+        
+        * 위 경우에서 ![procedure](./freivalds-algorithm/img/procedure.png) 결과가 zero vector인 경우(즉, `false`임에도 불구하고 `true`가 나오는 경우, 틀린 결과를 반환하는 경우)는 random vector <i>r</i>이 (0 0)<sup><i>T</i></sup> 또는 (1 1)<sup><i>T</i></sup>일 경우이다. (1/2 확률)
+        * 만약 random vector 생성 기회가 2 번 주어진다면, 1/2<sup>2</sup> 확률로 잘못된 결과를 반환한다. 
+        * 정리하면, 일반적인 상황에서 zero vector가 나올 수 있는 확률은 절반 혹은 그보다 낮으며, 시행회수를 늘리면(예를 들면 20번 수행) 행렬곱 검증 실패 확률이 확연히 낮아진다. (0.00000095)
+        * 이 알고리즘을 <i>k</i> 번 반복한다고 가정하자. 이때 매 회 알고리즘을 돌릴 때마다 유도되는 결과가 zero vector인 경우에만 `true`를 반환한다면, 실행 시간은 <b>O(<i>kn</i><sup>2</sup>)</b>가 되고, 오류가 발견될 확률은 2<sup>-<i>k</i></sup>보다 낮거나 같다.
+
+### 오류 분석(error analysis)
+#### Let <i>p</i> equal the probability of error. We claim that if <i>A</i> × <i>B</i> = <i>C</i>, then <i>p</i> = 0, and if <i>A</i> × <i>B</i> ≠ <i>C</i>, then <i>p</i> ≤ 1/2.
+* Case <i>A</i> × <i>B</i> = <i>C</i>
+    * 오류가 날 확률이 없음
+
+        ![case1](./freivalds-algorithm/img/case1.png)
+
+
+* Case <i>A</i> × <i>B</i> ≠ <i>C</i>
+    * <i>D</i>를 다음과 같이 정의해 보자. 
+
+        ![case2-1](./freivalds-algorithm/img/case2-1.png)
+        * <i>D</i>는 zero matrix가 아니며, 이는 <i>d</i><sub><i>i</i>,<i>j</i></sub> 중에서 0이 아닌 원소가 존재한다는 뜻이다.
+        * 우리가 찾고자 하는 것은 <i>D</i>가 zero matrix가 아니면서 <i>Dr</i>이 zero vector인 경우이며, 이를 통해 오류가 발생할 확률을 찾아야 한다.
     
+    * <i>Dr</i>이 zero vector라면, ![case2-2](./freivalds-algorithm/img/case2-2.png)의 모든 결과 또한 0이 되어야 한다.
+        * ![case2-3](./freivalds-algorithm/img/case2-3.png)는 zero vector가 될 확률이다.
+        * ![case2-4](./freivalds-algorithm/img/case2-4.png)는 zero vector의 원소 중 하나가 zero가 될 확률이다. 
+
+
+
+
 
 
 

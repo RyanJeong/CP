@@ -1,0 +1,4 @@
+[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=http://mathurl.com/
+HostUrl=http://mathurl.com/render.cgi?p_i%20%3D%20%5Csum_%7Bk%20%3D%201%7D%5En%20d_%7Bik%7Dr_k%20%3D%20d_%7Bi1%7Dr_1%20+%20%5Ccdots%20+%20d_%7Bij%7Dr_j%20+%20%5Ccdots%20+%20d_%7Bin%7Dr_n%20%3D%20d_%7Bij%7Dr_j%20+%20y%5Cnocache
