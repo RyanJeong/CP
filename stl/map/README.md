@@ -14,6 +14,7 @@
 # Map
 * 추천 문제
     * [[BOJ] MALCOLM](https://www.acmicpc.net/problem/3078) [(소스코드)](./src/malcolm.cpp) - 중복 `map` 처리 문제
+    * [[BOJ] Incognito](https://www.acmicpc.net/problem/9375) [(소스코드)](./src/incognito.cpp) - `map` 연산
 ---
 
 ## [맵(map)](https://cplusplus.com/reference/map/map/)
