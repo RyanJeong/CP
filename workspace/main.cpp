@@ -1,4 +1,3 @@
-// https://www.acmicpc.net/problem/1707
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -7,42 +6,56 @@ int main(void)
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
-
-    int n;
-    cin>>n;
-    vector<vector<int>> v(n,vector<int>(n));
-    for (int i = 0; i<n; ++i) {
-        for (int j = 0; j<n; ++j) {
-            cin>>v[i][j];
-        }
+    
+    int n, m;
+    cin>>n>>m;
+    vector<int> arr(101);
+    for (int i = 1; i<=n; ++i) {
+        int x, y;
+        cin>>x>>y;
+        arr[x]=y;
+    }
+    for (int i = 1; i<=m; ++i) {
+        int u, v;
+        cin>>u>>v;
+        arr[u]=v; 
     }
 
-    vector<int> is_used(n);
-    fill(is_used.begin()+n/2,is_used.end(),1);
-    int res = 190*100;
-    do {
-        vector<int> v1, v2;
-        for (int i = 0; i<n; ++i) {
-            if (is_used[i]) {
-                v1.push_back(i);
+    vector<int> dist(101);
+    fill(dist.begin(),dist.end(),-1);
+    queue<int> q;
+    q.push(1);
+    dist[1]=0; 
+    while (!q.empty()) {
+        const vector<int> move = {1,2,3,4,5,6};
+
+        auto cur = q.front();
+        q.pop();
+        if (cur==100) {
+            break;
+        }
+        for (auto m : move) {
+            int x = cur+m;
+            
+            if (x>100) {
+                continue;
+            }
+            if (dist[x]!=-1) {
+                continue;
+            }
+            dist[x]=dist[cur]+1;
+            if (arr[x]) {
+                if (dist[arr[x]]==-1 || dist[arr[x]]>dist[x]) {
+                    q.push(arr[x]);
+                    dist[arr[x]]=dist[x];
+                }
             }
             else {
-                v2.push_back(i);
+                q.push(x);
             }
         }
+    }
+    cout << dist[100];
 
-        int t1 = 0;
-        int t2 = 0;
-        for (int i = 0; i<n/2; ++i) {
-            for (int j = i+1; j<n/2; ++j) {
-                t1+=v[v1[i]][v1[j]]+v[v1[j]][v1[i]];
-                t2+=v[v2[i]][v2[j]]+v[v2[j]][v2[i]];
-            }
-        }
-
-        res=min(res,abs(t1-t2));
-    } while (next_permutation(is_used.begin(),is_used.end()));
-    cout << res;
-    
     return 0;
 }
