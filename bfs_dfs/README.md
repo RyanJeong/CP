@@ -1,5 +1,6 @@
 # BFS & DFS
 * 추천 문제 - BFS
+    * [[BOJ] Counting Sheep](https://www.acmicpc.net/problem/11123) [(소스코드)](./src/sheep.cpp) - 단순한 영역 개수 세기 문제
     * [[BOJ] 미로 탐색](https://www.acmicpc.net/problem/2178) [(소스코드)](./src/maze.cpp) - `int` 벡터를 사용한 BFS 최단경로 문제
     * [[BOJ] koze](https://www.acmicpc.net/problem/3187) [(소스코드)](./src/koze.cpp) - `bool` 벡터를 사용한 BFS 기본 응용문제
     * [[BOJ] 점프 게임](https://www.acmicpc.net/problem/15558) [(소스코드)](./src/210628_jumping_game.cpp) - 단계 별 BFS 순회
