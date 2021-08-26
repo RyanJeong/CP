@@ -6,6 +6,7 @@
     * [[BOJ] 주식](https://www.acmicpc.net/problem/12014) [(소스코드)](./src/stock.cpp) - 이분탐색을 이용해 시간복잡도를 <b>O(<i>n</i> log <i>n</i>)</b>로 낮추어 해결해야 하는 문제 2
     * [[BOJ] 전깃줄 - 2](https://www.acmicpc.net/problem/2568) [(소스코드)](./src/wire2.cpp) - 이분탐색과 부분 수열을 출력해야 하는 문제
     * [[BOJ] 이상한 전깃줄](https://www.acmicpc.net/problem/16474) [(소스코드)](./src/weird_wire.cpp) - 이분탐색과 부분 수열을 출력해야 하는 문제
+    * [[BOJ] Nested Dolls](https://www.acmicpc.net/problem/5058) [(소스코드)](./src/dolls.cpp) - 문제 조건에 맞게 데이터 정렬 후 이분탐색
     * [[BOJ] Cow Jog](https://www.acmicpc.net/problem/10651) [(소스코드)](./src/cow_jog.cpp) - Longest non-increasing subsequence를 해결하는 문제
     * [[BOJ] 먹이사슬](https://www.acmicpc.net/problem/2532) [(소스코드)](./src/food_chain.cpp) - Longest non-increasing subsequence + `unique`를 사용한 중복 제거
 ---
