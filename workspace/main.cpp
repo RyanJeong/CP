@@ -1,4 +1,3 @@
-// https://www.acmicpc.net/problem/5058
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -10,28 +9,17 @@ int main(void)
 
     int t;
     cin>>t;
-    while (t--) {
-        int n;
-        cin>>n;
-        vector<pair<int, int>> v;
-        for (int i = 1; i<=n; ++i) {
-            int a, b;
-            cin>>a>>b;
-            v.push_back({a,-b});
+    vector<int> v(3);
+    for (int i = 1; i<=t; ++i) {
+        for (int j = 0; j<v.size(); ++j) {
+            cin>>v[j];
         }
         sort(v.begin(),v.end());
-
-        vector<int> lis;
-        for (int i = 0; i<n; ++i) {
-            int& e = v[i].second;
-            if (lis.empty() || e>=lis.back()) {
-                lis.push_back(e);
-            }
-            else {
-                *upper_bound(lis.begin(),lis.end(),e)=e;
-            }
+        cout << "Scenario #" << i << ":\n";
+        cout << ((v[0]*v[0]+v[1]*v[1] == v[2]*v[2]) ? "yes\n" : "no\n");
+        if (i<t) {
+            cout << '\n';
         }
-        cout << lis.size() << '\n';
     }
 
     return 0;
