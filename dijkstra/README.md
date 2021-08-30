@@ -6,7 +6,14 @@
     * [[BOJ] 특정한 최단 경로](https://www.acmicpc.net/problem/1504) [(소스코드)](./src/shortest_path.cpp) - WIP
     * [[BOJ] 민준이와 마산 그리고 건우](https://www.acmicpc.net/problem/18223) [(소스코드)](./src/friends.cpp) - WIP
     * [[BOJ] Obstacle Course](https://www.acmicpc.net/problem/4485) [(소스코드)](./src/course.cpp) - WIP
-    * [[BOJ] Silver Cow Party](https://www.acmicpc.net/problem/1238) [(소스코드)](./src/party.cpp) - WIP
+    * [[BOJ] Silver Cow Party](https://www.acmicpc.net/problem/1238) [(소스코드 - 최적화 전)](./src/party1.cpp) [(소스코드 - 최적화 후)](./src/party2.cpp) - 두 번의 다익스트라 알고리즘을 수행해 최단거리를 계산하는 문제
+        * 최적화 수행 단계:
+            1. 주어진 문제에서 단방향 간선들을 주어질 때, 출발지(<i>x</i>)에서 각 마을로 가는 최단거리를 한 번 다익스트라를 사용해 계산한다. 
+            2. 주어진 간선들을 역으로 바꾸어 생각하면, 각 마을에서 출발지(<i>x</i>)로 가는 최단거리를 계산하는 문제가 된다. 
+                * 만약, 마을 1에서 <i>x</i>로 가는 간선이 있고, 이때의 가중치가 3이다. 그리고 <i>x</i>에서 마을 1로 가는 간선이 있고, 이때의 가중치가 1이다. 
+                * 주어진 간선에서 <i>x</i>로부터 각 마을로의 최단거리를 계산할 때 사용하는 간선은 가중치가 1인 간선이다.
+                * 주어진 간선을 역으로 바꾼 뒤, <i>x</i>로부터 각 마을로의 최단거리를 계산할 때 사용하는 간선은 가중치가 3인 간선이다. 
+                * 결국, 주어진 간선에서 출발지가 <i>x</i>일 때의 다익스트라를 계산한 결과(<i>x</i>에서 각 마을로 가는 경우)와 주어진 간선을 역으로 바꾼 뒤 출발지가 <i>x</i>일 때의 다익스트라를 계산한 결과(각 마을에서 <i>x</i>로 가는 경우)를 구해서 문제를 해결하면 주어진 문제와 논리적으로 동치이다. 
 ---
 
 ## 다익스트라 알고리즘
