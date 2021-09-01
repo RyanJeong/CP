@@ -2,6 +2,7 @@
 * 추천 문제
     * [[BOJ] 음악프로그램](https://www.acmicpc.net/problem/2623) [(소스코드)](./src/music_program.cpp) - 위상 정렬 후 DAG 여부 확인
     * [[BOJ] ACM Craft](https://www.acmicpc.net/problem/1005) [(소스코드)](./src/acm_craft.cpp) - 위상 정렬 + DP
+    * [[BOJ] 게임 개발](https://www.acmicpc.net/problem/1516) [(소스코드)](./src/game.cpp) - 위상 정렬 + DP
 ---
 
 ## 위상 정렬
