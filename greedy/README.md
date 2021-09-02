@@ -1,5 +1,8 @@
 # Greedy
 * 추천 문제
+    * [[BOJ] 신입 사원](https://www.acmicpc.net/problem/1946) [(소스코드)](./src/recruit.cpp) - 두 조건이 주어졌을 때, 모든 경우를 탐색하는 것이 아닌 하나의 조건을 우선 만족하는 경우만 탐색하는 방법
+        * 서류점수와 면접점수 순위가 주어지고, 두 점수가 이전 지원자보다 낮다면 채용 탈락
+        * 서류점수 순으로 정렬(배열 인덱스)한 뒤, 면접점수 순위만 고려해 가능한 인원수 계산
     * [[BOJ] 주유소](https://www.acmicpc.net/problem/13305) [(소스코드)](./src/gas_station.cpp)
     * [[BOJ] 멀티탭 스케줄링](https://www.acmicpc.net/problem/1700) [(소스코드)](./src/multitap.cpp)
     * [[BOJ] 중량제한](https://www.acmicpc.net/problem/1939) [(소스코드)](./src/weight_limit.cpp) - 분리집합을 이용한 문제
