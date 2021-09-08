@@ -1,5 +1,6 @@
 # Sort
 * 추천 문제
+    * [[WIP][BOJ] 수열 정렬](https://www.acmicpc.net/problem/1015) [(소스코드)](./src/series.cpp) - 간접정렬 정리
     * [[BOJ] 단어 정렬](https://www.acmicpc.net/problem/1181) [(소스코드)](./src/sort_word.cpp) - `sort` 함수를 사용하며, 비교 함수를 직접 구현하는 예
     * [[BOJ] 나이순 정렬](https://www.acmicpc.net/problem/10814) [(소스코드)](./src/sort_age.cpp) - `stable_sort` 함수를 사용하며, 비교 함수를 직접 구현하는 예
     * [[BOJ] Multi-key Sorting](https://www.acmicpc.net/problem/3340) [(소스코드)](./src/stable_sort_feat.cpp) - `stable_sort` 의 특징을 알 수 있는 문제
