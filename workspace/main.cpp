@@ -7,26 +7,22 @@ int main(void)
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
+    string str;
     int n;
-    cin>>n;
-    vector<pair<int, int>> v(n);
-    for (int i = 0; i<n; ++i) {
-        cin>>v[i].first;
-        v[i].second=i;
-    }
-    sort(v.begin(),v.end());
-
-    /*
-        {2,0}    {1,2}
-        {3,1} -> {2,0} 
-        {1,2}    {3,1}
-    */
-    vector<int> res(n);
-    for (int i = 0; i<n; ++i) {
-        res[v[i].second]=i;
-    }
-    for (auto i : res) {
-        cout << i << ' ';
+    while (cin>>str>>n) {
+        cout << str << ' ' << n << " = ";
+        do {
+            --n;
+            if (!n) {
+                break;
+            }
+        } while (next_permutation(str.begin(),str.end()));
+        if (n) {
+            cout << "No permutation" << '\n';
+        }
+        else {
+            cout << str << '\n';
+        }
     }
 
     return 0;
