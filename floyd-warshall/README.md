@@ -1,6 +1,6 @@
 # Floyd-Warshall
 * 추천 문제
-    * [[BOJ] 경로 찾기](https://www.acmicpc.net/problem/11403) [(소스코드)](./src/path.cpp) - WIP
+    * [[BOJ] 경로 찾기](https://www.acmicpc.net/problem/11403) [(소스코드)](./src/path.cpp) - 단순 경로 존재 여부만 확인하는 문제
     * [[BOJ] Line Friends (Small)](https://www.acmicpc.net/problem/14588) [(소스코드)](./src/line_friend.cpp) - WIP
 ---
 

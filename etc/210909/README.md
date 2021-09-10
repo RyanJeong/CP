@@ -302,5 +302,101 @@ vector<int> solution(vector<string> info, vector<string> query)
 * 아래 수식으로 문제를 해결하면 됨:
     * `d[i][j]`: <i>i</i>에서 <i>j</i>까지 갈 때의 최소 비용
     `min(d[s][c]+d[c][a]+d[c][b])`
+```cpp
+#include <string>
+#include <vector>
 
+using namespace std;
+
+int solution(int n, int s, int a, int b, vector<vector<int>> fares) 
+{
+    vector<vector<int>> d(n+1,vector<int>(n+1));
+    fill(d.begin(),d.end(),vector<int>(n+1,1e9));
+    for (int i = 1; i<=n; ++i) {
+        d[i][i]=0;
+    }
+    for (auto cur : fares) {
+        int a, b, c;
+        a=cur[0];
+        b=cur[1];
+        c=cur[2];
+        d[a][b]=min(d[a][b],c);
+        d[b][a]=min(d[b][a],c);
+    }
+
+    for (int k = 1; k<=n; ++k) {
+        for (int i = 1; i<=n; ++i) {
+            for (int j = 1; j<=n; ++j) {
+                d[i][j]=min(d[i][j],d[i][k]+d[k][j]);
+            }
+        }
+    }
+
+    int answer = 1e9;
+    for (int k = 1; k<=n; ++k) {
+        if (d[s][k]==1e9 || d[k][a]==1e9 || d[k][b]==1e9) {
+            continue;
+        }
+        answer=min(answer,d[s][k]+d[k][a]+d[k][b]);
+    }
+
+    return answer;
+}
+```
+
+### [문제 5 – 광고 삽입](https://programmers.co.kr/learn/courses/30/lessons/72414)
+#### Category: 문자열, `substr`, 구현 
+```cpp
+```
+* 시간을 나타내는 문자열을 초로 환산(99:59:59) ~ 360,000 sec.
+* 
+
+### [기타 - 부분수열의 합](https://www.acmicpc.net/problem/14225)
+* `prev_permutation`, `erase`, `unique` 연습
+```cpp
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(void)
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    
+    int n;
+    cin>>n;
+    vector<int> v(n);
+    for (int i = 0; i<n; ++i) {
+        cin>>v[i];
+    }
+    vector<int> seq;
+    for (int i = 1; i<=n; ++i) {
+        vector<bool> is_used(n,false);
+        for (int j = 0; j<i; ++j) {
+            is_used[j]=true;
+        }
+        do {
+            int sum = 0;
+            for (int j = 0; j<n; ++j) {
+                if (is_used[j]) {
+                    sum+=v[j];
+                }
+            }
+            seq.push_back(sum);
+        } while (prev_permutation(is_used.begin(),is_used.end()));
+    }
+    sort(seq.begin(),seq.end());
+    seq.erase(unique(seq.begin(),seq.end()),seq.end());
+    int s = 1;
+    for (auto cur : seq) {
+        if (s!=cur) {
+            break;
+        }
+        ++s;
+    }
+    cout << s;
+
+    return 0;
+}
+```
 ---

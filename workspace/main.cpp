@@ -1,23 +1,44 @@
+// https://www.acmicpc.net/problem/11403
 #include <bits/stdc++.h>
 
 using namespace std;
 
-int main(void)
+int main(void) 
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int n = 3, m = 5;
-    vector<bool> is_used1(m,false); // 0 0 0 0 0
-    for (int i = 0; i<n; ++i) { // 1 1 1 0 0
-        is_used1[i]=true;
+    int n;
+    cin>>n;
+    vector<vector<int>> d(n+1,vector<int>(n+1));
+    for (int i = 1; i<=n; ++i) {
+        for (int j = 1; j<=n; ++j) {
+            cin>>d[i][j];
+        }
     }
-    do {
-        for (auto i : is_used1) {
-            cout << i << ' ';
+
+    for (int k = 1; k<=n; ++k) {
+        for (int i = 1; i<=n; ++i) {
+            for (int j = 1; j<=n; ++j) {
+                if (d[i][k] && d[k][j]) {
+                    d[i][j]=1;
+                }
+            }
+        }
+    }
+
+    for (int i = 1; i<=n; ++i) {
+        for (int j = 1; j<=n; ++j) {
+            if (d[i][j]) {
+                cout << 1;
+            }
+            else {
+                cout << 0;
+            }
+            cout << ' ';
         }
         cout << '\n';
-    } while (prev_permutation(is_used1.begin(),is_used1.end()));
+    }
 
     return 0;
 }
