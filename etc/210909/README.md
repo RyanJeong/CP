@@ -345,11 +345,92 @@ int solution(int n, int s, int a, int b, vector<vector<int>> fares)
 ```
 
 ### [문제 5 – 광고 삽입](https://programmers.co.kr/learn/courses/30/lessons/72414)
-#### Category: 문자열, `substr`, 구현 
-```cpp
-```
+#### Category: 문자열(`substr`, `to_string`), 구현, 누적합
 * 시간을 나타내는 문자열을 초로 환산(99:59:59) ~ 360,000 sec.
-* 
+* 정수에서 시간 문자열로, 시간 문자열에서 정수 변환 시 주의할 것
+```cpp
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int time_to_int(string str)
+{
+    str.push_back(':');
+    int tmp = 0;
+    int sec = 0;
+    for (char c : str) {
+        if (isdigit(c)) {
+            tmp=tmp*10+c-'0';
+        }
+        else { 
+            sec=sec*60+tmp;  
+            tmp=0;
+        }    
+    }
+
+    return sec;
+}
+
+string solution(string play_time, string adv_time, vector<string> logs) 
+{
+    // preprocess 
+    int play_time_sec = time_to_int(play_time);
+    int adv_time_sec = time_to_int(adv_time);
+    vector<pair<int, int>> log_sec;
+    for (auto log : logs) {
+        log_sec.push_back({time_to_int(log.substr(0,8)),time_to_int(log.substr(9,8))});
+    }
+
+    // take log's start point and end point
+    vector<long long> total_time(360'000); // total_time[i] = i ~ i+1
+    for (auto cur : log_sec) {
+        ++total_time[cur.first];
+        --total_time[cur.second];
+    }
+
+    // get interval ( 0 0 1 1 2 2 1 1 0 0 )
+    for (int i = 1; i<play_time_sec; ++i) {
+        total_time[i]+=total_time[i-1];
+    }
+
+    // get acc. interval ( 0 0 1 2 4 6 7 8 8 8 )
+    for (int i = 1; i<play_time_sec; ++i) {
+        total_time[i]+=total_time[i-1];
+    }
+
+    long long acc = total_time[adv_time_sec-1]; // 1~adv_time_sec
+    int sec = 0;
+    for (int i = adv_time_sec; i<play_time_sec; ++i) {
+        if (acc<total_time[i]-total_time[i-adv_time_sec]) {
+            acc=total_time[i]-total_time[i-adv_time_sec];
+            sec=i-adv_time_sec+1;
+        }
+    }
+
+    string answer = "";
+    int hour = sec/3600;
+    sec%=3600;
+    if (hour<10) {
+        answer.push_back('0');
+    }
+    answer+=to_string(hour);
+    answer.push_back(':');
+    int minute=sec/60;
+    sec%=60;
+    if (minute<10) {
+        answer.push_back('0');
+    }
+    answer+=to_string(minute);
+    answer.push_back(':');
+    if (sec<10) {
+        answer.push_back('0');
+    }
+    answer+=to_string(sec);
+
+    return answer;
+}
+```
 
 ### [기타 - 부분수열의 합](https://www.acmicpc.net/problem/14225)
 * `prev_permutation`, `erase`, `unique` 연습

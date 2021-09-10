@@ -33,18 +33,52 @@ string solution(string play_time, string adv_time, vector<string> logs)
         log_sec.push_back({time_to_int(log.substr(0,8)),time_to_int(log.substr(9,8))});
     }
 
-    vector<int> total_time(360'000);
+    // take log's start point and end point
+    vector<long long> total_time(360'000); // total_time[i] = i ~ i+1
     for (auto cur : log_sec) {
         ++total_time[cur.first];
         --total_time[cur.second];
     }
+
+    // get interval ( 0 0 1 1 2 2 1 1 0 0 )
     for (int i = 1; i<play_time_sec; ++i) {
         total_time[i]+=total_time[i-1];
     }
 
+    // get acc. interval ( 0 0 1 2 4 6 7 8 8 8 )
+    for (int i = 1; i<play_time_sec; ++i) {
+        total_time[i]+=total_time[i-1];
+    }
 
+    long long acc = total_time[adv_time_sec-1]; // 1~adv_time_sec
+    int sec = 0;
+    for (int i = adv_time_sec; i<play_time_sec; ++i) {
+        if (acc<total_time[i]-total_time[i-adv_time_sec]) {
+            acc=total_time[i]-total_time[i-adv_time_sec];
+            sec=i-adv_time_sec+1;
+        }
+    }
 
     string answer = "";
+    int hour = sec/3600;
+    sec%=3600;
+    if (hour<10) {
+        answer.push_back('0');
+    }
+    answer+=to_string(hour);
+    answer.push_back(':');
+    int minute=sec/60;
+    sec%=60;
+    if (minute<10) {
+        answer.push_back('0');
+    }
+    answer+=to_string(minute);
+    answer.push_back(':');
+    if (sec<10) {
+        answer.push_back('0');
+    }
+    answer+=to_string(sec);
+
     return answer;
 }
 //////////////////

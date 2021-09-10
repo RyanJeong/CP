@@ -8,37 +8,20 @@ int main(void)
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int n;
-    cin>>n;
-    vector<vector<int>> d(n+1,vector<int>(n+1));
-    for (int i = 1; i<=n; ++i) {
-        for (int j = 1; j<=n; ++j) {
-            cin>>d[i][j];
+    int sec = 359999;
+    string answer = "";
+    for (int i = 1; i<=3; ++i) {
+        int tmp = sec%((i==3) ? 100 : 60);
+        sec/=((i==3) ? 100 : 60);
+        answer.push_back(tmp%10+'0');
+        tmp/=10;
+        answer.push_back(tmp%10+'0');
+        if (i!=3) {
+            answer.push_back(':');
         }
     }
-
-    for (int k = 1; k<=n; ++k) {
-        for (int i = 1; i<=n; ++i) {
-            for (int j = 1; j<=n; ++j) {
-                if (d[i][k] && d[k][j]) {
-                    d[i][j]=1;
-                }
-            }
-        }
-    }
-
-    for (int i = 1; i<=n; ++i) {
-        for (int j = 1; j<=n; ++j) {
-            if (d[i][j]) {
-                cout << 1;
-            }
-            else {
-                cout << 0;
-            }
-            cout << ' ';
-        }
-        cout << '\n';
-    }
+    reverse(answer.begin(),answer.end());
+    cout << answer;
 
     return 0;
 }
