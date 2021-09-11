@@ -1,14 +1,13 @@
 #include <iostream>
-///// WIP
+/////
 #include <string>
 #include <vector>
-#include <algorithm>
 
 using namespace std;
 
 vector<int> apeach;
 vector<int> ryan;
-vector<vector<int>> buf;
+vector<int> answer = {-1};
 int score = 0;
 
 void bt(int n)
@@ -32,10 +31,29 @@ void bt(int n)
         return;
     }
     if (!n && s_ryan>s_apeach && s_ryan>=score) {
-        if (s_ryan>score) {
-            buf.clear();
+        /*
+        if (answer.front()==-1) {
+            answer=ryan;
         }
-        buf.push_back(ryan);
+        else {
+            bool is_satisfied = true;
+            for (int i = 9; i>=0; --i) {
+                if (answer[i]!=ryan[i]) {
+for (auto cur : answer) {
+    cout << cur << ' ';
+}
+cout << '\n';
+cout << answer[i] << ' ' << ryan[i] << ' ' << s_ryan << '\n';
+                    is_satisfied=(answer[i]>ryan[i]) ? false : true;
+                    break;
+                }
+            }
+            if (is_satisfied) {
+                answer=ryan;
+            }
+        }
+        */
+        answer=ryan;
         score=s_ryan;
 
         return;
@@ -58,34 +76,12 @@ vector<int> solution(int n, vector<int> info)
     ryan=vector<int>(11);
     bt(n);
 
-    vector<int> answer = {-1};
-    if (buf.size()) {
-        vector<pair<pair<int, int>, int>> v;
-        for (int i = 0; i<buf.size(); ++i) {
-            auto& cur = buf[i];
-            for (int j = 10; j>=0; --j) {
-                if (cur[j]) {
-                    v.push_back({make_pair(j,cur[j]),i});
-                    break;
-                }
-            }
-        }
-        sort(v.begin(),v.end(),greater<pair<pair<int, int>, int>>());
-        /*
-for (auto cur : v) {
-    cout << cur.first.first << ' ' << cur.first.second << ' ' << cur.second << '\n';
-}
-*/
-        answer=buf[v.front().second];
-    }
-    
     return answer;
 }
 /////
 
 int main(void)
 {
-    /*
     for (auto cur : solution(1, {1,0,0,0,0,0,0,0,0,0,0})) {
         cout << cur << ' ';
     }
@@ -94,12 +90,6 @@ int main(void)
         cout << cur << ' ';
     }
     cout << '\n';
-    */
-    for (auto cur : solution(	9, {0, 0, 1, 2, 0, 1, 1, 1, 1, 1, 1})) {
-        cout << cur << ' ';
-    }
-    cout << '\n';
-
 
     return 0;
 }
