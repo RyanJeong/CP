@@ -1,4 +1,4 @@
-// https://www.acmicpc.net/problem/10973
+// https://www.acmicpc.net/problem/10972
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -15,7 +15,7 @@ int main(void)
         cin>>v[i];
     }
 
-    if (prev_permutation(v.begin(),v.end())) {
+    if (next_permutation(v.begin(),v.end())) {
         for (auto i : v) {
             cout << i << ' ';
         }

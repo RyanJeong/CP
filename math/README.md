@@ -371,7 +371,7 @@ long long pow(long long a, long long b, long long c)
 
 ## Permutation and Combination
 * 추천 문제
-    * [[BOJ] 다음 순열](https://www.acmicpc.net/problem/10972) [(소스코드)](./permutation-and-combination/src/next.cpp) - WIP `next_permutation` 용법
+    * [[BOJ] 다음 순열](https://www.acmicpc.net/problem/10972) [(소스코드)](./permutation-and-combination/src/next.cpp) - `next_permutation` 용법
     * [[BOJ] 이전 순열](https://www.acmicpc.net/problem/10973) [(소스코드)](./permutation-and-combination/src/prev.cpp) - `prev_permutation` 용법
 
 ### Permutation 
