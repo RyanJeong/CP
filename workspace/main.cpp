@@ -6,21 +6,23 @@ int main(void)
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
-
+    
     int n;
     cin>>n;
-    stack<int> s;
     int next = 1;
     while (n--) {
-        int tmp;
-        cin>>tmp;
-        s.push(tmp);
-        while (!s.empty() && s.top()==next) {
-            ++next;
-            s.pop();
+        string str;
+        cin>>str;
+        if (str!="mumble") {
+            if (next!=stoi(str)) {
+                cout << "something is fishy";
+
+                return 0;
+            }
         }
+        ++next;
     }
-    cout << ((s.empty()) ? "Nice" : "Sad");
+    cout << "makes sense";
 
     return 0;
 }
