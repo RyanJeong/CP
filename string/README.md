@@ -1,6 +1,6 @@
 # [WIP] String
 * 추천 문제
-    * [[BOJ] ](https://www.acmicpc.net/problem/) [(소스코드)](./src/.cpp)
+    * [[BOJ] IZBORNIK](https://www.acmicpc.net/problem/1283) [(소스코드)](./src/izbornik.cpp) - `getline()`, `stringstream` 사용 방법
 ---
 
 ## 문자열
