@@ -10,16 +10,16 @@ int main(void)
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    string s;
-    getline(cin,s);
+    string a;
+    getline(cin,a);
+    string b;
+    getline(cin,b);
     string p;
     getline(cin,p);
 
-    auto res = kmp(s,p);
-    cout << res.size() << '\n';
-    for (auto i : res) {
-        cout << i+1 << ' ';
-    }
+    auto res1 = kmp(a,p);
+    auto res2 = kmp(b,p);
+    cout << ((res1.size() && res2.size()) ? "YES" : "NO");
 
     return 0;
 }
