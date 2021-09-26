@@ -2,7 +2,7 @@
 * 추천 문제
     * [[BOJ] 케빈 베이컨의 6단계 법칙](https://www.acmicpc.net/problem/1389) [(소스코드)](./src/kevin_bacon.cpp) - 플로이드-워셜 연습문제
     * [[BOJ] 경로 찾기](https://www.acmicpc.net/problem/11403) [(소스코드)](./src/path.cpp) - 단순 경로 존재 여부만 확인하는 문제
-    * [[BOJ] Line Friends (Small)](https://www.acmicpc.net/problem/14588) [(소스코드)](./src/line_friend.cpp) - WIP
+    * [[BOJ] Line Friends (Small)](https://www.acmicpc.net/problem/14588) [(소스코드)](./src/line_friend.cpp) - 두어진 선분 간 관계를 통해 간선을 만든 뒤 플로이드-워셜 적용
 ---
 
 ## 플로이드-워셜 알고리즘
