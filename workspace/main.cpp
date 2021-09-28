@@ -7,25 +7,25 @@ int main(void)
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int n;
-    cin>>n;
-    vector<int> v(n);
-    int sum = 0;
-    for (int i = 0; i<n; ++i) {
-        cin>>v[i];
-        sum+=v[i];
+    int n, m;
+    cin>>n>>m;
+    set<string> s;
+    while (n--) {
+        string str;
+        cin>>str;
+        s.insert(str);
     }
 
-    sum/=2;
-    bool is_used = false;
-    for (auto i : v) {
-        if (!is_used && i==sum) {
-            is_used=true;
+    int res = 0;
+    while (m--) {
+        string str;
+        cin>>str;
+        if (s.find(str)==s.end()) {
             continue;
         }
-        cout << i << ' ';
+        ++res;
     }
-    cout << sum;
+    cout << res;
 
     return 0;
 }
