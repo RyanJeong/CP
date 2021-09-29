@@ -1,3 +1,4 @@
+// https://www.acmicpc.net/problem/1019
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -9,16 +10,12 @@ int main(void)
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    long long l, u;
-    cin>>l>>u;
-    vector<long long> freq_l = get_freq(l-1);
-    vector<long long> freq_u = get_freq(u);
-    
-    long long res = 0;
-    for (int i = 0; i<10; ++i) {
-        res+=(freq_u[i]-freq_l[i])*i;
+    long long n;
+    cin>>n;
+    vector<long long> freq = get_freq(n);
+    for (auto i : freq) {
+        cout << i << ' ';
     }
-    cout << res;
 
     return 0;
 }

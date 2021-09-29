@@ -3,6 +3,7 @@
 * [[WIP] Big Integer](#big-integer)
 * [Binomial Coefficient](#binomial-coefficient)
 * [[WIP] Convex Hull](#convex-hull)
+* [Count All Numbers with Unique Digits in a Given Range](#count-all-numbers-with-unique-digits-in-a-given-range)
 * [Freivalds' Algorithm](#freivalds-algorithm)
 * [GCD & LCM](#gcd--lcm)
 * [[WIP] Lucas's Theorem](#lucass-theorem)
@@ -60,6 +61,65 @@
     * [CCW](#ccwcounterclockwise) 알고리즘을 사용했을 때 양수는 반시계 방향, 음수는 시계 방향을 나타냄
     * 만약 0이 나온다면, 기준 좌표로부터 가까운 거리 순으로 정렬
 3. 컨벡스 헐 알고리즘([Graham's Scan](https://en.wikipedia.org/wiki/Graham_scan))을 사용해 외곽 좌표를 찾는다.
+
+### [Top](#index)
+---
+
+## Count All Numbers with Unique Digits in a Given Range
+* 추천 문제
+    * [[BOJ] 책 페이지](https://www.acmicpc.net/problem/1019) [(소스코드)](./count-all-numbers/src/page.cpp)
+    * [[BOJ] 합](https://www.acmicpc.net/problem/1081) [(소스코드)](./count-all-numbers/src/sum.cpp)
+---
+* 만약 두 수 `1345`, `8742`가 주어졌을 때, 두 수 사이에 등장할 수 있는 숫자가 몇 개인지 판별하기 위해, 아래 과정을 거친다:
+1. 주어진 두 수 중에서 시작 값의 일의 자리를 0으로, 끝 값의 일이 자리를 9로 설정한다. 이 과정에서 등장하는 수는 직접 계산한다.
+    * 이를테면, `1345`는 `1350`, `8742`는 `8739`로 설정한다.
+2. 시작 값의 일의 자리를 0, 끝 값의 일의 자리를 9로 설정하면 아래와 같은 규칙을 이용할 수 있다:
+
+    ![rule1](./count-all-numbers/img/rule1.jpg)
+
+3. 일의 자리부터 주어진 숫자의 자리까지 위 단계를 반복한다. 
+
+```cpp
+vector<long long> get_freq(long long end)
+{
+    static const int base = 10;
+    long long start = 1;
+    long long pos = 1;
+
+    vector<long long> freq(base);
+    while (start<=end) {
+        while (start%base!=0 && start<=end) {
+            int n = start;
+            while (n>0) {
+                freq[n%base]+=pos;
+                n/=base;
+            }
+            ++start;
+        }
+        if (start>end) {
+            break;
+        }
+        while (end%base!=9 && start<=end) {
+            int n = end;
+            while (n>0) {
+                freq[n%base]+=pos;
+                n/=base;
+            }
+            --end;
+        }
+
+        start/=base;
+        end/=base;
+        long long cnt = end-start+1;
+        for (int i = 0; i<base; ++i) {
+            freq[i]+=cnt*pos;
+        }
+        pos*=10;
+    }
+
+    return freq;
+}
+```
 
 ### [Top](#index)
 ---
