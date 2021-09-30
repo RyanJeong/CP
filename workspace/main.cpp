@@ -2,63 +2,64 @@
 
 using namespace std;
 
-vector<long long> get_freq(long long n);
-
 int main(void) 
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
-
-    long long l, u;
-    cin>>l>>u;
-    vector<long long> freq_l = get_freq(l-1);
-    vector<long long> freq_u = get_freq(u);
     
-    long long res = 0;
-    for (int i = 0; i<10; ++i) {
-        res+=(freq_u[i]-freq_l[i])*i;
+    int n;
+    cin>>n;
+    while (n--) {
+        string str;
+        cin>>str;
+
+        auto it = str.end();
+        --it;
+        string tmp;
+        if (*it=='a') {
+            tmp="s";
+        }
+        else if (*it=='i') {
+            tmp="os";
+        }
+        else if (*it=='y') {
+            str.erase(it-str.begin());
+            tmp="ios";
+        }
+        else if (*it=='l') {
+            tmp="es";
+        }
+        else if (*it=='n') {
+            str.erase(it-str.begin());
+            tmp="anes";
+        }
+        else if (*(it-1)=='n' && *it=='e') {
+            str.erase(it-1-str.begin(),2);
+            tmp="anes";
+        }
+        else if (*it=='o') {
+            tmp="s";
+        }
+        else if (*it=='r') {
+            tmp="es";
+        }
+        else if (*it=='t') {
+            tmp="as";
+        }
+        else if (*it=='u') {
+            tmp="s";
+        }
+        else if (*it=='v') {
+            tmp="es";
+        }
+        else if (*it=='w') {
+            tmp="as";
+        }
+        else {
+            tmp="us";
+        }
+        cout << str << tmp << '\n';
     }
-    cout << res;
 
     return 0;
-}
-
-vector<long long> get_freq(long long end)
-{
-    static const int base = 10;
-    long long start = 1;
-    long long pos = 1;
-
-    vector<long long> freq(base);
-    while (start<=end) {
-        while (start%base!=0 && start<=end) {
-            int n = start;
-            while (n>0) {
-                freq[n%base]+=pos;
-                n/=base;
-            }
-            ++start;
-        }
-        if (start>end) {
-            break;
-        }
-        while (end%base!=9 && start<=end) {
-            int n = end;
-            while (n>0) {
-                freq[n%base]+=pos;
-                n/=base;
-            }
-            --end;
-        }
-
-        start/=base;
-        end/=base;
-        long long cnt = end-start+1;
-        for (int i = 0; i<base; ++i) {
-            freq[i]+=cnt*pos;
-        }
-        pos*=10;
-    }
-
-    return freq;
 }
