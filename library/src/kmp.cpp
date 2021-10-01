@@ -4,37 +4,6 @@ using namespace std;
 
 vector<int> get_fail(string);
 vector<int> kmp(string, string);
-int gcd(int, int);
-
-int main(void)
-{
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
-
-    int n;
-    cin>>n;
-    string p;
-    for (int i = 1; i<=n; ++i) {
-        char c;
-        cin>>c;
-        p.push_back(c); 
-    }
-    string s;
-    for (int i = 1; i<=n; ++i) {
-        char c;
-        cin>>c;
-        s.push_back(c); 
-    }
-    s+=s; // circular
-    s.pop_back(); // ABC -> ABCAB
-
-    auto res = kmp(s,p);
-    int m = res.size();
-    int d = gcd(n,m);    
-    cout << m/d << '/' << n/d;
-
-    return 0;
-}
 
 vector<int> get_fail(string p)
 {
@@ -42,10 +11,10 @@ vector<int> get_fail(string p)
     vector<int> fail(n_p);
     for (int i = 1, j = 0; i<n_p; i++) {
         while (j>0 && p[i]!=p[j]) {
-            j=fail[j-1];
+            j=fail[j-1]; // restore the idx
         }
         if (p[i]==p[j]) {
-            fail[i]=j+1;
+            fail[i]=j+1; // after j
             ++j;
         }
     }
@@ -76,10 +45,4 @@ vector<int> kmp(string s, string p)
     }
 
     return ans;
-}
-
-int gcd(int a, int b)
-{
-    
-    return ((b==0) ? a : gcd(b,a%b));
 }

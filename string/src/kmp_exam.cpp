@@ -1,37 +1,23 @@
+// https://www.acmicpc.net/problem/16916
 #include <bits/stdc++.h>
 
 using namespace std;
 
 vector<int> get_fail(string);
 vector<int> kmp(string, string);
-int gcd(int, int);
 
 int main(void)
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int n;
-    cin>>n;
-    string p;
-    for (int i = 1; i<=n; ++i) {
-        char c;
-        cin>>c;
-        p.push_back(c); 
-    }
     string s;
-    for (int i = 1; i<=n; ++i) {
-        char c;
-        cin>>c;
-        s.push_back(c); 
-    }
-    s+=s; // circular
-    s.pop_back(); // ABC -> ABCAB
+    getline(cin,s);
+    string p;
+    getline(cin,p);
 
     auto res = kmp(s,p);
-    int m = res.size();
-    int d = gcd(n,m);    
-    cout << m/d << '/' << n/d;
+    cout << (!res.empty());
 
     return 0;
 }
@@ -76,10 +62,4 @@ vector<int> kmp(string s, string p)
     }
 
     return ans;
-}
-
-int gcd(int a, int b)
-{
-    
-    return ((b==0) ? a : gcd(b,a%b));
 }

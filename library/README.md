@@ -6,6 +6,7 @@
 * [Disjoint-Set](./src/disjoint-set.cpp)
 * [Divisor](./src/divisor.cpp)
 * [GCD](./src/gcd.cpp)
+* [KMP](./src/kmp.cpp)
 * [LCM](./src/lcm.cpp)
 * [LIS](./src/lis.cpp)
 * [`nth_element`](./src/nth_element.cpp)
