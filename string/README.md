@@ -5,7 +5,8 @@
 ---
 
 * 추천 문제 - KMP
-    * [[BOJ] Editor](https://www.acmicpc.net/problem/1701) [(소스코드)](./src/editor.cpp) - KMP `fail`함수를 사용하는 문제
+    * [[BOJ] Editor](https://www.acmicpc.net/problem/1701) [(소스코드)](./src/editor.cpp) - KMP `fail`함수를 사용하는 문제 1
+    * [[BOJ] Power Strings](https://www.acmicpc.net/problem/4354) [(소스코드)](./src/power_string.cpp) - KMP `fail`함수를 사용하는 문제 2
     * [[BOJ] 찾기](https://www.acmicpc.net/problem/1786) [(소스코드)](./src/kmp.cpp) - KMP 알고리즘 문제
 
 ---
