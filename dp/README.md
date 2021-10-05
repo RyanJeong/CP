@@ -431,7 +431,72 @@ int main(void)
 }
 ```
 
-## [WIP] 비트마스크를 이용한 동적 계획법(Bit DP)
+## 비트마스크를 이용한 동적 계획법(Bit DP)
+### 비트마스킹
+* 어떤 상태의 선택여부를 확인하고자 할 때 사용:
+    * 어떤 옵션의 선택 여부
+    * 어떤 정점의 방문 여부
+    * ...
+
+* 선택할 수 있는 경우의 수가 30개 이하처럼 적은 경우가 주어졌을 때, 비트마스킹을 활용할 수 있음
+
+### 연습문제
+* [[BOJ] 계단 수](https://www.acmicpc.net/problem/1562) [(소스코드)](./src/step.cpp)
+###### Memory: 6,248 KB, Time: 8 ms
+```c++
+// https://www.acmicpc.net/problem/1562
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int req(int, int, int);
+const int mod(1e9);
+
+int g_n;
+vector<vector<vector<int>>> g_v;
+
+int main(void)
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    cin>>g_n;;
+    //v[g_n+1][10][1<<10];
+    g_v=vector<vector<vector<int>>>(g_n+1,vector<vector<int>>(10,vector<int>(1<<10)));
+
+    int res = 0;
+    // 0으로 시작하는 수는 계단수가 아니다.
+    for (int d = 1; d<10; ++d) {
+        res=(res+req(1,d,1<<d))%mod;
+    }
+    cout << res; 
+
+    return 0;
+}
+
+int req(int i, int d, int b)
+{
+    if (g_v[i][d][b]) {
+
+        return g_v[i][d][b];
+    }
+    if (i==g_n) {
+
+        return ((b==(1<<10)-1) ? 1 : 0);
+    }
+    if (d==0) { // 0->1
+        g_v[i][d][b]=req(i+1,1,b|1<<1)%mod;
+    }
+    else if (d==9) { // 9->8
+        g_v[i][d][b]=req(i+1,8,b|1<<8)%mod;
+    }
+    else { // n-1<-n->n+1
+        g_v[i][d][b]=(req(i+1,d-1,b|1<<(d-1))+req(i+1,d+1,b|1<<(d+1)))%mod; 
+    }
+
+    return g_v[i][d][b];
+}
+```
 
 ## [WIP] 부분집합의 합(Sum over Subsets, SOS DP)
 
