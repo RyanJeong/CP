@@ -16,6 +16,7 @@
 
 * 추천 문제 - 비트마스크를 이용한 동적 계획법
     * [[BOJ] 행렬 곱셈 순서](https://www.acmicpc.net/problem/11049) [(소스코드)](./src/210709_matrix.cpp)
+    * [[BOJ] 외판원 순회](https://www.acmicpc.net/problem/2098) [(소스코드)](./src/tsp.cpp) - 비트마스킹 + DP
 ---
 
 * 추천 문제 - 부분집합의 합
