@@ -1,3 +1,5 @@
+/*
+// https://www.acmicpc.net/problem/1107
 #include <bits/stdc++.h>
  
 using namespace std;
@@ -6,29 +8,22 @@ int main(void)
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
+    
+    int n, m;
+    cin>>n>>m;
 
-    int N, m, M, T, R, t, e, h;
-    cin>>N>>m>>M>>T>>R;
- 
-    if (m+T>M) {
-        cout << -1;
+    vector<bool> is_broken(10);
+    while (m--) {
+        int tmp;
+        cin>>tmp;
+        is_broken[tmp]=true;
+    }
 
-        return 0;
-    }
-    t=0;
-    e=0;
-    h=m;
-    while (e<N) {
-        if (h+T<=M) {
-            h+=T;
-            ++e;
-        }
-        else {
-            h=((h-R<m)? m : h-R);
-        }
-        ++t;
-    }
-    cout << t;
- 
+    int start = 100;
+    int res = abs(n-start);
+
+    cout << res;
+
     return 0;
 }
+*/
