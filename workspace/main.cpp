@@ -1,4 +1,3 @@
-// https://www.acmicpc.net/problem/1107
 #include <bits/stdc++.h>
  
 using namespace std;
@@ -7,37 +6,38 @@ int main(void)
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
-    
-    int n, m;
-    cin>>n>>m;
+	
+	int n, k;
+	cin>>n>>k;
+	string s;
+	cin>>s;
+	s.push_back(',');
 
-    vector<bool> is_broken(10);
-    while (m--) {
-        int tmp;
-        cin>>tmp;
-        is_broken[tmp]=true;
-    }
+	vector<int> v;
+	int tmp = 0;
+	int sign = 1;
+	for (char c : s) {
+		if (c==',') {
+			v.push_back(sign*tmp);
+			tmp=0;
+			sign=1;
+		}
+		else if (c=='-') {
+			sign*=-1;
+		}
+		else {
+			tmp=tmp*10+c-'0';
+		}
+	}
 
-    int res = abs(n-100);
-    for (int i = 0; i<1'000'000; ++i) {
-        int cnt = 0;
-        int ch = i;
-        do {
-            if (is_broken[ch%10]) {
-                cnt=0;
-                break;
-            }
-            ++cnt;
-            ch/=10;
-        } while (ch>0);
-        
-        if (cnt>0) {
-            cnt+=abs(n-i);
-            res=min(res,cnt);
-        }
-    }
-
-    cout << res;
-
-    return 0;
+	for (int i = 0; i<k; ++i) {
+		for (int j = 0; j<n-i-1; ++j) {
+			v[j]=v[j+1]-v[j];
+		}
+	}	
+	for (int i = 0; i<n-k; ++i) {
+		cout << v[i] << ((i==n-k-1) ? "" : ",");
+	}
+	
+	return 0;
 }
