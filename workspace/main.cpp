@@ -10,28 +10,57 @@ int main(void)
     int t;
     cin>>t;
     while (t--) {
-        int k;
-        cin>>k;
-        vector<int> v(k+1);
-        vector<int> sum(k+1);
-        for (int i = 1; i<=k; ++i) {
-            cin>>v[i];
-            sum[i]=sum[i-1]+v[i];
-        }
+        int a, b;
+        cin>>a>>b;
 
-        vector<vector<int>> dp(k+1,vector<int>(k+1));
-        for (int d = 1; d<k; ++d) {
-            // dp[i][j] = novel[i]+novel[i+1]+...+novel[j]
-            for (int i = 1; i+d<=k; ++i) { 
-                int j = i+d;
-                dp[i][j]=1e9;
+        queue<int> q;
+        q.push(a);
+        vector<int> prev(10'000);
+        prev[a]=-1;
+        vector<char> path(10'000);
+        path[a]=-1;
 
-                for (int mid = i; mid<j; ++mid) {
-                    dp[i][j]=min(dp[i][j],sum[j]+dp[i][mid]+dp[mid+1][j]-sum[i-1]);
+        while (!q.empty()) {
+            int cur = q.front();
+            q.pop();
+
+            if (cur==b) {
+                string str;
+                while (prev[cur]!=-1) {
+                    str.push_back(path[cur]);
+                    cur=prev[cur];
                 }
+                reverse(str.begin(),str.end());
+                cout << str << '\n';
+                break;
+            }
+
+            int next;
+            next=(2*cur)%10'000;
+            if (!path[next]) {
+                path[next]='D';
+                prev[next]=cur;
+                q.push(next);
+            }
+            next=((!cur) ? 9'999 : cur-1);
+            if (!path[next]) {
+                path[next]='S';
+                prev[next]=cur;
+                q.push(next);
+            }
+            next=(cur%1'000)*10+cur/1'000;
+            if (!path[next]) {
+                path[next]='L';
+                prev[next]=cur;
+                q.push(next);
+            }
+            next=(cur%10)*1'000+cur/10;
+            if (!path[next]) {
+                path[next]='R';
+                prev[next]=cur;
+                q.push(next);
             }
         }
-        cout << dp[1][k] << '\n';
     }
 
     return 0;
