@@ -1,4 +1,5 @@
 // https://www.acmicpc.net/problem/3055
+// 탈출 
 #include <bits/stdc++.h>
 
 using namespace std;
