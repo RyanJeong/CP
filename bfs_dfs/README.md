@@ -283,6 +283,10 @@ int dfs(int i, int j)
 * DFS(재귀)의 응용
 * <b>Go as deeply as possible, backtrack if impossible</b>
 
+### Backtracking과 DFS 차이
+* 백트래킹: 탐색 중 후보해가 될 수 없는 경우(if impossible), 이전 단계로 돌아와 다른 후보해 탐색
+* DFS: 모든 노드를 방문
+
 ### 연습문제
 * [[BOJ] N과 M (1)](https://www.acmicpc.net/problem/15649) [(소스코드)](./backtracking/src/n_m.cpp)
 ###### Memory: 2,016 KB, Time: 24 ms
