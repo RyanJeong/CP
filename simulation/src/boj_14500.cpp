@@ -1,3 +1,4 @@
+// https://www.acmicpc.net/problem/14500
 #include <bits/stdc++.h>
 
 using namespace std;
