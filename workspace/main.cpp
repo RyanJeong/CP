@@ -1,3 +1,4 @@
+// 
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -7,57 +8,24 @@ int main(void)
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    string str;
-    cin>>str;
+    int t1, v1, t2, v2;
+    cin>>t1>>v1>>t2>>v2;
 
-    stack<char> op;
-    string res;
-    for (char c : str) {
-        if (isalpha(c) && isupper(c)) {
-            res+=c;
-            continue;
+    do {
+        if (t2<0 && v2>=10) {
+            cout << "A storm warning for tomorrow! Be careful and stay home if possible!\n";
+            break;
         }
-
-        // +, -, *, /, (, )
-        switch (c) {
-        case '(':
-            op.push(c);
+        if (t2<t1) {
+            cout << "MCHS warns! Low temperature is expected tomorrow.\n";
             break;
-        case '*':
-        case '/':
-            while (!op.empty() && (op.top()=='*' || op.top()=='/')) {
-                res+=op.top();
-                op.pop();
-            }
-            op.push(c);
+        }
+        if (v1<v2) {
+            cout << "MCHS warns! Strong wind is expected tomorrow.\n";
             break;
-        case '+':
-        case '-':
-        //  while (!op.empty() && (op.top()=='+' || op.top()=='|' || op.top()=='*' || op.top()=='/')) {
-            while (!op.empty() && op.top()!='(') {
-                res+=op.top();
-                op.pop();
-            }
-            op.push(c);
-            break;
-        case ')':
-            while (!op.empty() && op.top()!='(') {
-                res+=op.top();
-                op.pop();
-            }
-            op.pop();
-            break;
-        default:
-
-            return 1;
-        } 
-    }
-
-    while (!op.empty()) {
-        res+=op.top();
-        op.pop();
-    }
-    cout << res;
+        }
+        cout << "No message\n";
+    } while (0);
 
     return 0;
 }
