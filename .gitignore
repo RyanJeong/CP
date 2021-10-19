@@ -15,3 +15,6 @@
 
 # Ignore .exse files
 *.exe
+
+# Ignore *.dSYM
+*dSYM

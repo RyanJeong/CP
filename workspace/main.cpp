@@ -1,5 +1,4 @@
-// 
-#include <bits/stdc++.h>
+#include <iostream>
 
 using namespace std;
 
@@ -8,24 +7,25 @@ int main(void)
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int t1, v1, t2, v2;
-    cin>>t1>>v1>>t2>>v2;
+    int n, p, h;
+    cin>>n>>p>>h;
 
-    do {
-        if (t2<0 && v2>=10) {
-            cout << "A storm warning for tomorrow! Be careful and stay home if possible!\n";
-            break;
+    for (int i = 0; i<n; i++) {
+        int dollar;
+        cin>>dollar;
+
+        if (dollar>h) {
+            cout << "BBTV: Dollar reached " << dollar << " Oshloobs, A record!\n";
+            h=dollar;
+            p=dollar;
+            continue;
         }
-        if (t2<t1) {
-            cout << "MCHS warns! Low temperature is expected tomorrow.\n";
-            break;
+
+        if (dollar<p) {
+            cout << "NTV: Dollar dropped by " << p-dollar << " Oshloobs\n";
         }
-        if (v1<v2) {
-            cout << "MCHS warns! Strong wind is expected tomorrow.\n";
-            break;
-        }
-        cout << "No message\n";
-    } while (0);
+        p=dollar;
+    }
 
     return 0;
 }
