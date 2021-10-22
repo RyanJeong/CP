@@ -7,19 +7,10 @@ int main(void)
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    while (true) {
-        int n;
-        cin>>n;
-        if (!n) {
-            break;
-        }
-        for (int i = 1; i<=n; ++i) {
-            for (int j = 1; j<=i; ++j) {
-                cout << '*';
-            }
-            cout << '\n';
-        }
-    }
+    string str;
+    cin>>str;
+    int len = str.size();
+    cout << str.substr(0,len/2) << ' ' << str.substr(len/2);
 
     return 0;
 }
