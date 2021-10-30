@@ -1,35 +1,32 @@
 #include <iostream>
+#include <string>
+#include <algorithm>
 
-using namespace std;
-
-int main(void)
-{
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
-
-    int n;
-    cin>>n;
-    pair<int, string> res;
-    int max_cnt = -1;
-    while (n--) {
-        string str;
-        cin>>str;
-        int a, b;
-        cin>>a>>b;
-
-        int cnt = 0;
-        while (b>=a) {
-            b-=a;
-            b+=2;
-            ++cnt;
-            ++res.first;
-        }
-        if (max_cnt<cnt) {
-            max_cnt=cnt;
-            res.second=str;
-        }
+int main() {
+  while (true) {
+    std::string s;
+    std::cin >> s;
+    if (s == "#") {
+      break;
     }
-    cout << res.first << '\n' << res.second;
-
-    return 0;
+    std::string res;
+    std::reverse(s.begin(), s.end());
+    for (auto c : s) {
+      if (c == 'b') {
+        res.push_back('d');
+      } else if (c == 'd') {
+        res.push_back('b');
+      } else if (c == 'p') {
+        res.push_back('q');
+      } else if (c == 'q') {
+        res.push_back('p');
+      } else if (c == 'i' || c == 'o' || c == 'v' || c == 'w' || c == 'x') {
+        res.push_back(c);
+      } else {
+        res = "INVALID";
+        break;
+      }
+    }
+    std::cout << res << std::endl;
+  }
 }
