@@ -13,6 +13,7 @@
 
 # Queue
 * 추천 문제
+    * [[BOJ] 이름 궁합](https://www.acmicpc.net/problem/15312) [(소스코드)](./src/name.cpp) - 기본 큐 연산 및 초기화 방법
     * [[Programmers] 프린터](https://programmers.co.kr/learn/courses/30/lessons/42587) [(소스코드)](./src/printer.cpp)
     * [[BOJ] 큐](https://www.acmicpc.net/problem/10845) [(소스코드)](./src/queue.cpp)
     * [[BOJ] 카드2](https://www.acmicpc.net/problem/2164) [(소스코드)](./src/card2.cpp)
