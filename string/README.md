@@ -1,6 +1,7 @@
 # [WIP] String
 * 추천 문제 - 문자열
     * [[BOJ] IOIOI (IOIOI)](https://www.acmicpc.net/problem/5525) [(소스코드)](./src/ioioi.cpp) - 문자열 구현
+    * [[BOJ] Mirror, Mirror](https://www.acmicpc.net/problem/4740) [(소스코드)](./src/mirror.cpp) - `getline()`
     * [[BOJ] IZBORNIK](https://www.acmicpc.net/problem/1283) [(소스코드)](./src/izbornik.cpp) - `getline()`, `stringstream` 사용 방법
 ---
 
