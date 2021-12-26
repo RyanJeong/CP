@@ -1,12 +1,22 @@
-// 
-#include <bits/stdc++.h>
+/*
+  Copyright 2021 Ryan M. Jeong <ryan.m.jeong@hotmail.com>
 
-using namespace std;
+  https://www.acmicpc.net/problem/
+*/
+#include <iostream>
 
-int main(void)
-{
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
+// iostream
+using std::cin;
+using std::cout;
 
-    return 0;
+// CP
+#define CP do { \
+  std::ios::sync_with_stdio(false); \
+  cin.tie(NULL); \
+} while (0)
+
+int main() {
+  CP;
+
+  return 0;
 }
