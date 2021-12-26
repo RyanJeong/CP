@@ -53,7 +53,7 @@
 ## Convex Hull
 * 추천 문제
     * [[BOJ] 볼록 껍질](https://www.acmicpc.net/problem/1708) [(소스코드)](./convex-hull/src/convex_hull.cpp)
-    * [[BOJ] 볼록 껍질](https://www.acmicpc.net/problem/6194) [(소스코드)](./convex-hull/src/moat.cpp)
+    * [[BOJ] Building the Moat](https://www.acmicpc.net/problem/6194) [(소스코드)](./convex-hull/src/moat.cpp)
 ---
 
 1. 2차원 평면 상에 좌표 <i>x</i>, <i>y</i>가 주어질 때, <i>y</i> 좌표를 기준으로 오름차순 정렬하되, <i>y</i> 좌표가 동일하다면 <i>x</i> 좌표를 기준으로 오름차순 정렬한다.

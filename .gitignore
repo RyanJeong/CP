@@ -18,3 +18,5 @@
 
 # Ignore *.dSYM
 *dSYM
+
+a.out
