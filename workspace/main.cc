@@ -27,7 +27,7 @@ using std::sort;
 
 // CP
 #define CP do { \
-  ios::sync_with_stdio(false); \
+  std::ios::sync_with_stdio(false); \
   cin.tie(NULL); \
 } while (0)
 
@@ -42,7 +42,7 @@ int64_t is_ccw(const pair<int, int>&,
                const pair<int, int>&);
 
 int main() {
-//  CP;
+  CP;
   int n;
   cin >> n;
   vector<pair<int, int>> v(n);
@@ -52,7 +52,7 @@ int main() {
   // find the point with the lowest y-coordinate. (v[0], starting_point)
   sort(v.begin(), v.end(), cmp_coor);
   starting_point = v[0];
-  // the set of points must be sorted in increasing order of the angle they and 
+  // the set of points must be sorted in increasing order of the angle they and
   // the point P make with the x-axis
   sort(v.begin() + 1, v.end(), cmp_ccw);
 
@@ -80,10 +80,10 @@ int main() {
 
 bool cmp_coor(const pair<int, int>& s,
               const pair<int, int>& t) {
-  if (s.second < t.second)
+  if (s.second > t.second)
     return true;
 
-  if (s.second == t.second && s.first < t.first)
+  if (s.second == t.second && s.first > t.first)
     return true;
 
   return false;
@@ -94,7 +94,7 @@ bool cmp_ccw(const pair<int, int>& s,
   int64_t ccw = is_ccw(starting_point, s, t);
 
   if (ccw)
-    return ccw > 0; // ccw : true, cw : false
+    return ccw > 0;  // ccw : true, cw : false
 
   // ccw = 0
   int64_t x1 = s.first - starting_point.first;
@@ -104,7 +104,7 @@ bool cmp_ccw(const pair<int, int>& s,
   int64_t dist1 = x1 * x1 + y1 * y1;
   int64_t dist2 = x2 * x2 + y2 * y2;
 
-  return dist1 > dist2;
+  return dist1 < dist2;
 }
 
 /* ccw         : pos.
