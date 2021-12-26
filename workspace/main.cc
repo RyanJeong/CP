@@ -8,10 +8,13 @@
 #include <utility>
 #include <stack>
 #include <algorithm>
+#include <cmath>
+#include <iomanip>
 
 // iostream
 using std::cin;
 using std::cout;
+using std::fixed;
 
 // vector
 using std::vector;
@@ -24,6 +27,13 @@ using std::stack;
 
 // algorithm
 using std::sort;
+using std::max;
+
+// cmath
+using std::sqrt;
+
+// iomanip
+using std::setprecision;
 
 // CP
 #define CP do { \
@@ -57,23 +67,33 @@ int main() {
   sort(v.begin() + 1, v.end(), cmp_ccw);
 
   // Graham's scan
-  stack<pair<int, int>> s;
-  s.push(v[0]);
-  s.push(v[1]);
+  vector<pair<int, int>> s;
+  s.push_back(v[0]);
+  s.push_back(v[1]);
   pair<int, int> p1, p2;
   for (int i = 2; i < n; ++i) {
     while (s.size() >= 2) {
-      p2 = s.top();
-      s.pop();
-      p1 = s.top();
+      p2 = s.back();
+      s.pop_back();
+      p1 = s.back();
       if (is_ccw(p1, p2, v[i]) > 0) {
-        s.push(p2);
+        s.push_back(p2);
         break;
       }
     }
-    s.push(v[i]);
+    s.push_back(v[i]);
   }
-  cout << s.size();
+
+  double res = 0;
+  for (int i = 0; i < s.size(); ++i)
+    for (int j = i + 1; j < s.size(); ++j) {
+      uint64_t diff_x = s[i].first - s[j].first;
+      uint64_t diff_y = s[i].second - s[j].second;
+      double dist = sqrt(diff_x * diff_x + diff_y * diff_y);
+      res = max(res, dist);
+    }
+  cout << fixed << setprecision(6);
+  cout << res;
 
   return 0;
 }
