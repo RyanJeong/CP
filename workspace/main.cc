@@ -1,7 +1,7 @@
 /*
   Copyright 2021 Ryan M. Jeong <ryan.m.jeong@hotmail.com>
 
-  https://www.acmicpc.net/problem/1708 
+  https://www.acmicpc.net/problem/9240
 */
 #include <iostream>
 #include <vector>
@@ -67,33 +67,16 @@ int main() {
   sort(v.begin() + 1, v.end(), cmp_ccw);
 
   // Graham's scan
-  vector<pair<int, int>> s;
-  s.push_back(v[0]);
-  s.push_back(v[1]);
-  pair<int, int> p1, p2;
-  for (int i = 2; i < n; ++i) {
-    while (s.size() >= 2) {
-      p2 = s.back();
-      s.pop_back();
-      p1 = s.back();
-      if (is_ccw(p1, p2, v[i]) > 0) {
-        s.push_back(p2);
+  vector<pair<int, int>> convex_hull;
+  for (const auto& p : v) {
+    while (convex_hull.size() >= 2) {
+      if (is_ccw(convex_hull[convex_hull.size()-2], convex_hull.back(), p) > 0)
         break;
-      }
+      convex_hull.pop_back();
     }
-    s.push_back(v[i]);
+    convex_hull.push_back(p);
   }
-
-  double res = 0;
-  for (int i = 0; i < s.size(); ++i)
-    for (int j = i + 1; j < s.size(); ++j) {
-      uint64_t diff_x = s[i].first - s[j].first;
-      uint64_t diff_y = s[i].second - s[j].second;
-      double dist = sqrt(diff_x * diff_x + diff_y * diff_y);
-      res = max(res, dist);
-    }
-  cout << fixed << setprecision(6);
-  cout << res;
+  cout << convex_hull.size();
 
   return 0;
 }

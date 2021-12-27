@@ -1,17 +1,20 @@
 /*
   Copyright 2021 Ryan M. Jeong <ryan.m.jeong@hotmail.com>
 
-  https://www.acmicpc.net/problem/1708 
+  https://www.acmicpc.net/problem/9240
 */
 #include <iostream>
 #include <vector>
 #include <utility>
 #include <stack>
 #include <algorithm>
+#include <cmath>
+#include <iomanip>
 
 // iostream
 using std::cin;
 using std::cout;
+using std::fixed;
 
 // vector
 using std::vector;
@@ -24,6 +27,13 @@ using std::stack;
 
 // algorithm
 using std::sort;
+using std::max;
+
+// cmath
+using std::sqrt;
+
+// iomanip
+using std::setprecision;
 
 // CP
 #define CP do { \
@@ -57,23 +67,16 @@ int main() {
   sort(v.begin() + 1, v.end(), cmp_ccw);
 
   // Graham's scan
-  stack<pair<int, int>> s;
-  s.push(v[0]);
-  s.push(v[1]);
-  pair<int, int> p1, p2;
-  for (int i = 2; i < n; ++i) {
-    while (s.size() >= 2) {
-      p2 = s.top();
-      s.pop();
-      p1 = s.top();
-      if (is_ccw(p1, p2, v[i]) > 0) {
-        s.push(p2);
+  vector<pair<int, int>> convex_hull;
+  for (const auto& p : v) {
+    while (convex_hull.size() >= 2) {
+      if (is_ccw(convex_hull[convex_hull.size()-2], convex_hull.back(), p) > 0)
         break;
-      }
+      convex_hull.pop_back();
     }
-    s.push(v[i]);
+    convex_hull.push_back(p);
   }
-  cout << s.size();
+  cout << convex_hull.size();
 
   return 0;
 }
@@ -120,3 +123,4 @@ int64_t is_ccw(const pair<int, int>& a,
 
   return u1 * v2 - u2 * v1;
 }
+
