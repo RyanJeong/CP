@@ -1,5 +1,5 @@
 /*
-  Copyright 2021 Ryan M. Jeong <ryan.m.jeong@hotmail.com>
+  Copyright 2022 Ryan M. Jeong <ryan.m.jeong@hotmail.com>
 */
 
 // CP
@@ -40,74 +40,67 @@ int64_t SqDist(const pair<int, int>&,
 
 int main() {
   CP;
-  int t;
-  cin >> t;
-  while (t--) {
-    int n;
-    cin >> n;
-    vector<pair<int, int>> v(n);
-    for (int i = 0; i < n; ++i)
-      cin >> v[i].first >> v[i].second;
+  int n;
+  cin >> n;
+  vector<pair<int, int>> v(n);
+  for (int i = 0; i < n; ++i)
+    cin >> v[i].first >> v[i].second;
 
-    // find the point with the lowest y-coordinate. (v[0], starting_point)
-    sort(v.begin(), v.end(), CmpCoor);
-    starting_point = v[0];
-    // the set of points must be sorted in increasing order of the angle they
-    // and the point P make with the x-axis
-    sort(v.begin() + 1, v.end(), CmpCcw);
+  // find the point with the lowest y-coordinate. (v[0], starting_point)
+  sort(v.begin(), v.end(), CmpCoor);
+  starting_point = v[0];
+  // the set of points must be sorted in increasing order of the angle they
+  // and the point P make with the x-axis
+  sort(v.begin() + 1, v.end(), CmpCcw);
 
-    // Graham's scan
-    vector<pair<int, int>> convex_hull;
-    for (const auto& p : v) {
-      while (convex_hull.size() >= 2) {
-        if (Ccw(convex_hull[convex_hull.size()-2], convex_hull.back(), p) > 0)
-          break;
-        convex_hull.pop_back();
-      }
-      convex_hull.push_back(p);
+  // Graham's scan
+  vector<pair<int, int>> convex_hull;
+  for (const auto& p : v) {
+    while (convex_hull.size() >= 2) {
+      if (Ccw(convex_hull[convex_hull.size()-2], convex_hull.back(), p) > 0)
+        break;
+      convex_hull.pop_back();
     }
-
-    // Rotating calipers
-    int left_i = 0;
-    int right_i = 0;
-    int n_edge = convex_hull.size();
-    for (int i = 0; i < n_edge; ++i) {
-      if (convex_hull[i].first < convex_hull[left_i].first)
-        left_i = i;
-      if (convex_hull[i].first > convex_hull[right_i].first)
-        right_i = i;
-    }
-
-    int64_t res = SqDist(convex_hull[left_i], convex_hull[right_i]);
-    pair<int, int> res_left_coor = convex_hull[left_i];
-    pair<int, int> res_right_coor = convex_hull[right_i];
-    pair<int, int> origin = { 0, 0 };
-    for (int i = 0; i < n_edge; ++i) {
-      pair<int, int> left_vector = {
-        convex_hull[(left_i + 1)%n_edge].first - convex_hull[left_i].first,
-        convex_hull[(left_i + 1)%n_edge].second - convex_hull[left_i].second
-      };
-      pair<int, int> right_vector = {
-        convex_hull[right_i].first - convex_hull[(right_i + 1)%n_edge].first,
-        convex_hull[right_i].second - convex_hull[(right_i + 1)%n_edge].second
-      };
-
-      if (Ccw(origin, left_vector, right_vector) > 0)
-        left_i = (left_i + 1) % n_edge;
-      else
-        right_i = (right_i + 1) % n_edge;
-
-      if (SqDist(convex_hull[left_i], convex_hull[right_i]) > res) {
-        res = SqDist(convex_hull[left_i], convex_hull[right_i]);
-        res_left_coor = convex_hull[left_i];
-        res_right_coor = convex_hull[right_i];
-      }
-    }
-    cout << res_left_coor.first << ' '
-         << res_left_coor.second << ' '
-         << res_right_coor.first << ' '
-         << res_right_coor.second << '\n';
+    convex_hull.push_back(p);
   }
+
+  // Rotating calipers
+  int left_i = 0;
+  int right_i = 0;
+  int n_edge = convex_hull.size();
+  for (int i = 0; i < n_edge; ++i) {
+    if (convex_hull[i].first < convex_hull[left_i].first)
+      left_i = i;
+    if (convex_hull[i].first > convex_hull[right_i].first)
+      right_i = i;
+  }
+
+  int64_t res = SqDist(convex_hull[left_i], convex_hull[right_i]);
+  pair<int, int> res_left_coor = convex_hull[left_i];
+  pair<int, int> res_right_coor = convex_hull[right_i];
+  pair<int, int> origin = { 0, 0 };
+  for (int i = 0; i < n_edge; ++i) {
+    pair<int, int> left_vector = {
+      convex_hull[(left_i + 1)%n_edge].first - convex_hull[left_i].first,
+      convex_hull[(left_i + 1)%n_edge].second - convex_hull[left_i].second
+    };
+    pair<int, int> right_vector = {
+      convex_hull[right_i].first - convex_hull[(right_i + 1)%n_edge].first,
+      convex_hull[right_i].second - convex_hull[(right_i + 1)%n_edge].second
+    };
+
+    if (Ccw(origin, left_vector, right_vector) > 0)
+      left_i = (left_i + 1) % n_edge;
+    else
+      right_i = (right_i + 1) % n_edge;
+
+    if (SqDist(convex_hull[left_i], convex_hull[right_i]) > res) {
+      res = SqDist(convex_hull[left_i], convex_hull[right_i]);
+      res_left_coor = convex_hull[left_i];
+      res_right_coor = convex_hull[right_i];
+    }
+  }
+  cout << SqDist(res_left_coor, res_right_coor);
 
   return 0;
 }
