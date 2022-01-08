@@ -31,110 +31,102 @@
 
 ### [소스코드](./src/example.cpp)
 ```c++
-#include <bits/stdc++.h>
+/*
+  Copyright 2022 Ryan M. Jeong <ryan.m.jeong@hotmail.com>
+*/
 
-using namespace std;
+// CP
+#define CP do {                     \
+  std::ios::sync_with_stdio(false); \
+  std::cin.tie(NULL);               \
+} while (0)
 
-int insert(int[], const int, int&, int, int);
-int erase(int[], const int, int&, int);
+#include <iostream>
 
-int main(void)
-{
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
+// iostream
+using std::cin;
+using std::cout;
 
-    const int cap = 10;
-    // An array that can store only positive numbers;
-    int arr[cap] = { 1, 2, 4, 8, 16, 32 };
-    int len = 0;
-    for (int i = 0; i<cap; ++i) {
-        if (arr[i]) {
-            ++len;
-        }
-    }
-    cout << "capacity: " << cap << ", length: " << len << '\n';
-    for (int i = 0; i<len; ++i) {
-        cout << arr[i] << ' ';
-    }
-    cout << '\n';
-    // 1 2 4 8 16 32
+int insert(int arr[], const int& cap, int* len, const int& idx, const int& val);
+int erase(int arr[], const int& cap, int* len, const int& idx);
 
-    // 1. insert
-    insert(arr,cap,len,0,50);
-    cout << "capacity: " << cap << ",length: " << len << '\n';
-    for (int i = 0; i<len; ++i) {
-        cout << arr[i] << ' ';
-    }
-    cout << '\n';
-    // 50 1 2 4 8 16 32
-    insert(arr,cap,len,len,60);
-    cout << "capacity: " << cap << ",length: " << len << '\n';
-    for (int i = 0; i<len; ++i) {
-        cout << arr[i] << ' ';
-    }
-    cout << '\n';
-    // 50 1 2 4 8 16 32 60
+int main() {
+  CP;
 
-    // 2. erase
-    erase(arr,cap,len,1);
-    cout << "capacity: " << cap << ",length: " << len << '\n';
-    for (int i = 0; i<len; ++i) {
-        cout << arr[i] << ' ';
-    }
-    cout << '\n';
-    // 50 2 4 8 16 32 60
-    erase(arr,cap,len,len);
-    cout << "capacity: " << cap << ",length: " << len << '\n';
-    for (int i = 0; i<len; ++i) {
-        cout << arr[i] << ' ';
-    }
-    cout << '\n';
-    // 50 2 4 8 16 32
+  const int kCap = 10;
+  // An array that can store only positive numbers;
+  int arr[kCap] = { 1, 2, 4, 8, 16, 32 };
+  int len = 0;
+  for (int i = 0; i < kCap; ++i)
+    if (arr[i])
+      ++len;
+  cout << "capacity: " << kCap << ",length: " << len << '\n';
+  for (int i = 0; i < len; ++i)
+    cout << arr[i] << ' ';
+  cout << '\n';
+  // 1 2 4 8 16 32
 
+  // insert
+  insert(arr, kCap, &len, 0, 50);
+  cout << "capacity: " << kCap << ",length: " << len << '\n';
+  for (int i = 0; i < len; ++i)
+    cout << arr[i] << ' ';
+  cout << '\n';
+  // 50 1 2 4 8 16 32
+  insert(arr, kCap, &len, len, 60);
+  cout << "capacity: " << kCap << ",length: " << len << '\n';
+  for (int i = 0; i < len; ++i)
+    cout << arr[i] << ' ';
+  cout << '\n';
+  // 50 1 2 4 8 16 32 60
+
+  // erase
+  erase(arr, kCap, &len, 1);
+  cout << "capacity: " << kCap << ",length: " << len << '\n';
+  for (int i = 0; i < len; ++i)
+    cout << arr[i] << ' ';
+  cout << '\n';
+  // 50 2 4 8 16 32 60
+  erase(arr, kCap, &len, len);
+  cout << "capacity: " << kCap << ",length: " << len << '\n';
+  for (int i = 0; i < len; ++i)
+    cout << arr[i] << ' ';
+  cout << '\n';
+  // 50 2 4 8 16 32
+
+  return 0;
+}
+
+int insert(int arr[], const int& cap, int* len, const int& idx,
+    const int& val) {
+  if (*len == cap)
     return 0;
+  if (idx > *len)
+    return 0;
+
+  for (int i = *len; i > idx; --i)
+    arr[i] = arr[i-1];
+  arr[idx] = val;
+  ++(*len);
+
+  return val;
 }
 
-int insert(int arr[],const int cap,int& len,int idx,int val)
-{
-    if (len==cap) {
-        
-        return 0;
-    }
-    if (idx>len) {
+int erase(int arr[], const int& cap, int* len, const int& idx) {
+  if (*len == 0)
+    return 0;
+  if (idx > *len)
+    return 0;
 
-        return 0;
-    }
-    for (int i = len; i>idx; --i) {
-        arr[i]=arr[i-1];
-    }
-    arr[idx]=val;
-    ++len;
+  --(*len);
+  int val = arr[idx];
+  for (int i = idx; i < *len; ++i)
+    arr[i] = arr[i+1];
 
-    return val;
+  return val;
 }
 
-int erase(int arr[],const int cap,int& len,int idx)
-{
-    if (len==0) {
-
-        return 0;
-    }
-    if (idx>len) {
-
-        return 0;
-    }
-    --len;
-    int val = arr[idx];
-    for (int i = idx; i<len; ++i) {
-        arr[i]=arr[i+1];
-    }
-
-    return val;
-}
 ```
 ---
 |[이전 - Intro.](/intro/)|[목록](https://github.com/RyanJeong/CP#index)|[다음 - STL - Container Classes:](/stl/)|
 |-|-|-|
-
-
-
