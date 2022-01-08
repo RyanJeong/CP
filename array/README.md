@@ -1,6 +1,6 @@
 #  Array
 * 추천 문제
-    * [[BOJ] 알파벳 개수](https://www.acmicpc.net/problem/10808) [(소스코드)](./src/count_char.cpp)
+  * [[BOJ] 알파벳 개수](https://www.acmicpc.net/problem/10808) [(소스코드)](./src/count_char.cc)
 ---
 
 ## 배열
@@ -8,11 +8,11 @@
 
 ## 배열 선언
 * 배열 선언식이 T <i>name</i>[SIZE]라면, 해당 배열의 필요한 메모리 크기는 `sizeof(T)*SIZE`
+  ```c++
+    // sizeof(int) * 100 => 4 * 100(400) bytes on a memory
+    int arr[100];
 
-```c++
-    int arr[100]; // sizeof(int)*100 => 4*100, 400 bytes on a memory
-```
-<br>
+  ```
 
 ## 배열 특징
 * 배열의 요소 접근 시 시간복잡도는 <b>O(1)</b>
