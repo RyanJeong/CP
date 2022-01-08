@@ -2,104 +2,104 @@
 ## Basic skills for CP
 ### Prevent Overflow
 ```c++
-    for (char c = 0; c<128; ++c) { ... } // Overflow!
-    for (int i = 0; i<128; ++i) { ... }  // OK!
+  for (char c = 0; c < 128; ++c) { ... }  // Overflow!
+  for (int i = 0; i < 128; ++i) { ... }   // OK!
 
-    // We accept on exception;
-    // you may ignore the signed/unsigned warning
-    // for this:
-    vector v;
-    for (int i = 0; i<v.size(); ++i) // Warning!
+  // We accept on exception;
+  // you may ignore the signed/unsigned warning
+  // for this:
+  vector v;
+  for (int i = 0; i < v.size(); ++i)  // Warning!, but It's OK!
+
 ```
 #### On a normal PC, `i<v.size()` warns of a problem that <b>only happens if a vector has more than 2<sup>31</sup> elements</b>.
 <br>
 
 ### Improve readability of large numbers
 ```c++
-    long long ll_1 = 1000000; // 1,000,000
-    long long ll_2 = 1'000'000; // This case is more better!
+  long long ll_1 = 1000000;    // 1,000,000
+  long long ll_2 = 1e6;        // This case is more better!
+  long long ll_3 = 1'000'000;  // This case is more better! (C++14)
+
 ```
 <br>
 
 ### How to compare two double values
 #### This code, it looks like it will print `same!`, but it actually prints 'NOT same!'. [Why?](https://www.cs.technion.ac.il/users/yechiel/c++-faq/floating-point-arith.html)
 ```c++
-    double a = 0.1+0.1+0.1;
-    double b = 0.3;
+  double a = 0.1 + 0.1 + 0.1;
+  double b = 0.3;
 
-    if (a==b) {
-        cout << "same!\n";
-    }
-    else {
-        cout << "NOT same!\n";
-    }
+  if (a == b)
+    cout << "same!\n";
+  else
+    cout << "NOT same!\n";
+
 ```
 > Floating point math is not exact. Simple values like 0.1 cannot be precisely represented using binary floating point numbers, and the limited precision of floating point numbers means that slight changes in the order of operations or the precision of intermediates can change the result. That means that comparing two floats to see if they are equal is usually not what you want (GCC even has a warning for this: `warning: comparing floating point with == or != is unsafe`). 
 
 #### Epsilon comparisons can solve the problem.
 ```c++
-    // `epsilon zero` is approximately 8.854e-12
-    if (abs(a-b)<1e-12) {
-        cout << "same!\n";
-    }
+  // `epsilon zero` is approximately 8.854e-12
+  if (abs(a - b) < 1e-12)
+    cout << "same!\n";
+
 ```
 
 ### Overflowing the stack memory
 #### Most systems use a stack of around 1MB.
 ```c++
-int main(void)
-{
-    // 4 bytes X 1,024 X 1,024
-    // approximately 4MB, OverfloW!
-    int arr[1024][1024]; // error!
+int main() {
+  // 4 bytes X 1,024 X 1,024
+  // approximately 4MB, OverfloW!
+  int arr[1024][1024];  // error!
 }
+
 ```
 #### To avoid stack overflow error, you can use global variable or static variable as below.
 ```c++
-int arr1[1024][1024]; // OK!
-int main(void)
-{
-    static int arr2[1024][1024] // OK!
-    return 0;
+int arr1[1024][1024];  // OK!
+int main() {
+  static int arr2[1024][1024]  // OK!
 }
+
 ```
 
 ### Using `memset` for array initialization
 #### `void* memset(void* ptr, int value, size_t num);`
 ##### Sets the first <i>num</i> bytes of the block of memory pointed by <i>ptr</i> to the specified <i>value</i> (interpreted as an `unsigned char`).
 ```c++
-    int arr[100][100];
+  int arr[100][100];
 
-    // case 1. initialize array to 0
-    // Value 0 in memset is represented in binary as 0000 0000
-    memset(arr,0,sizeof arr);
+  // case 1. initialize array to 0
+  // Value 0 in memset is represented in binary as 0000 0000
+  memset(arr, 0, sizeof arr);
 
-    // case 2. initialize array to -1
-    // Value -1 in memset is represented in binary as 1111 1111
-    memset(arr,-1,sizeof arr);
-    // Within every element of the array 
-    // is a value of 1111 1111 1111 1111 1111 1111 1111 1111
-    // That value is represented in int type as -1
+  // case 2. initialize array to -1
+  // Value -1 in memset is represented in binary as 1111 1111
+  memset(arr, -1, sizeof arr);
+  // Within every element of the array 
+  // is a value of 1111 1111 1111 1111 1111 1111 1111 1111
+  // That value is represented in int type as -1
 
-    // else
-    int size_i = sizeof arr/sizeof arr[0];
-    int size_j = sizeof arr[0]/sizeof(int);
-    for (int i = 0; i<size_i; ++i) {
-        for (int j = 0; j<size_j; ++j) {
-            arr[i][j] = 100;
-        }
-    }
+  // else
+  int size_i = sizeof arr / sizeof arr[0];
+  int size_j = sizeof arr[0] / sizeof(int);
+  for (int i = 0; i < size_i; ++i)
+    for (int j = 0; j < size_j; ++j)
+      arr[i][j] = 100;
+
 ```
 
 ### `cin` and `getline`
 ```c++
-    // input: ABC DEF GHI
-    string s1, s2;
-    cin>>s1;
-    getline(cin,s2);
-    cout << s1 << '\n' << s2;
-    // s1: ABC
-    // s2:  DEF GHI
+  // input: ABC DEF GHI
+  string s1, s2;
+  cin >> s1;
+  getline(cin, s2);
+  cout << s1 << '\n' << s2;
+  // s1: ABC
+  // s2:  DEF GHI
 ```
 #### input buffer: `A` `B` `C` `⠀` `D` `E` `F` `⠀` `G` `H` `I`
 <br>
@@ -122,31 +122,55 @@ whichever comes first. If the character c is encountered, it
 itself is not skipped. It just triggers the skipping to stop.
 */
 
-    // input: ABC DEF GHI
-    string s1, s2;
-    cin>>s1;
-    cin.ignore();
-    getline(cin,s2);
-    cout << s1 << '\n' << s2;
-    // s1: ABC
-    // s2: DEF GHI
+  // input: ABC DEF GHI
+  string s1, s2;
+  cin >> s1;
+  cin.ignore();
+  getline(cin, s2);
+  cout << s1 << '\n' << s2;
+  // s1: ABC
+  // s2: DEF GHI
+
 ```
 <br>
 
 ---
 ## Basic form for CP
 ```c++
+// CP
+#define CP do {                     \
+  std::ios::sync_with_stdio(false); \
+  std::cin.tie(NULL);               \
+} while (0)
+
+#include <iostream>
+
+// iostream
+using std::cin;
+using std::cout;
+
+// ----------------------------------
+
+int main() {
+  CP;
+
+  return 0;
+}
+
+```
+```c++
+// Template for the actual competition.
 #include <bits/stdc++.h>
 
 using namespace std;
 
-int main(void)
-{
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
+int main() {
+  ios::sync_with_stdio(false);
+  cin.tie(NULL);
 
-    return 0;
+  return 0;
 }
+
 ```
 ### Fast I/O for CP
 #### `ios::sync_with_stdio(false);`
