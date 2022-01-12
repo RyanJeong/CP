@@ -13,9 +13,8 @@
 # [WIP]Vector
 * 추천 문제
   * [[BOJ] Strfry](https://www.acmicpc.net/problem/11328) [(소스코드)](./src/strfry.cc)
-  * [[BOJ] 최대 GCD](https://www.acmicpc.net/problem/9417) [(소스코드)](./src/max_gcd.cpp) - C++ 컨테이너 조작 방법을 연습하기에 좋은 문제
+  * [[BOJ] 최대 GCD](https://www.acmicpc.net/problem/9417) [(소스코드)](./src/max_gcd.cc) - C++ 컨테이너 조작 방법을 연습하기에 좋은 문제
     * `cin.ignore`, `getline`
-    * `string` 뒤에 dummy를 넣어 range 연산
 ---
 
 ## [벡터(vector)](https://cplusplus.com/reference/vector/vector/)
