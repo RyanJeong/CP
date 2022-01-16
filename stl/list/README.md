@@ -14,8 +14,7 @@
 # [WIP]List
 * 추천 문제
   * [[BOJ] editor](https://www.acmicpc.net/problem/1406) [(소스코드)](./src/editor.cc)
-  * [[BOJ] Keylogger](https://www.acmicpc.net/problem/5397) [(소스코드)](./src/keylogger.cpp)
----
+  * [[BOJ] Keylogger](https://www.acmicpc.net/problem/5397) [(소스코드)](./src/keylogger.cc)
 
 ## [리스트(list)](https://cplusplus.com/reference/list/list/)
 * 연결 리스트(linked list)
