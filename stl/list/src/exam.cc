@@ -1,27 +1,13 @@
-* [STL - Container Classes:](/stl/)
-  * Sequence Container
-    * [Vector](/stl/vector/)
-    * [List](/stl/list/)
-    * [Double-ended Queue(Deque)](/stl/deque/)
-  * Container Adaptor
-    * [Stack](/stl/stack/)
-    * [Queue](/stl/queue/)
-    * [Priority Queue](/stl/priority_queue_heap/)
-  * Associative Container
-    * [Set](/stl/set/)
-    * [Map](/stl/map/)
+/*
+  Copyright 2022 Ryan M. Jeong <ryan.m.jeong@hotmail.com>
+*/
 
-# List
-* 추천 문제
-  * [[BOJ] editor](https://www.acmicpc.net/problem/1406) [(소스코드)](./src/editor.cc)
-  * [[BOJ] Keylogger](https://www.acmicpc.net/problem/5397) [(소스코드)](./src/keylogger.cc)
+// CP
+#define CP do {                     \
+  std::ios::sync_with_stdio(false); \
+  std::cin.tie(NULL);               \
+} while (0)
 
-## [리스트(list)](https://cplusplus.com/reference/list/list/)
-* 연결 리스트(linked list)
-* 요소들은 메모리 상에 불연속적으로 위치할 수 있음
-
-### [소스코드](./src/exam.cc)
-```c++
 #include <iostream>
 #include <list>
 
@@ -33,6 +19,8 @@ using std::cout;
 using std::list;
 
 int main() {
+  CP;
+
   // In C++, an iterator is any object that, pointing to some element in a
   // range of elements(such as an array or a container), has the ability to
   // iterate through the elements of that range using a set of operators
@@ -68,9 +56,3 @@ int main() {
 
   return 0;
 }
-
-```
-
----
-|[이전 - Array](/array/)|[목록](https://github.com/RyanJeong/CP#index)|[다음 - BFS & DFS](/bfs_dfs/)|
-|-|-|-|
