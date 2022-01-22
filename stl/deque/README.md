@@ -14,8 +14,8 @@
 # [WIP]Double-ended Queue(Deque)
 * 추천 문제
   * [[BOJ] 덱](https://www.acmicpc.net/problem/10866) [(소스코드)](./src/deque.cc)
-  * [[BOJ] 카드 놓기](https://www.acmicpc.net/problem/18115) [(소스코드)](./src/card.cpp)
-  * [[BOJ] 풍선 터뜨리기](https://www.acmicpc.net/problem/2346) [(소스코드)](./src/balloon.cpp)
+  * [[BOJ] 카드 놓기](https://www.acmicpc.net/problem/18115) [(소스코드)](./src/card.cc)
+  * [[BOJ] 풍선 터뜨리기](https://www.acmicpc.net/problem/2346) [(소스코드)](./src/balloon.cc)
   * [[BOJ] 회전하는 큐](https://www.acmicpc.net/problem/1021) [(소스코드)](./src/circular_queue.cpp) - `deque`를 이용한 회전하는 큐 구현
 ---
 
