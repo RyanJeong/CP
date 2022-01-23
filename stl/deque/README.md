@@ -11,7 +11,7 @@
     * [Set](/stl/set/)
     * [Map](/stl/map/)
 
-# [WIP]Double-ended Queue(Deque)
+# Double-ended Queue(Deque)
 * 추천 문제
   * [[BOJ] 덱](https://www.acmicpc.net/problem/10866) [(소스코드)](./src/deque.cc)
   * [[BOJ] 카드 놓기](https://www.acmicpc.net/problem/18115) [(소스코드)](./src/card.cc)
@@ -26,42 +26,43 @@
 * `pop`의 시간 복잡도는 <b>O(1)</b>
 * `front`, `back`의 시간 복잡도는 <b>O(1)</b>
 
-### [소스코드](./src/exam.cpp)
+### [소스코드](./src/exam.cc)
 ```c++
-#include <bits/stdc++.h>
+#include <iostream>
+#include <deque>
 
-using namespace std;
+// iostream
+using std::cin;
+using std::cout;
 
-int main(void)
-{
-  ios::sync_with_stdio(false);
-  cin.tie(NULL);
+// deque
+using std::deque;
 
+int main() {
   deque<int> dq;
-  dq.push_back(10); // { 10 }
-  dq.push_back(40); // { 10 40 }
-  dq.push_front(50); // { 50 10 40 }
-  cout << dq.size() << '\n'; // 3
-  cout << dq.front() << '\n'; // 50
-  cout << dq.back() << '\n'; // 40
-  if (dq.empty()) {
+  dq.push_back(10);   // { 10 }
+  dq.push_back(40);   // { 10 40 }
+  dq.push_front(50);  // { 50 10 40 }
+  cout << dq.size() << '\n';   // 3
+  cout << dq.front() << '\n';  // 50
+  cout << dq.back() << '\n';   // 40
+  if (dq.empty())
     cout << "Deque is empty!\n";
-  } 
-  else {
-    cout << "Deque is not empty!\n"; // print "Deque is not empty!"
-  }
-  dq.pop_front();  // { 10 40 }
-  dq.push_back(60); // { 10 40 60 }
-  dq.pop_back();  // { 10 40 }
-  cout << dq.front() << '\n'; // 10
-  cout << dq.back() << '\n'; // 40
-  for (int i : dq) {
-    cout << i << ' '; // 10 40
-  }
+  else
+    cout << "Deque is not empty!\n";  // print "Deque is not empty!"
+
+  dq.pop_front();    // { 10 40 }
+  dq.push_back(60);  // { 10 40 60 }
+  dq.pop_back();     // { 10 40 }
+  cout << dq.front() << '\n';  // 10
+  cout << dq.back() << '\n';   // 40
+  for (const int& i : dq)
+    cout << i << ' ';  // 10 40
   cout << '\n';
 
   return 0;
 }
+
 ```
 
 ---
