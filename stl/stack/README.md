@@ -27,42 +27,41 @@
 * `pop`의 시간 복잡도는 <b>O(1)</b>
 * `top`의 시간 복잡도는 <b>O(1)</b>
 
-### [소스코드](./src/exam.cpp)
+### [소스코드](./src/exam.cc)
 ```c++
-#include <bits/stdc++.h>
+#include <iostream>
+#include <stack>
 
-using namespace std;
+// iostream
+using std::cin;
+using std::cout;
 
-int main(void)
-{
-  ios::sync_with_stdio(false);
-  cin.tie(NULL);
+// stack;
+using std::stack;
 
+int main() {
   stack<int> s;
-  s.push(10); // { 10 }
-  s.push(20); // { 10 20 }
-  s.push(30); // { 10 20 30 }
-  cout << s.size() << '\n'; // 3
-  if (s.empty()) {
+  s.push(10);  // { 10 }
+  s.push(20);  // { 10 20 }
+  s.push(30);  // { 10 20 30 }
+  cout << s.size() << '\n';  // 3
+  if (s.empty())
     cout << "Stack is empty!\n";
-  } 
-  else {
-    cout << "Stack is not empty!\n"; // print "Stack is not empty!"
-  }
-  cout << s.top() << '\n'; // 30
-  s.pop(); // { 10 20 }, return value is none!
-  cout << s.top() << '\n'; // 20
-  s.pop(); // { 10 }
-  s.pop(); // (empty)
-  if (s.empty()) {
-    cout << "Stack is empty!\n"; // print "Stack is empty!"
-  } 
-  else {
-    cout << "Stack is not empty!\n"; 
-  }
+  else
+    cout << "Stack is not empty!\n";  // print "Stack is not empty!"
+  cout << s.top() << '\n';  // 30
+  s.pop();  // { 10 20 }, return value is none!
+  cout << s.top() << '\n';  // 20
+  s.pop();  // { 10 }
+  s.pop();  // (empty)
+  if (s.empty())
+    cout << "Stack is empty!\n";  // print "Stack is empty!"
+  else
+    cout << "Stack is not empty!\n";
 
   return 0;
 }
+
 ```
 
 ## 스택 응용: 올바른 괄호 쌍 구하기
