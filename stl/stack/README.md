@@ -15,7 +15,7 @@
 * 추천 문제
   * [[BOJ] 스택](https://www.acmicpc.net/problem/10828) [(소스코드)](./src/stack.cc)
   * [[BOJ] 도키도키 간식드리미](https://www.acmicpc.net/problem/12789) [(소스코드)](./src/snack.cc) - 스택 응용
-  * [[BOJ] 오큰수](https://www.acmicpc.net/problem/17298) [(소스코드)](./src/nge.cpp)
+  * [[BOJ] 오큰수](https://www.acmicpc.net/problem/17298) [(소스코드)](./src/nge.cc)
   * [[BOJ] EKSPLOZIJA](https://www.acmicpc.net/problem/17298) [(소스코드)](./src/eksplozija.cpp) - 컨테이너를 응용한 스택 구현
   * [[BOJ] 후위 표기식](https://www.acmicpc.net/problem/1918) [(소스코드)](./src/postfix.cpp) - 스택을 이용한 후위 표기식 구현
 ---
