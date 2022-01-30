@@ -4,6 +4,7 @@
 * [Binomial Coefficient](#binomial-coefficient)
 * [[WIP] Convex Hull](#convex-hull)
 * [Count All Numbers with Unique Digits in a Given Range](#count-all-numbers-with-unique-digits-in-a-given-range)
+* [Factorial](#factorial)
 * [Freivalds' Algorithm](#freivalds-algorithm)
 * [GCD & LCM](#gcd--lcm)
 * [[WIP] Lucas's Theorem](#lucass-theorem)
@@ -120,6 +121,16 @@ vector<long long> get_freq(long long end)
     return freq;
 }
 ```
+
+### [Top](#index)
+---
+
+## Factorial
+* 추천 문제
+    * [[BOJ] 마지막 팩토리얼 수](https://www.acmicpc.net/problem/2553) [(소스코드)](#) - WIP
+
+### [Last non zero digit of a factorial](https://www.youtube.com/watch?v=RmENut3ZmnM)
+
 
 ### [Top](#index)
 ---
