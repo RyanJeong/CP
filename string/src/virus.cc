@@ -31,37 +31,46 @@ vector<int> GetFail(const T& pattern);
 template <typename T>
 vector<int> Kmp(const T& str, const T& pattern);
 
+int calc(const vector<int>&, const vector<vector<int>>&);
+
 int main() {
   CP;
 
   int n, k;
   cin >> n >> k;
-  vector<vector<int>> v;
+  vector<int> virus;
+  vector<vector<int>> codes;
   while (n--) {
     int len;
     cin >> len;
     vector<int> temp(len);
     for (int &i : temp)
       cin >> i;
-    v.push_back(temp);
+    if (virus.empty())
+      virus = temp;
+    else
+      codes.push_back(temp);
   }
-  bool is_found = false;
-  for (int i = 0; i < v.front().size() - k + 1; ++i) {
-    vector<int> virus(k);
-    for (int j = 0; j < k; ++j)
-      virus[j] = v.front().at(i + j);
-    vector<int> virus_reverse = virus;
-    reverse(virus_reverse.begin(), virus_reverse.end());
-    for (int j = 1; j < v.size(); ++j) {
-      if (Kmp(v.at(j), virus).empty() && Kmp(v.at(j), virus_reverse).empty())
-        continue;
-      is_found = true;
+
+  bool is_virus = false;
+  for (int i = 0; i < virus.size() - k + 1; ++i) {
+    vector<int> virus_pattern(virus.begin() + i, virus.begin() + i + k);
+    vector<int> virus_reverse_pattern(virus_pattern);
+    reverse(virus_reverse_pattern.begin(), virus_reverse_pattern.end());
+    bool is_found = true;
+    for (const auto& code : codes) {
+      if (Kmp(code, virus_pattern).empty() &&
+          Kmp(code, virus_reverse_pattern).empty()) {
+        is_found = false;
+        break;
+      }
+    }
+    if (is_found) {
+      is_virus = true;
       break;
     }
-    if (is_found)
-      break;
   }
-  cout << ((is_found) ? "YES" : "NO");
+  cout << ((is_virus) ? "YES" : "NO");
 
   return 0;
 }

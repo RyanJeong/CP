@@ -17,20 +17,20 @@ using std::string;
 // vector
 using std::vector;
 
-vector<int> GetFail(const string& pattern);
-vector<int> Kmp(const string& str, const string& pattern);
+template <typename T>
+vector<int> GetFail(const T& pattern);
+template <typename T>
+vector<int> Kmp(const T& str, const T& pattern);
 
-vector<int> GetFail(const string& p) {
-  vector<int> fail(p.length());
+template <typename T>
+vector<int> GetFail(const T& p) {
+  vector<int> fail(p.size());
   int j = 0;
-  for (int i = 1; i < p.length(); i++) {
+  for (int i = 1; i < p.size(); i++) {
     while (j > 0 && p[i] != p[j])
       // idx    : 0 1 2 3 4 5 6
       // pattern: B A B A B A A
       // fail   : 0 0 1 2 3 4 ?
-      //
-      // fail(4) = 3:
-      //  p[2-4] and p[0-2] is equal, so start at index 3
       // ----------------------
       // i = 6, j = 4
       // loop: j > 0 && p[i] != p[j]
@@ -50,18 +50,19 @@ vector<int> GetFail(const string& p) {
   return fail;
 }
 
-vector<int> Kmp(const string& s, const string& p) {
+template <typename T>
+vector<int> Kmp(const T& s, const T& p) {
   vector<int> fail = GetFail(p);
   vector<int> ans;
   int j = 0;
-  for (int i = 0; i < s.length(); i++) {
+  for (int i = 0; i < s.size(); i++) {
     while (j > 0 && s[i] != p[j])
       j = fail[j-1];
     if (s[i] == p[j]) {
-      if (j == p.length() - 1) {
+      if (j == p.size() - 1) {
         // ABC    => j = 0;
-        // ABCABC => j  3;
-        ans.push_back(i - p.length() + 1);
+        // ABCABC => j = 3;
+        ans.push_back(i - p.size() + 1);
         j = fail[j];
       } else {
         j++;
@@ -72,4 +73,6 @@ vector<int> Kmp(const string& s, const string& p) {
   return ans;
 }
 
-int main() { return 0; }
+int main() {
+  return 0;
+}
