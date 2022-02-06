@@ -22,150 +22,143 @@
 
 ### 실패함수(failure function)
 
-![fail](./img/fail.jpg)
-
-### 실패함수 적용 예
-
 ![kmp](./img/kmp.png)
+  * 실패함수는 패턴 문자열의 `i`번 인덱스가 `0`번 인덱스를 기준으로 몇 번째까지 일치하고, 다음에 확인해야 할 인덱스를 가리킴
+  * `fail[4] = 3`이라고 한다면, `0-2`번 부분 문자열과는 일치하며, `3`번 인덱스에 있는 문자와 비교해야 함을 나타냄:
+    * `pattern[2~4] == pattern[0~2]`
 
 ### KMP 구현 코드
 ```cpp
-#include <bits/stdc++.h>
+#include <string>
+#include <vector>
 
-using namespace std;
+// string
+using std::string;
 
-vector<int> get_fail(string);
-vector<int> kmp(string, string);
+// vector
+using std::vector;
 
-/*
-    failure function
-    두 문자열의 일치 여부 확인 중 불일치하다면, 
-    이동할 다음 idx를 가리키는 함수
-    (prefix와 postfix가 일치하는 길이)
+vector<int> GetFail(const string& pattern);
+vector<int> Kmp(const string& str, const string& pattern);
 
-  STRING : B A B A B A A
-  i      : 0 1 2 3 4 5 6 
-  fail(i): 0 0 1 2 3 4 0
-  ----------------------
-  i = 6(A), j = 4(B) -> 2
-  i = 6(A), j = 2(B) -> 0
-  i = 6(A), j = 0(B) => 0
-*/
-vector<int> get_fail(string p)
-{
-    int n_p = p.size();
-    vector<int> fail(n_p);
-    for (int i = 1, j = 0; i<n_p; i++) {
-        while (j>0 && p[i]!=p[j]) {
-            j=fail[j-1]; // restore the idx
-        }
-        if (p[i]==p[j]) {
-            fail[i]=j+1; // after j
-            ++j;
-        }
-    }
+vector<int> GetFail(const string& p) {
+  vector<int> fail(p.length());
+  int j = 0;
+  for (int i = 1; i < p.length(); i++) {
+    while (j > 0 && p[i] != p[j])
+      // idx    : 0 1 2 3 4 5 6
+      // pattern: B A B A B A A
+      // fail   : 0 0 1 2 3 4 ?
+      // ----------------------
+      // i = 6, j = 4
+      // loop: j > 0 && p[i] != p[j]
+      //  if i = 6, j = 4
+      //   then j = fail[j-1];
+      //   now j = 2
+      //  if i = 6, j = 2
+      //   then j = fail[j-1];
+      //   now j = 0
+      //  j is 0, so escape the loop
+      // end
+      j = fail[j-1];
+    if (p[i] == p[j])
+      fail[i] = ++j;  // after j
+  }
 
-    return fail;
+  return fail;
 }
 
-vector<int> kmp(string s, string p)
-{
-    auto fail = get_fail(p);
-    int n_s = (int)s.size();
-    int n_p = (int)p.size();
-
-    vector<int> ans;
-    for (int i = 0, j = 0; i<n_s; i++) {
-        while (j>0 && s[i]!=p[j]) {
-            j=fail[j-1];
-        }
-        if (s[i]==p[j]) {
-            if (j==n_p-1){
-                ans.push_back(i-n_p+1);
-/*
-    ABC    => j = 0
-    ABCABC => j = 3
-*/
-                j=fail[j];
-            }
-            else {
-                j++;
-            }
-        }
+vector<int> Kmp(const string& s, const string& p) {
+  vector<int> fail = GetFail(p);
+  vector<int> ans;
+  int j = 0;
+  for (int i = 0; i < s.length(); i++) {
+    while (j > 0 && s[i] != p[j])
+      j = fail[j-1];
+    if (s[i] == p[j]) {
+      if (j == p.length() - 1) {
+        // ABC    => j = 0;
+        // ABCABC => j = 3;
+        ans.push_back(i - p.length() + 1);
+        j = fail[j];
+      } else {
+        j++;
+      }
     }
+  }
 
-    return ans;
+  return ans;
 }
+
 ```
 
 ### 연습문제
-* [[BOJ] 부분 문자열](https://www.acmicpc.net/problem/16916) [(소스코드)](./src/kmp_exam.cpp)
+* [[BOJ] 부분 문자열](https://www.acmicpc.net/problem/16916) [(소스코드)](./src/kmp_exam.cc)
 ###### Memory: 11,476 KB, Time: 20 ms
 ```c++
-#include <bits/stdc++.h>
+#include <iostream>
+#include <string>
+#include <vector>
 
-using namespace std;
+// iostream
+using std::cin;
+using std::cout;
+using std::getline;
 
-vector<int> get_fail(string);
-vector<int> kmp(string, string);
+// string
+using std::string;
 
-int main(void)
-{
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
+// vector
+using std::vector;
 
-    string s;
-    getline(cin,s);
-    string p;
-    getline(cin,p);
+vector<int> GetFail(const string& pattern);
+vector<int> Kmp(const string& str, const string& pattern);
 
-    auto res = kmp(s,p);
-    cout << (!res.empty());
+int main() {
+  string s;
+  getline(cin, s);
+  string p;
+  getline(cin, p);
 
-    return 0;
+  auto res = Kmp(s, p);
+  cout << (!res.empty());
+
+  return 0;
 }
 
-vector<int> get_fail(string p)
-{
-    int n_p = p.size();
-    vector<int> fail(n_p);
-    for (int i = 1, j = 0; i<n_p; i++) {
-        while (j>0 && p[i]!=p[j]) {
-            j=fail[j-1];
-        }
-        if (p[i]==p[j]) {
-            fail[i]=j+1;
-            ++j;
-        }
+vector<int> GetFail(const string& p) {
+  vector<int> fail(p.length());
+  int j = 0;
+  for (int i = 1; i < p.length(); i++) {
+    while (j > 0 && p[i] != p[j])
+      j = fail[j-1];  // restore the idx
+    if (p[i] == p[j])
+      fail[i] = ++j;  // after j
+  }
+
+  return fail;
+}
+
+vector<int> Kmp(const string& s, const string& p) {
+  vector<int> fail = GetFail(p);
+  vector<int> ans;
+  int j = 0;
+  for (int i = 0; i < s.length(); i++) {
+    while (j > 0 && s[i] != p[j])
+      j = fail[j-1];
+    if (s[i] == p[j]) {
+      if (j == p.length() - 1) {
+        ans.push_back(i - p.length() + 1);
+        j = fail[j];
+      } else {
+        j++;
+      }
     }
+  }
 
-    return fail;
+  return ans;
 }
 
-vector<int> kmp(string s, string p)
-{
-    auto fail = get_fail(p);
-    int n_s = (int)s.size();
-    int n_p = (int)p.size();
-
-    vector<int> ans;
-    for (int i = 0, j = 0; i<n_s; i++) {
-        while (j>0 && s[i]!=p[j]) {
-            j=fail[j-1];
-        }
-        if (s[i]==p[j]) {
-            if (j==n_p-1){
-                ans.push_back(i-n_p+1);
-                j=fail[j];
-            }
-            else {
-                j++;
-            }
-        }
-    }
-
-    return ans;
-}
 ```
 
 

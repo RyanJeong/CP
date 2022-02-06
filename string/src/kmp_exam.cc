@@ -8,8 +8,14 @@
   std::cin.tie(NULL);               \
 } while (0)
 
+#include <iostream>
 #include <string>
 #include <vector>
+
+// iostream
+using std::cin;
+using std::cout;
+using std::getline;
 
 // string
 using std::string;
@@ -20,29 +26,26 @@ using std::vector;
 vector<int> GetFail(const string& pattern);
 vector<int> Kmp(const string& str, const string& pattern);
 
+int main() {
+  CP;
+
+  string s;
+  getline(cin, s);
+  string p;
+  getline(cin, p);
+
+  auto res = Kmp(s, p);
+  cout << (!res.empty());
+
+  return 0;
+}
+
 vector<int> GetFail(const string& p) {
   vector<int> fail(p.length());
   int j = 0;
   for (int i = 1; i < p.length(); i++) {
     while (j > 0 && p[i] != p[j])
-      // idx    : 0 1 2 3 4 5 6
-      // pattern: B A B A B A A
-      // fail   : 0 0 1 2 3 4 ?
-      //
-      // fail(4) = 3:
-      //  p[2-4] and p[0-2] is equal, so start at index 3
-      // ----------------------
-      // i = 6, j = 4
-      // loop: j > 0 && p[i] != p[j]
-      //  if i = 6, j = 4
-      //   then j = fail[j-1];
-      //   now j = 2
-      //  if i = 6, j = 2
-      //   then j = fail[j-1];
-      //   now j = 0
-      //  j is 0, so escape the loop
-      // end
-      j = fail[j-1];
+      j = fail[j-1];  // restore the idx
     if (p[i] == p[j])
       fail[i] = ++j;  // after j
   }
@@ -59,8 +62,6 @@ vector<int> Kmp(const string& s, const string& p) {
       j = fail[j-1];
     if (s[i] == p[j]) {
       if (j == p.length() - 1) {
-        // ABC    => j = 0;
-        // ABCABC => j  3;
         ans.push_back(i - p.length() + 1);
         j = fail[j];
       } else {
@@ -71,5 +72,3 @@ vector<int> Kmp(const string& s, const string& p) {
 
   return ans;
 }
-
-int main() { return 0; }
