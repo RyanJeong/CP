@@ -31,8 +31,6 @@ vector<int> GetFail(const T& pattern);
 template <typename T>
 vector<int> Kmp(const T& str, const T& pattern);
 
-int calc(const vector<int>&, const vector<vector<int>>&);
-
 int main() {
   CP;
 

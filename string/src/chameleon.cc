@@ -25,8 +25,6 @@ using std::vector;
 template <typename T>
 vector<int> GetFail(const T& pattern);
 
-int calc(const vector<int>&, const vector<vector<int>>&);
-
 int main() {
   CP;
 
