@@ -11,7 +11,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <cctype>
 
 // iostream
 using std::cin;
@@ -22,9 +21,6 @@ using std::string;
 
 // vector
 using std::vector;
-
-// cctype
-using std::isdigit;
 
 template <typename T>
 vector<int> GetFail(const T& pattern);
