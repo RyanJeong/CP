@@ -34,14 +34,21 @@ int main() {
     cin >> t;
     if (!t)
       break;
-    
+
     string str;
     cin >> str;
     auto res = GetFail(str);
-    for (const auto& i : res)
-      cout << i << ' ';
+    // str.length() % (str.length() - res[str.length()-1]) == 0 -> period
+    cout << "Test case #" << idx++ << '\n';
+    for (int i = 0; i < str.length(); ++i) {
+      int len = i + 1;
+      if (len % (len - res[i]))
+        continue;
+      if (len / (len - res[i]) <= 1)
+        continue;
+      cout << len << ' ' << len / (len - res[i]) << '\n';
+    }
     cout << '\n';
-    ++idx;
   }
 
   return 0;
