@@ -15,7 +15,7 @@
   * 만약 0이 나온다면, 기준 좌표로부터 가까운 거리 순으로 정렬
 3. [Graham's Scan](https://en.wikipedia.org/wiki/Graham_scan)을 사용해 외곽 좌표를 찾는다:
 
-  ![graham-s-scan](./img/GrahamScanDemo.gif)
+   ![graham-s-scan](./img/GrahamScanDemo.gif)
 
 ### 연습문제
 * [[BOJ] ](https://www.acmicpc.net/problem/) [(소스코드)](./src/.cpp)
