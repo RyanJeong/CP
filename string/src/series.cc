@@ -9,18 +9,18 @@
 } while (0)
 
 #include <iostream>
-#include <string>
 #include <vector>
+#include <algorithm>
 
 // iostream
 using std::cin;
 using std::cout;
 
-// string
-using std::string;
-
 // vector
 using std::vector;
+
+// algorithm
+using std::reverse;
 
 template <typename T>
 vector<int> GetFail(const T& pattern);
@@ -28,16 +28,27 @@ vector<int> GetFail(const T& pattern);
 int main() {
   CP;
 
-  string str;
-  cin >> str;
-  auto res = GetFail(str);
-  for (int i = 0; i < str.length(); ++i) {
-    int len = i + 1;
-    if (len % (len - res[i]))
-      continue;
-    if (len / (len - res[i]) <= 1)
-      continue;
-    cout << len << ' ' << len / (len - res[i]) << '\n';
+  int n;
+  cin >> n;
+  vector<int> v(n);
+  for (int& i : v)
+    cin >> i;
+  reverse(v.begin(), v.end());
+  auto res = GetFail(v);
+  int common_len = 0;
+  for (const int& i : res) {
+    if (common_len < i)
+      common_len = i;
+  }
+  if (!common_len) {
+    cout << -1;
+  } else {
+    int cnt = 0;
+    for (const int& i : res) {
+      if (i == common_len)
+        ++cnt;
+    }
+    cout << common_len << ' ' << cnt;
   }
 
   return 0;
@@ -49,11 +60,10 @@ vector<int> GetFail(const T& p) {
   int j = 0;
   for (int i = 1; i < p.size(); i++) {
     while (j > 0 && p[i] != p[j])
-      j = fail[j-1];  // restore the idx
+      j = fail[j-1];
     if (p[i] == p[j])
-      fail[i] = ++j;  // after j
+      fail[i] = ++j;
   }
 
   return fail;
 }
-

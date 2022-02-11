@@ -43,7 +43,7 @@ Resources for competitive programming
 * [Minimum Spanning Tree](/mst/)
 * [Floyd-Warshall](/floyd-warshall/)
 * [Dijkstra](/dijkstra/)
-* [[WIP]String](/string/)
+* [String](/string/)
 * [[WIP]Convex Hull](#)
 * [[WIP]Rotating Calipers](#)
 ---
