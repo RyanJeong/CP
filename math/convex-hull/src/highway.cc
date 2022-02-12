@@ -114,10 +114,10 @@ int main() {
 
 bool CmpCoor(const pair<int, int>& s,
              const pair<int, int>& t) {
-  if (s.second > t.second)
+  if (s.second < t.second)
     return true;
 
-  if (s.second == t.second && s.first > t.first)
+  if (s.second == t.second && s.first < t.first)
     return true;
 
   return false;

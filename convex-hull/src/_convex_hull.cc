@@ -1,5 +1,5 @@
 /*
-  Copyright 2021 Ryan M. Jeong <ryan.m.jeong@hotmail.com>
+  Copyright 2022 Ryan M. Jeong <ryan.m.jeong@hotmail.com>
 */
 
 // CP
@@ -114,4 +114,3 @@ int64_t CalcSqDist(const pair<int, int>& s,
 
   return diff_x * diff_x + diff_y * diff_y;
 }
-

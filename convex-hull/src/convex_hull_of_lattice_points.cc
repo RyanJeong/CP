@@ -1,5 +1,5 @@
 /*
-  Copyright 2021 Ryan M. Jeong <ryan.m.jeong@hotmail.com>
+  Copyright 2022 Ryan M. Jeong <ryan.m.jeong@hotmail.com>
 */
 
 // CP
@@ -25,6 +25,7 @@ using std::pair;
 
 // algorithm
 using std::sort;
+using std::reverse;
 
 pair<int, int> starting_point;
 
@@ -40,30 +41,37 @@ int64_t CalcSqDist(const pair<int, int>&,
 
 int main() {
   CP;
-  int n;
-  cin >> n;
-  vector<pair<int, int>> v(n);
-  for (int i = 0; i < n; ++i)
-    cin >> v[i].first >> v[i].second;
 
-  // find the point with the lowest y-coordinate. (v[0], starting_point)
-  sort(v.begin(), v.end(), CmpCoor);
-  starting_point = v.front();
-  // the set of points must be sorted in increasing order of the angle they and
-  // the point P make with the x-axis
-  sort(v.begin() + 1, v.end(), CmpCcw);
+  int t;
+  cin >> t;
+  while (t--) {
+    int n;
+    cin >> n;
+    vector<pair<int, int>> v(n);
+    for (int i = 0; i < n; ++i)
+      cin >> v[i].first >> v[i].second;
 
-  // Graham's scan
-  vector<pair<int, int>> convex_hull;
-  for (const auto& p : v) {
-    while (convex_hull.size() >= 2) {
-      if (CalcCcw(convex_hull[convex_hull.size()-2], convex_hull.back(), p) > 0)
-        break;
-      convex_hull.pop_back();
+    // y-axis symmetric
+    for (auto& p : v)
+      p.second = -p.second;
+    sort(v.begin(), v.end(), CmpCoor);
+    starting_point = v.front();
+    sort(v.begin() + 1, v.end(), CmpCcw);
+
+    vector<pair<int, int>> convex_hull;
+    for (const auto& p : v) {
+      while (convex_hull.size() >= 2) {
+        if (CalcCcw(convex_hull[convex_hull.size()-2],
+                    convex_hull.back(), p) > 0)
+          break;
+        convex_hull.pop_back();
+      }
+      convex_hull.push_back(p);
     }
-    convex_hull.push_back(p);
+    cout << convex_hull.size() << '\n';
+    for (const auto& p : convex_hull)
+      cout << p.first << ' ' << -p.second << '\n';
   }
-  cout << convex_hull.size();
 
   return 0;
 }
@@ -114,4 +122,3 @@ int64_t CalcSqDist(const pair<int, int>& s,
 
   return diff_x * diff_x + diff_y * diff_y;
 }
-
