@@ -1,7 +1,10 @@
 # [WIP] Convex Hull
 * 추천 문제 - Convex Hull
     * [[BOJ] Convex Hull of Lattice Points](https://www.acmicpc.net/problem/2699) [(소스코드)](./src/convex_hull_of_lattice_points.cc) - Convex Hull 동작 방식 이해를 바탕으로 응용하는 문제
-    * [[WIP][BOJ] Building the Moat](https://www.acmicpc.net/problem/6194) [(소스코드)](./src/building_the_moat.cc) - Convex Hull 알고리즘을 사용해 구한 다각형의 둘레를 계산하는 문제
+    * [[BOJ] Building the Moat](https://www.acmicpc.net/problem/6194) [(소스코드)](./src/building_the_moat.cc) - Convex Hull 알고리즘을 사용해 구한 다각형의 둘레를 계산하는 문제(1)
+    * [[BOJ] Wall construction](https://www.acmicpc.net/problem/10903) [(소스코드)](./src/wall_construction.cc) - Convex Hull 알고리즘을 사용해 구한 다각형의 둘레를 계산하는 문제(2)
+    * [[BOJ] Wall](https://www.acmicpc.net/problem/7420) [(소스코드)](./src/wall.cc) - Convex Hull 알고리즘을 사용해 구한 다각형의 둘레를 계산하는 문제(3) (반올림 주의)
+    * [[BOJ] Cows](https://www.acmicpc.net/problem/6850) [(소스코드)](./src/cows.cc) - Convex Hull 알고리즘을 사용해 구한 다각형의 둘레를 계산하는 문제(4)
 ---
 
 * 추천 문제 - Rotating Calipers

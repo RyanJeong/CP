@@ -12,10 +12,12 @@
 #include <vector>
 #include <utility>
 #include <algorithm>
+#include <cmath>
 
 // iostream
 using std::cin;
 using std::cout;
+using std::fixed;
 
 // vector
 using std::vector;
@@ -25,6 +27,9 @@ using std::pair;
 
 // algorithm
 using std::sort;
+
+// cmath
+using std::sqrt;
 
 pair<int, int> starting_point;
 
@@ -41,36 +46,36 @@ int64_t CalcSqDist(const pair<int, int>&,
 int main() {
   CP;
 
-  int t;
-  cin >> t;
-  while (t--) {
-    int n;
-    cin >> n;
-    vector<pair<int, int>> v(n);
-    for (int i = 0; i < n; ++i)
-      cin >> v[i].first >> v[i].second;
+  int n, r;
+  cin >> n >> r;
+  vector<pair<int, int>> v(n);
+  for (int i = 0; i < n; ++i)
+    cin >> v[i].first >> v[i].second;
 
-    // y-axis symmetric
-    for (auto& p : v)
-      p.second = -p.second;
-    sort(v.begin(), v.end(), CmpCoor);
-    starting_point = v.front();
-    sort(v.begin() + 1, v.end(), CmpCcw);
+  sort(v.begin(), v.end(), CmpCoor);
+  starting_point = v.front();
+  sort(v.begin()+1, v.end(), CmpCcw);
 
-    vector<pair<int, int>> convex_hull;
-    for (const auto& p : v) {
-      while (convex_hull.size() >= 2) {
-        if (CalcCcw(convex_hull[convex_hull.size()-2],
-                    convex_hull.back(), p) > 0)
-          break;
-        convex_hull.pop_back();
-      }
-      convex_hull.push_back(p);
+  vector<pair<int, int>> convex_hull;
+  for (const auto& p : v) {
+    while (convex_hull.size() >= 2) {
+      if (CalcCcw(convex_hull[convex_hull.size()-2], convex_hull.back(), p) > 0)
+        break;
+      convex_hull.pop_back();
     }
-    cout << convex_hull.size() << '\n';
-    for (const auto& p : convex_hull)
-      cout << p.first << ' ' << -p.second << '\n';
+    convex_hull.push_back(p);
   }
+  convex_hull.push_back(convex_hull.front());
+
+  // l = 2 * PI * r
+  double res = 3.14159265359 * 2 * r;
+  for (int i = 0; i < convex_hull.size() - 1; ++i) {
+    int64_t squared_dist = CalcSqDist(convex_hull[i+1], convex_hull[i]);
+    res += sqrt(static_cast<double>(squared_dist));
+  }
+  cout << fixed;
+  cout.precision(11);
+  cout << res;
 
   return 0;
 }
@@ -121,3 +126,4 @@ int64_t CalcSqDist(const pair<int, int>& s,
 
   return diff_x * diff_x + diff_y * diff_y;
 }
+
