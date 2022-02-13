@@ -32,11 +32,11 @@ bool CmpCoor(const pair<int, int>&,
              const pair<int, int>&);
 bool CmpCcw(const pair<int, int>&,
             const pair<int, int>&);
-int64_t Ccw(const pair<int, int>&,
-            const pair<int, int>&,
-            const pair<int, int>&);
-int64_t SqDist(const pair<int, int>&,
-               const pair<int, int>&);
+int64_t CalcCcw(const pair<int, int>&,
+                const pair<int, int>&,
+                const pair<int, int>&);
+int64_t CalcSqDist(const pair<int, int>&,
+                   const pair<int, int>&);
 
 int main() {
   CP;
@@ -51,7 +51,7 @@ int main() {
 
     // find the point with the lowest y-coordinate. (v[0], starting_point)
     sort(v.begin(), v.end(), CmpCoor);
-    starting_point = v[0];
+    starting_point = v.front();
     // the set of points must be sorted in increasing order of the angle they
     // and the point P make with the x-axis
     sort(v.begin() + 1, v.end(), CmpCcw);
@@ -60,7 +60,8 @@ int main() {
     vector<pair<int, int>> convex_hull;
     for (const auto& p : v) {
       while (convex_hull.size() >= 2) {
-        if (Ccw(convex_hull[convex_hull.size()-2], convex_hull.back(), p) > 0)
+        if (CalcCcw(convex_hull[convex_hull.size()-2],
+                    convex_hull.back(), p) > 0)
           break;
         convex_hull.pop_back();
       }
@@ -78,7 +79,7 @@ int main() {
         right_i = i;
     }
 
-    int64_t res = SqDist(convex_hull[left_i], convex_hull[right_i]);
+    int64_t res = CalcSqDist(convex_hull[left_i], convex_hull[right_i]);
     pair<int, int> res_left_coor = convex_hull[left_i];
     pair<int, int> res_right_coor = convex_hull[right_i];
     pair<int, int> origin = { 0, 0 };
@@ -92,13 +93,13 @@ int main() {
         convex_hull[right_i].second - convex_hull[(right_i + 1)%n_edge].second
       };
 
-      if (Ccw(origin, left_vector, right_vector) > 0)
+      if (CalcCcw(origin, left_vector, right_vector) > 0)
         left_i = (left_i + 1) % n_edge;
       else
         right_i = (right_i + 1) % n_edge;
 
-      if (SqDist(convex_hull[left_i], convex_hull[right_i]) > res) {
-        res = SqDist(convex_hull[left_i], convex_hull[right_i]);
+      if (CalcSqDist(convex_hull[left_i], convex_hull[right_i]) > res) {
+        res = CalcSqDist(convex_hull[left_i], convex_hull[right_i]);
         res_left_coor = convex_hull[left_i];
         res_right_coor = convex_hull[right_i];
       }
@@ -125,14 +126,14 @@ bool CmpCoor(const pair<int, int>& s,
 
 bool CmpCcw(const pair<int, int>& s,
             const pair<int, int>& t) {
-  int64_t res = Ccw(starting_point, s, t);
+  int64_t res = CalcCcw(starting_point, s, t);
 
   if (res)
     return res > 0;  // ccw : true, cw : false
 
   // res = 0
-  int64_t dist1 = SqDist(s, starting_point);
-  int64_t dist2 = SqDist(t, starting_point);
+  int64_t dist1 = CalcSqDist(s, starting_point);
+  int64_t dist2 = CalcSqDist(t, starting_point);
 
   return dist1 < dist2;
 }
@@ -140,9 +141,9 @@ bool CmpCcw(const pair<int, int>& s,
 /* ccw         : pos.
    on the line : 0
    cw          : neg. */
-int64_t Ccw(const pair<int, int>& a,
-            const pair<int, int>& b,
-            const pair<int, int>& c) {
+int64_t CalcCcw(const pair<int, int>& a,
+                const pair<int, int>& b,
+                const pair<int, int>& c) {
   int64_t u1 = b.first - a.first;
   int64_t v1 = b.second - a.second;
   int64_t u2 = c.first - b.first;
@@ -151,8 +152,8 @@ int64_t Ccw(const pair<int, int>& a,
   return u1 * v2 - u2 * v1;
 }
 
-int64_t SqDist(const pair<int, int>& s,
-               const pair<int, int>& t) {
+int64_t CalcSqDist(const pair<int, int>& s,
+                   const pair<int, int>& t) {
   int64_t diff_x = s.first - t.first;
   int64_t diff_y = s.second - t.second;
 
