@@ -12,12 +12,16 @@
     * [Map](/stl/map/)
 
 # [WIP]Stack
-* 추천 문제
+* 추천 문제 - 스택
   * [[BOJ] 스택](https://www.acmicpc.net/problem/10828) [(소스코드)](./src/stack.cc)
   * [[BOJ] 도키도키 간식드리미](https://www.acmicpc.net/problem/12789) [(소스코드)](./src/snack.cc) - 스택 응용
   * [[BOJ] 오큰수](https://www.acmicpc.net/problem/17298) [(소스코드)](./src/nge.cc)
-  * [[BOJ] EKSPLOZIJA](https://www.acmicpc.net/problem/17298) [(소스코드)](./src/eksplozija.cpp) - 컨테이너를 응용한 스택 구현
+  * [[BOJ] EKSPLOZIJA](https://www.acmicpc.net/problem/17298) [(소스코드)](./src/eksplozija.cc) - 컨테이너를 응용한 스택 구현
   * [[BOJ] 후위 표기식](https://www.acmicpc.net/problem/1918) [(소스코드)](./src/postfix.cc) - 스택을 이용한 후위 표기식 구현
+
+* 추천 문제 - 스택 응용
+  * [[BOJ] The Balance of the World](https://www.acmicpc.net/problem/4949) [(소스코드)](./stack_app/balance_world.cc) - 스택을 이용한 괄호 찾기 문제
+
 ---
 
 ## [스택(stack)](https://cplusplus.com/reference/stack/stack)
@@ -65,9 +69,6 @@ int main() {
 ```
 
 ## 스택 응용: 올바른 괄호 쌍 구하기
-* 추천 문제
-  * [[BOJ] The Balance of the World](https://www.acmicpc.net/problem/4949) [(소스코드)](./stack_app/balance_world.cpp)
-
 * 괄호로만 구성된 문자열이 주어졌다면:
 1. 여는 괄호는 스택에 `push`
 2. 닫는 괄호가 나오면:
@@ -76,52 +77,72 @@ int main() {
    3. 스택의 `top` 결과와 닫는 괄호가 대응되면 `pop`
 3. 해당 문자열을 모두 처리한 뒤에 스택에 괄호가 남아있다면 틀린 괄호 쌍이며, 스택이 비어있으면 올바른 괄호 쌍
 
-### [소스코드](./stack_app/exam.cpp)
+### [소스코드](./stack_app/exam.cc)
 ```c++
-// http://icpc.me/9012
-#include <bits/stdc++.h>
+/*
+  Copyright 2022 Ryan M. Jeong <ryan.m.jeong@hotmail.com>
+*/
 
-using namespace std;
+// CP
+#define CP do {                     \
+  std::ios::sync_with_stdio(false); \
+  std::cin.tie(NULL);               \
+} while (0)
 
-int main(void)
-{
-  ios::sync_with_stdio(false);
-  cin.tie(NULL);
+#include <iostream>
+#include <string>
+#include <stack>
+
+// iostream
+using std::cin;
+using std::cout;
+
+// string
+using std::string;
+
+// stack;
+using std::stack;
+
+int main() {
+  CP;
 
   int n;
-  cin>>n;
-
-  while(n--) {
+  cin >> n;
+  while (n--) {
     string ps;
-    cin>>ps;
+    cin >> ps;
     bool is_vps = true;
     stack<int> s;
-
-    for (char c : ps) {
-      if (c=='(') {
+    for (const char& c : ps) {
+      if (c == '(') {
         s.push(c);
-      } 
-      else {
+      } else {
         if (s.empty()) {
-          is_vps=false;
+          is_vps = false;
           break;
-        } 
-        else { // ')'
-          if (s.top()!='(') {
-            is_vps=false;
+        } else {
+          if (s.top() != '(') {
+            is_vps = false;
             break;
-          } 
-          else { // s.top() is '('
+          } else {
             s.pop();
           }
         }
       }
-    }  
+    }
+    // 6
+    // (())())               : NO
+    // (((()())()            : NO
+    // (()())((()))          : YES
+    // ((()()(()))(((())))() : NO
+    // ()()()()(()()())()    : YES
+    // (()((())()(           : NO
     cout << ((s.empty() && is_vps) ? "YES" : "NO") << '\n';
   }
 
   return 0;
 }
+
 ```
 
 ### 연습문제
