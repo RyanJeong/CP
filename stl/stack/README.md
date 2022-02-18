@@ -11,7 +11,7 @@
     * [Set](/stl/set/)
     * [Map](/stl/map/)
 
-# [WIP]Stack
+# Stack
 * 추천 문제 - 스택
   * [[BOJ] 스택](https://www.acmicpc.net/problem/10828) [(소스코드)](./src/stack.cc)
   * [[BOJ] 도키도키 간식드리미](https://www.acmicpc.net/problem/12789) [(소스코드)](./src/snack.cc) - 스택 응용
@@ -77,18 +77,9 @@ int main() {
    3. 스택의 `top` 결과와 닫는 괄호가 대응되면 `pop`
 3. 해당 문자열을 모두 처리한 뒤에 스택에 괄호가 남아있다면 틀린 괄호 쌍이며, 스택이 비어있으면 올바른 괄호 쌍
 
-### [소스코드](./stack_app/exam.cc)
+### 연습문제
+* [[BOJ] Parenthesis](https://www.acmicpc.net/problem/9012) [(소스코드)](./stack_app/exam.cc)
 ```c++
-/*
-  Copyright 2022 Ryan M. Jeong <ryan.m.jeong@hotmail.com>
-*/
-
-// CP
-#define CP do {                     \
-  std::ios::sync_with_stdio(false); \
-  std::cin.tie(NULL);               \
-} while (0)
-
 #include <iostream>
 #include <string>
 #include <stack>
@@ -104,8 +95,6 @@ using std::string;
 using std::stack;
 
 int main() {
-  CP;
-
   int n;
   cin >> n;
   while (n--) {
@@ -130,13 +119,6 @@ int main() {
         }
       }
     }
-    // 6
-    // (())())               : NO
-    // (((()())()            : NO
-    // (()())((()))          : YES
-    // ((()()(()))(((())))() : NO
-    // ()()()()(()()())()    : YES
-    // (()((())()(           : NO
     cout << ((s.empty() && is_vps) ? "YES" : "NO") << '\n';
   }
 
@@ -146,59 +128,55 @@ int main() {
 ```
 
 ### 연습문제
-* [[BOJ] 괄호의 값](https://www.acmicpc.net/problem/2504) [(소스코드)](./stack_app/exercise.cpp)
-###### Memory: 2,024 KB, Time: 0 ms
+* [[BOJ] 괄호의 값](https://www.acmicpc.net/problem/2504) [(소스코드)](./stack_app/exercise.cc)
 ```c++
-// https://www.acmicpc.net/problem/2504
-#include <bits/stdc++.h>
+#include <iostream>
+#include <string>
+#include <stack>
 
-using namespace std;
+// iostream
+using std::cin;
+using std::cout;
 
-int main(void)
-{
-  ios::sync_with_stdio(false);
-  cin.tie(NULL);
+// string
+using std::string;
 
-  int num = 0;
-  int temp = 1;
-  bool is_invalid = false;
+// stack;
+using std::stack;
+
+int main() {
   string str;
-  cin>>str;
+  cin >> str;
+  bool is_valid = true;
   stack<char> s;
+  int value = 1;
+  int total_value = 0;
   char prev;
-  for (char c : str) {
-    if (c=='(') {
+  for (const char& c : str) {
+    if (c == '(' || c == '[') {
       s.push(c);
-      temp*=2;
-    }
-    else if (c=='[') {
-      s.push(c);
-      temp*=3;
-    }
-    else if (!s.empty() && s.top()=='(' && c==')') {
-      if (prev=='(') {
-        num+=temp;
-      }
+      value *= ((c == '(') ? 2 : 3);
+    } else if (!s.empty() && s.top() == '(' && c == ')') {
+      if (prev == '(')
+        total_value += value;
       s.pop();
-      temp/=2;
-    }
-    else if (!s.empty() && s.top()=='[' && c==']') {
-      if (prev=='[') {
-        num+=temp;
-      }
+      value /= 2;
+    } else if (!s.empty() && s.top() == '[' && c == ']') {
+      if (prev == '[')
+        total_value += value;
       s.pop();
-      temp/=3;
-    }
-    else {
-      is_invalid=true;
+      value /= 3;
+    } else {
+      is_valid = false;
       break;
     }
-    prev=c;
+    prev = c;
   }
-  cout << ((!s.empty() || is_invalid) ? 0 : num);
+  cout << ((!s.empty() || !is_valid) ? 0 : total_value);
 
   return 0;
 }
+
 ```
 
 ---
