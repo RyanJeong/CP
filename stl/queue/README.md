@@ -16,7 +16,7 @@
     * [[BOJ] 이름 궁합](https://www.acmicpc.net/problem/15312) [(소스코드)](./src/name.cc) - 기본 큐 연산 및 초기화 방법
     * [[Programmers] 프린터](https://programmers.co.kr/learn/courses/30/lessons/42587) [(소스코드)](./src/printer.cpp)
     * [[BOJ] 큐](https://www.acmicpc.net/problem/10845) [(소스코드)](./src/queue.cc)
-    * [[BOJ] 카드2](https://www.acmicpc.net/problem/2164) [(소스코드)](./src/card2.cpp)
+    * [[BOJ] 카드2](https://www.acmicpc.net/problem/2164) [(소스코드)](./src/card2.cc)
     * [[BOJ] 좀비 떼가 기관총 진지에도 오다니](https://www.acmicpc.net/problem/19644) [(소스코드)](./src/zombie.cpp) - 조건의 범위를 검사할 때 `queue` 사용
 ---
 
