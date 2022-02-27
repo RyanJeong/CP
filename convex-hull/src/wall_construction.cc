@@ -113,8 +113,8 @@ int64_t CalcCcw(const pair<int, int>& a,
                 const pair<int, int>& c) {
   int64_t u1 = b.first - a.first;
   int64_t v1 = b.second - a.second;
-  int64_t u2 = c.first - b.first;
-  int64_t v2 = c.second - b.second;
+  int64_t u2 = c.first - a.first;
+  int64_t v2 = c.second - a.second;
 
   return u1 * v2 - u2 * v1;
 }

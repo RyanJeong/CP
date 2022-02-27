@@ -45,17 +45,20 @@ int64_t CalcSqDist(const pair<int, int>&,
 
 int main() {
   CP;
-
-  int n, r;
-  cin >> n >> r;
+  int n;
+  cin >> n;
   vector<pair<int, int>> v(n);
   for (int i = 0; i < n; ++i)
     cin >> v[i].first >> v[i].second;
 
+  // find the point with the lowest y-coordinate. (v[0], starting_point)
   sort(v.begin(), v.end(), CmpCoor);
   starting_point = v.front();
-  sort(v.begin()+1, v.end(), CmpCcw);
+  // the set of points must be sorted in increasing order of the angle they
+  // and the point P make with the x-axis
+  sort(v.begin() + 1, v.end(), CmpCcw);
 
+  // Graham's scan
   vector<pair<int, int>> convex_hull;
   for (const auto& p : v) {
     while (convex_hull.size() >= 2) {
@@ -65,17 +68,46 @@ int main() {
     }
     convex_hull.push_back(p);
   }
-  convex_hull.push_back(convex_hull.front());
 
-  // l = 2 * PI * r
-  double res = 3.14159265359 * 2 * r;
-  for (int i = 0; i < convex_hull.size() - 1; ++i) {
-    int64_t squared_dist = CalcSqDist(convex_hull[i+1], convex_hull[i]);
-    res += sqrt(static_cast<double>(squared_dist));
+  // Rotating calipers
+  int left_i = 0;
+  int right_i = 0;
+  int n_edge = convex_hull.size();
+  for (int i = 0; i < n_edge; ++i) {
+    if (convex_hull[i].first < convex_hull[left_i].first)
+      left_i = i;
+    if (convex_hull[i].first > convex_hull[right_i].first)
+      right_i = i;
+  }
+
+  int64_t longest_dist = CalcSqDist(convex_hull[left_i], convex_hull[right_i]);
+  pair<int, int> left_coor = convex_hull[left_i];
+  pair<int, int> right_coor = convex_hull[right_i];
+  pair<int, int> origin = { 0, 0 };
+  for (int i = 0; i < n_edge; ++i) {
+    pair<int, int> left_vector = {
+      convex_hull[(left_i + 1)%n_edge].first - convex_hull[left_i].first,
+      convex_hull[(left_i + 1)%n_edge].second - convex_hull[left_i].second
+    };
+    pair<int, int> right_vector = {
+      convex_hull[right_i].first - convex_hull[(right_i + 1)%n_edge].first,
+      convex_hull[right_i].second - convex_hull[(right_i + 1)%n_edge].second
+    };
+
+    if (CalcCcw(origin, left_vector, right_vector) > 0)
+      left_i = (left_i + 1) % n_edge;
+    else
+      right_i = (right_i + 1) % n_edge;
+
+    if (longest_dist < CalcSqDist(convex_hull[left_i], convex_hull[right_i])) {
+      longest_dist = CalcSqDist(convex_hull[left_i], convex_hull[right_i]);
+      left_coor = convex_hull[left_i];
+      right_coor = convex_hull[right_i];
+    }
   }
   cout << fixed;
-  cout.precision(0);
-  cout << res;
+  cout.precision(8);
+  cout << sqrt(longest_dist);
 
   return 0;
 }
@@ -126,4 +158,3 @@ int64_t CalcSqDist(const pair<int, int>& s,
 
   return diff_x * diff_x + diff_y * diff_y;
 }
-
