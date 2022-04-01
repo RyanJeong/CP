@@ -11,14 +11,15 @@
         * [Set](/stl/set/)
         * [Map](/stl/map/)
 
-# Priority Queue
+# [WIP]Priority Queue
 * 추천 문제
-    * [[BOJ] 최대 힙](https://www.acmicpc.net/problem/11279) [(소스코드)](./src/max_heap.cpp)
-    * [[BOJ] 최소 힙](https://www.acmicpc.net/problem/1927) [(소스코드)](./src/min_heap.cpp)
+    * [[BOJ] 최대 힙](https://www.acmicpc.net/problem/11279) [(소스코드)](./src/max_heap.cc) - `priority_queue<T>`
+    * [[BOJ] 최소 힙](https://www.acmicpc.net/problem/1927) [(소스코드)](./src/min_heap.cc) - `priority_queue<T, vector<T>, greater<T>>`
     * [[BOJ] Running Median](https://www.acmicpc.net/problem/2696) [(소스코드)](./src/median.cpp)
     * [[BOJ] N번째 큰 수](https://www.acmicpc.net/problem/2075) [(소스코드)](./src/nth.cpp)
     * [[BOJ] 강의실 배정](https://www.acmicpc.net/problem/11000) [(소스코드)](./src/210710_class.cpp)
-    * [[BOJ] 싸지방에 간 준하](https://www.acmicpc.net/problem/12764) [(소스코드)](./src/army_internet_cafe.cpp) - [강의실 배정](https://www.acmicpc.net/problem/11000) 응용, 각 객체의 사용빈도를 같이 구해야 하는 문제
+    * [[BOJ] 싸지방에 간 준하](https://www.acmicpc.net/problem/12764) [(소스코드)](./src/army_internet_cafe.cpp) 
+    * [[BOJ] 강의실 배정](https://www.acmicpc.net/problem/11000) 응용, 각 객체의 사용빈도를 같이 구해야 하는 문제
     * [[BOJ] 문제집](https://www.acmicpc.net/problem/1766) [(소스코드)](./src/210721_textbook.cpp)
     * [[BOJ] 화장실의 규칙](https://www.acmicpc.net/problem/19640) [(소스코드)](./src/210710_restroom.cpp) - 비교연산 직접 구현한 예
     * [[BOJ] 문제 추천 시스템 Version 1](https://www.acmicpc.net/problem/21939) [(소스코드)](./src/recommendation1.cpp) - 힙 중간 요소를 제거해야 할 경우
