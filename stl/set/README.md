@@ -1,19 +1,19 @@
 * [STL - Container Classes:](/stl/)
-    * Sequence Container
-        * [Vector](/stl/vector/)
-        * [List](/stl/list/)
-        * [Double-ended Queue(Deque)](/stl/deque/)
-    * Container Adaptor
-        * [Stack](/stl/stack/)
-        * [Queue](/stl/queue/)
-        * [Priority Queue](/stl/priority_queue_heap/)
-    * Associative Container
-        * [Set](/stl/set/)
-        * [Map](/stl/map/)
+  * Sequence Container
+    * [Vector](/stl/vector/)
+    * [List](/stl/list/)
+    * [Double-ended Queue(Deque)](/stl/deque/)
+  * Container Adaptor
+    * [Stack](/stl/stack/)
+    * [Queue](/stl/queue/)
+    * [Priority Queue](/stl/priority_queue_heap/)
+  * Associative Container
+    * [Set](/stl/set/)
+    * [Map](/stl/map/)
 
 # Set
 * 추천 문제
-    * [[BOJ] Easy work](https://www.acmicpc.net/problem/7785) [(소스코드)](./src/easy_work.cpp) - 비교 함수를 사용한 예
+  * [[BOJ] Easy work](https://www.acmicpc.net/problem/7785) [(소스코드)](./src/easy_work.cpp) - 비교 함수를 사용한 예
 ---
 
 ## [셋(set)](https://cplusplus.com/reference/set/set/)
