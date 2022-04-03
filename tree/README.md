@@ -201,7 +201,6 @@
 
 ### 연습문제
 * [[BOJ] 트리의 부모 찾기](https://www.acmicpc.net/problem/11725) [(소스코드)](./src/parent.cpp)
-###### Memory: 12,484 KB, Time: 68 ms
 ```c++
 #include <bits/stdc++.h>
 
@@ -338,7 +337,6 @@ int level_order(int root)
 
 ### 연습문제
 * [[BOJ] 트리 순회](https://www.acmicpc.net/problem/1991) [(소스코드)](./src/tree.cpp)
-###### Memory: 2,020 KB, Time: 0 ms
 ```c++
 #include <bits/stdc++.h>
 

@@ -134,7 +134,6 @@ unsigned int factorial(unsigned int n)
 
 ### 연습문제
 * [[BOJ] EKO](https://www.acmicpc.net/problem/2805) [(소스코드)](./src/eko.cpp) - 꼬리재귀 형태로 함수 작성 
-###### Memory: 5,928 KB, Time: 248 ms
 ```c++
 // https://www.acmicpc.net/problem/2805
 #include <bits/stdc++.h>

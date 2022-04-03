@@ -29,7 +29,6 @@
 
 ### 연습문제
 * [[BOJ] 최단경로](https://www.acmicpc.net/problem/1753) [(소스코드)](./src/exam1.cpp)
-###### Memory: 9,112 KB, Time: 152 ms
 ```c++
 #include <bits/stdc++.h>
 
@@ -94,7 +93,6 @@ int main(void)
 ```
 
 * [[BOJ] 최소비용 구하기](https://www.acmicpc.net/problem/1916) [(소스코드)](./src/cost.cpp) - 특정 정점으로부터 거리 계산
-###### Memory: 4,748 KB, Time: 40 ms
 ```c++
 // https://www.acmicpc.net/problem/1916
 #include <bits/stdc++.h>
@@ -150,7 +148,6 @@ int main(void)
 ```
 
 * [[BOJ] 최소비용 구하기 2](https://www.acmicpc.net/problem/11779) [(소스코드)](./src/cost2.cpp) - 다익스트라 계산과 동시에 최단경로를 출력하는 문제
-###### Memory: 4,752 KB, Time: 36 ms
 ```c++
 #include <bits/stdc++.h>
 

@@ -70,7 +70,6 @@ int main(void)
 ```
 ### 연습문제
 * [[BOJ] 최대 힙](https://www.acmicpc.net/problem/11279) [(소스코드)](./src/exer1.cpp)
-###### Memory: 2,916 KB, Time: 16 ms
 ```c++
 // https://www.acmicpc.net/problem/11279
 #include <bits/stdc++.h>
@@ -112,7 +111,6 @@ int main(void)
 ```
 
 * [[BOJ] 최소 힙](https://www.acmicpc.net/problem/1927) [(소스코드)](./src/exer2.cpp)
-###### Memory: 2,916 KB, Time: 12 ms
 ```c++
 // https://www.acmicpc.net/problem/1927
 #include <bits/stdc++.h>
@@ -154,7 +152,6 @@ int main(void)
 ```
 
 * [[BOJ] 절댓값 힙](https://www.acmicpc.net/problem/11286) [(소스코드)](./src/exer3.cpp) - 기본 자료형이 아닌 형에서의 최소 힙
-###### Memory: 2,916 KB, Time: 16 ms
 ```c++
 // https://www.acmicpc.net/problem/11286
 #include <bits/stdc++.h>
@@ -265,7 +262,6 @@ int main(void)
     |4|insert to `min_heap`|`1`|`4`|1|
     |6|insert to `max_heap`<br>swap|`6` `1`<br>`4` `1`|`4`<br>`6`|<br>4|
 
-###### Memory: 2,792 KB, Time: 28 ms
 ```c++
 // https://www.acmicpc.net/problem/1655
 #include <bits/stdc++.h>

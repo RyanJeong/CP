@@ -59,7 +59,6 @@ void topological_sort(int n)
 
 ### 연습문제
 * [[BOJ] 줄 세우기](https://www.acmicpc.net/problem/2252) [(소스코드)](./src/line_up.cpp)
-###### Memory: 4,216 KB, Time: 28 ms
 ```c++
 #include <bits/stdc++.h>
 

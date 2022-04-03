@@ -108,7 +108,6 @@ vector<int> Kmp(const T& s, const T& p) {
 
 ### 연습문제
 * [[BOJ] 부분 문자열](https://www.acmicpc.net/problem/16916) [(소스코드)](./src/kmp_exam.cc)
-###### Memory: 11,476 KB, Time: 20 ms
 ```c++
 #include <iostream>
 #include <string>
@@ -184,7 +183,6 @@ vector<int> Kmp(const T& s, const T& p) {
 
 ### 연습문제
 * [[BOJ] ](https://www.acmicpc.net/problem/) [(소스코드)](./src/.cpp)
-###### Memory:  KB, Time:  ms
 ```c++
 ```
 

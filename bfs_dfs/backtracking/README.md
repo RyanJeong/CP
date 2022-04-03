@@ -10,7 +10,6 @@
 
 ### 연습문제
 * [[BOJ] N과 M (1)](https://www.acmicpc.net/problem/15649) [(소스코드)](./src/n_m.cpp)
-###### Memory: 2,016 KB, Time: 24 ms
 ```c++
 // https://www.acmicpc.net/problem/15649
 #include <bits/stdc++.h>

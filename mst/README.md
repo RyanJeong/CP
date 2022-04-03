@@ -30,7 +30,6 @@
 
 ### 연습문제
 * [[BOJ] 최소 스패닝 트리](https://www.acmicpc.net/problem/1197) [(소스코드)](./src/kruskal.cpp) - 크루스칼 알고리즘 사용
-###### Memory: 3,356 KB, Time: 36 ms
 ```c++
 #include <bits/stdc++.h>
 
@@ -127,7 +126,6 @@ void merge(int u, int v)
 
 ### 연습문제
 * [[BOJ] 최소 스패닝 트리](https://www.acmicpc.net/problem/1197) [(소스코드)](./src/prim.cpp) - 프림 알고리즘 사용
-###### Memory: 7,348 KB, Time: 56 ms
 ```c++
 #include <bits/stdc++.h>
 

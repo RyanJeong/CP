@@ -131,7 +131,6 @@ int main(void)
 
 ### 연습문제
 * [[BOJ] 나는야 포켓몬 마스터 이다솜](https://www.acmicpc.net/problem/1620) [(소스코드)](./src/exer1.cpp) - `c_str` 함수와 두 개의 `map` 사용 예
-###### Memory: 25,528 KB, Time: 200 ms
 ```c++
 // https://www.acmicpc.net/problem/1620
 #include <bits/stdc++.h>

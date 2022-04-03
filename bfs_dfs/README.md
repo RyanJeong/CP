@@ -48,7 +48,6 @@
 
 ### 연습문제
 * [[BOJ] 그림](https://www.acmicpc.net/problem/1926) [(소스코드)](./src/canvas.cpp) - BFS 사용
-###### Memory: 3,980 KB, Time: 36 ms
 ```c++
 #include <bits/stdc++.h>
 
@@ -139,7 +138,6 @@ int main(void)
 
 ### 연습문제
 * [[BOJ] 그림](https://www.acmicpc.net/problem/1926) [(소스코드)](./src/dfs_canvas.cpp) - DFS(stack) 사용
-###### Memory: 4,148 KB, Time: 40 ms
 ```c++
 // https://www.acmicpc.net/problem/1926
 #include <bits/stdc++.h>
@@ -208,7 +206,6 @@ int main(void)
 
 ```
 * [[BOJ] 그림](https://www.acmicpc.net/problem/1926) [(소스코드)](./src/dfs_rec_canvas.cpp) - DFS(recursion) 사용
-###### Memory: 45,952 KB, Time: 72 ms
 ```c++
 // https://www.acmicpc.net/problem/1926
 #include <bits/stdc++.h>
@@ -289,7 +286,6 @@ int dfs(int i, int j)
 
 ### 연습문제
 * [[BOJ] N과 M (1)](https://www.acmicpc.net/problem/15649) [(소스코드)](./backtracking/src/n_m.cpp)
-###### Memory: 2,016 KB, Time: 24 ms
 ```c++
 // https://www.acmicpc.net/problem/15649
 #include <bits/stdc++.h>

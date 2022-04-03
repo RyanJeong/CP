@@ -61,7 +61,6 @@ struct key *binsearch(char *word, struct key tab[], int n)
 
 ### 연습문제
 * [[BOJ] 수 찾기](https://www.acmicpc.net/problem/1920) [(소스코드 1)](./src/bsearch1.cpp) [(소스코드 2)](./src/bsearch2.cpp)
-###### Memory: 2,412 KB, Time: 60 ms
 ```c++
 #include <bits/stdc++.h>
 
@@ -108,7 +107,6 @@ int main(void)
 
 
 ```
-###### Memory: 2,412 KB, Time: 56 ms
 ```c++
 #include <bits/stdc++.h>
 
@@ -203,7 +201,6 @@ ForwardIterator lower_bound(ForwardIterator first,
 
 ### 연습문제
 * [[BOJ] 숫자 카드 2](https://www.acmicpc.net/problem/10816) [(소스코드)](./src/card2.cpp)
-###### Memory: 3,976 KB, Time: 316 ms
 ```c++
 #include <bits/stdc++.h>
 
@@ -242,7 +239,6 @@ int main(void)
 
 ### 연습문제
 * [[BOJ] 랜선 자르기](https://www.acmicpc.net/problem/1654) [(소스코드)](./src/lan_cable.cpp)
-###### Memory: 2,180 KB, Time: 4 ms
 ```c++
 // https://www.acmicpc.net/problem/1654
 #include <bits/stdc++.h>

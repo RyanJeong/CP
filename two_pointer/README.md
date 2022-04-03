@@ -14,7 +14,6 @@
 
 ### 연습문제
 * [[BOJ] 수들의 합 2](https://www.acmicpc.net/problem/2003) [(소스코드)](./src/210712_exer1.cpp) - 이중 `for`문
-###### Memory: 20,60 KB, Time: 32 ms
 ```c++
 // https://www.acmicpc.net/problem/2003
 #include <bits/stdc++.h>
@@ -53,7 +52,6 @@ int main(void)
 ```
 
 * [[BOJ] 수들의 합 2](https://www.acmicpc.net/problem/2003) [(소스코드)](./src/210712_exer2.cpp) - 두 포인터
-###### Memory: 20,60 KB, Time: 0 ms
 ```c++
 // https://www.acmicpc.net/problem/2003
 #include <bits/stdc++.h>

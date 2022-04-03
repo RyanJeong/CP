@@ -74,7 +74,6 @@
 
 ### 연습문제
 * [[BOJ] 플로이드](https://www.acmicpc.net/problem/11404) [(소스코드)](./src/floyd.cpp)
-###### Memory: 2,156 KB, Time: 24 ms
 ```c++
 // https://www.acmicpc.net/problem/11404
 #include <bits/stdc++.h>
@@ -129,7 +128,6 @@ int main(void)
 ## Johnson's Algorithm - WIP
 
 * [[BOJ] 플로이드2](https://www.acmicpc.net/problem/11780) [(소스코드)](./src/floyd2.cpp) - 플로이드 + 경로복원
-###### Memory:  KB, Time:  ms
 ```c++
 #include <bits/stdc++.h>
 

@@ -1,23 +1,23 @@
 # [WIP] Convex Hull
 * 추천 문제 - Convex Hull
-    * [[BOJ] Convex Hull of Lattice Points](https://www.acmicpc.net/problem/2699) [(소스코드)](./src/convex_hull_of_lattice_points.cc) - Convex Hull 동작 방식 이해를 바탕으로 응용하는 문제
-    * [[BOJ] Building the Moat](https://www.acmicpc.net/problem/6194) [(소스코드)](./src/building_the_moat.cc) - Convex Hull 알고리즘을 사용해 구한 다각형의 둘레를 계산하는 문제(1)
-    * [[BOJ] Wall construction](https://www.acmicpc.net/problem/10903) [(소스코드)](./src/wall_construction.cc) - Convex Hull 알고리즘을 사용해 구한 다각형의 둘레를 계산하는 문제(2)
-    * [[BOJ] Wall](https://www.acmicpc.net/problem/7420) [(소스코드)](./src/wall.cc) - Convex Hull 알고리즘을 사용해 구한 다각형의 둘레를 계산하는 문제(3) (반올림 주의)
-    * [[BOJ] Cows](https://www.acmicpc.net/problem/6850) [(소스코드)](./src/cows.cc) - Convex Hull 알고리즘을 사용해 구한 다각형의 둘레를 계산하는 문제(4)
+  * [[BOJ] Convex Hull of Lattice Points](https://www.acmicpc.net/problem/2699) [(소스코드)](./src/convex_hull_of_lattice_points.cc) - Convex Hull 동작 방식 이해를 바탕으로 응용하는 문제
+  * [[BOJ] Building the Moat](https://www.acmicpc.net/problem/6194) [(소스코드)](./src/building_the_moat.cc) - Convex Hull 알고리즘을 사용해 구한 다각형의 둘레를 계산하는 문제(1)
+  * [[BOJ] Wall construction](https://www.acmicpc.net/problem/10903) [(소스코드)](./src/wall_construction.cc) - Convex Hull 알고리즘을 사용해 구한 다각형의 둘레를 계산하는 문제(2)
+  * [[BOJ] Wall](https://www.acmicpc.net/problem/7420) [(소스코드)](./src/wall.cc) - Convex Hull 알고리즘을 사용해 구한 다각형의 둘레를 계산하는 문제(3) (반올림 주의)
+  * [[BOJ] Cows](https://www.acmicpc.net/problem/6850) [(소스코드)](./src/cows.cc) - Convex Hull 알고리즘을 사용해 구한 다각형의 둘레를 계산하는 문제(4)
 ---
 
 * 추천 문제 - Rotating Calipers
-    * [[BOJ] Robert Hood](https://www.acmicpc.net/problem/9240) [(소스코드)](./src/robert_hood.cc) - 회전하는 캘리퍼스를 사용해 가장 먼 두 점 계산(1)
-    * [[BOJ] Squares](https://www.acmicpc.net/problem/8927) [(소스코드)](./src/squares.cc) - 회전하는 캘리퍼스를 사용해 가장 먼 두 점 계산(2)
-    * [[BOJ] Highway](https://www.acmicpc.net/problem/10254) [(소스코드)](./src/highway.cc) - 회전하는 캘리퍼스를 사용해 가장 먼 두 점 계산(3)
-    * [[BOJ] 달리기 코스](https://www.acmicpc.net/problem/1310) [(소스코드)](./src/course.cc) - 회전하는 캘리퍼스를 사용해 가장 먼 두 점 계산(4)
-    * [[BOJ] Breaking Biscuits](https://www.acmicpc.net/problem/15028) [(소스코드)](./src/breaking_biscuits.cc) - 회전하는 캘리퍼스 + 점과 벡터 간 최단경로 계산 
+  * [[BOJ] Robert Hood](https://www.acmicpc.net/problem/9240) [(소스코드)](./src/robert_hood.cc) - 회전하는 캘리퍼스를 사용해 가장 먼 두 점 계산(1)
+  * [[BOJ] Squares](https://www.acmicpc.net/problem/8927) [(소스코드)](./src/squares.cc) - 회전하는 캘리퍼스를 사용해 가장 먼 두 점 계산(2)
+  * [[BOJ] Highway](https://www.acmicpc.net/problem/10254) [(소스코드)](./src/highway.cc) - 회전하는 캘리퍼스를 사용해 가장 먼 두 점 계산(3)
+  * [[BOJ] 달리기 코스](https://www.acmicpc.net/problem/1310) [(소스코드)](./src/course.cc) - 회전하는 캘리퍼스를 사용해 가장 먼 두 점 계산(4)
+  * [[BOJ] Breaking Biscuits](https://www.acmicpc.net/problem/15028) [(소스코드)](./src/breaking_biscuits.cc) - 회전하는 캘리퍼스 + 점과 벡터 간 최단경로 계산 
 
 ---
 
 * 추천 문제 - Point in Convex Polygon
-    * [[WIP][BOJ] JABUKE](https://www.acmicpc.net/problem/2987) [(소스코드)](./src/jabuke.cc)
+  * [[WIP][BOJ] JABUKE](https://www.acmicpc.net/problem/2987) [(소스코드)](./src/jabuke.cc)
 
 ---
 
@@ -32,7 +32,6 @@
 
 ### 연습문제
 * [[BOJ] 볼록 껍질](https://www.acmicpc.net/problem/1708) [(소스코드)](./src/convex_hull.cc)
-###### Memory: 2,808 KB, Time: 44 ms
 ```c++
 #include <iostream>
 #include <vector>
@@ -313,10 +312,19 @@ int64_t CalcSqDist(const pair<int, int>& s,
 ```
 
 ## Point in Convex Polygon
-* [WIP]
+1. 컨벡스 헐을 통해 외각 점들을 구한다.
+2. 점이 컨벡스 헐 내에 존재하는지 판별한다:
+
+    0. <b>모든 벡터의 기준점은 컨벡스 헐의 `0`번 좌표이다.</b>
+    1. 임의의 점이 가장 오른편 벡터와의 외적 결과가 음수라면, 해당 점은 도형 외부에 있는 것이다.
+    2. 임의의 점이 가장 왼편 벡터와의 외적 결과가 양수라면, 해당 점은 도형 외부에 있는 것이다.
+    3. 이분탐색을 통해 점이 위치할 수 있는 영역을 찾는다. 만약 컨벡스 헐의 개수가 `n`개라면, 이분탐색의 범위는 `[1, n)`이 된다.
+    4. 이분탐색을 통해 찾은 벡터는 해당 벡터의 반시계 방향에 임의의 점이 존재함을 의미한다(이때 점은 벡터의 같은 선상에 위치하는 경우도 포함한다).
+    5. 외적 결과가 음수라면 해당 점은 도형 외부에 있는 것이다.
+    6. 외적 결과가 양수 혹은 0이라면 해당 점은 도형 내부에(혹은 경계에) 있는 것이다.
 
 ### 연습문제
-* [[BOJ] ](https://www.acmicpc.net/problem/) [(소스코드)](./src/.cpp)
+* [[BOJ] JABUKE](https://www.acmicpc.net/problem/2987) [(소스코드)](./src/jabuke.cc)
 ```c++
 ```
 

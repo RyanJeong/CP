@@ -31,7 +31,6 @@
 
 ### 연습문제
 * [[BOJ] 가장 긴 증가하는 부분 수열](https://www.acmicpc.net/problem/11053) [(소스코드)](./src/lis_1.cpp) - <b>O(<i>n</i><sup>2</sup>)</b>
-###### Memory: 2,028 KB, Time: 0 ms
 ```c++
 // https://www.acmicpc.net/problem/11053
 #include <bits/stdc++.h>
@@ -72,7 +71,6 @@ int main(void)
 ```
 
 * [[BOJ] 가장 긴 바이토닉 부분 수열](https://www.acmicpc.net/problem/11054) [(소스코드)](./src/bitonic.cpp) - 가장 긴 증가하는 부분 수열 + 가장 긴 감소하는 부분 수열
-###### Memory: 2,028 KB, Time: 0 ms
 ```c++
 // https://www.acmicpc.net/problem/11054
 // {1 5 2 1 4 3 4 5 2 1}
@@ -152,7 +150,6 @@ int main(void)
     * 수열 <i>a<sub>s</sub></i> = {1,2,5,6,3}이 주어졌을 때, 4 번째 요소(`6`)까지 탐색을 마쳤을 경우 해당 수열에서의 증가 부분수열 후보는 {1,2}, {5,6}
     * 만약, {5,6}에 대한 정보를 `vector`에 기록해 두었다면, 5 번째 요소(`3`)를 처리할 수 없음
     * <b>`vector`에 {5,6}이 아닌 길이가 <i>i</i>인 증가부분 수열 중 마지막 원소의 값이 가장 작은 값인 {1,2}로 기록해 놓는다면, 5 번째 요소 `3`을 올바르게 처리할 수 있음</b>
-###### Memory: 12,200 KB, Time: 164 ms
 ```c++
 #include <bits/stdc++.h>
 
@@ -186,7 +183,6 @@ int main(void)
     return 0;
 }
 ```
-###### Memory: 8,292 KB, Time: 176 ms
 ```c++
 #include <bits/stdc++.h>
 
@@ -243,7 +239,6 @@ int main(void)
     ```
     3. `stack`에 삽입된 값들을 출력하면 역순으로 입력된 부분 수열이 올바르게 출력됨
 
-###### Memory: 2,156 KB, Time: 0 ms
 ```c++
 // https://www.acmicpc.net/problem/14002
 // v, len은 1-based, lis는 0-based임
@@ -299,7 +294,6 @@ int main(void)
 ```
 
 * [[WIP][BOJ] 가장 긴 증가하는 부분 수열 6](https://www.acmicpc.net/problem/17411) [(소스코드)](./src/lis_6.cpp) - 가장 긴 증가하는 부분 수열의 크기와 부분 수열의 개수를 출력하는 문제
-###### Memory:  KB, Time:  ms
 ```c++
 // WIP
 ```
@@ -318,7 +312,6 @@ int main(void)
 
 ### 연습문제
 * [[BOJ] LCS](https://www.acmicpc.net/problem/9251) [(소스코드)](./src/lcs.cpp) - 시간복잡도 <b>O(<i>nm</i>)</b>
-###### Memory: 5,940 KB, Time: 4 ms
 ```c++
 // https://www.acmicpc.net/problem/9251
 #include <bits/stdc++.h>
@@ -358,7 +351,6 @@ int main(void)
 * [[BOJ] LCS 2](https://www.acmicpc.net/problem/9252) [(소스코드)](./src/lcs_2.cpp) - LCS를 구한 방법의 반대로 역추적
     1. `a[i]==b[j]`: `i-1, j-1`로 이동
     2. `a[i]!=b[j]`: `c[i][j-1]`와 `c[i-1][j]` 두 값을 비교해 더 큰 방향으로 이동
-###### Memory:  KB, Time:  ms
 ```c++
 // https://www.acmicpc.net/problem/9252
 #include <bits/stdc++.h>
@@ -430,7 +422,6 @@ int main(void)
     LCS(A,B,C)     : df
     ```
     * 따라서 LCS 계산 시 세 문자열을 동시에 사용해야 함
-###### Memory: 6,048 KB, Time: 4 ms
 ```c++
 // https://www.acmicpc.net/problem/1958
 #include <bits/stdc++.h>

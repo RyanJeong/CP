@@ -21,7 +21,6 @@
 
 ### 연습문제
 * [[BOJ] 동전 0](https://www.acmicpc.net/problem/11047) [(소스코드)](./src/coin.cpp)
-###### Memory: 2,020 KB, Time: 0 ms
 ```c++
 // https://www.acmicpc.net/problem/11047
 #include <bits/stdc++.h>
@@ -61,7 +60,6 @@ int main(void)
 ```
 
 * [[BOJ] 회의실 배정](https://www.acmicpc.net/problem/1931) [(소스코드)](./src/meeting_room.cpp) - Task Scheduling Problem
-###### Memory: 2,804 KB, Time: 28 ms
 ```c++
 // https://www.acmicpc.net/problem/1931
 #include <bits/stdc++.h>
@@ -106,7 +104,6 @@ int main(void)
 ```
 
 * [[BOJ] 로프](https://www.acmicpc.net/problem/2217) [(소스코드)](./src/rope.cpp)
-###### Memory: 2,804 KB, Time: 28 ms
 ```c++
 // https://www.acmicpc.net/problem/2217
 #include <bits/stdc++.h>

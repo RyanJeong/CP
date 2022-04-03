@@ -112,7 +112,6 @@ int main(void)
 
 ### 연습문제
 * [[BOJ] Dual Priority Queue](https://www.acmicpc.net/problem/7662) [(소스코드)](./src/exer1.cpp) - `set`을 이용한 양방향 Priority Queue 구현
-###### Memory: 17,600 KB, Time: 1,524 ms
 ```c++
 // https://www.acmicpc.net/problem/7662
 #include <bits/stdc++.h>

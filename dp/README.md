@@ -43,7 +43,6 @@
 
 ### 연습문제
 * [[BOJ] 1로 만들기](https://www.acmicpc.net/problem/1463) [(소스코드)](./src/1.cpp)
-###### Memory: 5,928 KB, Time: 4 ms
 ```c++
 // https://www.acmicpc.net/problem/1463
 #include <bits/stdc++.h>
@@ -98,7 +97,6 @@ int main(void)
 ```
 
 * [[BOJ] Adding 1s, 2s, and 3s](https://www.acmicpc.net/problem/9095) [(소스코드)](./src/adding_1_2_3.cpp)
-###### Memory: 2,020 KB, Time: 0 ms
 ```c++
 // https://www.acmicpc.net/problem/9095
 #include <bits/stdc++.h>
@@ -151,7 +149,6 @@ int main(void)
 ```
 
 * [[BOJ] 계단 오르기](https://www.acmicpc.net/problem/2579) [(소스코드)](./src/stair.cpp)
-###### Memory: 2,020 KB, Time: 0 ms
 ```c++
 // https://www.acmicpc.net/problem/2579
 #include <bits/stdc++.h>
@@ -204,7 +201,6 @@ int main(void)
 ```
 
 * [[BOJ] RGB거리](https://www.acmicpc.net/problem/1149) [(소스코드)](./src/rgb1.cpp)
-###### Memory: 2,020 KB, Time: 0 ms
 ```c++
 // https://www.acmicpc.net/problem/1149
 #include <bits/stdc++.h>
@@ -245,7 +241,6 @@ int main(void)
 ```
 
 * [[BOJ] 2×n 타일링](https://www.acmicpc.net/problem/11726) [(소스코드)](./src/2_by_n.cpp)
-###### Memory: 2,020 KB, Time: 0 ms
 ![dp](./img/dp_1.png)
 ```c++
 // https://www.acmicpc.net/problem/11726
@@ -284,7 +279,6 @@ int main(void)
 }
 ```
 * [[BOJ] 1로 만들기 2](https://www.acmicpc.net/problem/12852) [(소스코드)](./src/1_2.cpp)
-###### Memory: 9,832 KB, Time: 8 ms
 ```c++
 // https://www.acmicpc.net/problem/12852
 #include <bits/stdc++.h>
@@ -370,7 +364,6 @@ int main(void)
 
 ### 연습문제
 * [[BOJ] 구간 합 구하기 4](https://www.acmicpc.net/problem/11659) [(소스코드)](./src/prefix_sum_1d.cpp) - 1차원 배열에서의 구간 합
-###### Memory: 2,800 KB, Time: 40 ms
 ```c++
 // https://www.acmicpc.net/problem/11659
 #include <bits/stdc++.h>
@@ -401,7 +394,6 @@ int main(void)
 ```
 
 * [[BOJ] 구간 합 구하기 5](https://www.acmicpc.net/problem/11660) [(소스코드)](./src/prefix_sum_2d.cpp) - 2차원 배열에서의 구간 합
-###### Memory: 6,124 KB, Time: 124 ms
 ```c++
 // https://www.acmicpc.net/problem/11660
 #include <bits/stdc++.h>
@@ -444,7 +436,6 @@ int main(void)
 
 ### 연습문제
 * [[BOJ] 계단 수](https://www.acmicpc.net/problem/1562) [(소스코드)](./src/step.cpp)
-###### Memory: 6,248 KB, Time: 8 ms
 ```c++
 // https://www.acmicpc.net/problem/1562
 #include <bits/stdc++.h>
@@ -506,12 +497,10 @@ int req(int i, int d, int b)
 
 ### 연습문제
 * [[BOJ] 평범한 배낭](https://www.acmicpc.net/problem/12865) [(소스코드)](./src/knapsack.cpp)
-###### Memory:  KB, Time:  ms
 ```c++
 ```
 
 * [[BOJ] 평범한 배낭2](https://www.acmicpc.net/problem/12920) [(소스코드)](./src/knapsack2.cpp)
-###### Memory:  KB, Time:  ms
 ```c++
 ```
 

@@ -319,7 +319,6 @@
 
 ### 연습문제
 * [[BOJ] 연결 요소의 개수](https://www.acmicpc.net/problem/11724)<br>[(소스코드 - BFS)](./src/exam1_bfs.cpp)<br>[(소스코드 - DFS 비재귀 I)](./src/exam1_dfs1.cpp)<br>[(소스코드 - DFS 비재귀 II)](./src/exam1_dfs2.cpp)<br>[(소스코드 - DFS 재귀)](./src/exam1_dfs_rec.cpp) - 추천
-###### Memory: 6,392 KB, Time: 100 ms
 ```c++
 // BFS
 #include <bits/stdc++.h>
@@ -371,7 +370,6 @@ int main(void)
 }
 ```
 
-###### Memory: 6,392 KB, Time: 100 ms
 ```c++
 // DFS 1 - BFS 유사 동작 
 #include <bits/stdc++.h>
@@ -423,7 +421,6 @@ int main(void)
 }
 ```
 
-###### Memory: 8,248 KB, Time: 100 ms
 ```c++
 // DFS 2 - 일반적인 DFS 동작
 #include <bits/stdc++.h>
@@ -477,7 +474,6 @@ int main(void)
 }
 ```
 
-###### Memory: 6,388 KB, Time: 92 ms
 ```c++
 // DFS Rec.
 #include <bits/stdc++.h>
