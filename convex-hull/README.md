@@ -323,11 +323,11 @@ int64_t CalcSqDist(const pair<int, int>& s,
         1. 외적 결과가 양수라면 해당 점은 도형 외부에 있는 것이다.
         2. 외적 결과가 양수라면 해당 점은 도형 내부에, 0이라면 해당 점은 도형 경계에 걸처있는 것이다.
 
-    <img src="./img/is_inside1.jpg" width="60%" height="60%">
-    <img src="./img/is_inside2.jpg" width="60%" height="60%">
-    <img src="./img/is_inside3.jpg" width="60%" height="60%">
-    <img src="./img/is_inside4.jpg" width="60%" height="60%">
-    <img src="./img/is_inside5.jpg" width="60%" height="60%">
+    <img src="./img/is_inside1.jpg" width="75%" height="75%">
+    <img src="./img/is_inside2.jpg" width="75%" height="75%">
+    <img src="./img/is_inside3.jpg" width="75%" height="75%">
+    <img src="./img/is_inside4.jpg" width="75%" height="75%">
+    <img src="./img/is_inside5.jpg" width="75%" height="75%">
 
 ### 연습문제
 * [[BOJ] JABUKE](https://www.acmicpc.net/problem/2987) [(소스코드)](./src/jabuke.cc)
