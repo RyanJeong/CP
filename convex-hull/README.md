@@ -1,4 +1,4 @@
-# [WIP] Convex Hull
+# Convex Hull
 * 추천 문제 - Convex Hull
   * [[BOJ] Convex Hull of Lattice Points](https://www.acmicpc.net/problem/2699) [(소스코드)](./src/convex_hull_of_lattice_points.cc) - Convex Hull 동작 방식 이해를 바탕으로 응용하는 문제
   * [[BOJ] Building the Moat](https://www.acmicpc.net/problem/6194) [(소스코드)](./src/building_the_moat.cc) - Convex Hull 알고리즘을 사용해 구한 다각형의 둘레를 계산하는 문제(1)
@@ -17,7 +17,8 @@
 ---
 
 * 추천 문제 - Point in Convex Polygon
-  * [[BOJ] JABUKE](https://www.acmicpc.net/problem/2987) [(소스코드)](./src/jabuke.cc) - 삼각형 내부에 점의 존재 유무 판별 문제
+  * [[BOJ] JABUKE](https://www.acmicpc.net/problem/2987) [(소스코드)](./src/jabuke.cc) - 삼각형 내 점의 존재 유무 판별 문제
+  * [[BOJ] 미스테리 싸인](https://www.acmicpc.net/problem/20670) [(소스코드)](./src/m_sign.cc) - 다각형 내 점의 존재 유무 판별 문제
 
 ---
 
@@ -117,9 +118,9 @@ bool CmpCcw(const pair<int, int>& s,
   return dist1 < dist2;
 }
 
-/* ccw         : pos.
-   on the line : 0
-   cw          : neg. */
+// ccw         : pos.
+// on the line : 0
+// cw          : neg.
 int64_t CalcCcw(const pair<int, int>& a,
                 const pair<int, int>& b,
                 const pair<int, int>& c) {
@@ -287,9 +288,9 @@ bool CmpCcw(const pair<int, int>& s,
   return dist1 < dist2;
 }
 
-/* ccw         : pos.
-   on the line : 0
-   cw          : neg. */
+// ccw         : pos.
+// on the line : 0
+// cw          : neg.
 int64_t CalcCcw(const pair<int, int>& a,
                 const pair<int, int>& b,
                 const pair<int, int>& c) {
@@ -372,8 +373,8 @@ int64_t CalcCcw(const pair<int, int>&,
                 const pair<int, int>&);
 int64_t CalcSqDist(const pair<int, int>&,
                    const pair<int, int>&);
-bool IsInside(const vector<pair<int, int>>&,
-              const pair<int, int>&);
+int64_t PointInPolygon(const vector<pair<int, int>>& convex_hull,
+                       const pair<int, int>&);
 
 int main() {
   CP;
@@ -403,12 +404,12 @@ int main() {
 
   int m;
   cin >> m;
-  // Determine if a point is inside a shape
+  // Determine if a point is inside a polygon
   int cnt = 0;
   while (m--) {
     static pair<int, int> p;
     cin >> p.first >> p.second;
-    if (!IsInside(convex_hull, p))
+    if (PointInPolygon(convex_hull, p) > 0)
       continue;
     ++cnt;
   }
@@ -468,15 +469,18 @@ int64_t CalcSqDist(const pair<int, int>& s,
   return diff_x * diff_x + diff_y * diff_y;
 }
 
-bool IsInside(const vector<pair<int, int>>& convex_hull,
-              const pair<int, int>& p) {
+// the value of return is positive: outside of the polygon
+// the value of return is zero: lie on the line of the polygon
+// the value of return is negative: inside of the polygon
+int64_t PointInPolygon(const vector<pair<int, int>>& convex_hull,
+                       const pair<int, int>& p) {
   // check right-side
   if (CalcCcw(convex_hull.front(), convex_hull[1], p) < 0)
-    return false;
+    return 1;
 
   // check left-side
   if (CalcCcw(convex_hull.front(), convex_hull.back(), p) > 0)
-    return false;
+    return 1;
 
   // find a section which contains the point:
   // direction: ccw
@@ -496,8 +500,7 @@ bool IsInside(const vector<pair<int, int>>& convex_hull,
     }
   }
 
-  // result of ccw is positive: outside
-  return CalcCcw(convex_hull[idx], p, convex_hull[idx+1]) <= 0;
+  return CalcCcw(convex_hull[idx], p, convex_hull[idx+1]);
 }
 
 ```

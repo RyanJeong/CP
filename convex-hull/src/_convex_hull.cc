@@ -93,9 +93,9 @@ bool CmpCcw(const pair<int, int>& s,
   return dist1 < dist2;
 }
 
-/* ccw         : pos.
-   on the line : 0
-   cw          : neg. */
+// ccw         : pos.
+// on the line : 0
+// cw          : neg.
 int64_t CalcCcw(const pair<int, int>& a,
                 const pair<int, int>& b,
                 const pair<int, int>& c) {

@@ -167,4 +167,3 @@ int64_t PointInPolygon(const vector<pair<int, int>>& convex_hull,
 
   return CalcCcw(convex_hull[idx], p, convex_hull[idx+1]);
 }
-

@@ -16,7 +16,6 @@
 // iostream
 using std::cin;
 using std::cout;
-using std::fixed;
 
 // vector
 using std::vector;
@@ -44,45 +43,61 @@ int64_t PointInPolygon(const vector<pair<int, int>>& convex_hull,
 int main() {
   CP;
 
-  int n = 3;
-  vector<pair<int, int>> v(n);
-  for (auto& i : v)
+  int n, m, k;
+  cin >> n >> m >> k;
+  vector<pair<int, int>> v_a(n);
+  for (auto& i : v_a)
     cin >> i.first >> i.second;
-
   // find the point with the lowest y-coordinate. (v[0], starting_point)
-  sort(v.begin(), v.end(), CmpCoor);
-  starting_point = v.front();
+  sort(v_a.begin(), v_a.end(), CmpCoor);
+  starting_point = v_a.front();
   // the set of points must be sorted in increasing order of the angle they and
   // the point P make with the x-axis
-  sort(v.begin() + 1, v.end(), CmpCcw);
+  sort(v_a.begin() + 1, v_a.end(), CmpCcw);
 
   // Graham's scan
-  vector<pair<int, int>> convex_hull;
-  for (const auto& p : v) {
-    while (convex_hull.size() >= 2) {
-      if (CalcCcw(convex_hull[convex_hull.size()-2], convex_hull.back(), p) > 0)
+  vector<pair<int, int>> convex_hull_a;
+  for (const auto& p : v_a) {
+    while (convex_hull_a.size() >= 2) {
+      if (CalcCcw(
+          convex_hull_a[convex_hull_a.size()-2], convex_hull_a.back(), p) > 0)
         break;
-      convex_hull.pop_back();
+      convex_hull_a.pop_back();
     }
-    convex_hull.push_back(p);
+    convex_hull_a.push_back(p);
   }
 
-  int m;
-  cin >> m;
+  vector<pair<int, int>> v_b(m);
+  for (auto& i : v_b)
+    cin >> i.first >> i.second;
+  sort(v_b.begin(), v_b.end(), CmpCoor);
+  starting_point = v_b.front();
+  sort(v_b.begin() + 1, v_b.end(), CmpCcw);
+  vector<pair<int, int>> convex_hull_b;
+  for (const auto& p : v_b) {
+    while (convex_hull_b.size() >= 2) {
+      if (CalcCcw(
+          convex_hull_b[convex_hull_b.size()-2], convex_hull_b.back(), p) > 0)
+        break;
+      convex_hull_b.pop_back();
+    }
+    convex_hull_b.push_back(p);
+  }
+
   // Determine if a point is inside a polygon
   int cnt = 0;
-  while (m--) {
+  while (k--) {
     static pair<int, int> p;
     cin >> p.first >> p.second;
-    if (PointInPolygon(convex_hull, p) > 0)
+    if (PointInPolygon(convex_hull_a, p) < 0 &&
+        PointInPolygon(convex_hull_b, p) > 0)
       continue;
     ++cnt;
   }
-  cout << fixed;
-  cout.precision(1);
-  cout << static_cast<double>(CalcCcw(
-      convex_hull[0], convex_hull[1], convex_hull[2])) / 2 << '\n';
-  cout << cnt;
+  if (cnt)
+    cout << cnt;
+  else
+    cout << "YES";
 
   return 0;
 }
@@ -112,9 +127,9 @@ bool CmpCcw(const pair<int, int>& s,
   return dist1 < dist2;
 }
 
-/* ccw         : pos.
-   on the line : 0
-   cw          : neg. */
+// ccw         : pos.
+// on the line : 0
+// cw          : neg.
 int64_t CalcCcw(const pair<int, int>& a,
                 const pair<int, int>& b,
                 const pair<int, int>& c) {
@@ -167,4 +182,3 @@ int64_t PointInPolygon(const vector<pair<int, int>>& convex_hull,
 
   return CalcCcw(convex_hull[idx], p, convex_hull[idx+1]);
 }
-
