@@ -148,16 +148,20 @@ bool IsInside(const vector<pair<int, int>>& convex_hull,
   // direction: ccw
   // low: right-side
   // high: left-side
+  // idx: 1, For the case where the point lies on the line(a vector from 0 to 1)
   int low = 1;
-  int high = convex_hull.size() - 1;
+  int high = convex_hull.size();  // [low, high)
+  int idx = 1;
   while (low < high) {
     int mid = (low + high) / 2;
-    if (CalcCcw(convex_hull.front(), convex_hull[mid], p) >= 0)
+    if (CalcCcw(convex_hull.front(), convex_hull[mid], p) > 0) {
+      idx = mid;
       low = mid + 1;
-    else
+    } else {
       high = mid;
+    }
   }
 
   // result of ccw is positive: outside
-  return CalcCcw(convex_hull[low-1], p, convex_hull[low]) <= 0;
+  return CalcCcw(convex_hull[idx], p, convex_hull[idx+1]) <= 0;
 }
