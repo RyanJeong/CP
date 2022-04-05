@@ -1,5 +1,6 @@
 # [WIP] String
 * 추천 문제 - 문자열
+  * [[BOJ] 시간복잡도를 배운 도도](https://www.acmicpc.net/problem/24510) [(소스코드)](./src/time_complexity.cc) - `length()`의 반환 타입에 의해 오버플로우 발생을 주의해야 함
   * [[BOJ] IOIOI (IOIOI)](https://www.acmicpc.net/problem/5525) [(소스코드)](./src/ioioi.cc) - 문자열 구현
   * [[BOJ] Mirror, Mirror](https://www.acmicpc.net/problem/4740) [(소스코드)](./src/mirror.cpp) - `getline()`
   * [[BOJ] IZBORNIK](https://www.acmicpc.net/problem/1283) [(소스코드)](./src/izbornik.cpp) - `getline()`, `stringstream` 사용 방법
