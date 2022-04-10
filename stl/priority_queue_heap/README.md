@@ -20,7 +20,7 @@
   * [[BOJ] 강의실 배정](https://www.acmicpc.net/problem/11000) [(소스코드)](./src/210710_class.cpp)
   * [[BOJ] 싸지방에 간 준하](https://www.acmicpc.net/problem/12764) [(소스코드)](./src/army_internet_cafe.cpp) 
   * [[BOJ] 강의실 배정](https://www.acmicpc.net/problem/11000) 응용, 각 객체의 사용빈도를 같이 구해야 하는 문제
-  * [[BOJ] 문제집](https://www.acmicpc.net/problem/1766) [(소스코드)](./src/210721_textbook.cpp)
+  * [[BOJ] 문제집](https://www.acmicpc.net/problem/1766) [(소스코드)](./src/textbook.cc)
   * [[BOJ] 화장실의 규칙](https://www.acmicpc.net/problem/19640) [(소스코드)](./src/210710_restroom.cpp) - 비교연산 직접 구현한 예
   * [[BOJ] 문제 추천 시스템 Version 1](https://www.acmicpc.net/problem/21939) [(소스코드)](./src/recommendation1.cpp) - 힙 중간 요소를 제거해야 할 경우
   * [[BOJ] Supermarket](https://www.acmicpc.net/problem/2109) [(소스코드)](./src/supermarket.cpp) - 그리디, 우선 순위 큐에 조건을 만족하는 요소를 넣은 뒤, 요소의 크기가 범위를 넘어가면 가장 작은 요소부터 차례대로 제거
