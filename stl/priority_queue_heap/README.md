@@ -17,7 +17,7 @@
   * [[BOJ] 최소 힙](https://www.acmicpc.net/problem/1927) [(소스코드)](./src/min_heap.cc) - `priority_queue<T, vector<T>, greater<T>>`
   * [[BOJ] Running Median](https://www.acmicpc.net/problem/2696) [(소스코드)](./src/median.cpp)
   * [[BOJ] N번째 큰 수](https://www.acmicpc.net/problem/2075) [(소스코드)](./src/nth.cc)
-  * [[BOJ] 강의실 배정](https://www.acmicpc.net/problem/11000) [(소스코드)](./src/210710_class.cpp)
+  * [[BOJ] 강의실 배정](https://www.acmicpc.net/problem/11000) [(소스코드)](./src/class.cc)
   * [[BOJ] 싸지방에 간 준하](https://www.acmicpc.net/problem/12764) [(소스코드)](./src/army_internet_cafe.cpp) 
   * [[BOJ] 강의실 배정](https://www.acmicpc.net/problem/11000) 응용, 각 객체의 사용빈도를 같이 구해야 하는 문제
   * [[BOJ] 문제집](https://www.acmicpc.net/problem/1766) [(소스코드)](./src/textbook.cc)
