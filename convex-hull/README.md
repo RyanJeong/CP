@@ -19,6 +19,7 @@
 * 추천 문제 - Point in Convex Polygon
   * [[BOJ] JABUKE](https://www.acmicpc.net/problem/2987) [(소스코드)](./src/jabuke.cc) - 삼각형 내 점의 존재 유무 판별 문제
   * [[BOJ] 미스테리 싸인](https://www.acmicpc.net/problem/20670) [(소스코드)](./src/m_sign.cc) - 다각형 내 점의 존재 유무 판별 문제
+  * [[WIP][BOJ] Separate Points](https://www.acmicpc.net/problem/3878) [(소스코드)](./src/separate_points.cc) - 다각형 내 점의 존재 유무 판별 문제 + 선분 교차 판정
 
 ---
 

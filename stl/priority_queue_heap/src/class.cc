@@ -47,7 +47,7 @@ int main() {
   priority_queue<int, vector<int>, greater<int>> pq;
   pq.push(-1);
   for (const auto& i : v) {
-    auto& cur = pq.top();
+    auto cur = pq.top();
     if (i.first >= cur)
       pq.pop();
     pq.push(i.second);
