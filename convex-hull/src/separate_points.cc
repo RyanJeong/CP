@@ -25,6 +25,7 @@ using std::pair;
 
 // algorithm
 using std::sort;
+using std::swap;
 
 pair<int, int> starting_point;
 
@@ -39,6 +40,9 @@ int64_t CalcSqDist(const pair<int, int>&,
                    const pair<int, int>&);
 int64_t PointInPolygon(const vector<pair<int, int>>& convex_hull,
                        const pair<int, int>&);
+bool IsDisjoint(int, int, int, int);
+bool IsIntersect(const pair<int, int>&, const pair<int, int>&,
+                 const pair<int, int>&, const pair<int, int>&);
 
 int main() {
   CP;
@@ -54,46 +58,17 @@ int main() {
     vector<pair<int, int>> v2(m);
     for (auto& i : v2)
       cin >> i.first >> i.second;
+
     if (!n || !m) {
       cout << "YES\n";
       continue;
     }
-    if (n == 1 && m == 1) {
-      if (v1[0].first == v2[0].first &&
-          v1[0].second == v2[0].second)
-        cout << "NO\n";
-      else
-        cout << "YES\n";
-      continue;
-    }
-    if (n == 1 && m == 2) {
-      if (v1[0].first == v2[0].first &&
-          v1[0].second == v2[0].second ||
-          v1[0].first == v2[1].first &&
-          v1[0].second == v2[1].second)
-        cout << "NO\n";
-      else if (CalcCcw({0, 0}, v2[0], v1[0]) ==
-          CalcCcw({0, 0}, v1[0], v2[1]))
-        cout << "NO\n";
-      else
-        cout << "YES\n";
-      continue;
-    }
-    if (n == 2 && m == 1) {
-      if (v1[0].first == v2[0].first &&
-          v1[0].second == v2[0].second ||
-          v1[1].first == v2[0].first &&
-          v1[1].second == v2[0].second)
-        cout << "NO\n";
-      else if (CalcCcw({0, 0}, v1[0], v2[0]) ==
-          CalcCcw({0, 0}, v2[0], v1[1]))
-        cout << "NO\n";
-      else
-        cout << "YES\n";
-      continue;
-    }
-    if (n == 2 && m == 2) {
-
+    if (n < 3 && m < 3) {
+      if (n == 1)
+        v1[1] = v1.front();
+      if (m == 1)
+        v2[1] = v2.front();
+      cout << (IsIntersect(v1[0], v1[1], v2[0], v2[1]) ? "NO\n" : "YES\n");
       continue;
     }
 
@@ -103,7 +78,6 @@ int main() {
     sort(v2.begin(), v2.end(), CmpCoor);
     starting_point = v2.front();
     sort(v2.begin() + 1, v2.end(), CmpCcw);
-
     vector<pair<int, int>> convex_hull1;
     for (const auto& p : v1) {
       while (convex_hull1.size() >= 2) {
@@ -227,4 +201,28 @@ int64_t PointInPolygon(const vector<pair<int, int>>& convex_hull,
   }
 
   return CalcCcw(convex_hull[idx], p, convex_hull[idx+1]);
+}
+
+// check whether [a, b] and [c, d] are intersect
+bool IsDisjoint(int a, int b, int c, int d) {
+  if (a > b)
+    swap(a, b);
+  if (c > d)
+    swap(c, b);
+
+  return b < c || d < a;
+}
+
+bool IsIntersect(const pair<int, int>& a, const pair<int, int>& b,
+                 const pair<int, int>& c, const pair<int, int>& d) {
+  int64_t ab = CalcCcw(a, b, c) * CalcCcw(a, b, d);
+  int64_t cd = CalcCcw(c, d, a) * CalcCcw(c, d, b);
+
+  // point a, b, c, d are lie on the same line
+  if (!ab && !cd) {
+    return !IsDisjoint(a.first, b.first, c.first, d.first) &&
+           !IsDisjoint(a.second, b.second, c.second, d.second);
+  }
+
+  return ab <= 0 && cd <= 0;
 }
