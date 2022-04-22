@@ -45,7 +45,6 @@ Resources for competitive programming
 * [Dijkstra](/dijkstra/)
 * [String](/string/)
 * [Convex Hull](/convex-hull/)
-* [[WIP]Rotating Calipers](#)
 ---
 * [Fast IO](./fastio/)
 * [Library](/library/)
