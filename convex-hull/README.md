@@ -16,10 +16,11 @@
 
 ---
 
-* 추천 문제 - Point in Convex Polygon
+* [WIP]추천 문제 - Point in Convex Polygon
   * [[BOJ] JABUKE](https://www.acmicpc.net/problem/2987) [(소스코드)](./src/jabuke.cc) - 삼각형 내 점의 존재 유무 판별 문제
-  * [[BOJ] 미스테리 싸인](https://www.acmicpc.net/problem/20670) [(소스코드)](./src/m_sign.cc) - 다각형 내 점의 존재 유무 판별 문제
-  * [[WIP][BOJ] Separate Points](https://www.acmicpc.net/problem/3878) [(소스코드)](./src/separate_points.cc) - 다각형 내 점의 존재 유무 판별 문제 + 선분 교차 판정
+  * [[BOJ] 미스테리 싸인](https://www.acmicpc.net/problem/20670) [(소스코드)](./src/m_sign.cc) - 다각형 내 점의 존재 유무 판별 문제 1
+  * [[BOJ] Saint John Festival](https://www.acmicpc.net/problem/11686) [(소스코드)](./src/saint_john_festival.cc) - 다각형 내 점의 존재 유무 판별 문제 2
+  * [[BOJ] Separate Points](https://www.acmicpc.net/problem/3878) [(소스코드)](./src/separate_points.cc) - 다각형 내 점의 존재 유무 판별 문제 + 선분 교차 판정
 
 ---
 
@@ -313,7 +314,8 @@ int64_t CalcSqDist(const pair<int, int>& s,
 
 ```
 
-## Point in Convex Polygon
+## [WIP]Point in Convex Polygon
+* 오류 수정: `idx = 0`, `그림`
 1. 컨벡스 헐을 통해 외각 점들을 구한다.
 2. 점이 컨벡스 헐 내에 존재하는지 판별한다:
 
