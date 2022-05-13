@@ -10,7 +10,6 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
 
 // iostream
 using std::cin;
@@ -19,41 +18,31 @@ using std::cout;
 // string
 using std::string;
 
-// vector
-using std::vector;
-
-template <typename T>
-vector<int> GetFail(const T& pattern);
+int gcd(int, int);
+int lcm(int, int);
 
 int main() {
   CP;
 
-  string str;
-  cin >> str;
-  auto res = GetFail(str);
-  for (int i = 0; i < str.length(); ++i) {
-    int len = i + 1;
-    if (len % (len - res[i]))
-      continue;
-    if (len / (len - res[i]) <= 1)
-      continue;
-    cout << len << ' ' << len / (len - res[i]) << '\n';
-  }
+  string s, t;
+  cin >> s >> t;
+  int it_s = lcm(s.size(), t.size()) / s.size();
+  string temp_s;
+  while (it_s--)
+    temp_s += s;
+  int it_t = lcm(s.size(), t.size()) / t.size();
+  string temp_t;
+  while (it_t--)
+    temp_t += t;
+  cout << (temp_s == temp_t) ? 1 : 0;
 
   return 0;
 }
 
-template <typename T>
-vector<int> GetFail(const T& p) {
-  vector<int> fail(p.size());
-  int j = 0;
-  for (int i = 1; i < p.size(); i++) {
-    while (j > 0 && p[i] != p[j])
-      j = fail[j-1];  // restore the idx
-    if (p[i] == p[j])
-      fail[i] = ++j;  // after j
-  }
-
-  return fail;
+int gcd(int a, int b) {
+  return (!b) ? a : gcd(b, a % b);
 }
 
+int lcm(int a, int b) {
+  return a / gcd(a, b) * b;  // escape overflow
+}
