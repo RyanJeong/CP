@@ -15,7 +15,7 @@
 * 추천 문제
   * [[BOJ] 최대 힙](https://www.acmicpc.net/problem/11279) [(소스코드)](./src/max_heap.cc) - `priority_queue<T>`
   * [[BOJ] 최소 힙](https://www.acmicpc.net/problem/1927) [(소스코드)](./src/min_heap.cc) - `priority_queue<T, vector<T>, greater<T>>`
-  * [[BOJ] Running Median](https://www.acmicpc.net/problem/2696) [(소스코드)](./src/median.cpp)
+  * [[BOJ] Running Median](https://www.acmicpc.net/problem/2696) [(소스코드)](./src/median.cc)
   * [[BOJ] N번째 큰 수](https://www.acmicpc.net/problem/2075) [(소스코드)](./src/nth.cc)
   * [[BOJ] 강의실 배정](https://www.acmicpc.net/problem/11000) [(소스코드)](./src/class.cc)
   * [[BOJ] 싸지방에 간 준하](https://www.acmicpc.net/problem/12764) [(소스코드)](./src/army_internet_cafe.cpp) 
