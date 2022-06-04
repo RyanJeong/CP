@@ -1,28 +1,29 @@
 # Binary Search
 * 추천 문제 - 이분 탐색
-    * [[BOJ] 좌표 압축](https://www.acmicpc.net/problem/18870) [(소스코드)](./src/compress.cpp)
-    * [[BOJ] 세 수의 합](https://www.acmicpc.net/problem/2295) [(소스코드)](./src/sum_nums.cpp)
-    * [[BOJ] 두 배열의 합](https://www.acmicpc.net/problem/2143) [(소스코드)](./src/matrix.cpp)
-    * [[프로그래머스] 줄 서는 방법](https://programmers.co.kr/learn/courses/30/lessons/12936) [(소스코드)](./src/line.cpp) - 줄 서는 방법의 시간복잡도(`next_permutation()`)는 <b>O(<i>n</i>!)</b>이며, 이를 줄일 수 있는 방법
+  * [[BOJ] Square Integer](https://www.acmicpc.net/problem/2417) [(소스코드)](./src/sqrt_int.cc) - 처음 조건을 만족하는 값을 이분탐색을 통해 찾는 문제
+  * [[BOJ] 좌표 압축](https://www.acmicpc.net/problem/18870) [(소스코드)](./src/compress.cpp)
+  * [[BOJ] 세 수의 합](https://www.acmicpc.net/problem/2295) [(소스코드)](./src/sum_nums.cpp)
+  * [[BOJ] 두 배열의 합](https://www.acmicpc.net/problem/2143) [(소스코드)](./src/matrix.cpp)
+  * [[프로그래머스] 줄 서는 방법](https://programmers.co.kr/learn/courses/30/lessons/12936) [(소스코드)](./src/line.cpp) - 줄 서는 방법의 시간복잡도(`next_permutation()`)는 <b>O(<i>n</i>!)</b>이며, 이를 줄일 수 있는 방법
 ---
 
 * 추천 문제 - 파라메트릭 서치
-    * [[BOJ] LJUBOMORA](https://www.acmicpc.net/problem/2792) [(소스코드)](./src/marble.cpp) - [low, high) 조건 내 이분 탐색, 최소 조건 찾기(`high=mid`)
-    * [[BOJ] 랜선 자르기](https://www.acmicpc.net/problem/1654) [(소스코드)](./src/lan_cable.cpp) - [low, high) 조건 내 이분 탐색, 최대 조건 찾기(`low=mid+1`)
-    * [[BOJ] 공유기 설치](https://www.acmicpc.net/problem/2110) [(소스코드)](./src/router.cpp) - [low, high) 조건 내 이분 탐색, 최대 조건 찾기(`low=mid+1`)
-    * [[BOJ] 휴게소 세우기](https://www.acmicpc.net/problem/1477) [(소스코드)](./src/rest_area.cpp) - [low, high) 조건 내 이분 탐색, 최대 중 최소 찾기(`low=mid+1`)
-        * <b>구간의 길이의 최댓값을 최소로</b> (`cnt>m`)
-        1. 구간의 길이의 최대값(`cnt==m`)
-            * `if (cnt>=m) {...}`: 현재 구간의 길이가 짧음(`cnt`의 값을 줄여야 함)
-            * `cnt`의 값을 줄이기 위해서는 구간 길이를 늘려야 함(`low=mid+1`)
-        2. 구간의 길이의 최대값을 최소로
-            * `cnt>=m`은 `cnt==m`일 경우에도(즉, 조건을 만족하는 길이임에도 불구하고) 구간 길이를 계속 확장함
-            * 따라서 <b>구간 길이 최대값을 최소로 하라</b>는 조건을 만족하기 위해서는 `cnt>m` 비교를 해야 함
-        3. 왜 `mid`가 답이 아닌, `mid+1`이 답인가?
-            * 최대 조건을 찾는 일반적인 문제에서는 조건 비교문이 `cnt>=m`과 같다. 이 경우에서는 `mid+1`이 답이 아닐 수 있기 때문에, `res`라는 별도의 변수를 할당해 `mid` 값만 넣어놓는 것이다. 
-            * 해당 문제는 조건 비교문이 `cnt>m`이며, `mid+1`이 답일 수밖에 없는 상황이다. 따라서 `mid+1`이 답이 된다.
-    * [[BOJ] 숫자 구슬](https://www.acmicpc.net/problem/2613) [(소스코드)](./src/bead.cpp) - [low, high) 조건 내 이분 탐색, 최대 중 최소 찾기(`low=mid+1`)
-    * [[BOJ] 공정 컨설턴트 호석](https://www.acmicpc.net/problem/22254) [(소스코드)](./src/factory.cpp) - [low, high) 조건 내 이분 탐색, 최소 조건 찾기(`high=mid`) + `priority_queue`
+  * [[BOJ] LJUBOMORA](https://www.acmicpc.net/problem/2792) [(소스코드)](./src/marble.cpp) - [low, high) 조건 내 이분 탐색, 최소 조건 찾기(`high=mid`)
+  * [[BOJ] 랜선 자르기](https://www.acmicpc.net/problem/1654) [(소스코드)](./src/lan_cable.cpp) - [low, high) 조건 내 이분 탐색, 최대 조건 찾기(`low=mid+1`)
+  * [[BOJ] 공유기 설치](https://www.acmicpc.net/problem/2110) [(소스코드)](./src/router.cpp) - [low, high) 조건 내 이분 탐색, 최대 조건 찾기(`low=mid+1`)
+  * [[BOJ] 휴게소 세우기](https://www.acmicpc.net/problem/1477) [(소스코드)](./src/rest_area.cpp) - [low, high) 조건 내 이분 탐색, 최대 중 최소 찾기(`low=mid+1`)
+    * <b>구간의 길이의 최댓값을 최소로</b> (`cnt>m`)
+    1. 구간의 길이의 최대값(`cnt==m`)
+      * `if (cnt>=m) {...}`: 현재 구간의 길이가 짧음(`cnt`의 값을 줄여야 함)
+      * `cnt`의 값을 줄이기 위해서는 구간 길이를 늘려야 함(`low=mid+1`)
+    2. 구간의 길이의 최대값을 최소로
+      * `cnt>=m`은 `cnt==m`일 경우에도(즉, 조건을 만족하는 길이임에도 불구하고) 구간 길이를 계속 확장함
+      * 따라서 <b>구간 길이 최대값을 최소로 하라</b>는 조건을 만족하기 위해서는 `cnt>m` 비교를 해야 함
+    3. 왜 `mid`가 답이 아닌, `mid+1`이 답인가?
+      * 최대 조건을 찾는 일반적인 문제에서는 조건 비교문이 `cnt>=m`과 같다. 이 경우에서는 `mid+1`이 답이 아닐 수 있기 때문에, `res`라는 별도의 변수를 할당해 `mid` 값만 넣어놓는 것이다. 
+      * 해당 문제는 조건 비교문이 `cnt>m`이며, `mid+1`이 답일 수밖에 없는 상황이다. 따라서 `mid+1`이 답이 된다.
+  * [[BOJ] 숫자 구슬](https://www.acmicpc.net/problem/2613) [(소스코드)](./src/bead.cpp) - [low, high) 조건 내 이분 탐색, 최대 중 최소 찾기(`low=mid+1`)
+  * [[BOJ] 공정 컨설턴트 호석](https://www.acmicpc.net/problem/22254) [(소스코드)](./src/factory.cpp) - [low, high) 조건 내 이분 탐색, 최소 조건 찾기(`high=mid`) + `priority_queue`
 ---
 
 ## 이분 탐색
