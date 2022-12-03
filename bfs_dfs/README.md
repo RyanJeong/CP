@@ -1,29 +1,29 @@
 # BFS & DFS
 * 추천 문제 - BFS
-    * [[BOJ] Counting Sheep](https://www.acmicpc.net/problem/11123) [(소스코드)](./src/sheep.cc) - 단순한 영역 개수 세기 문제 1
-    * [[BOJ] 전쟁 - 전투](https://www.acmicpc.net/problem/1303) [(소스코드)](./src/battle.cc) - 단순한 영역 개수 세기 문제 2
-    * [[BOJ] 쉬운 최단거리](https://www.acmicpc.net/problem/14940) [(소스코드)](./src/basic_min_dist.cc) - 단순한 영역 개수 세기 문제 3
-    * [[BOJ] 와드](https://www.acmicpc.net/problem/14940) [(소스코드)](./src/ward.cc) - 단순한 영역 개수 세기 문제 4
-    * [[BOJ] 미로 탐색](https://www.acmicpc.net/problem/2178) [(소스코드)](./src/maze.cc) - `int` 벡터를 사용한 BFS 최단경로 문제
-    * [[BOJ] koze](https://www.acmicpc.net/problem/3187) [(소스코드)](./src/koze.cc) - `bool` 벡터를 사용한 BFS 기본 응용문제
-    * [[BOJ] 점프 게임](https://www.acmicpc.net/problem/15558) [(소스코드)](./src/jumping_game.cc) - 단계 별 BFS 순회
-    * [[BOJ] 영역 구하기](https://www.acmicpc.net/problem/2583) [(소스코드)](./src/area.cc) - 2차원 평면 상에 분리되어 있는 영역의 수와 크기 구하기
-    * [[BOJ] 토마토](https://www.acmicpc.net/problem/7576) [(소스코드)](./src/tomato.cc) - 최단경로 문제 응용 (이동 불가능한 조건)
-    * [[BOJ] Elevator Trouble](https://www.acmicpc.net/problem/5014) [(소스코드)](./src/elevator.cc) - 1차원 BFS 최단경로 문제
-    * [[BOJ] 벽 부수고 이동하기 4](https://www.acmicpc.net/problem/16946) [(소스코드)](./src/wall4.cc) - 영역 수를 미리 계산해 시간복잡도 줄이기
+  * [[BOJ] Counting Sheep](https://www.acmicpc.net/problem/11123) [(소스코드)](./src/sheep.cc) - 단순한 영역 개수 세기 문제 1
+  * [[BOJ] 전쟁 - 전투](https://www.acmicpc.net/problem/1303) [(소스코드)](./src/battle.cc) - 단순한 영역 개수 세기 문제 2
+  * [[BOJ] 쉬운 최단거리](https://www.acmicpc.net/problem/14940) [(소스코드)](./src/basic_min_dist.cc) - 단순한 영역 개수 세기 문제 3
+  * [[BOJ] 와드](https://www.acmicpc.net/problem/14940) [(소스코드)](./src/ward.cc) - 단순한 영역 개수 세기 문제 4
+  * [[BOJ] 미로 탐색](https://www.acmicpc.net/problem/2178) [(소스코드)](./src/maze.cc) - `int` 벡터를 사용한 BFS 최단경로 문제
+  * [[BOJ] koze](https://www.acmicpc.net/problem/3187) [(소스코드)](./src/koze.cc) - `bool` 벡터를 사용한 BFS 기본 응용문제
+  * [[BOJ] 점프 게임](https://www.acmicpc.net/problem/15558) [(소스코드)](./src/jumping_game.cc) - 단계 별 BFS 순회
+  * [[BOJ] 영역 구하기](https://www.acmicpc.net/problem/2583) [(소스코드)](./src/area.cc) - 2차원 평면 상에 분리되어 있는 영역의 수와 크기 구하기
+  * [[BOJ] 토마토](https://www.acmicpc.net/problem/7576) [(소스코드)](./src/tomato.cc) - 최단경로 문제 응용 (이동 불가능한 조건)
+  * [[BOJ] Elevator Trouble](https://www.acmicpc.net/problem/5014) [(소스코드)](./src/elevator.cc) - 1차원 BFS 최단경로 문제
+  * [[BOJ] 벽 부수고 이동하기 4](https://www.acmicpc.net/problem/16946) [(소스코드)](./src/wall4.cc) - 영역 수를 미리 계산해 시간복잡도 줄이기
 ---
 
 * 추천 문제 - DFS
-    * [[BOJ] DFS와 BFS](https://www.acmicpc.net/problem/1260) [(소스코드)](./src/210617_DFS_BFS.cpp)
-    * [[BOJ] 바이러스](https://www.acmicpc.net/problem/2606) [(소스코드)](./src/210617_DFS_virus.cpp)
-    * [[BOJ] 물통](https://www.acmicpc.net/problem/2251) [(소스코드)](./src/210617_DFS_bottle.cpp)
-    * [[BOJ] Letters](https://www.acmicpc.net/problem/1987) [(소스코드)](./src/210617_DFS_letters.cpp)
+  * [[BOJ] DFS와 BFS](https://www.acmicpc.net/problem/1260) [(소스코드)](./src/210617_DFS_BFS.cpp)
+  * [[BOJ] 바이러스](https://www.acmicpc.net/problem/2606) [(소스코드)](./src/210617_DFS_virus.cpp)
+  * [[BOJ] 물통](https://www.acmicpc.net/problem/2251) [(소스코드)](./src/210617_DFS_bottle.cpp)
+  * [[BOJ] Letters](https://www.acmicpc.net/problem/1987) [(소스코드)](./src/210617_DFS_letters.cpp)
 ---
 
 * 추천 문제 - 백트래킹
-    * [[BOJ] N-Queen](https://www.acmicpc.net/problem/9663) [(소스코드)](./backtracking/src/n_queen.cpp)
-    * [[BOJ] 비숍](https://www.acmicpc.net/problem/1799) [(소스코드)](./backtracking/src/210618_bishop.cpp)
-    * [[BOJ] Sudoku](https://www.acmicpc.net/problem/2239) [(소스코드)](./backtracking/src/210712_sudoku.cpp)
+  * [[BOJ] N-Queen](https://www.acmicpc.net/problem/9663) [(소스코드)](./backtracking/src/n_queen.cpp)
+  * [[BOJ] 비숍](https://www.acmicpc.net/problem/1799) [(소스코드)](./backtracking/src/210618_bishop.cpp)
+  * [[BOJ] Sudoku](https://www.acmicpc.net/problem/2239) [(소스코드)](./backtracking/src/210712_sudoku.cpp)
 ---
 
 ## BFS(Breadth-first search)
@@ -37,9 +37,9 @@
 
 1. `queue`로부터 정점 하나를 가져옴
 2. 정점의 근접 정점 조사:
-    1. 해당 정점이 범위를 벗어난다면, 그대로 조사 종료 
-    2. 해당 정점이 방문 상태라면, 그대로 조사 종료
-    3. 해당 정점이 방문 전 상태라면, 해당 정점을 `queue`에 넣음과 동시에 방문했음을 기록
+  1. 해당 정점이 범위를 벗어난다면, 그대로 조사 종료 
+  2. 해당 정점이 방문 상태라면, 그대로 조사 종료
+  3. 해당 정점이 방문 전 상태라면, 해당 정점을 `queue`에 넣음과 동시에 방문했음을 기록
 
 * 모든 정점이 `queue`에 한 번씩 들어가므로, 정점이 <i>N</i>개일 때의 시간 복잡도는 <b>O(<i>N</i>)</b>
 
@@ -122,9 +122,9 @@ int main() {
 * `stack`이 전부 비워질 때까지 아래 동작 반복: 
 1. `stack`으로부터 정점 하나를 가져옴
 2. 정점의 근접 조사:
-    1. 해당 정점이 범위를 벗어난다면, 그대로 종료
-    2. 해당 정점이 방문 상태라면, 그대로 조사 종료
-    3. 해당 정점이 방문 전 상태라면, 해당 정점을 `stack`에 넣음과 동시에 방문했음을 기록
+  1. 해당 정점이 범위를 벗어난다면, 그대로 종료
+  2. 해당 정점이 방문 상태라면, 그대로 조사 종료
+  3. 해당 정점이 방문 전 상태라면, 해당 정점을 `stack`에 넣음과 동시에 방문했음을 기록
 
 * 모든 정점이 `stack`에 한 번씩 들어가므로, 정점이 <i>N</i>개일 때의 시간 복잡도는 <b>O(<i>N</i>)</b>
 
