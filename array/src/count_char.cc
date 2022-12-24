@@ -11,23 +11,16 @@
 #include <iostream>
 #include <string>
 
-// iostream
-using std::cin;
-using std::cout;
-
-// string
-using std::string;
-
 int main() {
   CP;
 
-  string str;
-  cin >> str;
+  std::string str;
+  std::cin >> str;
   int arr[26] = { 0 };
   for (const char& c : str)
     ++arr[c-'a'];
   for (int i = 0; i < 26; ++i)
-    cout << arr[i] << ' ';
+    std::cout << arr[i] << ' ';
 
   return 0;
 }

@@ -10,10 +10,6 @@
 
 #include <iostream>
 
-// iostream
-using std::cin;
-using std::cout;
-
 int insert(int arr[], const int& cap, int* len, const int& idx, const int& val);
 int erase(int arr[], const int& cap, int* len, const int& idx);
 
@@ -22,43 +18,44 @@ int main() {
 
   const int kCap = 10;
   // An array that can store only positive numbers;
-  int arr[kCap] = { 1, 2, 4, 8, 16, 32 };
+  int arr[kCap] = {1, 2, 4, 8, 16, 32};
   int len = 0;
-  for (int i = 0; i < kCap; ++i)
+  for (int i = 0; i < kCap; ++i) {
     if (arr[i])
       ++len;
-  cout << "capacity: " << kCap << ",length: " << len << '\n';
+  }
+  std::cout << "capacity: " << kCap << ",length: " << len << '\n';
   for (int i = 0; i < len; ++i)
-    cout << arr[i] << ' ';
-  cout << '\n';
+    std::cout << arr[i] << ' ';
+  std::cout << '\n';
   // 1 2 4 8 16 32
 
   // insert
   insert(arr, kCap, &len, 0, 50);
-  cout << "capacity: " << kCap << ",length: " << len << '\n';
+  std::cout << "capacity: " << kCap << ",length: " << len << '\n';
   for (int i = 0; i < len; ++i)
-    cout << arr[i] << ' ';
-  cout << '\n';
+    std::cout << arr[i] << ' ';
+  std::cout << '\n';
   // 50 1 2 4 8 16 32
   insert(arr, kCap, &len, len, 60);
-  cout << "capacity: " << kCap << ",length: " << len << '\n';
+  std::cout << "capacity: " << kCap << ",length: " << len << '\n';
   for (int i = 0; i < len; ++i)
-    cout << arr[i] << ' ';
-  cout << '\n';
+    std::cout << arr[i] << ' ';
+  std::cout << '\n';
   // 50 1 2 4 8 16 32 60
 
   // erase
   erase(arr, kCap, &len, 1);
-  cout << "capacity: " << kCap << ",length: " << len << '\n';
+  std::cout << "capacity: " << kCap << ",length: " << len << '\n';
   for (int i = 0; i < len; ++i)
-    cout << arr[i] << ' ';
-  cout << '\n';
+    std::cout << arr[i] << ' ';
+  std::cout << '\n';
   // 50 2 4 8 16 32 60
   erase(arr, kCap, &len, len);
-  cout << "capacity: " << kCap << ",length: " << len << '\n';
+  std::cout << "capacity: " << kCap << ",length: " << len << '\n';
   for (int i = 0; i < len; ++i)
-    cout << arr[i] << ' ';
-  cout << '\n';
+    std::cout << arr[i] << ' ';
+  std::cout << '\n';
   // 50 2 4 8 16 32
 
   return 0;

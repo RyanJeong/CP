@@ -17,7 +17,7 @@
 ## 배열 특징
 * 배열의 요소 접근 시 시간복잡도는 <b>O(1)</b>
 * 배열의 요소 수정 시 시간복잡도는 <b>O(1)</b>
-* 배열은 연속된 메모리 공간을 사용하므로 캐시 지역성(cache locality) 증가에 따른 캐시 적중률(cache hit rate)가 높음
+* 배열은 연속된 메모리 공간을 사용하므로 캐시 지역성(cache locality) 증가에 따른 캐시 적중률(cache hit rate)이 높음
 * 추가적인 메모리가 발생하지 않음
 * 배열은 연속된 메모리 공간을 사용하므로 메모리 단편화(memory fragmentation)에 따른 할당 제약이 있을 수 있음
 
@@ -31,67 +31,52 @@
 
 ### [소스코드](./src/example.cpp)
 ```c++
-/*
-  Copyright 2022 Ryan M. Jeong <ryan.m.jeong@hotmail.com>
-*/
-
-// CP
-#define CP do {                     \
-  std::ios::sync_with_stdio(false); \
-  std::cin.tie(NULL);               \
-} while (0)
-
 #include <iostream>
-
-// iostream
-using std::cin;
-using std::cout;
 
 int insert(int arr[], const int& cap, int* len, const int& idx, const int& val);
 int erase(int arr[], const int& cap, int* len, const int& idx);
 
 int main() {
-  CP;
-
   const int kCap = 10;
   // An array that can store only positive numbers;
-  int arr[kCap] = { 1, 2, 4, 8, 16, 32 };
+  int arr[kCap] = {1, 2, 4, 8, 16, 32};
   int len = 0;
-  for (int i = 0; i < kCap; ++i)
+  for (int i = 0; i < kCap; ++i) {
     if (arr[i])
       ++len;
-  cout << "capacity: " << kCap << ",length: " << len << '\n';
+  }
+  std::cout << "capacity: " << kCap << ",length: " << len << '\n';
   for (int i = 0; i < len; ++i)
-    cout << arr[i] << ' ';
-  cout << '\n';
+    std::cout << arr[i] << ' ';
+  std::cout << '\n';
   // 1 2 4 8 16 32
 
   // insert
   insert(arr, kCap, &len, 0, 50);
-  cout << "capacity: " << kCap << ",length: " << len << '\n';
+  std::cout << "capacity: " << kCap << ",length: " << len << '\n';
   for (int i = 0; i < len; ++i)
-    cout << arr[i] << ' ';
-  cout << '\n';
+    std::cout << arr[i] << ' ';
+  std::cout << '\n';
   // 50 1 2 4 8 16 32
   insert(arr, kCap, &len, len, 60);
-  cout << "capacity: " << kCap << ",length: " << len << '\n';
+  std::cout << "capacity: " << kCap << ",length: " << len << '\n';
   for (int i = 0; i < len; ++i)
-    cout << arr[i] << ' ';
-  cout << '\n';
+    std::cout << arr[i] << ' ';
+  std::cout << '\n';
   // 50 1 2 4 8 16 32 60
 
   // erase
   erase(arr, kCap, &len, 1);
-  cout << "capacity: " << kCap << ",length: " << len << '\n';
+  std::cout << "capacity: " << kCap << ",length: " << len << '\n';
   for (int i = 0; i < len; ++i)
-    cout << arr[i] << ' ';
-  cout << '\n';
+    std::cout << arr[i] << ' ';
+  std::cout << '\n';
   // 50 2 4 8 16 32 60
   erase(arr, kCap, &len, len);
-  cout << "capacity: " << kCap << ",length: " << len << '\n';
+  std::cout << "capacity: " << kCap << ",length: " << len << '\n';
   for (int i = 0; i < len; ++i)
-    cout << arr[i] << ' ';
-  cout << '\n';
+    std::cout << arr[i] << ' ';
+  std::cout << '\n';
   // 50 2 4 8 16 32
 
   return 0;
