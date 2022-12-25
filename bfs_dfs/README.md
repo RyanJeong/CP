@@ -1,13 +1,16 @@
 # BFS & DFS
 * 추천 문제 - BFS
-    * [[BOJ] Counting Sheep](https://www.acmicpc.net/problem/11123) [(소스코드)](./src/sheep.cpp) - 단순한 영역 개수 세기 문제
-    * [[BOJ] 미로 탐색](https://www.acmicpc.net/problem/2178) [(소스코드)](./src/maze.cpp) - `int` 벡터를 사용한 BFS 최단경로 문제
-    * [[BOJ] koze](https://www.acmicpc.net/problem/3187) [(소스코드)](./src/koze.cpp) - `bool` 벡터를 사용한 BFS 기본 응용문제
-    * [[BOJ] 점프 게임](https://www.acmicpc.net/problem/15558) [(소스코드)](./src/210628_jumping_game.cpp) - 단계 별 BFS 순회
-    * [[BOJ] 영역 구하기](https://www.acmicpc.net/problem/2583) [(소스코드)](./src/area.cpp) - 2차원 평면 상에 분리되어 있는 영역의 수와 크기 구하기
-    * [[BOJ] 토마토](https://www.acmicpc.net/problem/7576) [(소스코드)](./src/tomato.cpp) - 최단경로 문제 응용 (이동 불가능한 조건)
-    * [[BOJ] Elevator Trouble](https://www.acmicpc.net/problem/5014) [(소스코드)](./src/210615_elevator.cpp) - 1차원 BFS 최단경로 문제
-    * [[BOJ] 벽 부수고 이동하기 4](https://www.acmicpc.net/problem/16946) [(소스코드)](./src/210709_wall4.cpp) - 영역 수를 미리 계산해 시간복잡도 줄이기
+    * [[BOJ] Counting Sheep](https://www.acmicpc.net/problem/11123) [(소스코드)](./src/sheep.cc) - 단순한 영역 개수 세기 문제 1
+    * [[BOJ] 전쟁 - 전투](https://www.acmicpc.net/problem/1303) [(소스코드)](./src/battle.cc) - 단순한 영역 개수 세기 문제 2
+    * [[BOJ] 쉬운 최단거리](https://www.acmicpc.net/problem/14940) [(소스코드)](./src/basic_min_dist.cc) - 단순한 영역 개수 세기 문제 3
+    * [[BOJ] 와드](https://www.acmicpc.net/problem/14940) [(소스코드)](./src/ward.cc) - 단순한 영역 개수 세기 문제 4
+    * [[BOJ] 미로 탐색](https://www.acmicpc.net/problem/2178) [(소스코드)](./src/maze.cc) - `int` 벡터를 사용한 BFS 최단경로 문제
+    * [[BOJ] koze](https://www.acmicpc.net/problem/3187) [(소스코드)](./src/koze.cc) - `bool` 벡터를 사용한 BFS 기본 응용문제
+    * [[BOJ] 점프 게임](https://www.acmicpc.net/problem/15558) [(소스코드)](./src/jumping_game.cc) - 단계 별 BFS 순회
+    * [[BOJ] 영역 구하기](https://www.acmicpc.net/problem/2583) [(소스코드)](./src/area.cc) - 2차원 평면 상에 분리되어 있는 영역의 수와 크기 구하기
+    * [[BOJ] 토마토](https://www.acmicpc.net/problem/7576) [(소스코드)](./src/tomato.cc) - 최단경로 문제 응용 (이동 불가능한 조건)
+    * [[BOJ] Elevator Trouble](https://www.acmicpc.net/problem/5014) [(소스코드)](./src/elevator.cc) - 1차원 BFS 최단경로 문제
+    * [[BOJ] 벽 부수고 이동하기 4](https://www.acmicpc.net/problem/16946) [(소스코드)](./src/wall4.cc) - 영역 수를 미리 계산해 시간복잡도 줄이기
 ---
 
 * 추천 문제 - DFS
@@ -47,71 +50,66 @@
 * `queue`에 입력되는 정점은 시작 정점으로부터 거리 순임을 보장
 
 ### 연습문제
-* [[BOJ] 그림](https://www.acmicpc.net/problem/1926) [(소스코드)](./src/canvas.cpp) - BFS 사용
+* [[BOJ] 그림](https://www.acmicpc.net/problem/1926) [(소스코드)](./src/canvas.cc) - BFS 사용
 ```c++
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <utility>
+#include <algorithm>
 
-using namespace std;
+int main() {
+  int r, c;
+  std::cin >> r >> c;
+  std::vector<std::vector<int>> v(r + 1, std::vector<int>(c + 1));
+  for (int i = 1; i <= r; ++i) {
+    for (int j = 1; j <= c; ++j)
+      std::cin >> v[i][j];
+  }
 
-int main(void)
-{
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
+  std::vector<std::vector<bool>> is_visited(r + 1, std::vector<bool>(c + 1));
+  std::vector<int> areas;
+  for (int i = 1; i <= r; ++i) {
+    for (int j = 1; j <= c; ++j) {
+      if (is_visited[i][j] || !v[i][j])
+        continue;
 
-    int n, m;
-    cin>>n>>m;
-    vector<vector<int>> v(n+1,vector<int>(m+1));
-    vector<vector<bool>> is_visited(n+1,vector<bool>(m+1));
-    for (int i = 1; i<=n; ++i) {
-        for (int j = 1; j<=m; ++j) {
-            cin>>v[i][j];
+      int area = 0;
+      std::queue<std::pair<int, int>> q;
+      q.push({i, j});
+      is_visited[i][j] = true;
+      while (!q.empty()) {
+        ++area;
+        auto cur = q.front();
+        q.pop();
+
+
+        // horizontally, vertically
+        const std::vector<std::pair<int, int>> kAdj = {
+          {1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+        for (auto d : kAdj) {
+          int y = cur.first + d.first;
+          int x = cur.second + d.second;
+
+          if (y < 1 || y > r)
+            continue;
+          if (x < 1 || x > c)
+            continue;
+          if (is_visited[y][x] || !v[y][x])
+            continue;
+          q.push({y, x});
+          is_visited[y][x] = true;
         }
+      }
+      areas.push_back(area);
     }
+  }
+  std::sort(areas.begin(), areas.end());
+  std::cout << areas.size() << '\n' << ((!areas.empty()) ? areas.back() : 0);
 
-    vector<int> areas;
-    for (int i = 1; i<=n; ++i) {
-        for (int j = 1; j<=m; ++j) {
-            if (is_visited[i][j] || !v[i][j]) {
-                continue;
-            }
-
-            int area = 0;
-            queue<pair<int, int>> q;
-            q.push({i,j});
-            is_visited[i][j]=true;
-            while (!q.empty()) {
-                ++area;
-                auto cur = q.front();
-                q.pop();
-
-                const vector<pair<int, int>> adjacency = {
-                    {1,0},{0,1},{-1,0},{0,-1} // horizontally, vertically
-                };
-                for (auto d : adjacency) {
-                    int x = cur.first+d.first;
-                    int y = cur.second+d.second;
-
-                    if (x<1 || x>n) {
-                        continue;
-                    }
-                    if (y<1 || y>m) {
-                        continue;
-                    }
-                    if (is_visited[x][y] || !v[x][y]) {
-                        continue;
-                    }
-                    q.push({x,y});
-                    is_visited[x][y]=true;
-                }
-            }
-            areas.push_back(area);
-        }
-    }
-    sort(areas.begin(),areas.end());
-    cout << areas.size()  << '\n' << ((!areas.empty()) ? areas.back() : 0);
-
-    return 0;
+  return 0;
 }
+
 ```
 ---
 
