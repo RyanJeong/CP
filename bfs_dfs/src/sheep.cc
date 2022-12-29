@@ -31,7 +31,7 @@ int main() {
     int res = 0;
     for (int i = 1; i <= r; ++i) {
       for (int j = 1; j <= c; ++j) {
-        if (v[i][j] == '.' || is_visited[i][j])
+        if (is_visited[i][j] || v[i][j] == '.')
           continue;
 
         ++res;
@@ -45,7 +45,7 @@ int main() {
           // horizontally, vertically
           const std::vector<std::pair<int, int>> kAdj = {
             {1, 0}, {0, 1}, {-1, 0}, {0, -1}};
-          for (auto d : kAdj) {
+          for (const auto& d : kAdj) {
             int y = cur.first + d.first;
             int x = cur.second + d.second;
 

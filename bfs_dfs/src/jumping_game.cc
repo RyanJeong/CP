@@ -37,7 +37,7 @@ int main() {
 
       const std::vector<std::pair<int, int>> jump_to = {
         {1, 1}, {1, -1}, {2, k}};
-      for (auto d : jump_to) {
+      for (const auto& d : jump_to) {
         int x = ((cur.first + d.first) & 1) + 1;  // 1->2, 2->1
         int y = cur.second + d.second;
 

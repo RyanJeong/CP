@@ -3,7 +3,7 @@
   * [[BOJ] Counting Sheep](https://www.acmicpc.net/problem/11123) [(소스코드)](./src/sheep.cc) - 단순한 영역 개수 세기 문제 1
   * [[BOJ] 전쟁 - 전투](https://www.acmicpc.net/problem/1303) [(소스코드)](./src/battle.cc) - 단순한 영역 개수 세기 문제 2
   * [[BOJ] 쉬운 최단거리](https://www.acmicpc.net/problem/14940) [(소스코드)](./src/basic_min_dist.cc) - 단순한 영역 개수 세기 문제 3
-  * [[BOJ] 와드](https://www.acmicpc.net/problem/14940) [(소스코드)](./src/ward.cc) - 단순한 영역 개수 세기 문제 4
+  * [[BOJ] 와드](https://www.acmicpc.net/problem/23747) [(소스코드)](./src/ward.cc) - 단순한 영역 개수 세기 문제 4
   * [[BOJ] 미로 탐색](https://www.acmicpc.net/problem/2178) [(소스코드)](./src/maze.cc) - `int` 벡터를 사용한 BFS 최단경로 문제
   * [[BOJ] koze](https://www.acmicpc.net/problem/3187) [(소스코드)](./src/koze.cc) - `bool` 벡터를 사용한 BFS 기본 응용문제
   * [[BOJ] 점프 게임](https://www.acmicpc.net/problem/15558) [(소스코드)](./src/jumping_game.cc) - 단계 별 BFS 순회
@@ -14,16 +14,15 @@
 ---
 
 * 추천 문제 - DFS
-  * [[BOJ] DFS와 BFS](https://www.acmicpc.net/problem/1260) [(소스코드)](./src/210617_DFS_BFS.cpp)
-  * [[BOJ] 바이러스](https://www.acmicpc.net/problem/2606) [(소스코드)](./src/210617_DFS_virus.cpp)
-  * [[BOJ] 물통](https://www.acmicpc.net/problem/2251) [(소스코드)](./src/210617_DFS_bottle.cpp)
-  * [[BOJ] Letters](https://www.acmicpc.net/problem/1987) [(소스코드)](./src/210617_DFS_letters.cpp)
+  * [[BOJ] 바이러스](https://www.acmicpc.net/problem/2606) [(소스코드)](./src/virus.cc)
+  * [[BOJ] 물통](https://www.acmicpc.net/problem/2251) [(소스코드)](./src/bottle.cc)
 ---
 
 * 추천 문제 - 백트래킹
-  * [[BOJ] N-Queen](https://www.acmicpc.net/problem/9663) [(소스코드)](./backtracking/src/n_queen.cpp)
-  * [[BOJ] 비숍](https://www.acmicpc.net/problem/1799) [(소스코드)](./backtracking/src/210618_bishop.cpp)
-  * [[BOJ] Sudoku](https://www.acmicpc.net/problem/2239) [(소스코드)](./backtracking/src/210712_sudoku.cpp)
+  * [[BOJ] N-Queen](https://www.acmicpc.net/problem/9663) [(소스코드)](./src/n_queen.cc)
+  * [[BOJ] 비숍](https://www.acmicpc.net/problem/1799) [(소스코드)](./src/bishop.cc)
+  * [[BOJ] Sudoku](https://www.acmicpc.net/problem/2239) [(소스코드)](./src/210712_sudoku.cpp)
+  * [[BOJ] Letters](https://www.acmicpc.net/problem/1987) [(소스코드)](./src/letters.cc)
 ---
 
 ## BFS(Breadth-first search)
@@ -87,7 +86,7 @@ int main() {
         // horizontally, vertically
         const std::vector<std::pair<int, int>> kAdj = {
           {1, 0}, {0, 1}, {-1, 0}, {0, -1}};
-        for (auto d : kAdj) {
+        for (const auto& d : kAdj) {
           int y = cur.first + d.first;
           int x = cur.second + d.second;
 
@@ -135,143 +134,151 @@ int main() {
 * <b>다차원 배열에서의 flood fill은 BFS, DFS 둘 다 가능하지만, 다차원 배열에서의 최단경로 찾기는 BFS만 가능하므로, 다차원 배열에서의 순회 문제는 주로 BFS만 사용됨</b>
 
 ### 연습문제
-* [[BOJ] 그림](https://www.acmicpc.net/problem/1926) [(소스코드)](./src/dfs_canvas.cpp) - DFS(stack) 사용
+* [[BOJ] 그림](https://www.acmicpc.net/problem/1926) [(소스코드)](./src/dfs_bfs1.cc) - DFS(stack) 사용
 ```c++
-// https://www.acmicpc.net/problem/1926
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <stack>
+#include <queue>
+#include <utility>
 
-using namespace std;
+void dfs(int n, int v);
+void bfs(int n, int v);
 
-int main(void)
-{
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
+std::vector<std::vector<int>> g;
+std::vector<bool> is_visited;
 
-    int n, m;
-    cin>>n>>m;
-    vector<vector<int>> v(n+1,vector<int>(m+1));
-    vector<vector<bool>> is_visited(n+1,vector<bool>(m+1));
-    for (int i = 1; i<=n; ++i) {
-        for (int j = 1; j<=m; ++j) {
-            cin>>v[i][j];
-        }
+int main() {
+  int n, m, v;
+  std::cin >> n >> m >> v;
+  g = std::vector<std::vector<int>>(n + 1, std::vector<int>(n + 1));
+  while (m--) {
+    int x, y;
+    std::cin >> x >> y;
+    g[x][y] = g[y][x] = 1;
+  }
+
+  dfs(n, v);
+  std::cout << '\n';
+  bfs(n, v);
+
+  return 0;
+}
+
+void dfs(int n, int v) {
+  std::stack<int> s;
+  s.push(v);
+  is_visited = std::vector<bool>(n + 1);
+  while (!s.empty()) {
+    auto cur = s.top();
+    s.pop();
+
+    if (is_visited[cur])
+      continue;
+    is_visited[cur] = true;
+    std::cout << cur << ' ';
+    // NOTICE: Search in reverse order considering the characteristics of the
+    //         stack
+    for (int i = n; i > 0; --i) {
+      if (is_visited[i])
+        continue;
+      if (!g[cur][i])
+        continue;
+      s.push(i);
     }
+  }
 
-    vector<int> areas;
-    for (int i = 1; i<=n; ++i) {
-        for (int j = 1; j<=m; ++j) {
-            if (is_visited[i][j] || !v[i][j]) {
-                continue;
-            }
+  return;
+}
 
-            int area = 0;
-            stack<pair<int, int>> s;
-            s.push({i,j});
-            is_visited[i][j]=true;
-            while (!s.empty()) {
-                ++area;
-                auto cur = s.top();
-                s.pop();
+void bfs(int n, int v) {
+  std::queue<int> q;
+  q.push(v);
+  is_visited = std::vector<bool>(n + 1);
+  is_visited[v] = true;
+  while (!q.empty()) {
+    auto cur = q.front();
+    q.pop();
 
-                const vector<pair<int, int>> adjacency = {
-                    {1,0},{0,1},{-1,0},{0,-1} // horizontally, vertically
-                };
-                for (auto d : adjacency) {
-                    int x = cur.first+d.first;
-                    int y = cur.second+d.second;
-
-                    if (x<1 || x>n) {
-                        continue;
-                    }
-                    if (y<1 || y>m) {
-                        continue;
-                    }
-                    if (is_visited[x][y] || !v[x][y]) {
-                        continue;
-                    }
-                    s.push({x,y});
-                    is_visited[x][y]=true;
-                }
-            }
-            areas.push_back(area);
-        }
+    std::cout << cur << ' ';
+    for (int i = 1; i <= n; ++i) {
+      if (is_visited[i])
+        continue;
+      if (!g[cur][i])
+        continue;
+      q.push(i);
+      is_visited[i] = true;
     }
-    sort(areas.begin(),areas.end());
-    cout << areas.size()  << '\n' << ((!areas.empty()) ? areas.back() : 0);
+  }
 
-    return 0;
+  return;
 }
 
 ```
-* [[BOJ] 그림](https://www.acmicpc.net/problem/1926) [(소스코드)](./src/dfs_rec_canvas.cpp) - DFS(recursion) 사용
+* [[BOJ] 그림](https://www.acmicpc.net/problem/1926) [(소스코드)](./src/dfs_bfs2.cc) - DFS(recursion) 사용
 ```c++
-// https://www.acmicpc.net/problem/1926
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <utility>
 
-using namespace std;
+void dfs(int n, int v);
 
-int dfs(int, int);
+std::vector<std::vector<int>> g;
+std::vector<bool> is_visited;
 
-vector<vector<int>> v;
-vector<vector<bool>> is_visited;
-vector<int> areas;
-int n, m;
+int main() {
+  int n, m, v;
+  std::cin >> n >> m >> v;
+  g = std::vector<std::vector<int>>(n + 1, std::vector<int>(n + 1));
+  while (m--) {
+    int x, y;
+    std::cin >> x >> y;
+    g[x][y] = g[y][x] = 1;
+  }
 
-int main(void)
-{
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
+  // dfs
+  is_visited = std::vector<bool>(n + 1);
+  dfs(n, v);
+  std::cout << '\n';
 
-    cin>>n>>m;
-    v=vector<vector<int>>(n+1,vector<int>(m+1));
-    is_visited=vector<vector<bool>>(n+1,vector<bool>(m+1));
-    for (int i = 1; i<=n; ++i) {
-        for (int j = 1; j<=m; ++j) {
-            cin>>v[i][j];
-        }
+  // bfs
+  std::queue<int> q;
+  q.push(v);
+  is_visited = std::vector<bool>(n + 1);
+  is_visited[v] = true;
+  while (!q.empty()) {
+    auto cur = q.front();
+    q.pop();
+
+    std::cout << cur << ' ';
+    for (int i = 1; i <= n; ++i) {
+      if (is_visited[i])
+        continue;
+      if (!g[cur][i])
+        continue;
+      q.push(i);
+      is_visited[i] = true;
     }
+  }
 
-    for (int i = 1; i<=n; ++i) {
-        for (int j = 1; j<=m; ++j) {
-            if (is_visited[i][j] || !v[i][j]) {
-                continue;
-            }
-
-            areas.push_back(dfs(i,j));
-        }
-    }
-    sort(areas.begin(),areas.end());
-    cout << areas.size()  << '\n' << ((!areas.empty()) ? areas.back() : 0);
-
-    return 0;
+  return 0;
 }
 
-int dfs(int i, int j)
-{
-    int area = 1;
-    is_visited[i][j]=true;
-    
-    const vector<pair<int, int>> adjacency = {
-        {1,0},{0,1},{-1,0},{0,-1} // horizontally, vertically
-    };
-    for (auto d : adjacency) {
-        int x = i+d.first;
-        int y = j+d.second;
+void dfs(int n, int v) {
+  is_visited[v] = true;
+  std::cout << v << ' ';
+  for (int i = 1; i <= n; ++i) {
+    if (is_visited[i])
+      continue;
+    if (!g[v][i])
+      continue;
+    dfs(n, i);
+  }
 
-        if (x<1 || x>n) {
-            continue;
-        }
-        if (y<1 || y>m) {
-            continue;
-        }
-        if (is_visited[x][y] || !v[x][y]) {
-            continue;
-        }
-        area+=dfs(x,y);
-    }
-
-    return area;
+  return;
 }
+
 ```
 
 ## Backtracking
@@ -283,52 +290,60 @@ int dfs(int i, int j)
 * DFS: 모든 노드를 방문
 
 ### 연습문제
-* [[BOJ] N과 M (1)](https://www.acmicpc.net/problem/15649) [(소스코드)](./backtracking/src/n_m.cpp)
+* [[BOJ] N과 M (1)](https://www.acmicpc.net/problem/15649) [(소스코드)](./src/n_m.cc)
 ```c++
-// https://www.acmicpc.net/problem/15649
-#include <bits/stdc++.h>
+/*
+  Copyright 2022 Ryan M. Jeong <ryan.m.jeong@hotmail.com>
+*/
 
-using namespace std;
+// CP
+#define CP do {                     \
+  std::ios::sync_with_stdio(false); \
+  std::cin.tie(NULL);               \
+} while (0)
+
+#include <iostream>
+#include <vector>
 
 void bt(int);
 
+std::vector<int> arr;
+std::vector<bool> is_visited;
 int n, m;
-int arr[9]; // 0, 1 ~ 8
-bool is_used[9];
 
-int main(void)
-{
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
+int main() {
+  CP;
 
-    cin>>n>>m;
-    bt(0);
+  std::cin >> n >> m;
+  arr = std::vector<int>(n + 1);
+  is_visited = std::vector<bool>(n + 1);
+  bt(0);
 
-    return 0;
+  return 0;
 }
 
-void bt(int s)
-{
-    if (s==m) {
-        for (int i = 0; i<m; ++i) {
-            cout << arr[i] << ' ';
-        }
-        cout <<'\n';
-
-        return;
-    }
-    for (int i = 1; i<=n; ++i) {
-        if (!is_used[i]) {
-            arr[s]=i;
-            // Go as deeply as possible, backtrack if impossible
-            is_used[i]=true;
-            bt(s+1);
-            is_used[i]=false;
-        }
-    }
+void bt(int s) {
+  if (s == m) {
+    for (int i = 0; i < m; ++i)
+      std::cout << arr[i] << ' ';
+    std::cout <<'\n';
 
     return;
+  }
+  for (int i = 1; i <= n; ++i) {
+    if (is_visited[i])
+      continue;
+
+    arr[s] = i;
+    // Go as deeply as possible, backtrack if impossible
+    is_visited[i] = true;
+    bt(s + 1);
+    is_visited[i] = false;
+  }
+
+  return;
 }
+
 ```
 
 ---

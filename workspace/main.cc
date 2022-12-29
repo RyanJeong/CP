@@ -9,56 +9,57 @@
 } while (0)
 
 #include <iostream>
-#include <queue>
 #include <vector>
-#include <functional>
+#include <queue>
 #include <utility>
-
-// iostream
-using std::cin;
-using std::cout;
-
-// queue
-using std::priority_queue;
-
-// vector
-using std::vector;
-
-// functional
-using std::less;
-
-// functional
-using std::pair;
 
 int main() {
   CP;
 
-  int n;
-  cin >> n;
-  priority_queue<
-      pair<int, int>, vector<pair<int, int>>, less<pair<int, int>>> max_heap;
-  while (n--) {
-    int m;
-    cin >> m;
-    int max = 0;
-    for (int i = 0; i < m; ++i) {
-      int temp;
-      cin >> temp;
-      if (max < temp)
-        max = temp;
+  int r, c;
+  std::cin >> r >> c;
+  std::vector<std::vector<int>> v(r + 1, std::vector<int>(c + 1));
+  std::vector<std::vector<bool>> is_visited(r + 1, std::vector<bool>(c + 1));
+  std::queue<std::pair<int, int>> q;
+  for (int i = 1; i <= r; ++i) {
+    for (int j = 1; j <= c; ++j) {
+      char c;
+      std::cin >> c;
+      if (c == '1') {
+        q.push({i, j});
+        is_visited[i][j] = true;
+      }
     }
-    max_heap.push({max, m});
   }
 
-  auto curr = max_heap.top();
-  max_heap.pop();
-  int64_t res = 0;
-  while (!max_heap.empty()) {
-    auto temp = max_heap.top();
-    max_heap.pop();
-    res += static_cast<int64_t>(curr.first - temp.first) * temp.second;
+  while (!q.empty()) {
+    auto cur = q.front();
+    q.pop();
+
+    // horizontally, vertically
+    const std::vector<std::pair<int, int>> kAdj = {
+      {1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+    for (const auto& d : kAdj) {
+      int y = cur.first + d.first;
+      int x = cur.second + d.second;
+
+      if (y < 1 || y > r)
+        continue;
+      if (x < 1 || x > c)
+        continue;
+      if (is_visited[y][x] || v[y][x])
+        continue;
+      q.push({y, x});
+      is_visited[y][x] = true;
+      v[y][x] = v[cur.first][cur.second] + 1;
+    }
   }
-  cout << res;
+
+  for (int i = 1; i <= r; ++i) {
+    for (int j = 1; j <= c; ++j)
+      std::cout << v[i][j] << ' ';
+    std::cout << '\n';
+  }
 
   return 0;
 }

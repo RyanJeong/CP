@@ -43,7 +43,7 @@ int main() {
     // horizontally, vertically
     const std::vector<std::pair<int, int>> kAdj = {
       {1, 0}, {0, 1}, {-1, 0}, {0, -1}};
-    for (auto d : kAdj) {
+    for (const auto& d : kAdj) {
       int y = cur.first + d.first;
       int x = cur.second + d.second;
 
