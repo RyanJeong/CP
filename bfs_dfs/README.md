@@ -1,12 +1,13 @@
 # BFS & DFS
 * 추천 문제 - BFS
-  * [[BOJ] Counting Sheep](https://www.acmicpc.net/problem/11123) [(소스코드)](./src/sheep.cc) - 단순한 영역 개수 세기 문제 1
-  * [[BOJ] 전쟁 - 전투](https://www.acmicpc.net/problem/1303) [(소스코드)](./src/battle.cc) - 단순한 영역 개수 세기 문제 2
+  * [[BOJ] 전쟁 - 전투](https://www.acmicpc.net/problem/1303) [(소스코드)](./src/battle.cc) - 단순한 영역 개수 세기 문제 1
+  * [[BOJ] Counting Sheep](https://www.acmicpc.net/problem/11123) [(소스코드)](./src/sheep.cc) - 단순한 영역 개수 세기 문제 2
   * [[BOJ] 쉬운 최단거리](https://www.acmicpc.net/problem/14940) [(소스코드)](./src/basic_min_dist.cc) - 단순한 영역 개수 세기 문제 3
   * [[BOJ] 와드](https://www.acmicpc.net/problem/23747) [(소스코드)](./src/ward.cc) - 단순한 영역 개수 세기 문제 4
   * [[BOJ] 미로 탐색](https://www.acmicpc.net/problem/2178) [(소스코드)](./src/maze.cc) - `int` 벡터를 사용한 BFS 최단경로 문제
   * [[BOJ] koze](https://www.acmicpc.net/problem/3187) [(소스코드)](./src/koze.cc) - `bool` 벡터를 사용한 BFS 기본 응용문제
-  * [[BOJ] 점프 게임](https://www.acmicpc.net/problem/15558) [(소스코드)](./src/jumping_game.cc) - 단계 별 BFS 순회
+  * [[BOJ] 점프 게임](https://www.acmicpc.net/problem/15558) [(소스코드)](./src/jumping_game.cc) - 단계 별 BFS 순회 1
+  * [[BOJ] 경쟁적 전염](https://www.acmicpc.net/problem/18405) [(소스코드)](./src/competitive_contagion.cc) - 단계 별 BFS 순회 2 
   * [[BOJ] 영역 구하기](https://www.acmicpc.net/problem/2583) [(소스코드)](./src/area.cc) - 2차원 평면 상에 분리되어 있는 영역의 수와 크기 구하기
   * [[BOJ] 토마토](https://www.acmicpc.net/problem/7576) [(소스코드)](./src/tomato.cc) - 최단경로 문제 응용 (이동 불가능한 조건)
   * [[BOJ] Elevator Trouble](https://www.acmicpc.net/problem/5014) [(소스코드)](./src/elevator.cc) - 1차원 BFS 최단경로 문제
@@ -14,15 +15,16 @@
 ---
 
 * 추천 문제 - DFS
-  * [[BOJ] 바이러스](https://www.acmicpc.net/problem/2606) [(소스코드)](./src/virus.cc)
-  * [[BOJ] 물통](https://www.acmicpc.net/problem/2251) [(소스코드)](./src/bottle.cc)
+  * [[BOJ] 바이러스](https://www.acmicpc.net/problem/2606) [(소스코드)](./src/virus.cc) - 재귀를 이용한 DFS
+  * [[BOJ] 물통](https://www.acmicpc.net/problem/2251) [(소스코드)](./src/bottle.cc) - 재귀를 이용한 DFS + 구현
 ---
 
 * 추천 문제 - 백트래킹
-  * [[BOJ] N-Queen](https://www.acmicpc.net/problem/9663) [(소스코드)](./src/n_queen.cc)
-  * [[BOJ] 비숍](https://www.acmicpc.net/problem/1799) [(소스코드)](./src/bishop.cc)
-  * [[BOJ] Sudoku](https://www.acmicpc.net/problem/2239) [(소스코드)](./src/210712_sudoku.cpp)
-  * [[BOJ] Letters](https://www.acmicpc.net/problem/1987) [(소스코드)](./src/letters.cc)
+  * [[BOJ] Back to the Barn](https://www.acmicpc.net/problem/1189) [(소스코드)](./src/back_to_the_barn.cc) - 단순한 백트래킹 + 영역탐색
+  * [[BOJ] N-Queen](https://www.acmicpc.net/problem/9663) [(소스코드)](./src/n_queen.cc) - 백트래킹 + 구현 1
+  * [[BOJ] 비숍](https://www.acmicpc.net/problem/1799) [(소스코드)](./src/bishop.cc) - 백트래킹 - 구현 2
+  * [[BOJ] Sudoku](https://www.acmicpc.net/problem/2239) [(소스코드)](./src/sudoku.cc) - 백트래킹 - 구현 3
+  * [[BOJ] Letters](https://www.acmicpc.net/problem/1987) [(소스코드)](./src/letters.cc) - 백트래킹 + 영역 탐색
 ---
 
 ## BFS(Breadth-first search)
@@ -81,7 +83,6 @@ int main() {
         ++area;
         auto cur = q.front();
         q.pop();
-
 
         // horizontally, vertically
         const std::vector<std::pair<int, int>> kAdj = {
@@ -292,16 +293,6 @@ void dfs(int n, int v) {
 ### 연습문제
 * [[BOJ] N과 M (1)](https://www.acmicpc.net/problem/15649) [(소스코드)](./src/n_m.cc)
 ```c++
-/*
-  Copyright 2022 Ryan M. Jeong <ryan.m.jeong@hotmail.com>
-*/
-
-// CP
-#define CP do {                     \
-  std::ios::sync_with_stdio(false); \
-  std::cin.tie(NULL);               \
-} while (0)
-
 #include <iostream>
 #include <vector>
 
@@ -312,8 +303,6 @@ std::vector<bool> is_visited;
 int n, m;
 
 int main() {
-  CP;
-
   std::cin >> n >> m;
   arr = std::vector<int>(n + 1);
   is_visited = std::vector<bool>(n + 1);

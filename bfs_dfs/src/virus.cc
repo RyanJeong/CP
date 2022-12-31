@@ -13,7 +13,7 @@
 
 int dfs(int n, int v);
 
-std::vector<std::vector<int>> g;
+std::vector<std::vector<int>> v;
 std::vector<bool> is_visited;
 
 int main() {
@@ -21,11 +21,11 @@ int main() {
 
   int n, m;
   std::cin >> n >> m;
-  g = std::vector<std::vector<int>>(n + 1, std::vector<int>(n + 1));
+  v = std::vector<std::vector<int>>(n + 1, std::vector<int>(n + 1));
   while (m--) {
     int i, j;
     std::cin >> i >> j;
-    g[i][j] = g[j][i] = 1;
+    v[i][j] = v[j][i] = 1;
   }
   is_visited = std::vector<bool>(n + 1);
   std::cout << dfs(n, 1);
@@ -40,7 +40,7 @@ int dfs(int n, int v) {
   for (int i = 1; i <= n; ++i) {
     if (is_visited[i])
       continue;
-    if (!g[v][i])
+    if (!v[v][i])
       continue;
     ++cnt;
     dfs(n, i);
