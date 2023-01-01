@@ -16,7 +16,14 @@
 
 * 추천 문제 - DFS
   * [[BOJ] 바이러스](https://www.acmicpc.net/problem/2606) [(소스코드)](./src/virus.cc) - 재귀를 이용한 DFS
-  * [[BOJ] 물통](https://www.acmicpc.net/problem/2251) [(소스코드)](./src/bottle.cc) - 재귀를 이용한 DFS + 구현
+  * [[BOJ] 물통](https://www.acmicpc.net/problem/2251) [(소스코드)](./src/bottle.cc) - 재귀를 이용한 DFS + 구현 1
+  * [[BOJ] 월드컵](https://www.acmicpc.net/problem/6987) [(소스코드)](./src/worldcup.cc) - 재귀를 이용한 DFS + 구현 2
+    * 재귀에서 비용이 발생하는 지역변수들(예: `vector`)는 `static`을 사용하거나 **재귀에서만 접근 가능한 전역변수**로 선언할 것:
+      * 재귀 내에 벡터를 지역변수로 선언한 경우(**시간초과**) [(소스코드)](./src/worldcup1.cc)
+      * 재귀 내에 벡터를 `static`변수로 선언한 경우(492 ms) [(소스코드)](./src/worldcup2.cc)
+      * 벡터를 재귀에서만 접근 가능하도록 선언한 경우(428 ms) [(소스코드)](./src/worldcup3.cc)
+    * **제한시간이 짧은 경우 비용이 큰 방법을 다른 방법으로 대체해야 함**(`vector` -> 일반 배열 등)
+
 ---
 
 * 추천 문제 - 백트래킹
