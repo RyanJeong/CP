@@ -13,7 +13,7 @@
 #include <utility>
 #include <cstring>
 
-bool dfs(int round);
+bool Dfs(int round);
 
 std::vector<std::pair<int, int>> matches;
 int arr[6][3];
@@ -35,13 +35,13 @@ int main() {
       for (int j = 0; j < 3; ++j)
         std::cin >> arr[i][j];
     }
-    std::cout << dfs(0) << ' ';
+    std::cout << Dfs(0) << ' ';
   }
 
   return 0;
 }
 
-bool dfs(int round) {
+bool Dfs(int round) {
   if (round == matches.size()) {
     for (int i = 0; i < 6; ++i) {
       for (int j = 0; j < 3; ++j) {
@@ -65,7 +65,7 @@ bool dfs(int round) {
 
     ++buf[t1][res1];
     ++buf[t2][res2];
-    if (dfs(round + 1))
+    if (Dfs(round + 1))
       return true;
     --buf[t1][res1];
     --buf[t2][res2];

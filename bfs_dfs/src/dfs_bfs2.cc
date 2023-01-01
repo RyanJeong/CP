@@ -13,9 +13,9 @@
 #include <queue>
 #include <utility>
 
-void dfs(int n, int v);
+void Dfs(int n, int v);
 
-std::vector<std::vector<int>> v;
+std::vector<std::vector<int>> g;
 std::vector<bool> is_visited;
 
 int main() {
@@ -23,16 +23,16 @@ int main() {
 
   int n, m, v;
   std::cin >> n >> m >> v;
-  v = std::vector<std::vector<int>>(n + 1, std::vector<int>(n + 1));
+  g = std::vector<std::vector<int>>(n + 1, std::vector<int>(n + 1));
   while (m--) {
     int x, y;
     std::cin >> x >> y;
-    v[x][y] = v[y][x] = 1;
+    g[x][y] = g[y][x] = 1;
   }
 
   // dfs
   is_visited = std::vector<bool>(n + 1);
-  dfs(n, v);
+  Dfs(n, v);
   std::cout << '\n';
 
   // bfs
@@ -48,7 +48,7 @@ int main() {
     for (int i = 1; i <= n; ++i) {
       if (is_visited[i])
         continue;
-      if (!v[cur][i])
+      if (!g[cur][i])
         continue;
       q.push(i);
       is_visited[i] = true;
@@ -58,15 +58,15 @@ int main() {
   return 0;
 }
 
-void dfs(int n, int v) {
+void Dfs(int n, int v) {
   is_visited[v] = true;
   std::cout << v << ' ';
   for (int i = 1; i <= n; ++i) {
     if (is_visited[i])
       continue;
-    if (!v[v][i])
+    if (!g[v][i])
       continue;
-    dfs(n, i);
+    Dfs(n, i);
   }
 
   return;

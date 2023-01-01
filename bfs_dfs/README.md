@@ -142,7 +142,7 @@ int main() {
 * <b>다차원 배열에서의 flood fill은 BFS, DFS 둘 다 가능하지만, 다차원 배열에서의 최단경로 찾기는 BFS만 가능하므로, 다차원 배열에서의 순회 문제는 주로 BFS만 사용됨</b>
 
 ### 연습문제
-* [[BOJ] 그림](https://www.acmicpc.net/problem/1926) [(소스코드)](./src/dfs_bfs1.cc) - DFS(stack) 사용
+* [[BOJ] DFS와 BFS](https://www.acmicpc.net/problem/1260) [(소스코드)](./src/dfs_bfs1.cc) - DFS(stack) 사용
 ```c++
 #include <iostream>
 #include <vector>
@@ -150,8 +150,8 @@ int main() {
 #include <queue>
 #include <utility>
 
-void dfs(int n, int v);
-void bfs(int n, int v);
+void Dfs(int n, int v);
+void Bfs(int n, int v);
 
 std::vector<std::vector<int>> g;
 std::vector<bool> is_visited;
@@ -166,14 +166,14 @@ int main() {
     g[x][y] = g[y][x] = 1;
   }
 
-  dfs(n, v);
+  Dfs(n, v);
   std::cout << '\n';
-  bfs(n, v);
+  Bfs(n, v);
 
   return 0;
 }
 
-void dfs(int n, int v) {
+void Dfs(int n, int v) {
   std::stack<int> s;
   s.push(v);
   is_visited = std::vector<bool>(n + 1);
@@ -199,7 +199,7 @@ void dfs(int n, int v) {
   return;
 }
 
-void bfs(int n, int v) {
+void Bfs(int n, int v) {
   std::queue<int> q;
   q.push(v);
   is_visited = std::vector<bool>(n + 1);
@@ -223,14 +223,14 @@ void bfs(int n, int v) {
 }
 
 ```
-* [[BOJ] 그림](https://www.acmicpc.net/problem/1926) [(소스코드)](./src/dfs_bfs2.cc) - DFS(recursion) 사용
+* [[BOJ] DFS와 BFS](https://www.acmicpc.net/problem/1260) [(소스코드)](./src/dfs_bfs2.cc) - DFS(recursion) 사용
 ```c++
 #include <iostream>
 #include <vector>
 #include <queue>
 #include <utility>
 
-void dfs(int n, int v);
+void Dfs(int n, int v);
 
 std::vector<std::vector<int>> g;
 std::vector<bool> is_visited;
@@ -247,7 +247,7 @@ int main() {
 
   // dfs
   is_visited = std::vector<bool>(n + 1);
-  dfs(n, v);
+  Dfs(n, v);
   std::cout << '\n';
 
   // bfs
@@ -273,7 +273,7 @@ int main() {
   return 0;
 }
 
-void dfs(int n, int v) {
+void Dfs(int n, int v) {
   is_visited[v] = true;
   std::cout << v << ' ';
   for (int i = 1; i <= n; ++i) {
@@ -281,7 +281,7 @@ void dfs(int n, int v) {
       continue;
     if (!g[v][i])
       continue;
-    dfs(n, i);
+    Dfs(n, i);
   }
 
   return;
@@ -303,7 +303,7 @@ void dfs(int n, int v) {
 #include <iostream>
 #include <vector>
 
-void bt(int);
+void Bt(int);
 
 std::vector<int> arr;
 std::vector<bool> is_visited;
@@ -313,12 +313,12 @@ int main() {
   std::cin >> n >> m;
   arr = std::vector<int>(n + 1);
   is_visited = std::vector<bool>(n + 1);
-  bt(0);
+  Bt(0);
 
   return 0;
 }
 
-void bt(int s) {
+void Bt(int s) {
   if (s == m) {
     for (int i = 0; i < m; ++i)
       std::cout << arr[i] << ' ';
@@ -333,7 +333,7 @@ void bt(int s) {
     arr[s] = i;
     // Go as deeply as possible, backtrack if impossible
     is_visited[i] = true;
-    bt(s + 1);
+    Bt(s + 1);
     is_visited[i] = false;
   }
 

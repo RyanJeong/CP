@@ -12,7 +12,7 @@
 #include <vector>
 #include <algorithm>
 
-int bt(int i, int j);
+int Bt(int i, int j);
 
 std::vector<std::vector<char>> v;
 std::vector<bool> is_visited;
@@ -29,12 +29,12 @@ int main() {
   }
   is_visited = std::vector<bool>('Z' - 'A' + 1);
   is_visited[v[1][1]-'A'] = true;
-  std::cout << bt(1, 1);
+  std::cout << Bt(1, 1);
 
   return 0;
 }
 
-int bt(int i, int j) {
+int Bt(int i, int j) {
   int movement = 1;
 
   // horizontally, vertically
@@ -51,7 +51,7 @@ int bt(int i, int j) {
     if (is_visited[v[y][x]-'A'])
       continue;
     is_visited[v[y][x]-'A'] = true;
-    movement = std::max(movement, bt(y, x) + 1);
+    movement = std::max(movement, Bt(y, x) + 1);
     is_visited[v[y][x]-'A'] = false;
   }
 

@@ -13,7 +13,7 @@
 #include <utility>
 #include <cstring>
 
-bool dfs(int t1, int t2);
+bool Dfs(int t1, int t2);
 
 int arr[6][3];
 int buf[6][3];
@@ -28,13 +28,13 @@ int main() {
       for (int j = 0; j < 3; ++j)
         std::cin >> arr[i][j];
     }
-    std::cout << dfs(0, 1) << ' ';
+    std::cout << Dfs(0, 1) << ' ';
   }
 
   return 0;
 }
 
-bool dfs(int t1, int t2) {
+bool Dfs(int t1, int t2) {
   if (t2 == 6) {
     ++t1;
     t2 = t1 + 1;
@@ -55,21 +55,21 @@ bool dfs(int t1, int t2) {
 
   ++buf[t1][0];
   ++buf[t2][2];
-  if (dfs(t1, t2 + 1))
+  if (Dfs(t1, t2 + 1))
     return true;
   --buf[t1][0];
   --buf[t2][2];
 
   ++buf[t1][1];
   ++buf[t2][1];
-  if (dfs(t1, t2 + 1))
+  if (Dfs(t1, t2 + 1))
     return true;
   --buf[t1][1];
   --buf[t2][1];
 
   ++buf[t1][2];
   ++buf[t2][0];
-  if (dfs(t1, t2 + 1))
+  if (Dfs(t1, t2 + 1))
     return true;
   --buf[t1][2];
   --buf[t2][0];

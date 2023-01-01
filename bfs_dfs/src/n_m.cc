@@ -11,7 +11,7 @@
 #include <iostream>
 #include <vector>
 
-void bt(int);
+void Bt(int);
 
 std::vector<int> arr;
 std::vector<bool> is_visited;
@@ -23,12 +23,12 @@ int main() {
   std::cin >> n >> m;
   arr = std::vector<int>(n + 1);
   is_visited = std::vector<bool>(n + 1);
-  bt(0);
+  Bt(0);
 
   return 0;
 }
 
-void bt(int s) {
+void Bt(int s) {
   if (s == m) {
     for (int i = 0; i < m; ++i)
       std::cout << arr[i] << ' ';
@@ -43,7 +43,7 @@ void bt(int s) {
     arr[s] = i;
     // Go as deeply as possible, backtrack if impossible
     is_visited[i] = true;
-    bt(s + 1);
+    Bt(s + 1);
     is_visited[i] = false;
   }
 

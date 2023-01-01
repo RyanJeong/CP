@@ -11,7 +11,7 @@
 #include <iostream>
 #include <vector>
 
-void bt(int row);
+void Bt(int row);
 
 bool is_used1[15];  // vertical
 bool is_used2[30];  // diagonal (y = x)
@@ -22,13 +22,13 @@ int main() {
   CP;
 
   std::cin >> n;
-  bt(0);
+  Bt(0);
   std::cout << cnt;
 
   return 0;
 }
 
-void bt(int r) {
+void Bt(int r) {
   if (r == n) {
     ++cnt;
 
@@ -42,7 +42,7 @@ void bt(int r) {
     is_used1[i] = true;
     is_used2[i+r] = true;
     is_used3[r-i+n-1] = true;  // { 3, 0 }, 0 - 3 + 4 - 1 = 0
-    bt(r + 1);
+    Bt(r + 1);
     is_used1[i] = false;
     is_used2[i+r] = false;
     is_used3[r-i+n-1] = false;

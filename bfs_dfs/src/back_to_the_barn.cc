@@ -11,7 +11,7 @@
 #include <iostream>
 #include <vector>
 
-int bt(int i, int j, int cnt);
+int Bt(int i, int j, int cnt);
 
 std::vector<std::vector<char>> v;
 std::vector<std::vector<bool>> is_visited;
@@ -28,12 +28,12 @@ int main() {
   }
   is_visited = std::vector<std::vector<bool>>(r + 1, std::vector<bool>(c + 1));
   is_visited[r][1] = true;
-  std::cout << bt(r, 1, 1);
+  std::cout << Bt(r, 1, 1);
 
   return 0;
 }
 
-int bt(int i, int j, int cnt) {
+int Bt(int i, int j, int cnt) {
   static int result = 0;
 
   if (i == 1 && j == c) {
@@ -57,7 +57,7 @@ int bt(int i, int j, int cnt) {
     if (is_visited[y][x] || v[y][x] == 'T')
       continue;
     is_visited[y][x] = true;
-    bt(y, x, cnt + 1);
+    Bt(y, x, cnt + 1);
     is_visited[y][x] = false;
   }
 

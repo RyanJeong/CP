@@ -11,7 +11,7 @@
 #include <iostream>
 #include <vector>
 
-bool bt(int row, int col);
+bool Bt(int row, int col);
 
 // 1 2 3
 // 4 5 6
@@ -37,7 +37,7 @@ int main() {
     }
     std::cin.ignore();  // consume '\n'
   }
-  bt(0, 0);
+  Bt(0, 0);
   for (int i = 0; i < 9; ++i) {
     for (int j = 0; j < 9; ++j)
       std::cout << arr[i][j];
@@ -47,7 +47,7 @@ int main() {
   return 0;
 }
 
-bool bt(int i, int j) {
+bool Bt(int i, int j) {
   for (; i < 9; ++i) {
     for (; j < 9; ++j) {
       if (arr[i][j])
@@ -61,7 +61,7 @@ bool bt(int i, int j) {
           is_used2[i][n] = true;
           is_used3[j][n] = true;
           arr[i][j] = n;
-          if (bt(i, j + 1))
+          if (Bt(i, j + 1))
             return true;
 
           is_used1[i/3][j/3][n] = false;

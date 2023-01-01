@@ -17,7 +17,7 @@ enum {
   kBlack
 };
 
-void bt(int row, int col, int cnt, bool is_black);
+void Bt(int row, int col, int cnt, bool is_black);
 
 bool is_allowed[11][11];  // 1 ~ 10
 bool is_used1[21];        // diagonal (y = -x) (2n-1)
@@ -33,14 +33,14 @@ int main() {
     for (int j = 1; j <= n; ++j)
       std::cin >> is_allowed[i][j];
   }
-  bt(1, 1, 0, kWhite);
-  bt(1, 2, 0, kBlack);
+  Bt(1, 1, 0, kWhite);
+  Bt(1, 2, 0, kBlack);
   std::cout << ans[kWhite] + ans[kBlack];
 
   return 0;
 }
 
-void bt(int r, int c, int cnt, bool type) {
+void Bt(int r, int c, int cnt, bool type) {
   if (c > n) {
   /*
     W B W
@@ -82,11 +82,11 @@ void bt(int r, int c, int cnt, bool type) {
   */
     is_used1[r+c-n] = true;
     is_used2[-r+c+n-1] = true;
-    bt(r, c + 2, cnt + 1, type);
+    Bt(r, c + 2, cnt + 1, type);
     is_used1[r+c-n] = false;
     is_used2[-r+c+n-1] = false;
   }
-  bt(r, c + 2, cnt, type);
+  Bt(r, c + 2, cnt, type);
 
   return;
 }
