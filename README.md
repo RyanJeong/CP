@@ -67,6 +67,7 @@ Resources for competitive programming
 
 
 ## 유용한 사이트
+* [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)
 * [cppreference.com](https://en.cppreference.com/w/)
 * [cplusplus.com - The C++ Resources Network](https://cplusplus.com/)
 * [Standard C++](https://isocpp.org/)
