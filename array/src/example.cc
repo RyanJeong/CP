@@ -10,8 +10,8 @@
 
 #include <iostream>
 
-int insert(int arr[], const int& cap, int* len, const int& idx, const int& val);
-int erase(int arr[], const int& cap, int* len, const int& idx);
+int Insert(int arr[], const int& cap, int* len, const int& idx, const int& val);
+int Erase(int arr[], const int& cap, int* len, const int& idx);
 
 int main() {
   CP;
@@ -31,13 +31,13 @@ int main() {
   // 1 2 4 8 16 32
 
   // insert
-  insert(arr, kCap, &len, 0, 50);
+  Insert(arr, kCap, &len, 0, 50);
   std::cout << "capacity: " << kCap << ",length: " << len << '\n';
   for (int i = 0; i < len; ++i)
     std::cout << arr[i] << ' ';
   std::cout << '\n';
   // 50 1 2 4 8 16 32
-  insert(arr, kCap, &len, len, 60);
+  Insert(arr, kCap, &len, len, 60);
   std::cout << "capacity: " << kCap << ",length: " << len << '\n';
   for (int i = 0; i < len; ++i)
     std::cout << arr[i] << ' ';
@@ -45,13 +45,13 @@ int main() {
   // 50 1 2 4 8 16 32 60
 
   // erase
-  erase(arr, kCap, &len, 1);
+  Erase(arr, kCap, &len, 1);
   std::cout << "capacity: " << kCap << ",length: " << len << '\n';
   for (int i = 0; i < len; ++i)
     std::cout << arr[i] << ' ';
   std::cout << '\n';
   // 50 2 4 8 16 32 60
-  erase(arr, kCap, &len, len);
+  Erase(arr, kCap, &len, len);
   std::cout << "capacity: " << kCap << ",length: " << len << '\n';
   for (int i = 0; i < len; ++i)
     std::cout << arr[i] << ' ';
@@ -61,7 +61,7 @@ int main() {
   return 0;
 }
 
-int insert(int arr[], const int& cap, int* len, const int& idx,
+int Insert(int arr[], const int& cap, int* len, const int& idx,
     const int& val) {
   if (*len == cap)
     return 0;
@@ -76,7 +76,7 @@ int insert(int arr[], const int& cap, int* len, const int& idx,
   return val;
 }
 
-int erase(int arr[], const int& cap, int* len, const int& idx) {
+int Erase(int arr[], const int& cap, int* len, const int& idx) {
   if (*len == 0)
     return 0;
   if (idx > *len)
