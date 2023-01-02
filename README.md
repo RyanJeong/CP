@@ -65,6 +65,13 @@ Resources for competitive programming
 * [[BOJ] Japanese Olympiad in Informatics](https://www.acmicpc.net/category/100)
     * [JOI過去問 - 情報オリンピック日本委員会](https://www.ioi-jp.org/problem_archive.php)
 
+## 사소한 팁
+* `std::endl` vs. `'\n'`
+  * `std::endl`은 매번 flush 연산을 하므로 비용이 발생하지만, `'\n'`은 flush 연산을 하지 않아 출력이 많은 문제에서는 `'\n'`을 사용한 넋이 비용적으로 효율적임
+* 재귀함수 내 상대적으로 비용이 큰 지역변수는 `static`을 사용해 최초 한 번 생성을 보장하거나 재귀함수에서만 접근 가능한 위치에 변수를 선언하는 것이 비용적으로 효율적임
+* [알고리즘 문제 해결 전략](https://book.algospot.com/index.html)
+    * [4.6 수행 시간 어림짐작하기](https://book.algospot.com/estimation.html)
+        > 입력의 크기를 시간 복잡도에 대입해서 얻은 반복문 수행 횟수에 대해, 1초 당 반복문 수행 횟수가 1억(10<sup>8</sup>)을 넘어가면 시간 제한을 초과할 가능성이 있다.
 
 ## 유용한 사이트
 * [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)
@@ -72,8 +79,5 @@ Resources for competitive programming
 * [cplusplus.com - The C++ Resources Network](https://cplusplus.com/)
 * [Standard C++](https://isocpp.org/)
 * [Bjarne Stroustrup's Homepage](https://www.stroustrup.com/)
-* [알고리즘 문제 해결 전략](https://book.algospot.com/index.html)
-    * [4.6 수행 시간 어림짐작하기](https://book.algospot.com/estimation.html)
-        > 입력의 크기를 시간 복잡도에 대입해서 얻은 반복문 수행 횟수에 대해, 1초 당 반복문 수행 횟수가 1억(10<sup>8</sup>)을 넘어가면 시간 제한을 초과할 가능성이 있다.
 * [mathURL](http://mathurl.com/)
 * [Alphabetize Your Lists  - WordCounter.net](https://wordcounter.net/alphabetize)
