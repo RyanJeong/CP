@@ -72,7 +72,7 @@ Resources for competitive programming
   * `std::cin.tie(NULL)` 명령을 통해 `std::cin`의 입력 스트림과 `std::cout`의 출력 스트림의 연결을 해제한다. 스트림을 해제하는 이유는 두 스트림이 기본적으로 연결되어 있어 `std::cin` 명령을 통해 입력을 받으면 출력 스트림의 버퍼를 flush 한다. flush는 비용이 발생하므로, `std::cin.tie(NULL)` 명령을 사용해 두 스트림 간 연결을 해제하면 출력 스트림의 flush를 방지할 수 있다.
   > the `cout` is tied to the `cin` object, which means every time we want to input data through the `cin` object, the `cout` object is flushed (emptied)
 * `std::endl` vs. `'\n'`
-  * `std::endl`은 매번 flush 연산을 하므로 비용이 발생하지만, `'\n'`은 flush 연산을 하지 않아 출력이 많은 문제에서는 `'\n'`을 사용한 넋이 비용적으로 효율적임
+  * `std::endl`은 매번 flush 연산을 하므로 비용이 발생하지만, `'\n'`은 flush 연산을 하지 않아 출력이 많은 문제에서는 `'\n'`을 사용하는 것이 비용적으로 효율적임
 * 재귀함수 내 상대적으로 비용이 큰 지역변수는 `static`을 사용해 최초 한 번 생성을 보장하거나 재귀함수에서만 접근 가능한 위치에 변수를 선언하는 것이 비용적으로 효율적임
 * [알고리즘 문제 해결 전략](https://book.algospot.com/index.html)
     * [4.6 수행 시간 어림짐작하기](https://book.algospot.com/estimation.html)
