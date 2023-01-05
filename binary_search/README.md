@@ -1,10 +1,11 @@
 # Binary Search
 * 추천 문제 - 이분 탐색
   * [[BOJ] Square Integer](https://www.acmicpc.net/problem/2417) [(소스코드)](./src/sqrt_int.cc) - 처음 조건을 만족하는 값을 이분탐색을 통해 찾는 문제
-  * [[BOJ] 좌표 압축](https://www.acmicpc.net/problem/18870) [(소스코드)](./src/compress.cpp)
-  * [[BOJ] 세 수의 합](https://www.acmicpc.net/problem/2295) [(소스코드)](./src/sum_nums.cpp)
-  * [[BOJ] 두 배열의 합](https://www.acmicpc.net/problem/2143) [(소스코드)](./src/matrix.cpp)
-  * [[프로그래머스] 줄 서는 방법](https://programmers.co.kr/learn/courses/30/lessons/12936) [(소스코드)](./src/line.cpp) - 줄 서는 방법의 시간복잡도(`next_permutation()`)는 <b>O(<i>n</i>!)</b>이며, 이를 줄일 수 있는 방법
+  * [[BOJ] 선분 위의 점](https://www.acmicpc.net/problem/11663) [(소스코드)](./src/points_on_the_line.cc) - `lower_bound`와 `upper_bound`를 사용하는 기본 문제
+  * [[BOJ] 좌표 압축](https://www.acmicpc.net/problem/18870) [(소스코드)](./src/compress.cc)
+  * [[BOJ] 세 수의 합](https://www.acmicpc.net/problem/2295) [(소스코드)](./src/sum_nums.cc)
+  * [[BOJ] 두 배열의 합](https://www.acmicpc.net/problem/2143) [(소스코드)](./src/two_matrix.cc)
+  * [[프로그래머스] 줄 서는 방법](https://programmers.co.kr/learn/courses/30/lessons/12936) [(소스코드)](./src/line.cc) - 줄 서는 방법의 시간복잡도(`next_permutation()`)는 <b>O(<i>n</i>!)</b>이며, 이를 줄일 수 있는 방법
 ---
 
 * 추천 문제 - 파라메트릭 서치
@@ -44,16 +45,14 @@ struct key *binsearch(char *word, struct key tab[], int n)
     struct key *high = &tab[n];
     struct key *mid;
 
-    while (low<high) {
-        mid=low+(high-low)/2; /* mid = (low + high) / 2 is WRONG! */
-        if ((cond=strcmp(word, mid->word))<0) {
+    while (low < high) {
+        mid = low + (high - low) / 2; /* `mid = (low + high) / 2` is WRONG! */
+        if ((cond = strcmp(word, mid->word)) < 0)
             high=mid;
-        } else if (cond>0) {
-            low=mid+1;
-        } else {
-
+        else if (cond>0)
+            low = mid + 1;
+        else
             return mid;
-        }
     }
 
     return NULL;
@@ -61,82 +60,70 @@ struct key *binsearch(char *word, struct key tab[], int n)
 ```
 
 ### 연습문제
-* [[BOJ] 수 찾기](https://www.acmicpc.net/problem/1920) [(소스코드 1)](./src/bsearch1.cpp) [(소스코드 2)](./src/bsearch2.cpp)
+* [[BOJ] 수 찾기](https://www.acmicpc.net/problem/1920) [(소스코드 (직접 구현))](./src/bsearch1.cc)
 ```c++
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
 
-using namespace std;
+int main() {
+  int n;
+  std::cin >> n;
+  std::vector<int> v(n);
+  for (int i = 0; i < n; ++i)
+    std::cin >> v[i];
+  std::sort(v.begin(), v.end());
 
-int main(void)
-{
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
+  int m;
+  std::cin >> m;
+  while (m--) {
+    int target;
+    std::cin >> target;
 
-    int n;
-    cin>>n;
-    vector<int> v(n);
-    for (int i = 0; i<n; ++i) {
-        cin>>v[i];
+    auto low = v.begin();
+    auto high = v.end();
+    while (low < high) {
+      auto mid = low + (high - low) / 2;
+      if (target < *mid)
+        high = mid;
+      else if (target > *mid)
+        low = mid + 1;
+      else
+        break;
     }
-    sort(v.begin(),v.end());
+    std::cout << ((low < high) ? 1 : 0) << '\n';
+  }
 
-    int m;
-    cin>>m;
-    while (m--) {
-        int target;
-        cin>>target;
-
-        auto low = v.begin();
-        auto high = v.end();
-        while (low<high) {
-            auto mid = low+(high-low)/2;
-            if (target<*mid) {
-                high=mid;
-            }
-            else if (*mid<target) {
-                low=mid+1;
-            }
-            else {
-                break;
-            }
-        }
-        cout << ((low<high) ? 1 : 0) << '\n';
-    }
-
-    return 0;
+  return 0;
 }
-
 
 ```
+
+* [[BOJ] 수 찾기](https://www.acmicpc.net/problem/1920) [(소스코드 (`binary_search`)](./src/bsearch2.cc)
 ```c++
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
 
-using namespace std;
+int main() {
+  int n;
+  std::cin >> n;
+  std::vector<int> v(n);
+  for (int i = 0; i < n; ++i)
+    std::cin >> v[i];
+  std::sort(v.begin(), v.end());
 
-int main(void)
-{
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
+  int m;
+  std::cin >> m;
+  while (m--) {
+    int target;
+    std::cin >> target;
+    std::cout << binary_search(v.begin(), v.end(), target) << '\n';
+  }
 
-    int n;
-    cin>>n;
-    vector<int> v(n);
-    for (int i = 0; i<n; ++i) {
-        cin>>v[i];
-    }
-    sort(v.begin(),v.end());
-
-    int m;
-    cin>>m;
-    while (m--) {
-        int target;
-        cin>>target;
-
-        cout << binary_search(v.begin(),v.end(),target) << '\n';
-    }
-
-    return 0;
+  return 0;
 }
+
 ```
 
 ## [`lower_bound`](https://www.cplusplus.com/reference/algorithm/lower_bound/)
@@ -201,36 +188,33 @@ ForwardIterator lower_bound(ForwardIterator first,
 ```
 
 ### 연습문제
-* [[BOJ] 숫자 카드 2](https://www.acmicpc.net/problem/10816) [(소스코드)](./src/card2.cpp)
+* [[BOJ] 숫자 카드 2](https://www.acmicpc.net/problem/10816) [(소스코드)](./src/card2.cc)
 ```c++
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
 
-using namespace std;
+int main() {
+  int n;
+  std::cin >> n;
+  std::vector<int> v(n);
+  for (int i = 0; i < n; ++i)
+    std::cin >> v[i];
+  std::sort(v.begin(), v.end());
 
-int main(void) 
-{
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
+  int m;
+  std::cin >> m;
+  while (m--) {
+    int t;
+    std::cin >> t;
+    auto upper = std::upper_bound(v.begin(), v.end(), t);
+    auto lower = std::lower_bound(v.begin(), v.end(), t);
+    std::cout << upper - lower << ' ';
+  }
 
-    int n;
-    cin>>n;
-    vector<int> v(n);
-    for (int i = 0; i<n; ++i) {
-        cin>>v[i];
-    } 
-    sort(v.begin(),v.end());
-
-    int m;
-    cin>>m;
-    while (m--) {
-        int t;
-        cin>>t;
-
-        cout << upper_bound(v.begin(),v.end(),t)-lower_bound(v.begin(),v.end(),t) << ' ';
-    }    
-
-    return 0;
+  return 0;
 }
+
 ```
 
 ## Parametric Search

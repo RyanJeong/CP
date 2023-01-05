@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-
-using namespace std;
-
 /*
     {1 2 3 4}, n = 4, k = 9 => {2 3 1 4}
     idx: k/(n-1)!, next k: k%(n-1)!
@@ -21,6 +17,10 @@ using namespace std;
        next k가 0이면, idx를 1 감소하고 next k를 (n-1)!로 지정
        idx: 0, n = 0, k = 1
 */
+#include <bits/stdc++.h>
+
+using namespace std;
+
 vector<int> solution(int n, long long k) 
 {
     vector<int> v;

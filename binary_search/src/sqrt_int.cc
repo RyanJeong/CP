@@ -10,15 +10,11 @@
 
 #include <iostream>
 
-// iostream
-using std::cin;
-using std::cout;
-
 int main() {
   CP;
 
   int64_t n;
-  cin >> n;
+  std::cin >> n;
 
   // sqrt(2^63-1) is 3037000499.98
   int64_t low, high, mid;
@@ -31,7 +27,7 @@ int main() {
     else
       high = mid;
   }
-  cout << low;
+  std::cout << low;
 
   return 0;
 }
