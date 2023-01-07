@@ -44,7 +44,6 @@ int main() {
     }
   }
 
-  const int kMatSize = n;
   for (; b; b >>= 1) {
     if (b & 1)
       res = MatMul(res, v, n);
