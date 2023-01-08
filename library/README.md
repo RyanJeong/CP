@@ -9,6 +9,8 @@
 * [KMP](./src/kmp.cpp)
 * [LCM](./src/lcm.cc)
 * [LIS](./src/lis.cpp)
+* [Matrix 2-Dim.](./src/class_matrix2d.cc)
+  * [[BOJ] 행렬 제곱의 합](https://www.acmicpc.net/problem/13246) [(소스코드)](./src/class_matrix2d.cc)
 * [Matrix Multiplication](./src/mat_mul.cc)
   * [[BOJ] 피보나치 수 6](https://www.acmicpc.net/problem/11444) [(소스코드)](./src/fibo_6.cc)
 * [`nth_element`](./src/nth_element.cpp)
