@@ -9,22 +9,22 @@
 ---
 
 * 추천 문제 - 파라메트릭 서치
-  * [[BOJ] LJUBOMORA](https://www.acmicpc.net/problem/2792) [(소스코드)](./src/marble.cpp) - [low, high) 조건 내 이분 탐색, 최소 조건 찾기(`high=mid`)
-  * [[BOJ] 랜선 자르기](https://www.acmicpc.net/problem/1654) [(소스코드)](./src/lan_cable.cpp) - [low, high) 조건 내 이분 탐색, 최대 조건 찾기(`low=mid+1`)
-  * [[BOJ] 공유기 설치](https://www.acmicpc.net/problem/2110) [(소스코드)](./src/router.cpp) - [low, high) 조건 내 이분 탐색, 최대 조건 찾기(`low=mid+1`)
-  * [[BOJ] 휴게소 세우기](https://www.acmicpc.net/problem/1477) [(소스코드)](./src/rest_area.cpp) - [low, high) 조건 내 이분 탐색, 최대 중 최소 찾기(`low=mid+1`)
+  * [[BOJ] LJUBOMORA](https://www.acmicpc.net/problem/2792) [(소스코드)](./src/marble.cc) - [low, high) 조건 내 이분 탐색, 최소 조건 찾기(`high = mid`)
+  * [[BOJ] 랜선 자르기](https://www.acmicpc.net/problem/1654) [(소스코드)](./src/lan_cable.cc) - [low, high) 조건 내 이분 탐색, 최대 조건 찾기(`low = mid + 1`)
+  * [[BOJ] 공유기 설치](https://www.acmicpc.net/problem/2110) [(소스코드)](./src/router.cc) - [low, high) 조건 내 이분 탐색, 최대 조건 찾기(`low = mid + 1`)
+  * [[BOJ] 휴게소 세우기](https://www.acmicpc.net/problem/1477) [(소스코드)](./src/rest_area.cc) - [low, high) 조건 내 이분 탐색, 최대 중 최소 찾기(`low = mid + 1`, `cnt > m`)
     * <b>구간의 길이의 최댓값을 최소로</b> (`cnt>m`)
     1. 구간의 길이의 최대값(`cnt==m`)
-      * `if (cnt>=m) {...}`: 현재 구간의 길이가 짧음(`cnt`의 값을 줄여야 함)
-      * `cnt`의 값을 줄이기 위해서는 구간 길이를 늘려야 함(`low=mid+1`)
+      * `if (cnt >= m) {...}`: 현재 구간의 길이가 짧음(`cnt`의 값을 줄여야 함)
+      * `cnt`의 값을 줄이기 위해서는 구간 길이를 늘려야 함(`low = mid + 1`)
     2. 구간의 길이의 최대값을 최소로
-      * `cnt>=m`은 `cnt==m`일 경우에도(즉, 조건을 만족하는 길이임에도 불구하고) 구간 길이를 계속 확장함
-      * 따라서 <b>구간 길이 최대값을 최소로 하라</b>는 조건을 만족하기 위해서는 `cnt>m` 비교를 해야 함
-    3. 왜 `mid`가 답이 아닌, `mid+1`이 답인가?
-      * 최대 조건을 찾는 일반적인 문제에서는 조건 비교문이 `cnt>=m`과 같다. 이 경우에서는 `mid+1`이 답이 아닐 수 있기 때문에, `res`라는 별도의 변수를 할당해 `mid` 값만 넣어놓는 것이다. 
-      * 해당 문제는 조건 비교문이 `cnt>m`이며, `mid+1`이 답일 수밖에 없는 상황이다. 따라서 `mid+1`이 답이 된다.
-  * [[BOJ] 숫자 구슬](https://www.acmicpc.net/problem/2613) [(소스코드)](./src/bead.cpp) - [low, high) 조건 내 이분 탐색, 최대 중 최소 찾기(`low=mid+1`)
-  * [[BOJ] 공정 컨설턴트 호석](https://www.acmicpc.net/problem/22254) [(소스코드)](./src/factory.cpp) - [low, high) 조건 내 이분 탐색, 최소 조건 찾기(`high=mid`) + `priority_queue`
+      * `cnt >= m`은 `cnt == m`일 경우에도(즉, 조건을 만족하는 길이임에도 불구하고) 구간 길이를 계속 확장함
+      * 따라서 <b>구간 길이 최대값을 최소로 하라</b>는 조건을 만족하기 위해서는 `cnt > m` 비교를 해야 함
+    3. 왜 `mid`가 답이 아닌, `mid + 1`이 답인가?
+      * 최대 조건을 찾는 일반적인 문제에서는 조건 비교문이 `cnt >= m`과 같다. 이 경우에서는 `mid + 1`이 답이 아닐 수 있기 때문에, `res`라는 별도의 변수를 할당해 `mid` 값만 넣어놓는 것이다. 
+      * 해당 문제는 조건 비교문이 `cnt > m`이며, `mid + 1`이 답일 수밖에 없는 상황이다. 따라서 `mid + 1`이 답이 된다.
+  * [[BOJ] 숫자 구슬](https://www.acmicpc.net/problem/2613) [(소스코드)](./src/bead.cc) - [low, high) 조건 내 이분 탐색, 최대 중 최소 찾기(`low = mid + 1`)
+  * [[BOJ] 공정 컨설턴트 호석](https://www.acmicpc.net/problem/22254) [(소스코드)](./src/factory.cpp) - [low, high) 조건 내 이분 탐색, 최소 조건 찾기(`high = mid`) + `priority_queue`
 ---
 
 ## 이분 탐색
@@ -220,54 +220,59 @@ int main() {
 ## Parametric Search
 * 이분 탐색 응용
 * 최적화 문제, 이를테면 주어진 조건을 만족하는 값 중에서 최소 혹은 최대값을 구하는 문제를 <b>결정 문제</b>로 바꾸어 푸는 것
-    * 이분 탐색을 사용해 탐색 범위를 줄여놓고, 주어진 조건에 만족하는 결과를 찾는 것
-    * <b>조건을 만족할 경우에만 값을 기록</b>
+  * 이분 탐색을 사용해 탐색 범위를 줄여놓고, 주어진 조건에 만족하는 결과를 찾는 것
+  * <b>*조건을 만족할 경우에만 값을 기록*</b>
 
 ### 연습문제
-* [[BOJ] 랜선 자르기](https://www.acmicpc.net/problem/1654) [(소스코드)](./src/lan_cable.cpp)
+* [[BOJ] 랜선 자르기](https://www.acmicpc.net/problem/1654) [(소스코드)](./src/lan_cable.cc)
 ```c++
-// https://www.acmicpc.net/problem/1654
-#include <bits/stdc++.h>
+/*
+  Copyright 2022 Ryan M. Jeong <ryan.m.jeong@hotmail.com>
+*/
 
-using namespace std;
+// CP
+#define CP do {                     \
+  std::ios::sync_with_stdio(false); \
+  std::cin.tie(NULL);               \
+} while (0)
 
-int main(void)
-{
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
+#include <iostream>
+#include <vector>
+#include <algorithm>
 
-    // 최적화 문제: 랜선 n개를 만들 때 각 랜선의 최대 길이
-    // 결정 문제: 각 랜선의 길이가 x일 때, 랜선이 n개 이상인가?
-    int k, n;
-    cin>>k>>n;
-    vector<int> v(k);
-    for (int i = 0; i<k; ++i) {
-        cin>>v[i];
+int main() {
+  CP;
+
+  // 최적화 문제: 랜선 n개를 만들 때 각 랜선의 최대 길이
+  // 결정 문제: 각 랜선의 길이가 x일 때, 랜선이 n개 이상인가? (최대)
+  int k, n;
+  std::cin >> k >> n;
+  std::vector<int> v(k);
+  for (int i = 0; i < k; ++i)
+    std::cin >> v[i];
+  std::sort(v.begin(), v.end());
+
+  int res = 0;
+  int64_t low = 1;
+  int64_t high = static_cast<int64_t>(v.back()) + 1;  // [low, high)
+  while (low < high) {
+    int64_t mid = (low + high) / 2;
+    int cnt = 0;
+    for (const int& l : v)
+      cnt += l / mid;
+
+    if (cnt >= n) {
+      low = mid + 1;
+      res = mid;
+    } else {
+      high = mid;
     }
-    sort(v.begin(),v.end());
+  }
+  std::cout << res;
 
-    int res = 0;
-    long long low = 1;
-    long long high = (long long) v.back()+1; // [low, high)
-    while (low<high) {
-        long long mid = (low+high)/2;
-        int cnt = 0;
-
-        for (int l : v) {
-            cnt+=l/mid;
-        }
-        if (cnt>=n) {
-            low=mid+1;
-            res=mid;
-        }
-        else {
-            high=mid;
-        }
-    }
-    cout << res;
-
-    return 0;
+  return 0;
 }
+
 ```
 
 ---
