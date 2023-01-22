@@ -24,7 +24,7 @@
       * 최대 조건을 찾는 일반적인 문제에서는 조건 비교문이 `cnt >= m`과 같다. 이 경우에서는 `mid + 1`이 답이 아닐 수 있기 때문에, `res`라는 별도의 변수를 할당해 `mid` 값만 넣어놓는 것이다. 
       * 해당 문제는 조건 비교문이 `cnt > m`이며, `mid + 1`이 답일 수밖에 없는 상황이다. 따라서 `mid + 1`이 답이 된다.
   * [[BOJ] 숫자 구슬](https://www.acmicpc.net/problem/2613) [(소스코드)](./src/bead.cc) - [low, high) 조건 내 이분 탐색, 최대 중 최소 찾기(`low = mid + 1`)
-  * [[BOJ] 공정 컨설턴트 호석](https://www.acmicpc.net/problem/22254) [(소스코드)](./src/factory.cpp) - [low, high) 조건 내 이분 탐색, 최소 조건 찾기(`high = mid`) + `priority_queue`
+  * [[BOJ] 공정 컨설턴트 호석](https://www.acmicpc.net/problem/22254) [(소스코드)](./src/factory.cc) - [low, high) 조건 내 이분 탐색, 최소 조건 찾기(`high = mid`) + `priority_queue`
 ---
 
 ## 이분 탐색
