@@ -12,8 +12,9 @@
   * [[BOJ] LJUBOMORA](https://www.acmicpc.net/problem/2792) [(소스코드)](./src/marble.cc) - [low, high) 조건 내 이분 탐색, 최소 조건 찾기(`high`)
   * [[BOJ] 랜선 자르기](https://www.acmicpc.net/problem/1654) [(소스코드)](./src/lan_cable.cc) - [low, high) 조건 내 이분 탐색, 최대 조건 찾기(`low`)
   * [[BOJ] 공유기 설치](https://www.acmicpc.net/problem/2110) [(소스코드)](./src/router.cc) - [low, high) 조건 내 이분 탐색, 최대 조건 찾기(`low`)
-  * [[BOJ] 휴게소 세우기](https://www.acmicpc.net/problem/1477) [(소스코드)](./src/rest_area.cc) - [low, high) 조건 내 이분 탐색, 최소 조건 찾기(`high`)
-  * [[BOJ] 숫자 구슬](https://www.acmicpc.net/problem/2613) [(소스코드)](./src/bead.cc) - [low, high) 조건 내 이분 탐색, 최소 조건 찾기(`high`)
+  * [[BOJ] 휴게소 세우기](https://www.acmicpc.net/problem/1477) [(소스코드)](./src/rest_area.cc) - [low, high) 조건 내 이분 탐색, 최대의 최소 조건 찾기(`high`)
+  * [[BOJ] 숫자 구슬](https://www.acmicpc.net/problem/2613) [(소스코드)](./src/bead.cc) - [low, high) 조건 내 이분 탐색, 최대의 최소 조건 찾기(`high`) + 문제의 조건에 따라 `cnt`를 잘 갱신해야 함
+  * [[BOJ] 흩날리는 시험지 속에서 내 평점이 느껴진거야](https://www.acmicpc.net/problem/17951) [(소스코드)](./src/17951.cc) - [low, high) 조건 내 이분 탐색, 최소의 최대 조건 찾기(`low`) + 문제의 조건에 따라 `cnt`를 잘 갱신해야 함
   * [[BOJ] 공정 컨설턴트 호석](https://www.acmicpc.net/problem/22254) [(소스코드)](./src/factory.cc) - [low, high) 조건 내 이분 탐색, 최소 조건 찾기(`high`) + `priority_queue`
 ---
 

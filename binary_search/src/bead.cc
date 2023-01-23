@@ -15,6 +15,8 @@
 int main() {
   CP;
 
+  // 결정문제: 그룹의 합이 mid일 때, 그룹의 개수가 x개인가?
+  //         (그룹의 합 중 최대값이 최소가 되도록 해야 함)
   int n, m;
   std::cin >> n >> m;
   std::vector<int> v(n);
@@ -31,11 +33,12 @@ int main() {
   int high = sum + 1;  // [low,high)
   while (low < high) {
     int mid = (low + high) / 2;
-    int cnt = 1;
+    int cnt = 1;  // 그룹의 합이 mid를 만족할 필요가 없으므로, 기본값은 1
     sum = 0;
     for (int i = 0; i < n; ++i) {
       sum += v[i];
-      if (sum > mid) {
+      if (sum > mid) {  // i == n - 1일 때 조건이 참이라면 sum은 하나의 그룹을 의미
+                        // 조건이 거짓이라면, sum과 v[i] 각각 독립적인 그룹을 의미
         ++cnt;
         sum = v[i];
       }
