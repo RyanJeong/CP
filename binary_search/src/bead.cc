@@ -40,19 +40,19 @@ int main() {
         sum = v[i];
       }
     }
-    if (cnt > m) {
-      low = mid + 1;
-    } else {
+
+    if (cnt <= m)
       high = mid;
-    }
+    else
+      low = mid + 1;
   }
-  std::cout << low << '\n';
+  std::cout << high << '\n';
 
   int size = 0;
   sum = 0;
   for (int i = 0; i < n; ++i) {
     sum += v[i];
-    if (sum > low) {
+    if (sum > high) {
       std::cout << size << ' ';
       size = 0;
       sum = v[i];

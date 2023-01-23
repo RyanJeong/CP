@@ -24,7 +24,6 @@ int main() {
     std::cin >> v[i];
   std::sort(v.begin(), v.end());
 
-  int res = 0;
   int low = 1;
   int high = v.back() - v.front() + 1;  // [low,high)
   while (low < high) {
@@ -37,14 +36,13 @@ int main() {
         curr = v[i];
       }
     }
-    if (cnt >= c) {
+
+    if (cnt >= c)
       low = mid + 1;
-      res = mid;
-    } else {
+    else
       high = mid;
-    }
   }
-  std::cout << res;
+  std::cout << low - 1;
 
   return 0;
 }

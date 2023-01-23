@@ -24,7 +24,6 @@ int main() {
     std::cin >> v[i];
   std::sort(v.begin(), v.end());
 
-  int res = 0;
   int64_t low = 1;
   int64_t high = static_cast<int64_t>(v.back()) + 1;  // [low, high)
   while (low < high) {
@@ -33,14 +32,12 @@ int main() {
     for (const int& l : v)
       cnt += l / mid;
 
-    if (cnt >= n) {
+    if (cnt >= n)
       low = mid + 1;
-      res = mid;
-    } else {
+    else
       high = mid;
-    }
   }
-  std::cout << res;
+  std::cout << low - 1;
 
   return 0;
 }

@@ -16,9 +16,9 @@ int main() {
   CP;
 
   // 최적화문제
-  //   * M 개의 휴게소를 더 지어서 휴게소가 없는 구간의 길이의 최대값을 최소로
+  //   * n 개의 휴게소를 더 지어서 휴게소가 없는 구간의 길이의 최대값을 최소로
   // 결정문제
-  //   * 휴게소를 x의 거리마다 지었을 때, 지을 수 있는 휴게소의 개수가 n개인가?
+  //   * 휴게소를 x의 거리마다 지었을 때, 지을 수 있는 휴게소의 개수가 n 개인가?
   int n, m, l;
   std::cin >> n >> m >> l;
   std::vector<int> v(n);
@@ -39,12 +39,13 @@ int main() {
     int cnt = 0;
     for (int i = 1; i < n; ++i)
       cnt += (v[i] - v[i-1] - 1) / mid;
-    if (cnt > m)
-      low = mid + 1;
-    else
+
+    if (cnt <= m)
       high = mid;
+    else
+      low = mid + 1;
   }
-  std::cout << low;
+  std::cout << high;
 
   return 0;
 }
