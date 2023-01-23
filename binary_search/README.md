@@ -11,6 +11,7 @@
 * 추천 문제 - 파라메트릭 서치
   * [[BOJ] LJUBOMORA](https://www.acmicpc.net/problem/2792) [(소스코드)](./src/marble.cc) - [low, high) 조건 내 이분 탐색, 최소 조건 찾기(`high`)
   * [[BOJ] 랜선 자르기](https://www.acmicpc.net/problem/1654) [(소스코드)](./src/lan_cable.cc) - [low, high) 조건 내 이분 탐색, 최대 조건 찾기(`low`)
+  * [[BOJ] 히오스 프로게이머](https://www.acmicpc.net/problem/16564) [(소스코드)](./src/16564.cc) - [low, high) 조건 내 이분 탐색, 최대 조건 찾기(`low`) (조건문 주의할 것)
   * [[BOJ] 공유기 설치](https://www.acmicpc.net/problem/2110) [(소스코드)](./src/router.cc) - [low, high) 조건 내 이분 탐색, 최대 조건 찾기(`low`)
   * [[BOJ] 휴게소 세우기](https://www.acmicpc.net/problem/1477) [(소스코드)](./src/rest_area.cc) - [low, high) 조건 내 이분 탐색, 최대의 최소 조건 찾기(`high`)
   * [[BOJ] 숫자 구슬](https://www.acmicpc.net/problem/2613) [(소스코드)](./src/bead.cc) - [low, high) 조건 내 이분 탐색, 최대의 최소 조건 찾기(`high`) + 문제의 조건에 따라 `cnt`를 잘 갱신해야 함
