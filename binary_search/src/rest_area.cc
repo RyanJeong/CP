@@ -27,7 +27,7 @@ int main() {
   v.push_back(0);  // lower_bound
   v.push_back(l);  // upper_bound
   n += 2;          // n(lower_bound, upper_bound)
-  sort(v.begin(), v.end());
+  std::sort(v.begin(), v.end());
 
   int low = v.front() + 1;  // 고속도로 양 끝에는 휴게소를 설치 못 함
   int high = v.back();      // [low, high)
