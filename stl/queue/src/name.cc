@@ -12,16 +12,6 @@
 #include <string>
 #include <queue>
 
-// iostream
-using std::cin;
-using std::cout;
-
-// string
-using std::string;
-
-// queue
-using std::queue;
-
 int main() {
   CP;
 
@@ -30,15 +20,15 @@ int main() {
     2, 1, 2, 2, 1, 2, 2, 2, 1, 2,
     1, 1, 1, 2, 2, 1
   };
-  string a, b;
-  cin >> a >> b;
-  queue<int> q;
+  std::string a, b;
+  std::cin >> a >> b;
+  std::queue<int> q;
   for (int i = 0; i < a.size(); ++i) {
     q.push(cnt[a[i]-'A']);
     q.push(cnt[b[i]-'A']);
   }
   while (q.size() > 2) {
-    queue<int> temp;
+    std::queue<int> temp;
     int prev = q.front();
     q.pop();
     while (!q.empty()) {
@@ -49,9 +39,9 @@ int main() {
     }
     q = temp;
   }
-  cout << q.front();
+  std::cout << q.front();
   q.pop();
-  cout << q.front();
+  std::cout << q.front();
 
   return 0;
 }

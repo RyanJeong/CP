@@ -12,45 +12,35 @@
 #include <string>
 #include <queue>
 
-// iostream
-using std::cin;
-using std::cout;
-
-// string
-using std::string;
-
-// queue
-using std::queue;
-
 int main() {
   CP;
 
   int n;
-  cin >> n;
-  queue<int> q;
+  std::cin >> n;
+  std::queue<int> q;
   while (n--) {
-    string str;
-    cin >> str;
+    std::string str;
+    std::cin >> str;
 
     if (str == "push") {
       int v;
-      cin >> v;
+      std::cin >> v;
       q.push(v);
     } else if (str == "pop") {
       if (q.empty()) {
-        cout << -1 << '\n';
+        std::cout << -1 << '\n';
       } else {
-        cout << q.front() << '\n';
+        std::cout << q.front() << '\n';
         q.pop();
       }
     } else if (str == "size") {
-      cout << q.size() << '\n';
+      std::cout << q.size() << '\n';
     } else if (str == "empty") {
-      cout << q.empty() << '\n';
+      std::cout << q.empty() << '\n';
     } else if (str == "front") {
-      cout << ((q.empty()) ? -1 : q.front()) << '\n';
+      std::cout << ((q.empty()) ? -1 : q.front()) << '\n';
     } else if (str == "back") {
-      cout << ((q.empty()) ? -1 : q.back()) << '\n';
+      std::cout << ((q.empty()) ? -1 : q.back()) << '\n';
     }
   }
 

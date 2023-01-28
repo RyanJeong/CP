@@ -11,19 +11,12 @@
 #include <iostream>
 #include <queue>
 
-// iostream
-using std::cin;
-using std::cout;
-
-// queue
-using std::queue;
-
 int main() {
   CP;
 
   int n;
-  cin >> n;
-  queue<int> q;
+  std::cin >> n;
+  std::queue<int> q;
   for (int i = 1; i <= n; ++i)
     q.push(i);
   while (q.size() != 1) {
@@ -31,7 +24,7 @@ int main() {
     q.push(q.front());
     q.pop();
   }
-  cout << q.front();
+  std::cout << q.front();
 
   return 0;
 }

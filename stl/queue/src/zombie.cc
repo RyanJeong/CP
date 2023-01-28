@@ -11,24 +11,17 @@
 #include <iostream>
 #include <queue>
 
-// iostream
-using std::cin;
-using std::cout;
-
-// queue
-using std::queue;
-
 int main() {
   CP;
 
   int l;
-  cin >> l;
+  std::cin >> l;
   int m_l, m_k;
-  cin >> m_l >> m_k;
+  std::cin >> m_l >> m_k;
   int c;
-  cin >> c;
+  std::cin >> c;
   int damage = 0;
-  queue<int> q;
+  std::queue<int> q;
   bool is_true = true;
   for (int i = 1; i <= l; ++i) {
     if (!q.empty() && q.front() == i) {
@@ -36,7 +29,7 @@ int main() {
       damage -= m_k;
     }
     int hp;
-    cin >> hp;
+    std::cin >> hp;
     if (hp > damage + m_k) {
       if (c > 0) {
         --c;
@@ -49,7 +42,7 @@ int main() {
       q.push(i + m_l);
     }
   }
-  cout << ((is_true) ? "YES" : "NO");
+  std::cout << ((is_true) ? "YES" : "NO");
 
   return 0;
 }

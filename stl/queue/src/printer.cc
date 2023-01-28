@@ -15,54 +15,35 @@
 #include <algorithm>
 #include <functional>
 
-// iostream
-using std::cin;
-using std::cout;
-
-// vector
-using std::vector;
-
-// queue
-using std::queue;
-
-// utility
-using std::pair;
-
-// algorithm
-using std::sort;
-
-// functional
-using std::greater;
-
-int solution(const vector<int>&, int);
+int solution(const std::vector<int>&, int);
 
 int main() {
   CP;
 
   int t;
-  cin >> t;
+  std::cin >> t;
   while (t--) {
     int n;
-    cin >> n;
-    vector<int> v(n);
+    std::cin >> n;
+    std::vector<int> v(n);
     for (int& i : v)
-      cin >> i;
+      std::cin >> i;
     int l;
-    cin >> l;
-    cout << solution(v, l) << '\n';
+    std::cin >> l;
+    std::cout << solution(v, l) << '\n';
   }
 
   return 0;
 }
 
-int solution(const vector<int>& priorities, int location) {
-  queue<pair<int, int>> q;  // priority, index;
-  vector<int> v;  // priority
+int solution(const std::vector<int>& priorities, int location) {
+  std::queue<std::pair<int, int>> q;  // priority, index;
+  std::vector<int> v;  // priority
   for (int i = 0; i < priorities.size(); ++i) {
     q.push({priorities[i], i});
     v.push_back(priorities[i]);
   }
-  sort(v.begin(), v.end(), greater<int>());
+  std::sort(v.begin(), v.end(), std::greater<int>());
 
   int res = 0;
   for (int& i : v) {
