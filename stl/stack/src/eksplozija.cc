@@ -10,24 +10,13 @@
 
 #include <iostream>
 #include <string>
-#include <stack>
-
-// iostream
-using std::cin;
-using std::cout;
-
-// string
-using std::string;
-
-// stack;
-using std::stack;
 
 int main() {
   CP;
 
-  string s, t;
-  cin >> s >> t;
-  string res;
+  std::string s, t;
+  std::cin >> s >> t;
+  std::string res;
   for (const char& c : s) {
     res.push_back(c);
     if (c != t.back())
@@ -47,7 +36,7 @@ int main() {
         res.pop_back();
     }
   }
-  cout << ((res.empty()) ? "FRULA" : res);
+  std::cout << ((res.empty()) ? "FRULA" : res);
 
   return 0;
 }

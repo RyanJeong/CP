@@ -12,23 +12,13 @@
 #include <string>
 #include <stack>
 
-// iostream
-using std::cin;
-using std::cout;
-
-// string
-using std::string;
-
-// stack;
-using std::stack;
-
 int main() {
   CP;
 
-  string str;
-  cin >> str;
+  std::string str;
+  std::cin >> str;
   bool is_valid = true;
-  stack<char> s;
+  std::stack<char> s;
   int value = 1;
   int total_value = 0;
   char prev;
@@ -52,7 +42,7 @@ int main() {
     }
     prev = c;
   }
-  cout << ((!s.empty() || !is_valid) ? 0 : total_value);
+  std::cout << ((!s.empty() || !is_valid) ? 0 : total_value);
 
   return 0;
 }

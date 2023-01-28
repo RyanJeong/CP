@@ -12,46 +12,35 @@
 #include <string>
 #include <stack>
 
-// iostream
-using std::cin;
-using std::cout;
-
-// string
-using std::string;
-using std::getline;
-
-// stack
-using std::stack;
-
 int main() {
-  string str;
-  getline(cin, str);
-  stack<char> s;
+  std::string str;
+  std::getline(std::cin, str);
+  std::stack<char> s;
   bool is_on = false;
   for (const char& c : str) {
     if (c == '<') {
       is_on = true;
       while (!s.empty()) {
-        cout << s.top();
+        std::cout << s.top();
         s.pop();
       }
-      cout << c;
+      std::cout << c;
     } else if (is_on) {
-      cout << c;
+      std::cout << c;
       if (c == '>')
         is_on = false;
     } else if (c == ' ') {
       while (!s.empty()) {
-        cout << s.top();
+        std::cout << s.top();
         s.pop();
       }
-      cout << c;
+      std::cout << c;
     } else {
       s.push(c);
     }
   }
   while (!s.empty()) {
-    cout << s.top();
+    std::cout << s.top();
     s.pop();
   }
 

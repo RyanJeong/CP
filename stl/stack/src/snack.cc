@@ -11,30 +11,23 @@
 #include <iostream>
 #include <stack>
 
-// iostream
-using std::cin;
-using std::cout;
-
-// stack;
-using std::stack;
-
 int main() {
   CP;
 
   int n;
-  cin >> n;
-  stack<int> s;
+  std::cin >> n;
+  std::stack<int> s;
   int next = 1;
   while (n--) {
     int temp;
-    cin >> temp;
+    std::cin >> temp;
     s.push(temp);
     while (!s.empty() && s.top() == next) {
       ++next;
       s.pop();
     }
   }
-  cout << ((s.empty()) ? "Nice" : "Sad");
+  std::cout << ((s.empty()) ? "Nice" : "Sad");
 
   return 0;
 }

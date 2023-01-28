@@ -12,26 +12,15 @@
 #include <string>
 #include <stack>
 
-// iostream
-using std::cin;
-using std::cout;
-using std::getline;
-
-// string
-using std::string;
-
-// stack;
-using std::stack;
-
 int main() {
   CP;
 
-  string str;
-  while (getline(cin, str)) {
+  std::string str;
+  while (std::getline(std::cin, str)) {
     if (str == ".")
       break;
 
-    stack<char> bracket;
+    std::stack<char> bracket;
     bool is_valid = true;
     for (const char& c : str) {
       if (c == '(' || c == '[') {
@@ -50,7 +39,7 @@ int main() {
         bracket.pop();
       }
     }
-    cout << ((is_valid && bracket.empty()) ? "yes" : "no") << '\n';
+    std::cout << ((is_valid && bracket.empty()) ? "yes" : "no") << '\n';
   }
 
   return 0;

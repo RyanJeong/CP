@@ -12,27 +12,17 @@
 #include <vector>
 #include <stack>
 
-// iostream
-using std::cin;
-using std::cout;
-
-// vector
-using std::vector;
-
-// stack;
-using std::stack;
-
 int main() {
   CP;
 
   int n;
-  cin >> n;
-  vector<int> v(n);
-  for (int& i : v)
-    cin >> i;
+  std::cin >> n;
+  std::vector<int> v(n);
+  for (int i = 0; i < n; ++i)
+    std::cin >> v[i];
 
-  vector<int> res(v.size(), -1);
-  stack<int> s;
+  std::vector<int> res(v.size(), -1);
+  std::stack<int> s;
   for (int i = 0; i < v.size(); ++i) {
     while (!s.empty() && v[s.top()] < v[i]) {
       res[s.top()] = v[i];
@@ -41,7 +31,7 @@ int main() {
     s.push(i);
   }
   for (const int& i : res)
-    cout << i << ' ';
+    std::cout << i << ' ';
 
   return 0;
 }

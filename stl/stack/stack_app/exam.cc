@@ -12,26 +12,16 @@
 #include <string>
 #include <stack>
 
-// iostream
-using std::cin;
-using std::cout;
-
-// string
-using std::string;
-
-// stack;
-using std::stack;
-
 int main() {
   CP;
 
   int n;
-  cin >> n;
+  std::cin >> n;
   while (n--) {
-    string ps;
-    cin >> ps;
+    std::string ps;
+    std::cin >> ps;
     bool is_vps = true;
-    stack<int> s;
+    std::stack<int> s;
     for (const char& c : ps) {
       if (c == '(') {
         s.push(c);
@@ -49,7 +39,7 @@ int main() {
         }
       }
     }
-    cout << ((s.empty() && is_vps) ? "YES" : "NO") << '\n';
+    std::cout << ((s.empty() && is_vps) ? "YES" : "NO") << '\n';
   }
 
   return 0;

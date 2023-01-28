@@ -11,34 +11,27 @@
 #include <iostream>
 #include <stack>
 
-// iostream
-using std::cin;
-using std::cout;
-
-// stack;
-using std::stack;
-
 int main() {
   CP;
 
-  stack<int> s;
+  std::stack<int> s;
   s.push(10);  // { 10 }
   s.push(20);  // { 10 20 }
   s.push(30);  // { 10 20 30 }
-  cout << s.size() << '\n';  // 3
+  std::cout << s.size() << '\n';  // 3
   if (s.empty())
-    cout << "Stack is empty!\n";
+    std::cout << "stack is empty!\n";
   else
-    cout << "Stack is not empty!\n";  // print "Stack is not empty!"
-  cout << s.top() << '\n';  // 30
+    std::cout << "stack is not empty!\n";  // stack is not empty!
+  std::cout << s.top() << '\n';  // 30
   s.pop();  // { 10 20 }, return value is none!
-  cout << s.top() << '\n';  // 20
+  std::cout << s.top() << '\n';  // 20
   s.pop();  // { 10 }
   s.pop();  // (empty)
   if (s.empty())
-    cout << "Stack is empty!\n";  // print "Stack is empty!"
+    std::cout << "stack is empty!\n";  // stack is empty!
   else
-    cout << "Stack is not empty!\n";
+    std::cout << "stack is not empty!\n";
 
   return 0;
 }

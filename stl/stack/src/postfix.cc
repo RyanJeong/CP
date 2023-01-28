@@ -13,29 +13,15 @@
 #include <stack>
 #include <cctype>
 
-// iostream
-using std::cin;
-using std::cout;
-
-// string
-using std::string;
-
-// stack;
-using std::stack;
-
-// cctype
-using std::isalpha;
-using std::isupper;
-
 int main() {
   CP;
 
-  string str;
-  cin >> str;
-  stack<char> op;
-  string res;
+  std::string str;
+  std::cin >> str;
+  std::stack<char> op;
+  std::string res;
   for (const char& c : str) {
-    if (isalpha(c) && isupper(c)) {
+    if (std::isalpha(c) && std::isupper(c)) {
       res += c;
       continue;
     }
@@ -73,7 +59,7 @@ int main() {
     res += op.top();
     op.pop();
   }
-  cout << res;
+  std::cout << res;
 
   return 0;
 }
