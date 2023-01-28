@@ -12,53 +12,42 @@
 #include <string>
 #include <list>
 
-// iostream
-using std::cin;
-using std::cout;
-using std::getline;
-
-// string
-using std::string;
-
-// list
-using std::list;
-
 int main() {
   CP;
 
-  string s;
-  cin >> s;
-  list<char> l;
+  std::string s;
+  std::cin >> s;
+  std::list<char> l;
   for (const char& c : s)
     l.push_back(c);
   int cnt;
-  cin >> cnt;
-  cin.ignore();  // consume '\n'
+  std::cin >> cnt;
+  std::cin.ignore();  // consume '\n'
 
   auto cur = l.end();
   while (cnt--) {
-    string str;
-    getline(cin, str);
+    std::string str;
+    std::getline(std::cin, str);
     switch (str.front()) {
-    case 'L':
-      if (cur != l.begin())
-        --cur;
-      break;
-    case 'D':
-      if (cur != l.end())
-        ++cur;
-      break;
-    case 'B':
-      if (cur != l.begin())
-        cur = l.erase(prev(cur));
-      break;
-    case 'P':
-      l.insert(cur, str[2]);
-      break;
+      case 'L':
+        if (cur != l.begin())
+          --cur;
+        break;
+      case 'D':
+        if (cur != l.end())
+          ++cur;
+        break;
+      case 'B':
+        if (cur != l.begin())
+          cur = l.erase(prev(cur));
+        break;
+      case 'P':
+        l.insert(cur, str[2]);
+        break;
     }
   }
   for (const char& c : l)
-    cout << c;
+    std::cout << c;
 
   return 0;
 }

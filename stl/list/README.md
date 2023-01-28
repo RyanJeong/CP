@@ -25,23 +25,16 @@
 #include <iostream>
 #include <list>
 
-// iostream
-using std::cin;
-using std::cout;
-
-// list
-using std::list;
-
 int main() {
   // In C++, an iterator is any object that, pointing to some element in a
   // range of elements(such as an array or a container), has the ability to
   // iterate through the elements of that range using a set of operators
   // (at least, the increment (++) and dereference (*) operators).
-  list<int> l = { 1, 2 };  // 1 -> 2
-  list<int>::iterator p = l.begin();  // p points to '1'
+  std::list<int> l = { 1, 2 };  // 1 -> 2
+  std::list<int>::iterator p = l.begin();  // p points to '1'
 
   l.push_front(10);    // { 10, 1, 2 }
-  cout << *p << '\n';  // 1
+  std::cout << *p << '\n';  // 1
 
   l.push_back(5);  // { 10, 1, 2, 5 };
   l.insert(p, 6);  // { 10, 6, 1, 2, 5 }, insert where p is pointing
@@ -52,19 +45,19 @@ int main() {
   // container which followed the last element erased from the list container.
   p = l.erase(p);  // erase where p is pointing (2 will removed)
                    // now p points to '5'
-  cout << *p << '\n';  // 5
+  std::cout << *p << '\n';  // 5
   p = l.end();  // now p points to the element after '5' that we don't know
                 // what the value is.
-  cout << *p << '\n';  // ??
+  std::cout << *p << '\n';  // ??
 
   // range-based for loop
   for (const int& i : l)
-    cout << i << ' ';  // 10 6 1 5
-  cout << '\n';
+    std::cout << i << ' ';  // 10 6 1 5
+  std::cout << '\n';
   // usage function begin() and end()
   for (auto ptr = l.begin(); ptr != l.end(); ++ptr)
-    cout << *ptr << ' ';  // 10 6 1 5
-  cout << '\n';
+    std::cout << *ptr << ' ';  // 10 6 1 5
+  std::cout << '\n';
 
   return 0;
 }
