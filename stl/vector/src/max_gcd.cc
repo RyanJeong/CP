@@ -14,38 +14,21 @@
 #include <cctype>
 #include <algorithm>
 
-// iostream
-using std::cin;
-using std::cout;
-using std::getline;
-
-// string
-using std::string;
-
-// vector
-using std::vector;
-
-// cctype
-using std::isdigit;
-
-// algorithm
-using std::max;
-
 int gcd(int, int);
 
 int main() {
   CP;
 
   int n;
-  cin >> n;
-  cin.ignore();  // consume '\n'
+  std::cin >> n;
+  std::cin.ignore();  // consume '\n'
   while (n--) {
-    string str;
-    getline(cin, str);
+    std::string str;
+    std::getline(std::cin, str);
     int tmp = 0;
-    vector<int> v;
+    std::vector<int> v;
     for (const char& c : str) {
-      if (isdigit(c)) {
+      if (std::isdigit(c)) {
         tmp = tmp * 10 + (c - '0');
       } else {
         v.push_back(tmp);
@@ -57,9 +40,9 @@ int main() {
     int res = 0;
     for (int i = 0; i < v.size(); ++i) {
       for (int j = i + 1; j < v.size(); ++j)
-        res = max(res, gcd(v[i], v[j]));
+        res = std::max(res, gcd(v[i], v[j]));
     }
-    cout << res << '\n';
+    std::cout << res << '\n';
   }
 
   return 0;

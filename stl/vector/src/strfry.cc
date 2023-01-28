@@ -12,26 +12,16 @@
 #include <string>
 #include <vector>
 
-// iostream
-using std::cin;
-using std::cout;
-
-// string
-using std::string;
-
-// vector
-using std::vector;
-
 int main() {
   CP;
 
   int n;
-  cin >> n;
+  std::cin >> n;
   while (n--) {
-    string tmp_a, tmp_b;
-    cin >> tmp_a >> tmp_b;
+    std::string tmp_a, tmp_b;
+    std::cin >> tmp_a >> tmp_b;
 
-    vector<int> freq(26);
+    std::vector<int> freq(26);
     for (const char& c : tmp_a)
       ++freq[c-'a'];
     for (const char& c : tmp_b)
@@ -44,7 +34,7 @@ int main() {
       is_true = false;
       break;
     }
-    cout << (is_true ? "Possible" : "Impossible") << '\n';
+    std::cout << (is_true ? "Possible" : "Impossible") << '\n';
   }
 
   return 0;
