@@ -12,31 +12,21 @@
 #include <utility>
 #include <deque>
 
-// iostream
-using std::cin;
-using std::cout;
-
-// utility
-using std::pair;
-
-// deque
-using std::deque;
-
 int main() {
   CP;
 
   int n;
-  cin >> n;
-  deque<pair<int, int>> dq;
+  std::cin >> n;
+  std::deque<std::pair<int, int>> dq;
   for (int i = 1; i <= n; ++i) {
     int tmp;
-    cin >> tmp;
+    std::cin >> tmp;
     dq.push_back({i, tmp});
   }
 
   auto cur = dq.front();
   dq.pop_front();
-  cout << cur.first << ' ';
+  std::cout << cur.first << ' ';
   while (!dq.empty()) {
     if (cur.second > 0) {
       while (cur.second--) {
@@ -53,7 +43,7 @@ int main() {
       cur = dq.front();
       dq.pop_front();
     }
-    cout << cur.first << ' ';
+    std::cout << cur.first << ' ';
   }
 
   return 0;

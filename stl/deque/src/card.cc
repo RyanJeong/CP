@@ -12,29 +12,19 @@
 #include <stack>
 #include <deque>
 
-// iostream
-using std::cin;
-using std::cout;
-
-// stack
-using std::stack;
-
-// deque
-using std::deque;
-
 int main() {
   CP;
 
   int n;
-  cin >> n;
-  stack<int> s;
+  std::cin >> n;
+  std::stack<int> s;
   for (int i = 0; i < n; ++i) {
     int a;
-    cin >> a;
+    std::cin >> a;
     s.push(a);
   }
 
-  deque<int> dq;
+  std::deque<int> dq;
   for (int card = 1; !s.empty(); ++card) {
     int op = s.top();
     s.pop();
@@ -50,7 +40,7 @@ int main() {
     }
   }
   for (const int& i : dq) {
-    cout << i << ' ';
+    std::cout << i << ' ';
   }
 
   return 0;

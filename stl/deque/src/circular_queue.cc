@@ -11,26 +11,19 @@
 #include <iostream>
 #include <deque>
 
-// iostream
-using std::cin;
-using std::cout;
-
-// deque
-using std::deque;
-
 int main() {
   CP;
 
   int n, m;
-  cin >> n >> m;
-  deque<int> dq;
+  std::cin >> n >> m;
+  std::deque<int> dq;
   while (n)
     dq.push_front(n--);
 
   int res = 0;
   while (m--) {
     int num;
-    cin >> num;
+    std::cin >> num;
 
     int tmp;
     for (int i = 0; i < dq.size(); ++i) {
@@ -56,7 +49,7 @@ int main() {
       }
     }
   }
-  cout << res;
+  std::cout << res;
 
   return 0;
 }
