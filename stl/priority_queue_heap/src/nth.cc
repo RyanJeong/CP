@@ -13,36 +13,23 @@
 #include <vector>
 #include <functional>
 
-// iostream
-using std::cin;
-using std::cout;
-
-// queue
-using std::priority_queue;
-
-// vector
-using std::vector;
-
-// functional
-using std::greater;
-
 int main() {
   CP;
 
   int n;
-  cin >> n;
+  std::cin >> n;
 
-  priority_queue<int, vector<int>, greater<int>> pq;
+  std::priority_queue<int, std::vector<int>, std::greater<int>> pq;
   const int kSize = n * n;
   for (int i = 0; i < kSize; ++i) {
     int temp;
-    cin >> temp;
+    std::cin >> temp;
 
     pq.push(temp);
     if (pq.size() > n)
       pq.pop();
   }
-  cout << pq.top();
+  std::cout << pq.top();
 
   return 0;
 }

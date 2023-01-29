@@ -21,14 +21,14 @@ int main() {
   int n;
   std::cin >> n;
   std::vector<std::pair<int, int>> v(n);
-  for (auto& i : v)
-    std::cin >> i.first >> i.second;
+  for (int i = 0; i < n; ++i)
+    std::cin >> v[i].first >> v[i].second;
 
   std::sort(v.begin(), v.end());
   std::priority_queue<int, std::vector<int>, std::greater<int>> pq;
   pq.push(-1);
   for (const auto& i : v) {
-    auto cur = pq.top();
+    auto& cur = pq.top();
     if (i.first >= cur)
       pq.pop();
     pq.push(i.second);

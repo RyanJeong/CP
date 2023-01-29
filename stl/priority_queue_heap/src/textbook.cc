@@ -13,30 +13,17 @@
 #include <vector>
 #include <functional>
 
-// iostream
-using std::cin;
-using std::cout;
-
-// queue
-using std::priority_queue;
-
-// vector
-using std::vector;
-
-// functional
-using std::greater;
-
 int main() {
   CP;
 
   int n, m;
-  cin >> n >> m;
-  priority_queue<int, vector<int>, greater<int>> pq;
-  vector<vector<int>> v(n + 1, vector<int>());
-  vector<int> cnt_lock(n + 1);
+  std::cin >> n >> m;  // 1 ~ n -> 1-based
+  std::priority_queue<int, std::vector<int>, std::greater<int>> pq;
+  std::vector<std::vector<int>> v(n + 1, std::vector<int>());
+  std::vector<int> cnt_lock(n + 1);
   while (m--) {
     int s, t;
-    cin >> s >> t;
+    std::cin >> s >> t;
     v[s].push_back(t);
     ++cnt_lock[t];
   }
@@ -48,7 +35,7 @@ int main() {
   while (!pq.empty()) {
     auto curr = pq.top();
     pq.pop();
-    cout << curr << ' ';
+    std::cout << curr << ' ';
     for (const int& i : v[curr]) {
       --cnt_lock[i];
       if (cnt_lock[i])
@@ -59,4 +46,3 @@ int main() {
 
   return 0;
 }
-

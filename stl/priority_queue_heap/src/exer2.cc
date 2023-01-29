@@ -16,20 +16,21 @@ int main() {
 
   int n;
   std::cin >> n;
-  std::priority_queue<int> max_heap;
+  std::priority_queue<int, std::vector<int>, std::greater<int>> min_heap;
+
   while (n--) {
     int x;
     std::cin >> x;
-    if (x) {
-      max_heap.push(x);
-    } else {
-      if (max_heap.empty()) {
-        std::cout << '0';
+
+    if (!x) {
+      if (min_heap.empty()) {
+        std::cout << "0\n";
       } else {
-        std::cout << max_heap.top();
-        max_heap.pop();
+        std::cout << min_heap.top() << '\n';
+        min_heap.pop();
       }
-      std::cout << '\n';
+    } else {
+      min_heap.push(x);
     }
   }
 

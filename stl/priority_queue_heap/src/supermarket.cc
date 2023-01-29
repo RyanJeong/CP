@@ -13,27 +13,34 @@
 #include <utility>
 #include <algorithm>
 #include <queue>
-#include <functional>
+
 
 int main() {
   CP;
 
   int n;
   std::cin >> n;
-  std::vector<std::pair<int, int>> v(n);
-  for (auto& i : v)
-    std::cin >> i.first >> i.second;
-
-  std::sort(v.begin(), v.end());
-  std::priority_queue<int, std::vector<int>, std::greater<int>> pq;
-  pq.push(-1);
-  for (const auto& i : v) {
-    auto cur = pq.top();
-    if (i.first >= cur)
-      pq.pop();
-    pq.push(i.second);
+  std::vector<std::pair<int, int>> v;
+  while (n--) {
+    int p, d;
+    std::cin >> p >> d;
+    v.push_back({d, p});
   }
-  std::cout << pq.size();
+  std::sort(v.begin(), v.end());
+
+  std::priority_queue<int, std::vector<int>, std::greater<int>> pq;
+  for (const auto& curr : v) {
+    pq.push(curr.second);
+    if (pq.size() > curr.first)
+      pq.pop();
+  }
+
+  int res = 0;
+  while (!pq.empty()) {
+    res += pq.top();
+    pq.pop();
+  }
+  std::cout << res;
 
   return 0;
 }

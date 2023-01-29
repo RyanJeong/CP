@@ -17,19 +17,20 @@ int main() {
   int n;
   std::cin >> n;
   std::priority_queue<int> max_heap;
+
   while (n--) {
     int x;
     std::cin >> x;
-    if (x) {
-      max_heap.push(x);
-    } else {
+
+    if (!x) {
       if (max_heap.empty()) {
-        std::cout << '0';
+        std::cout << "0\n";
       } else {
-        std::cout << max_heap.top();
+        std::cout << max_heap.top() << '\n';
         max_heap.pop();
       }
-      std::cout << '\n';
+    } else {
+      max_heap.push(x);
     }
   }
 

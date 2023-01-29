@@ -9,29 +9,35 @@
 } while (0)
 
 #include <iostream>
-#include <queue>
 #include <vector>
+#include <queue>
+#include <utility>
 #include <functional>
+#include <cmath>
 
 int main() {
   CP;
 
   int n;
   std::cin >> n;
-  std::priority_queue<int, std::vector<int>, std::greater<int>> min_heap;
+  // too much text to fit on one line:
+  std::priority_queue<std::pair<int, int>,
+                      std::vector<std::pair<int, int>>,
+                      std::greater<std::pair<int, int>>> min_heap;
+
   while (n--) {
     int x;
     std::cin >> x;
-    if (x) {
-      min_heap.push(x);
-    } else {
+
+    if (!x) {
       if (min_heap.empty()) {
-        std::cout << '0';
+        std::cout << "0\n";
       } else {
-        std::cout << min_heap.top();
+        std::cout << min_heap.top().second << '\n';
         min_heap.pop();
       }
-      std::cout << '\n';
+    } else {
+      min_heap.push({std::abs(x), x});
     }
   }
 
