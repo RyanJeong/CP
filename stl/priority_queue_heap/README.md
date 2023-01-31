@@ -11,7 +11,7 @@
     * [Set](/stl/set/)
     * [Map](/stl/map/)
 
-# [WIP]Priority Queue
+# Priority Queue
 * 추천 문제
   * [[BOJ] 최대 힙](https://www.acmicpc.net/problem/11279) [(소스코드)](./src/max_heap.cc) - `priority_queue<T>`
   * [[BOJ] 최소 힙](https://www.acmicpc.net/problem/1927) [(소스코드)](./src/min_heap.cc) - `priority_queue<T, vector<T>, greater<T>>`
