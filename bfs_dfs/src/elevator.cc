@@ -27,9 +27,9 @@ int main() {
     auto cur = q.front();
     q.pop();
 
-    const int dx[] = {u, -d};
-    for (const int& d : dx) {
-      int x = cur+d;
+    const int kDx[] = {u, -d};
+    for (const int& d : kDx) {
+      int x = cur + d;
 
       if (x < 1 || x > f)
         continue;

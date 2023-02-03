@@ -1,16 +1,17 @@
 # BFS & DFS
 * 추천 문제 - BFS
-  * [[BOJ] 전쟁 - 전투](https://www.acmicpc.net/problem/1303) [(소스코드)](./src/battle.cc) - 단순한 영역 개수 세기 문제 1
-  * [[BOJ] Counting Sheep](https://www.acmicpc.net/problem/11123) [(소스코드)](./src/sheep.cc) - 단순한 영역 개수 세기 문제 2
-  * [[BOJ] 쉬운 최단거리](https://www.acmicpc.net/problem/14940) [(소스코드)](./src/basic_min_dist.cc) - 단순한 영역 개수 세기 문제 3
-  * [[BOJ] 와드](https://www.acmicpc.net/problem/23747) [(소스코드)](./src/ward.cc) - 단순한 영역 개수 세기 문제 4
+  * [[BOJ] 전쟁 - 전투](https://www.acmicpc.net/problem/1303) [(소스코드)](./src/battle.cc) - 단순한 영역 개수 세기 문제 1 (y, x)
+  * [[BOJ] Counting Sheep](https://www.acmicpc.net/problem/11123) [(소스코드)](./src/sheep.cc) - 단순한 영역 개수 세기 문제 2 (y, x)
+  * [[BOJ] 쉬운 최단거리](https://www.acmicpc.net/problem/14940) [(소스코드)](./src/basic_min_dist.cc) - 단순한 영역 개수 세기 문제 3 (y, x)
+  * [[BOJ] 와드](https://www.acmicpc.net/problem/23747) [(소스코드)](./src/ward.cc) - 단순한 영역 개수 세기 문제 4 (y, x)
+  * [[BOJ] 경쟁적 전염](https://www.acmicpc.net/problem/18405) [(소스코드)](./src/competitive_contagion.cc) - 단계 별 BFS 순회 1 (y, x)
+  * [[BOJ] 점프 게임](https://www.acmicpc.net/problem/15558) [(소스코드)](./src/jumping_game.cc) - 단계 별 BFS 순회 2 
+  * [[BOJ] 구슬 탈출 2](https://www.acmicpc.net/problem/13460) [(소스코드)](./src/13460.cc) - 한 칸 이동이 아닌 경우 + 단계 별 BFS 순회 (y, x)
   * [[BOJ] 미로 탐색](https://www.acmicpc.net/problem/2178) [(소스코드)](./src/maze.cc) - `int` 벡터를 사용한 BFS 최단경로 문제
   * [[BOJ] koze](https://www.acmicpc.net/problem/3187) [(소스코드)](./src/koze.cc) - `bool` 벡터를 사용한 BFS 기본 응용문제
-  * [[BOJ] 점프 게임](https://www.acmicpc.net/problem/15558) [(소스코드)](./src/jumping_game.cc) - 단계 별 BFS 순회 1
-  * [[BOJ] 경쟁적 전염](https://www.acmicpc.net/problem/18405) [(소스코드)](./src/competitive_contagion.cc) - 단계 별 BFS 순회 2 
   * [[BOJ] 영역 구하기](https://www.acmicpc.net/problem/2583) [(소스코드)](./src/area.cc) - 2차원 평면 상에 분리되어 있는 영역의 수와 크기 구하기
   * [[BOJ] 토마토](https://www.acmicpc.net/problem/7576) [(소스코드)](./src/tomato.cc) - 최단경로 문제 응용 (이동 불가능한 조건)
-  * [[BOJ] Elevator Trouble](https://www.acmicpc.net/problem/5014) [(소스코드)](./src/elevator.cc) - 1차원 BFS 최단경로 문제
+  * [[BOJ] Elevator Trouble](https://www.acmicpc.net/problem/5014) [(소스코드)](./src/elevator.cc) - 1차원 BFS 최단경로 문회
   * [[BOJ] 벽 부수고 이동하기 4](https://www.acmicpc.net/problem/16946) [(소스코드)](./src/wall4.cc) - 영역 수를 미리 계산해 시간복잡도 줄이기
 ---
 
