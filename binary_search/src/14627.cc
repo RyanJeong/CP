@@ -31,7 +31,6 @@ int main() {
     for (const int& l : v)
       cnt += l / mid;
 
-// std::cout << cnt << ' ' << mid << '\n';
     if (cnt >= c)
       low = mid + 1;
     else
