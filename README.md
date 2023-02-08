@@ -46,9 +46,13 @@ Resources for competitive programming
 * [String](/string/)
 * [Convex Hull](/convex-hull/)
 ---
+### Mathematics
+* [[WIP] Mathematics](/math/)
+* [[WIP] FFT](/fft)
+---
+### Etc.
 * [Fast IO](./fastio/)
 * [Library](/library/)
-* [Mathematics](/math/)
 * [Simulation](/simulation/)
 ---
 
