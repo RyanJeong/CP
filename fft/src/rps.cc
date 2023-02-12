@@ -2,9 +2,15 @@
   Copyright 2023 Ryan M. Jeong <ryan.m.jeong@hotmail.com>
 */
 
-// idea:
-// c_5 = a_0b_5 + a_1b_4 + ... + a_4b_1 + a_5b_0
-// if coefficient is 0 -> operand will be ignored
+// idea: n > m
+// n > m
+// n : 3, m : 2
+// {a, b, c}, {x, y} -> ax + by | bx + cy
+// {a, b, c, 0, 0, 0}
+// {y, x, 0, 0, 0, 0}
+// c_1 = ax + by           => ax + by
+// c_2 = a0 + bx + cy      => bx + cy
+// c_3 = a0 + b0 + cx + 0y => cx, never bigger than others
 
 // CP
 #define CP do {                     \
@@ -17,6 +23,8 @@
 #include <vector>
 #include <complex>
 #include <algorithm>
+#include <utility>
+#include <string>
 
 const double kPi = std::acos(-1);
 
@@ -84,28 +92,40 @@ void Multiply(std::vector<std::complex<double>>* a,
 int main() {
   CP;
 
-  int n;
-  std::cin >> n;
+  int n, m;
+  std::cin >> n >> m;
+  std::string str_n;
+  std::cin >> str_n;
+  std::string str_m;
+  std::cin >> str_m;
+  std::reverse(str_m.begin(), str_m.end());
 
-  std::vector<std::complex<double>> v(200001);
-  v[0] = std::complex<double>(1, 0);  // c_5 = a_0b_5 + ... + a_5b_0
-  for (int i = 0; i < n; ++i) {
-    int idx;
-    std::cin >> idx;
-    v[idx] = std::complex<double>(1, 0);
+  std::vector<int> v_n(n);
+  std::vector<int> v_m(m);
+  std::vector<int> point(n);
+  for (const auto& c : {
+      std::pair<char, char>('R', 'P'),
+      std::pair<char, char>('P', 'S'),
+      std::pair<char, char>('S', 'R')}) {
+    const char& c_n = c.first;
+    for (int i = 0; i < n; ++i)
+      v_n[i] = str_n[i] == c_n ? 1 : 0;
+
+    const char& c_m = c.second;
+    for (int i = 0; i < m; ++i)
+      v_m[i] = str_m[i] == c_m ? 1 : 0;
+
+    std::vector<std::complex<double>> a(v_n.begin(), v_n.end());
+    std::vector<std::complex<double>> b(v_m.begin(), v_m.end());
+    Multiply(&a, &b);
+
+    for (int i = 0; i < n; ++i)
+      point[i] += std::round(a[i+m-1].real());
   }
 
-  Multiply(&v, &v);
-
-  int m;
-  std::cin >> m;
   int res = 0;
-  for (int i = 0; i < m; ++i) {
-    int idx;
-    std::cin >> idx;
-    if (std::round(v[idx].real()) > 0)
-      ++res;
-  }
+  for (const int& i : point)
+    res = std::max(res, i);
   std::cout << res;
 
   return 0;

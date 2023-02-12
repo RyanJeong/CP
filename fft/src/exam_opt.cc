@@ -62,11 +62,13 @@ void Multiply(std::vector<std::complex<double>>* a,
   n = 1 << i;  // get w^2
 
   a->resize(n);
-  b->resize(n);
+  if (a != b)
+    b->resize(n);
 
   // DFT
   Fft(a, false);
-  Fft(b, false);
+  if (a != b)
+    Fft(b, false);
 
   // convolution
   for (int i = 0; i < n; ++i)
