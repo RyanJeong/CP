@@ -12,22 +12,9 @@
 #include <cmath>
 #include <vector>
 #include <complex>
-#include <algorithm>
+#include <utility>
 
-const double kPi = std::acos(-1);
-
-// implement it if you need
-template <typename T>
-void PostProcess(std::vector<std::complex<T>>* f) {
-  if (!f)
-    return;
-
-  // post-process to reduce errors due to precision
-  for (int i = 0; i < f->size(); ++i) {
-    f->at(i) = std::complex<T>{
-        static_cast<T>(std::round(f->at(i).real()) ? 1 : 0), 0};
-  }
-}
+const long double kPi = std::acos(-1);
 
 template <typename T>
 void Fft(std::vector<std::complex<T>>* f, bool inv) {
@@ -51,7 +38,8 @@ void Fft(std::vector<std::complex<T>>* f, bool inv) {
         // f(w) = f_even(w^2) + (w * f_odd(w^2))
         // f(-w) = f_even(w^2) + (-w * f_odd(w^2))
 
-        std::complex<T> temp = p_w * f->at(i + j + k);  // w * f_odd(w^2)
+        std::complex<T> temp
+            = p_w * f->at(i + j + k);            // w * f_odd(w^2)
         f->at(i + j + k) = f->at(j + k) - temp;  // f(-w)
         f->at(j + k) += temp;                    // f(w)
         p_w *= w;
@@ -89,7 +77,53 @@ void Multiply(std::vector<std::complex<T>>* a,
 
   // IDFT
   Fft(a, true);
+}
 
-  // PostProcess(nullptr);
-  PostProcess(a);
+template<typename T>
+std::vector<int> EratosthenesSieve(T from, T to) {
+  static std::vector<bool> is_composition(to + 1);  // 1-based
+
+  if (from < 2)  // 1 is not a prime number
+    from = 2;
+  for (T i = 2; i * i <= to; ++i) {
+    if (is_composition[i])
+      continue;
+    for (T j = i * i; j <= to; j += i)
+      is_composition[j] = true;
+  }
+
+  std::vector<int> primes;
+  for (T i = from; i <= to; ++i) {
+    if (!is_composition[i])
+      primes.push_back(i);
+  }
+
+  return primes;
+}
+
+int main() {
+  CP;
+
+  const int kMaxSize = 1000000;
+  auto primes = EratosthenesSieve(static_cast<int64_t>(2),
+                                  static_cast<int64_t>(kMaxSize));
+
+  std::vector<std::complex<double>> a(kMaxSize + 1);  // 1-based
+  for (const int& i : primes)
+    a[i] = std::complex<double>{1, 0};
+
+  Multiply(&a, &a);
+
+  int t;
+  std::cin >> t;
+  while (t--) {
+    int n;
+    std::cin >> n;
+    int res = std::round(a[n].real());
+    // If the result is odd, `1` is reduced in the process of dividing by `2`,
+    // so `1` must be added again.
+    std::cout << (res & 1 ? res / 2 + 1 : res / 2) << '\n';
+  }
+
+  return 0;
 }

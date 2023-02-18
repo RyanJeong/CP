@@ -23,10 +23,9 @@ void PostProcess(std::vector<std::complex<T>>* f) {
     return;
 
   // post-process to reduce errors due to precision
-  for (int i = 0; i < f->size(); ++i) {
+  for (int i = 0; i < f->size(); ++i)
     f->at(i) = std::complex<T>{
         static_cast<T>(std::round(f->at(i).real()) ? 1 : 0), 0};
-  }
 }
 
 template <typename T>
@@ -92,4 +91,37 @@ void Multiply(std::vector<std::complex<T>>* a,
 
   // PostProcess(nullptr);
   PostProcess(a);
+}
+
+int main() {
+  CP;
+
+  int n, k;
+  std::cin >> n >> k;
+  std::vector<int> v(1001);  // 1-based
+  while (n--) {
+    int idx;
+    std::cin >> idx;
+    ++v[idx];
+  }
+
+  std::vector<std::complex<double>> a(1, 1);
+  std::vector<std::complex<double>> b(v.begin(), v.end());
+  for (; k; k >>= 1) {
+    if (k & 1) {
+      // if you use b, b will be doubled in size
+      std::vector<std::complex<double>> temp(b);
+      Multiply(&a, &temp);
+      if (k == 1)
+        break;
+    }
+    Multiply(&b, &b);
+  }
+
+  for (int i = 1; i < a.size(); ++i) {
+    if (std::round(a[i].real()))
+      std::cout << i << ' ';
+  }
+
+  return 0;
 }

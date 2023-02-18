@@ -2,10 +2,20 @@
 * 추천문제 - Cooley-Tukey algorithm
   * [[BOJ] 큰 수 곱셈 (2)](https://www.acmicpc.net/problem/15576) [(소스코드)](./src/exam.cc)
   * [[BOJ] 이동](https://www.acmicpc.net/problem/1067) [(소스코드)](./src/move.cc)
-  * [[WIP][BOJ] Golf Bot](https://www.acmicpc.net/problem/10531) [(소스코드)](./src/golf_bot.cc)
 
 * 추천문제 - 최적화된 FFT
-  * [[BOJ] 큰 수 곱셈 (3)](https://www.acmicpc.net/problem/22289) [(소스코드)](./src/exam_opt.cc) - 시간초과 해결해야 함(FFT 최적화)
+  * [[BOJ] 큰 수 곱셈 (3)](https://www.acmicpc.net/problem/22289) [(소스코드)](./src/exam_opt.cc)
+  * [[BOJ] 궁금한 시프트](https://www.acmicpc.net/problem/25456) [(소스코드)](./src/shift.cc)
+  * [[BOJ] Golf Bot](https://www.acmicpc.net/problem/10531) [(소스코드)](./src/golf_bot.cc)
+  * [[BOJ] Telescope](https://www.acmicpc.net/problem/14756) [(소스코드)](./src/telescope.cc)
+  * [[BOJ] K-Inversions](https://www.acmicpc.net/problem/13055) [(소스코드)](./src/k_inversions.cc)
+  * [[BOJ] Needle](https://www.acmicpc.net/problem/20176) [(소스코드)](./src/needle.cc)
+  * [[BOJ] 르모앙의 추측](https://www.acmicpc.net/problem/) [(소스코드)](./src/lemoang.cc) - FFT + 에라토스테네스의 체
+  * [[BOJ] Rock Paper Scissors](https://www.acmicpc.net/problem/14958) [(소스코드)](./src/rps.cc)
+  * [[BOJ] 씽크스몰](https://www.acmicpc.net/problem/11385) [(소스코드)](./src/thinksmall.cc) - 정밀도에 유의해야 하는 문제, **NTT 공부 필요**
+  * [[BOJ] Just A Few More Triangles!](https://www.acmicpc.net/problem/5051) [(소스코드)](./src/triangle.cc) - 정수론
+  * [[BOJ] 골드바흐 파티션 2](https://www.acmicpc.net/problem/17104) [(소스코드)](./src/goldbach2.cc) - 정수론
+  * [[BOJ] 보석 가게](https://www.acmicpc.net/problem/13575) [(소스코드)](./src/jam.cc) - 분할정복 + 오차 보정을 위한 후처리
 
 ## FFT
 * [Cooley-Tukey algorithm](https://en.wikipedia.org/wiki/Cooley%E2%80%93Tukey_FFT_algorithm) (시간복잡도: <b>O(nlogn)</b>)

@@ -2,6 +2,32 @@
   Copyright 2023 Ryan M. Jeong <ryan.m.jeong@hotmail.com>
 */
 
+// approach:
+// BABA
+// ABAB <- reverse 'BABA'
+//                        0 1 2 3
+// {a0 a1 a2 a3 0 0 0 0} {b a b a 0 0 0 0}
+// {b0 b1 b2 b3 0 0 0 0} {a b a b 0 0 0 0}
+//                        3 2 1 0
+// c0 = a0b0
+//    = BABA   3-inversions
+//      ^  ^   +1
+// c1 = a0b1 + a1b0
+//    = BABA   2-inversions
+//      ^ ^    +0
+//       ^ ^   +0
+// c2 = a0b2 + a1b1 + a2b0
+//    = BABA   1-inversions
+//      ^^     +1
+//       ^^    +0
+//        ^^   +1
+// c3 = a0b3 + a1b2 + a2b1 + a3b0
+//    = BABA   0-inversions(ignored)
+//      ^
+//       ^
+//        ^
+//         ^
+
 // CP
 #define CP do {                     \
   std::ios::sync_with_stdio(false); \
@@ -13,21 +39,9 @@
 #include <vector>
 #include <complex>
 #include <algorithm>
+#include <string>
 
 const double kPi = std::acos(-1);
-
-// implement it if you need
-template <typename T>
-void PostProcess(std::vector<std::complex<T>>* f) {
-  if (!f)
-    return;
-
-  // post-process to reduce errors due to precision
-  for (int i = 0; i < f->size(); ++i) {
-    f->at(i) = std::complex<T>{
-        static_cast<T>(std::round(f->at(i).real()) ? 1 : 0), 0};
-  }
-}
 
 template <typename T>
 void Fft(std::vector<std::complex<T>>* f, bool inv) {
@@ -89,7 +103,29 @@ void Multiply(std::vector<std::complex<T>>* a,
 
   // IDFT
   Fft(a, true);
+}
 
-  // PostProcess(nullptr);
-  PostProcess(a);
+int main() {
+  CP;
+
+  std::string str;
+  std::cin >> str;
+  std::vector<std::complex<double>> a(str.length());
+  for (int i = 0; i < str.length(); ++i) {
+    a[i] = std::complex<double>{
+        static_cast<double>(str[i] == 'B' ? 1 : 0), 0};
+  }
+  std::reverse(str.begin(), str.end());
+  std::vector<std::complex<double>> b(str.length());
+  for (int i = 0; i < str.length(); ++i) {
+    b[i] = std::complex<double>{
+        static_cast<double>(str[i] == 'A' ? 1 : 0), 0};
+  }
+
+  Multiply(&a, &b);
+
+  for (int i = str.length() - 2; i >= 0; --i)
+    std::cout << static_cast<int>(std::round(a[i].real())) << '\n';
+
+  return 0;
 }

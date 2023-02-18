@@ -16,19 +16,6 @@
 
 const double kPi = std::acos(-1);
 
-// implement it if you need
-template <typename T>
-void PostProcess(std::vector<std::complex<T>>* f) {
-  if (!f)
-    return;
-
-  // post-process to reduce errors due to precision
-  for (int i = 0; i < f->size(); ++i) {
-    f->at(i) = std::complex<T>{
-        static_cast<T>(std::round(f->at(i).real()) ? 1 : 0), 0};
-  }
-}
-
 template <typename T>
 void Fft(std::vector<std::complex<T>>* f, bool inv) {
   int n = f->size();
@@ -89,7 +76,47 @@ void Multiply(std::vector<std::complex<T>>* a,
 
   // IDFT
   Fft(a, true);
+}
 
-  // PostProcess(nullptr);
-  PostProcess(a);
+int main() {
+  CP;
+
+  int n, l, m;
+  int64_t w;  // 3e3 * 1e2 * 1e4
+  std::cin >> n >> l >> m >> w;
+  std::vector<std::vector<int>> p(m, std::vector<int>(n));
+  for (int i = 0; i < m; ++i) {
+    for (int j = 0; j < n; ++j)
+      std::cin >> p[i][j];
+  }
+  std::vector<std::vector<int>> t(m, std::vector<int>(l));
+  for (int i = 0; i < m; ++i) {
+    for (int j = 0; j < l; ++j)
+      std::cin >> t[i][j];
+    std::reverse(t[i].begin(), t[i].end());
+  }
+
+  std::vector<std::vector<int>> res;  // c_3000 = (100 * 100) x 3000
+  for (int i = 0; i < m; ++i) {
+    std::vector<std::complex<double>> a(p[i].begin(), p[i].end());
+    std::vector<std::complex<double>> b(t[i].begin(), t[i].end());
+    Multiply(&a, &b);
+    std::vector<int> temp;
+    for (int i = 0; i < a.size(); ++i)
+      temp.push_back(std::round(a[i].real()));
+    res.push_back(temp);
+  }
+
+  int ans = 0;
+  // sum col's values => 1, 2, ..., k pos's intensity
+  for (int j = l - 1; j < n; ++j) {
+    int64_t temp = 0;
+    for (int i = 0; i < m; ++i)
+      temp += res[i][j];
+    if (temp > w)
+      ++ans;
+  }
+  std::cout << ans;
+
+  return 0;
 }

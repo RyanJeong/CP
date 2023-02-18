@@ -2,6 +2,16 @@
   Copyright 2023 Ryan M. Jeong <ryan.m.jeong@hotmail.com>
 */
 
+// idea:
+// 0 < a, b, c < n
+// a^2 + b^2 ≡ c^2 (mod n) (a <= b)
+// let i^2 % n => a_i
+// then f(x) = a0 + a1x + a2x^2 + ... + an-1x^(n-1)
+// f(x)^2 = a^2 + b^2
+// ---
+// 1. a < b (a^2 + b^2 <-> b^2 + a^2)
+// 2. a = b (a^2 + a^2 = 2a^2)
+
 // CP
 #define CP do {                     \
   std::ios::sync_with_stdio(false); \
@@ -12,22 +22,9 @@
 #include <cmath>
 #include <vector>
 #include <complex>
-#include <algorithm>
+#include <utility>
 
-const double kPi = std::acos(-1);
-
-// implement it if you need
-template <typename T>
-void PostProcess(std::vector<std::complex<T>>* f) {
-  if (!f)
-    return;
-
-  // post-process to reduce errors due to precision
-  for (int i = 0; i < f->size(); ++i) {
-    f->at(i) = std::complex<T>{
-        static_cast<T>(std::round(f->at(i).real()) ? 1 : 0), 0};
-  }
-}
+const long double kPi = std::acos(-1);
 
 template <typename T>
 void Fft(std::vector<std::complex<T>>* f, bool inv) {
@@ -51,7 +48,8 @@ void Fft(std::vector<std::complex<T>>* f, bool inv) {
         // f(w) = f_even(w^2) + (w * f_odd(w^2))
         // f(-w) = f_even(w^2) + (-w * f_odd(w^2))
 
-        std::complex<T> temp = p_w * f->at(i + j + k);  // w * f_odd(w^2)
+        std::complex<T> temp
+            = p_w * f->at(i + j + k);            // w * f_odd(w^2)
         f->at(i + j + k) = f->at(j + k) - temp;  // f(-w)
         f->at(j + k) += temp;                    // f(w)
         p_w *= w;
@@ -89,7 +87,40 @@ void Multiply(std::vector<std::complex<T>>* a,
 
   // IDFT
   Fft(a, true);
+}
 
-  // PostProcess(nullptr);
-  PostProcess(a);
+int main() {
+  CP;
+
+  int n;
+  std::cin >> n;
+  std::vector<int> a(n);
+  std::vector<int> eq(n);
+  for (int i = 1; i < n; ++i) {
+    ++a[(static_cast<int64_t>(1)*i*i)%n];
+    ++eq[(static_cast<int64_t>(2)*i*i)%n];  // a^2 + a^2 = 2a^2
+  }
+  std::vector<std::complex<double>> c(n);
+  for (int i = 0; i < n; ++i)
+    c[i] = std::complex<double>(a[i], 0);
+
+  Multiply(&c, &c);  // get a^2 + b^2
+  // e.g. n = 7
+  //   { 0, 2, 2, 0, 2, 0, 0 }
+  // f(x)   = 2x + 2x^2 + 2x^4
+  // f(x)^2 = 4x^2 + 8x^3 + 4x^4 + 8x^5 + 8x^6 + 4x^8
+  // *** i % n = k, (i + n) % n = k ***
+  int64_t res = 0;  // 499,998 => 441628740(overflow)
+  for (int i = 1; i < n; ++i) {
+    int idx = (static_cast<int64_t>(1) * i * i) % n;
+    int cnt = std::round(c[idx].real()) + std::round(c[idx+n].real());
+
+    // 1. rm n(a == b) and we can get n(a < b) when divice 2
+    res += (cnt - eq[idx]) / 2;
+    // 2. (a < b) + (a == b) => a <= b
+    res += eq[idx];
+  }
+  std::cout << res;
+
+  return 0;
 }
