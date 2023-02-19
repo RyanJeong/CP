@@ -2,36 +2,6 @@
   Copyright 2023 Ryan M. Jeong <ryan.m.jeong@hotmail.com>
 */
 
-// idea:
-// x: { a, b, c, d}, y: { e, f, g, h}
-//    {x0 x1 x2 x3}     {y0 y1 y2 y3}
-// -> x`: {a, b, c, d, a, b, c, d}
-// -> y`: {h, g, f, e, 0, 0, 0, 0}, n = 8
-// c's length: 2n-1 = 15(c0 ~ c14)
-// c0 = x`0y`0
-//    = ah
-// c1 = x`0y`1 + x`1y`0
-//    = ag + bh
-// c2 = x`0y`2 + x`1y`1 + x`2y`0
-//    = af + bg + ch
-// c3 = x`0y`3 + x`1y`2 + x`2y`1 + x`3y`0
-//    = ae + bf + cg + dh
-//    = x0y0 + x1y1 + x2y2 + x3y3
-// c4 = x`0y`4 + x`1y`3 + x`2y`2 + x`3y`1 + x`4y`0
-//    = 0 + be + cf + dg + ah
-//    = x1y0 + x2y1 + x4y2 + x0y3
-// c5 = x`0y`5 + x`1y`4 + x`2y`3 + x`3y`2 + x`4y`1 + x`5y`0
-//    = 0 + 0 + ce + df + ag + bg
-//    = x2y0 + x3y1 + x0y2 + x1y3
-// c6 = x`0y`6 + x`1y`5 + x`2y`4 + x`3y`3 + x`4y`2 + x`5y`1 + x`6y`0
-//    = 0 + 0 + 0 + de + af + bg + ch
-//    = x3y0 + x0y1 + x1y2 + x2y3
-// c7 = x`0y`7 + x`1y`6 + x`2y`5 + x`3y`4 + x`4y`3 + x`5y`2 + x`6y`1 + x`7y`0
-//    = 0 + 0 + 0 + 0 + ae + bf + cg + dh
-//    = x0y0 + x1y1 + x2y2 + x3y3
-// ...
-// => DFT -> convolution -> IDFT -> std::max
-
 // CP
 #define CP do {                     \
   std::ios::sync_with_stdio(false); \
@@ -111,25 +81,54 @@ void Multiply(std::vector<std::complex<T>>* a,
 int main() {
   CP;
 
-  int n;
-  std::cin >> n;
-  std::vector<int> v_a(n * 2);
-  for (int i = 0; i < n; ++i) {
-    std::cin >> v_a[i];
-    v_a[i+n] = v_a[i];
-  }
-  std::vector<int> v_b(n * 2);
-  for (int i = n - 1; i >= 0; --i)
-    std::cin >> v_b[i];
+  std::string str_a;
+  std::cin >> str_a;
+  if (str_a == "0") {
+    std::cout << '0';
 
-  std::vector<std::complex<double>> a(v_a.begin(), v_a.end());
-  std::vector<std::complex<double>> b(v_b.begin(), v_b.end());
+    return 0;
+  }
+
+  std::string str_b;
+  std::cin >> str_b;
+  if (str_b == "0") {
+    std::cout << '0';
+
+    return 0;
+  }
+
+  std::reverse(str_a.begin(), str_a.end());
+  std::vector<std::complex<double>> a(str_a.length());
+  for (int i = 0; i < str_a.length(); ++i)
+    a[i] = std::complex<double>{static_cast<double>(str_a[i] - '0'), 0};
+
+  std::reverse(str_b.begin(), str_b.end());
+  std::vector<std::complex<double>> b(str_b.length());
+  for (int i = 0; i < str_b.length(); ++i)
+    b[i] = std::complex<double>{static_cast<double>(str_b[i] - '0'), 0};
+
   Multiply(&a, &b);
 
-  int res = -1;
-  for (int i = n; i < 2 * n; ++i)  // (0, n), (1, n-1), ... , (n-1, 1), (n, 0)
-    res = std::max(res, static_cast<int>(std::round(a[i].real())));
-  std::cout << res;
+  std::vector<int> res(a.size());
+  for (int i = 0; i < res.size(); ++i)
+    res[i] = std::round(a[i].real());
+
+  for (int i = 0; i < res.size(); ++i) {
+    if (res[i] < 10)
+      continue;
+
+    if (i < res.size() - 1)
+      res[i+1] += res[i] / 10;
+    else
+      res.push_back(res[i] / 10);
+    res[i] %= 10;
+  }
+  while (res.back() == 0)
+    res.pop_back();
+  std::reverse(res.begin(), res.end());
+
+  for (const int& i : res)
+    std::cout << i;
 
   return 0;
 }

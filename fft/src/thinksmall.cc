@@ -101,26 +101,31 @@ int main() {
 
   std::vector<std::vector<int64_t>> res;
   for (const auto& i : {  // true: lower 10-bit, false: upper 10-bit
-      std::pair<bool, bool>(true, true),
-      std::pair<bool, bool>(true, false),
-      std::pair<bool, bool>(false, true),
-      std::pair<bool, bool>(false, false)}) {
+      std::pair<bool, bool>{true, true},
+      std::pair<bool, bool>{true, false},
+      std::pair<bool, bool>{false, true},
+      std::pair<bool, bool>{false, false}}) {
     const bool& is_a_lower = i.first;
     const bool& is_b_lower = i.second;
-
-    std::vector<std::complex<long double>> a;
-    for (const auto& i : v_a)
-      a.push_back(std::complex<long double>(
-          (is_a_lower ? i & ((1 << 10) - 1) : i >> 10), 0));
-    std::vector<std::complex<long double>> b;
-    for (const auto& i : v_b)
-      b.push_back(std::complex<long double>(
-          (is_b_lower ? i & ((1 << 10) - 1) : i >> 10), 0));
+    std::vector<std::complex<long double>> a(v_a.size());
+    for (int i = 0; i < v_a.size(); ++i) {
+      auto e = v_a[i];
+      a[i] = std::complex<long double>{
+          static_cast<long double>(is_a_lower ? e & ((1 << 10) - 1) : e >> 10),
+          0};
+    }
+    std::vector<std::complex<long double>> b(v_b.size());
+    for (int i = 0; i < v_b.size(); ++i) {
+      auto e = v_b[i];
+      b[i] = std::complex<long double>{
+          static_cast<long double>(is_b_lower ? e & ((1 << 10) - 1) : e >> 10),
+          0};
+    }
     Multiply(&a, &b);
 
-    std::vector<int64_t> temp;
-    for (const auto& i : a)
-      temp.push_back(std::round(i.real()));
+    std::vector<int64_t> temp(a.size());
+    for (int i = 0; i < a.size(); ++i)
+      temp[i] = std::round(a[i].real());
     res.push_back(temp);
   }
   int64_t ans = 0;

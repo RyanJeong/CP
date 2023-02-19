@@ -8,11 +8,9 @@
   std::cin.tie(NULL);               \
 } while (0)
 
-#include <iostream>
-#include <cmath>
+#include <cmath>  // std::round
 #include <vector>
 #include <complex>
-#include <algorithm>
 
 const double kPi = std::acos(-1);
 

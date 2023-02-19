@@ -22,7 +22,6 @@
 #include <cmath>
 #include <vector>
 #include <complex>
-#include <utility>
 
 const long double kPi = std::acos(-1);
 
@@ -102,7 +101,7 @@ int main() {
   }
   std::vector<std::complex<double>> c(n);
   for (int i = 0; i < n; ++i)
-    c[i] = std::complex<double>(a[i], 0);
+    c[i] = std::complex<double>{static_cast<double>(a[i]), 0};
 
   Multiply(&c, &c);  // get a^2 + b^2
   // e.g. n = 7

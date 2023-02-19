@@ -41,9 +41,8 @@
 #include <cmath>
 #include <vector>
 #include <complex>
-#include <utility>
-#include <string>
 #include <algorithm>
+#include <string>
 
 const long double kPi = std::acos(-1);
 
@@ -69,8 +68,7 @@ void Fft(std::vector<std::complex<T>>* f, bool inv) {
         // f(w) = f_even(w^2) + (w * f_odd(w^2))
         // f(-w) = f_even(w^2) + (-w * f_odd(w^2))
 
-        std::complex<T> temp
-            = p_w * f->at(i + j + k);            // w * f_odd(w^2)
+        std::complex<T> temp = p_w * f->at(i + j + k);  // w * f_odd(w^2)
         f->at(i + j + k) = f->at(j + k) - temp;  // f(-w)
         f->at(j + k) += temp;                    // f(w)
         p_w *= w;

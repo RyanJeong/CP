@@ -12,7 +12,6 @@
 #include <cmath>
 #include <vector>
 #include <complex>
-#include <algorithm>
 
 const double kPi = std::acos(-1);
 
@@ -23,9 +22,10 @@ void PostProcess(std::vector<std::complex<T>>* f) {
     return;
 
   // post-process to reduce errors due to precision
-  for (int i = 0; i < f->size(); ++i)
+  for (int i = 0; i < f->size(); ++i) {
     f->at(i) = std::complex<T>{
         static_cast<T>(std::round(f->at(i).real()) ? 1 : 0), 0};
+  }
 }
 
 template <typename T>

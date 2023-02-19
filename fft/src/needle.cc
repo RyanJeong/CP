@@ -31,12 +31,11 @@
 #include <cmath>
 #include <vector>
 #include <complex>
-#include <algorithm>
 
 const double kPi = std::acos(-1);
 
-void Fft(std::vector<std::complex<double>>* f,
-         bool inv) {
+template <typename T>
+void Fft(std::vector<std::complex<T>>* f, bool inv) {
   int n = f->size();
   for (int i = 1, j = 0; i < n; ++i) {
     int b = n >> 1;
@@ -48,16 +47,16 @@ void Fft(std::vector<std::complex<double>>* f,
   }
 
   for (int i = 1; i < n; i <<= 1) {
-    double x = inv ? kPi / i : -kPi / i;
-    std::complex<double> w = {std::cos(x), std::sin(x)};
+    T x = inv ? kPi / i : -kPi / i;
+    std::complex<T> w = {std::cos(x), std::sin(x)};
     for (int j = 0; j < n; j += (i << 1)) {
-      std::complex<double> p_w = {1, 0};
+      std::complex<T> p_w = {1, 0};
       for (int k = 0; k < i; ++k) {
         // f(x) = f_even(x^2) + (x * f_odd(x^2))
         // f(w) = f_even(w^2) + (w * f_odd(w^2))
         // f(-w) = f_even(w^2) + (-w * f_odd(w^2))
 
-        std::complex<double> temp = p_w * f->at(i + j + k);  // w * f_odd(w^2)
+        std::complex<T> temp = p_w * f->at(i + j + k);  // w * f_odd(w^2)
         f->at(i + j + k) = f->at(j + k) - temp;  // f(-w)
         f->at(j + k) += temp;                    // f(w)
         p_w *= w;
@@ -71,8 +70,9 @@ void Fft(std::vector<std::complex<double>>* f,
     f->at(i) /= n;
 }
 
-void Multiply(std::vector<std::complex<double>>* a,
-              std::vector<std::complex<double>>* b) {
+template <typename T>
+void Multiply(std::vector<std::complex<T>>* a,
+              std::vector<std::complex<T>>* b) {
   int n = std::max(a->size(), b->size()) << 1;
   int i = 0;
   while (n > (1 << i))  // fit n to 2^p
@@ -105,7 +105,7 @@ int main() {
   while (u--) {
     int n;
     std::cin >> n;
-    upper[n+30000] = std::complex<double>(1, 0);
+    upper[n+30000] = std::complex<double>{1, 0};
   }
 
   int m;
@@ -114,7 +114,7 @@ int main() {
   while (m--) {
     int n;
     std::cin >> n;
-    middle[n+30000] = std::complex<double>(1, 0);
+    middle[n+30000] = std::complex<double>{1, 0};
   }
 
   int l;
@@ -123,7 +123,7 @@ int main() {
   while (l--) {
     int n;
     std::cin >> n;
-    lower[n+30000] = std::complex<double>(1, 0);
+    lower[n+30000] = std::complex<double>{1, 0};
   }
 
   Multiply(&upper, &lower);
