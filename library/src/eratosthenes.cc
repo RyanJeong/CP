@@ -1,11 +1,12 @@
+/*
+  Copyright 2022 Ryan M. Jeong <ryan.m.jeong@hotmail.com>
+*/
+
 #include <vector>
 
-using std::vector;
-
 template<typename T>
-vector<int> eratosthenes_sieve(T from, T to) {
-  static vector<bool> is_composition(to + 1);  // 1-based
-  vector<int> primes;
+std::vector<int> EratosthenesSieve(T from, T to) {
+  static std::vector<bool> is_composition(to + 1);  // 1-based
 
   if (from < 2)  // 1 is not a prime number
     from = 2;
@@ -15,6 +16,8 @@ vector<int> eratosthenes_sieve(T from, T to) {
     for (T j = i * i; j <= to; j += i)
       is_composition[j] = true;
   }
+
+  std::vector<int> primes;
   for (T i = from; i <= to; ++i) {
     if (!is_composition[i])
       primes.push_back(i);
