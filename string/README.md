@@ -25,7 +25,8 @@
 * 추천 문제 - 접미사 배열
   * [[BOJ] Suffix Array](https://www.acmicpc.net/problem/9248) [(소스코드)](./src/sa.cc) - 접미사 배열 + LCP 구현문제
   * [[BOJ] DVAPUT](https://www.acmicpc.net/problem/3033) [(소스코드)](./src/dvaput.cc)
-  * [[BOJ] 최장 공통 부분 문자열](https://www.acmicpc.net/problem/9249) [(소스코드)](./src/tlcpp.cc) - EOS(End of String, `$`)
+  * [[BOJ] 최장 공통 부분 문자열](https://www.acmicpc.net/problem/9249) [(소스코드)](./src/tlcpp.cc) - EOS(End of String, `$`(0x24))
+  * [[BOJ] 서로 다른 부분 문자열의 개수 2](https://www.acmicpc.net/problem/11479) [(소스코드)](./src/ndps2.cc) - LCP 응용 1
 
 ---
 
@@ -423,7 +424,7 @@ std::vector<int> SuffixArray(const std::string& str) {
   |2    |1(`anana`)  | 3 |
   |3    |0(`banana`) | 0 |
   |4    |4(`na`)     | 0 |
-  |5    |2(`nana`)  | 2 |
+  |5    |2(`nana`)   | 2 |
 
   * 만약 `ana`와 `anana` 간 비교 시 최장 공통 길이는 3(<i>k</i>)이며, 다음 비교할 접미사 `na`와 `nana`는 접미사의 맨 앞 한 글자만 제거한 것이므로 2(<i>k-1</i>)
 
