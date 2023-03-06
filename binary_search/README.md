@@ -120,8 +120,6 @@ int main() {
 
 ## [`lower_bound`](https://www.cplusplus.com/reference/algorithm/lower_bound/)
 * Returns an iterator pointing to the first element which does not compare less than <i>val</i>.
-    * `it < val` 비교가 처음으로 거짓이 되는 곳
-    * => `it >= val`
 ```c++
 template <class ForwardIterator, class T>
 ForwardIterator lower_bound(ForwardIterator first, 
@@ -151,7 +149,6 @@ ForwardIterator lower_bound(ForwardIterator first,
 
 ## [`upper_bound`](https://www.cplusplus.com/reference/algorithm/upper_bound/)
 * Returns an iterator pointing to the first element which compares greater than <i>val</i>.
-    * `it > val` 비교가 처음으로 참이 되는 곳
 ```c++
 template <class ForwardIterator, class T>
 ForwardIterator lower_bound(ForwardIterator first, 
@@ -177,6 +174,32 @@ ForwardIterator lower_bound(ForwardIterator first,
 
     return first;
 }
+```
+
+## `lower_bound`, `upper_bound` 예시
+```cpp
+#include <algorithm>
+#include <iostream>
+#include <iterator>
+#include <vector>
+
+int main() {
+  std::vector<int> data = {1, 1, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5, 6};
+
+  auto lower = std::lower_bound(data.begin(), data.end(), 4);
+  auto upper = std::upper_bound(data.begin(), data.end(), 5);
+
+  // result: 4 4 4 5 5 
+  // idx :  0  1  2  3  4  5  6  7  8  9 10 11 12
+  // data:  1  1  2  3  3  3  3  4  4  4  5  5  6
+  // lower_bound: the lower will indicate to the idx 7
+  //              the first element which does not compare less than 4
+  // upper_bound: the upper will indicate to the idx 12
+  //              the first element which compares greater than 5
+  std::copy(lower, upper, std::ostream_iterator<int>(std::cout, " "));
+  return 0;
+}
+
 ```
 
 ### 연습문제
