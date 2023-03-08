@@ -16,7 +16,7 @@
   * [[BOJ] LOZINKA](https://www.acmicpc.net/problem/9933) [(소스코드)](./src/lozinka.cc) - 기본 `map` 연산1
   * [[BOJ] 비밀번호 찾기](https://www.acmicpc.net/problem/17219) [(소스코드)](./src/pw.cc) - 기본 `map` 연산2
   * [[BOJ] MALCOLM](https://www.acmicpc.net/problem/3078) [(소스코드)](./src/malcolm.cc) - 중복 `map` 처리 문제
-  * [[BOJ] Incognito](https://www.acmicpc.net/problem/9375) [(소스코드)](./src/incognito.cpp) - `map` 연산
+  * [[BOJ] Incognito](https://www.acmicpc.net/problem/9375) [(소스코드)](./src/incognito.cc) - `map` 연산
 ---
 
 ## [맵(map)](https://cplusplus.com/reference/map/map/)
@@ -28,7 +28,7 @@
 ## [Multiple-key map](https://cplusplus.com/reference/map/multimap/)
 * `multimap`은 `map`에서 <i>key</i>의 중복을 허용하는 자료구조
 
-### [소스코드](./src/exam1.cpp)
+### [소스코드](./src/exam1.cc)
 ```c++
 #include <iostream>
 #include <string>
@@ -90,7 +90,7 @@ int main() {
 ## [Unordered Multimap](https://cplusplus.com/reference/unordered_map/unordered_multimap/)
 * `unordered_multimap`은 `multimap`에서 <i>key</i>의 중복을 허용하는 자료구조
 
-### [소스코드](./src/exam2.cpp)
+### [소스코드](./src/exam2.cc)
 ```c++
 #include <iostream>
 #include <string>
@@ -121,7 +121,7 @@ int main() {
 ```
 
 ### 연습문제
-* [[BOJ] 나는야 포켓몬 마스터 이다솜](https://www.acmicpc.net/problem/1620) [(소스코드)](./src/exer1.cpp) - `c_str` 함수와 두 개의 `map` 사용 예
+* [[BOJ] 나는야 포켓몬 마스터 이다솜](https://www.acmicpc.net/problem/1620) [(소스코드)](./src/exer1.cc) - `c_str` 함수와 두 개의 `map` 사용 예
 ```c++
 #include <iostream>
 #include <string>
