@@ -18,6 +18,9 @@ std::vector<int> SuffixArray(const std::string& str) {
   // kCntLen: maximum ASCII code value could consist of a string or the kStrLen
   const size_t kCntLen = std::max(static_cast<size_t>(256), kStrLen);
 
+  std::vector<int> cnt(kCntLen), idx(kStrLen);
+  std::vector<int> temp(kStrLen + kStrLen);
+
   // kStrLen + kStrLen => d will check 2*d size
   std::vector<int> sa(kStrLen), group_id(kStrLen + kStrLen);
   for (int i = 0; i < kStrLen; ++i) {
@@ -26,8 +29,6 @@ std::vector<int> SuffixArray(const std::string& str) {
   }
 
   for (int d = 1; d < kStrLen; d <<= 1) {
-    static std::vector<int> cnt(kCntLen), idx(kStrLen);
-
     for (int i = 0; i < kCntLen; ++i)
       cnt[i] = 0;
     for (int i = 0; i < kStrLen; ++i)
@@ -46,7 +47,6 @@ std::vector<int> SuffixArray(const std::string& str) {
     for (int i = kStrLen - 1; ~i; --i)
       sa[--cnt[group_id[idx[i]]]] = idx[i];
 
-    static std::vector<int> temp(kStrLen + kStrLen);
     temp[sa[0]] = 1;
     for (int i = 1; i < kStrLen; ++i) {
       temp[sa[i]] = temp[sa[i-1]];
@@ -73,10 +73,8 @@ std::vector<int> Lcp(const std::vector<int>& sa, const std::string& str) {
 
   int k = 0;  // offset
   for (int i = 0; i < kStrLen; ++i) {
-    if (!isa[i]) {
-      lcp[isa[i]] = -1;
+    if (!isa[i])
       continue;
-    }
 
     for (int j = sa[isa[i]-1]; str[i+k] == str[j+k]; ++k) {}
     lcp[isa[i]] = (k ? k-- : 0);
@@ -97,12 +95,9 @@ int main() {
   std::cout << '\n';
 
   auto lcp = Lcp(sa, str);
-  for (const auto& i : lcp) {
-    if (i < 0)
-      std::cout << 'x' << ' ';
-    else
-      std::cout << i << ' ';
-  }
+  std::cout << "x ";
+  for (int i = 1; i < lcp.size(); ++i)
+    std::cout << lcp[i] << ' ';
 
   return 0;
 }

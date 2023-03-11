@@ -17,6 +17,11 @@ std::vector<int> SuffixArray(const std::string& str) {
   // kCntLen: maximum ASCII code value could consist of a string or the kStrLen
   const size_t kCntLen = std::max(static_cast<size_t>(256), kStrLen);
 
+  // If the following variables are defined as static, they cause malfunction
+  // when the method is invoked multiple times.
+  std::vector<int> cnt(kCntLen), idx(kStrLen);
+  std::vector<int> temp(kStrLen + kStrLen);
+
   // kStrLen + kStrLen => d will check 2*d size
   std::vector<int> sa(kStrLen), group_id(kStrLen + kStrLen);
   for (int i = 0; i < kStrLen; ++i) {
@@ -30,7 +35,6 @@ std::vector<int> SuffixArray(const std::string& str) {
   // * group_id is initialized to an alphabet only at first and then to a
   //   number between 0 and (strlen - 1).
   for (int d = 1; d < kStrLen; d <<= 1) {
-    static std::vector<int> cnt(kCntLen), idx(kStrLen);
     // comparison at `i + d` position
     // if d = 1 then
     //  V
@@ -76,7 +80,6 @@ std::vector<int> SuffixArray(const std::string& str) {
 
     // temp: 3 2 4 2 4 1
     // group_id will be replaced with temp
-    static std::vector<int> temp(kStrLen + kStrLen);
     temp[sa[0]] = 1;
     for (int i = 1; i < kStrLen; ++i) {
       temp[sa[i]] = temp[sa[i-1]];

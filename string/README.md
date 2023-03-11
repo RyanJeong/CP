@@ -27,6 +27,8 @@
   * [[BOJ] DVAPUT](https://www.acmicpc.net/problem/3033) [(소스코드)](./src/dvaput.cc)
   * [[BOJ] 최장 공통 부분 문자열](https://www.acmicpc.net/problem/9249) [(소스코드)](./src/tlcpp.cc) - EOS(End of String, `$`(0x24))
   * [[BOJ] 서로 다른 부분 문자열의 개수 2](https://www.acmicpc.net/problem/11479) [(소스코드)](./src/ndps2.cc) - LCP 응용 1
+  * [[BOJ] Repeated Substrings](https://www.acmicpc.net/problem/10413) [(소스코드)](./src/repeated_substrings.cc) - LCP 응용 2
+  * [[BOJ] Hidden Password](https://www.acmicpc.net/problem/3789) [(소스코드)](./src/hidden_password.cc) - LCP 응용 3
 
 ---
 
@@ -239,7 +241,7 @@ vector<int> Kmp(const T& s, const T& p) {
   |2    |1(`anana`)  |
   |3    |0(`banana`) |
   |4    |4(`na`)     |
-  |5    |2(`nanaa`)  |
+  |5    |2(`nana`)  |
 
 ### 문자열 `banana`의 접미사 배열 생성 과정
 1. 앞 `d * 2(d = 1, 2, ...)` 글자가 같으면 같은 그룹이며, 그룹 번호는 오름차순으로 부여한다.
@@ -306,6 +308,11 @@ std::vector<int> SuffixArray(const std::string& str) {
   const size_t kCntLen = 128;
   const size_t kStrLen = str.length();
 
+  // If the following variables are defined as static, they cause malfunction
+  // when the method is invoked multiple times.
+  std::vector<int> cnt(kCntLen), idx(kStrLen);
+  std::vector<int> temp(kStrLen + kStrLen);
+
   // kStrLen + kStrLen => d will check 2*d size
   std::vector<int> sa(kStrLen), group_id(kStrLen + kStrLen);
   for (int i = 0; i < kStrLen; ++i) {
@@ -319,7 +326,6 @@ std::vector<int> SuffixArray(const std::string& str) {
   // * group_id is initialized to an alphabet only at first and then to a
   //   number between 0 and (strlen - 1).
   for (int d = 1; d < kStrLen; d <<= 1) {
-    static std::vector<int> cnt(kCntLen), idx(kStrLen);
     // comparison at `i + d` position
     // if d = 1 then
     //  V
@@ -365,7 +371,6 @@ std::vector<int> SuffixArray(const std::string& str) {
 
     // temp: 3 2 4 2 4 1
     // group_id will be replaced with temp
-    static std::vector<int> temp(kStrLen + kStrLen);
     temp[sa[0]] = 1;
     for (int i = 1; i < kStrLen; ++i) {
       temp[sa[i]] = temp[sa[i-1]];
@@ -419,7 +424,7 @@ std::vector<int> SuffixArray(const std::string& str) {
 
   |Index|Suffix Array|LCP|
   |-----|------------|---|
-  |0    |5(`a`)      |-1 |
+  |0    |5(`a`)      | 0 |
   |1    |3(`ana`)    | 1 |
   |2    |1(`anana`)  | 3 |
   |3    |0(`banana`) | 0 |
@@ -427,8 +432,11 @@ std::vector<int> SuffixArray(const std::string& str) {
   |5    |2(`nana`)   | 2 |
 
   * 만약 `ana`와 `anana` 간 비교 시 최장 공통 길이는 3(<i>k</i>)이며, 다음 비교할 접미사 `na`와 `nana`는 접미사의 맨 앞 한 글자만 제거한 것이므로 2(<i>k-1</i>)
+  * `LCP(0)`은 항상 0일 수밖에 없음:
+    * `LCP`는 `i - 1`번째 접미사와 `i`번째 접미사 간 비교
+    * `i`가 0이라면 비교 자체가 불가능하므로 항상 0이여야 함
 
-#### [소스코드](./src/suffix_array.cc)
+#### [소스코드](./src/lcp.cc)
 ```cpp
 #include <string>
 #include <vector>
@@ -442,10 +450,8 @@ std::vector<int> Lcp(const std::vector<int>& sa, const std::string& str) {
 
   int k = 0;  // offset
   for (int i = 0; i < kStrLen; ++i) {
-    if (!isa[i]) {
-      isa[i] = -1;
+    if (!isa[i])
       continue;
-    }
 
     for (int j = sa[isa[i]-1]; str[i+k] == str[j+k]; ++k) {}
     lcp[isa[i]] = (k ? k-- : 0);
@@ -469,6 +475,9 @@ std::vector<int> SuffixArray(const std::string& str) {
   // kCntLen: maximum ASCII code value could consist of a string or the kStrLen
   const size_t kCntLen = std::max(static_cast<size_t>(256), kStrLen);
 
+  std::vector<int> cnt(kCntLen), idx(kStrLen);
+  std::vector<int> temp(kStrLen + kStrLen);
+
   // kStrLen + kStrLen => d will check 2*d size
   std::vector<int> sa(kStrLen), group_id(kStrLen + kStrLen);
   for (int i = 0; i < kStrLen; ++i) {
@@ -477,8 +486,6 @@ std::vector<int> SuffixArray(const std::string& str) {
   }
 
   for (int d = 1; d < kStrLen; d <<= 1) {
-    static std::vector<int> cnt(kCntLen), idx(kStrLen);
-
     for (int i = 0; i < kCntLen; ++i)
       cnt[i] = 0;
     for (int i = 0; i < kStrLen; ++i)
@@ -497,7 +504,6 @@ std::vector<int> SuffixArray(const std::string& str) {
     for (int i = kStrLen - 1; ~i; --i)
       sa[--cnt[group_id[idx[i]]]] = idx[i];
 
-    static std::vector<int> temp(kStrLen + kStrLen);
     temp[sa[0]] = 1;
     for (int i = 1; i < kStrLen; ++i) {
       temp[sa[i]] = temp[sa[i-1]];
@@ -524,10 +530,8 @@ std::vector<int> Lcp(const std::vector<int>& sa, const std::string& str) {
 
   int k = 0;  // offset
   for (int i = 0; i < kStrLen; ++i) {
-    if (!isa[i]) {
-      lcp[isa[i]] = -1;
+    if (!isa[i])
       continue;
-    }
 
     for (int j = sa[isa[i]-1]; str[i+k] == str[j+k]; ++k) {}
     lcp[isa[i]] = (k ? k-- : 0);
@@ -546,12 +550,9 @@ int main() {
   std::cout << '\n';
 
   auto lcp = Lcp(sa, str);
-  for (const auto& i : lcp) {
-    if (i < 0)
-      std::cout << 'x' << ' ';
-    else
-      std::cout << i << ' ';
-  }
+  std::cout << "x ";
+  for (int i = 1; i < lcp.size(); ++i)
+    std::cout << lcp[i] << ' ';
 
   return 0;
 }

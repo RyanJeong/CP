@@ -20,10 +20,8 @@ std::vector<int> Lcp(const std::vector<int>& sa, const std::string& str) {
 
   int k = 0;  // offset
   for (int i = 0; i < kStrLen; ++i) {
-    if (!isa[i]) {
-      isa[i] = -1;
+    if (!isa[i])
       continue;
-    }
 
     for (int j = sa[isa[i]-1]; str[i+k] == str[j+k]; ++k) {}
     lcp[isa[i]] = (k ? k-- : 0);
