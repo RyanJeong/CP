@@ -123,16 +123,20 @@ int main() {
   std::string str;
   std::cin >> str;
 
-  // encode
-  std::vector<uint8_t> buffer{str.data(), str.data() + str.size()};
-  std::string encoded_data = Base64Encode(&buffer[0], buffer.size());
-  std::cout << encoded_data << '\n';
+  // // encode
+  // std::vector<uint8_t> buffer{str.data(), str.data() + str.size()};
+  // std::string encoded_data = Base64Encode(&buffer[0], buffer.size());
+  // std::cout << encoded_data << '\n';
 
   // decode
-  std::vector<uint8_t> decoded_data = Base64Decode(encoded_data);
+  // std::vector<uint8_t> decoded_data = Base64Decode(encoded_data);
+  // std::string result{decoded_data.data(),
+  //                    decoded_data.data() + decoded_data.size()};
+  // std::cout << result << '\n';
+  std::vector<uint8_t> decoded_data = Base64Decode(str);
   std::string result{decoded_data.data(),
                      decoded_data.data() + decoded_data.size()};
-  std::cout << result << '\n';
+
 
   return 0;
 }
