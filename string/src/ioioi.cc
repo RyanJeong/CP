@@ -11,21 +11,13 @@
 #include <iostream>
 #include <string>
 
-// iostream
-using std::cin;
-using std::cout;
-using std::getline;
-
-// string
-using std::string;
-
 int main() {
   CP;
 
   int n, len;
-  cin >> n >> len;
-  string str;
-  cin >> str;
+  std::cin >> n >> len;
+  std::string str;
+  std::cin >> str;
   int res = 0;
   int cnt = 0;
   for (int i = 0; i < str.length() - 2; ++i) {
@@ -40,7 +32,7 @@ int main() {
       cnt = 0;
     }
   }
-  cout << res;
+  std::cout << res;
 
   return 0;
 }

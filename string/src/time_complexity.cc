@@ -11,22 +11,15 @@
 #include <iostream>
 #include <string>
 
-// iostream
-using std::cin;
-using std::cout;
-
-// string
-using std::string;
-
 int main() {
   CP;
 
   int n;
-  cin >> n;
+  std::cin >> n;
   int res = 0;
   while (n--) {
-    string str;
-    cin >> str;
+    std::string str;
+    std::cin >> str;
     int cnt = 0;
     int len = str.length();
     // for (int i = 0; i < str.length() - 2; ++i)
@@ -42,7 +35,7 @@ int main() {
     if (res < cnt)
       res = cnt;
   }
-  cout << res;
+  std::cout << res;
 
   return 0;
 }

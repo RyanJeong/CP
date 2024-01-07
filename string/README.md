@@ -2,8 +2,8 @@
 * 추천 문제 - 문자열
   * [[BOJ] 시간복잡도를 배운 도도](https://www.acmicpc.net/problem/24510) [(소스코드)](./src/time_complexity.cc) - `length()`의 반환 타입에 의해 오버플로우 발생을 주의해야 함
   * [[BOJ] IOIOI (IOIOI)](https://www.acmicpc.net/problem/5525) [(소스코드)](./src/ioioi.cc) - 문자열 구현
-  * [[BOJ] Mirror, Mirror](https://www.acmicpc.net/problem/4740) [(소스코드)](./src/mirror.cpp) - `getline()`
-  * [[BOJ] IZBORNIK](https://www.acmicpc.net/problem/1283) [(소스코드)](./src/izbornik.cpp) - `getline()`, `stringstream` 사용 방법
+  * [[BOJ] Mirror, Mirror](https://www.acmicpc.net/problem/4740) [(소스코드)](./src/mirror.cc) - `getline()`
+  * [[BOJ] IZBORNIK](https://www.acmicpc.net/problem/1283) [(소스코드)](./src/izbornik.cc) - `getline()`, `stringstream` 사용 방법
 ---
 
 * 추천 문제 - KMP
@@ -29,6 +29,10 @@
   * [[BOJ] 서로 다른 부분 문자열의 개수 2](https://www.acmicpc.net/problem/11479) [(소스코드)](./src/ndps2.cc) - LCP 응용 1
   * [[BOJ] Repeated Substrings](https://www.acmicpc.net/problem/10413) [(소스코드)](./src/repeated_substrings.cc) - LCP 응용 2
   * [[BOJ] Hidden Password](https://www.acmicpc.net/problem/3789) [(소스코드)](./src/hidden_password.cc) - LCP 응용 3
+
+* [WIP]추천문제 - Z
+
+* [WIP]추천문제 - 매내처
 
 ---
 
@@ -558,6 +562,22 @@ int main() {
 }
 
 ```
+
+## [WIP] Z
+
+### 연습문제
+* [[BOJ] ](https://www.acmicpc.net/problem/) [(소스코드)](./src/.cpp)
+```c++
+```
+
+## [WIP] 매내처(Manacher)
+
+### 연습문제
+* [[BOJ] ](https://www.acmicpc.net/problem/) [(소스코드)](./src/.cpp)
+```c++
+```
+
+
 
 ---
 |[이전 - Dijkstra](/dijkstra/)|[목록](https://github.com/RyanJeong/CP#index)|[다음 - Convex Hull](/convex-hull/)|

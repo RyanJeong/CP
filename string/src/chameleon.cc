@@ -12,26 +12,16 @@
 #include <string>
 #include <vector>
 
-// iostream
-using std::cin;
-using std::cout;
-
-// string
-using std::string;
-
-// vector
-using std::vector;
-
 template <typename T>
-vector<int> GetFail(const T& pattern);
+std::vector<int> GetFail(const T& pattern);
 
 int main() {
   CP;
 
-  string str;
-  cin >> str;
+  std::string str;
+  std::cin >> str;
   auto fail = GetFail(str);
-  string res;
+  std::string res;
   int len = fail[str.length()-1];  // postfix's length
   while (len > 0) {
     // skip prefix's first character and postfix's last character
@@ -45,14 +35,14 @@ int main() {
       break;
     len = fail[len-1];
   }
-  cout << ((res.empty()) ? "-1" : res);
+  std::cout << ((res.empty()) ? "-1" : res);
 
   return 0;
 }
 
 template <typename T>
-vector<int> GetFail(const T& p) {
-  vector<int> fail(p.size());
+std::vector<int> GetFail(const T& p) {
+  std::vector<int> fail(p.size());
   int j = 0;
   for (int i = 1; i < p.size(); i++) {
     while (j > 0 && p[i] != p[j])
