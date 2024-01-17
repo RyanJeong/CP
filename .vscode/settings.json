@@ -1,0 +1,20 @@
+{
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "[html]": {
+      "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[cpp]": {
+        "editor.defaultFormatter": "ms-vscode.cpptools"
+    },
+    "C_Cpp.clang_format_fallbackStyle": "Google",
+    "cpplint.cpplintPath": "/usr/local/bin/cpplint",
+    "editor.rulers": [
+      80,
+      120
+    ],
+    "clang-format.style": "{userHome}/.clang-format",
+}
