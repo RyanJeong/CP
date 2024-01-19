@@ -1,7 +1,7 @@
 #!/bin/bash
-cpplint main.cc
+cpplint main.c
 # clang-format -style=Google -i main.cc
-clang++ main.cc -O2 -Wall -lm -static -std=c++14
+gcc main.c -O2 -Wall -lm -static -ansi
 if [ -z "$1" ]; then
   ./a.out
 else

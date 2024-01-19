@@ -5,6 +5,7 @@ if [ -z "$1" ]; then
 fi
 
 cpplint $1
+clang-format -stype=Google -i $1
 g++ $1 -std=c++14 -Wall -Werror
 if [ -z "$2" ]; then
   ./a.out

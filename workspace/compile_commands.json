@@ -1,0 +1,12 @@
+[
+  {
+      "directory": "/workspace",
+      "command": "clang++ main.cc -o Main -O2 -Wall -lm -static -std=c++14",
+      "file": "main.cc"
+  },
+  {
+      "directory": "/workspace",
+      "command": "gcc main.c -o Main -O2 -Wall -lm -static -ansi",
+      "file": "main.c"
+  }
+]
