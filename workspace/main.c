@@ -1,19 +1,24 @@
-#include <stdio.h>
-#include <math.h>
+/*
+  Copyright 2024 Ryan M. Jeong <ryan.m.jeong@hotmail.com>
+*/
 
-int main(void)
-{
+#include <stdio.h>
+
+int main(void) {
   int n;
 
-  scanf("%d", &n);
+  scanf("%d ", &n);
   while (n--) {
-    long long x, temp;
+    char c, prev;
 
-    scanf("%lld", &x);
-    temp = (long long) sqrt(x);
-    temp *= temp;
-    printf("%d ", (temp == x) ? 1 : 0); 
+    while ((c = getchar()) != EOF) {
+      if (c == '\n') break;
+      putchar(c);
+      prev = c;
+    }
+    if (prev != '.') putchar('.');
+    putchar(c);
   }
-  
+
   return 0;
 }
