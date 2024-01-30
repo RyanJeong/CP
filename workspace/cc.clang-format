@@ -1,0 +1,4 @@
+BasedOnStyle: Google
+AllowShortBlocksOnASingleLine: Always
+IndentWidth: 2
+ColumnLimit: 80

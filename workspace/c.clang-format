@@ -1,0 +1,20 @@
+BasedOnStyle: LLVM
+SpaceAfterCStyleCast: true
+AllowShortBlocksOnASingleLine: Always
+MaxEmptyLinesToKeep: 2
+SpacesBeforeTrailingComments: 2
+IncludeBlocks: Regroup
+IncludeCategories:
+  - Regex:           '<[[:alnum:].]+>'
+    Priority:        1
+  - Regex:           '.*'
+    Priority:        2
+AlignEscapedNewlines: Left
+SortIncludes: true
+AllowShortFunctionsOnASingleLine: false
+AllowShortIfStatementsOnASingleLine: false
+BreakBeforeBraces: Linux
+Cpp11BracedListStyle: false
+IndentCaseLabels: false
+IndentWidth: 2
+UseTab: Never

@@ -4,7 +4,8 @@
 
 #include <stdio.h>
 
-int main(void) {
+int main(void)
+{
   int n;
 
   scanf("%d ", &n);
@@ -12,11 +13,13 @@ int main(void) {
     char c, prev;
 
     while ((c = getchar()) != EOF) {
-      if (c == '\n') break;
+      if (c == '\n')
+        break;
       putchar(c);
       prev = c;
     }
-    if (prev != '.') putchar('.');
+    if (prev != '.')
+      putchar('.');
     putchar(c);
   }
 

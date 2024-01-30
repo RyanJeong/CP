@@ -9,24 +9,23 @@
     std::cin.tie(NULL);               \
   } while (0)
 
-#include <algorithm>
 #include <iostream>
 #include <string>
-#include <vector>
+#include <unordered_set>
 
 int main() {
   CP;
 
-  int n;
-  std::cin >> n;
-  std::vector<std::pair<int, std::string>> v(n);
-  for (int i = 0; i < n; ++i) {
-    std::string a;
-    int b;
+  int t;
+  std::cin >> t;
+  while (t--) {
+    int a, b;
     std::cin >> a >> b;
-    v[i] = {-b, a};
+    std::unordered_set<std::string> s;
+    for (std::string str; a--; s.insert(str)) std::cin >> str;
+    for (std::string str; b--; s.insert(str)) std::cin >> str;
+    for (;;) {}
+    std::cout << s.size() << '\n';
   }
-  std::sort(v.begin(), v.end());
-  std::cout << v.front().second;
   return 0;
 }
