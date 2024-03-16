@@ -4,24 +4,17 @@
 
 #include <stdio.h>
 
+#ifdef CP_MSJEONG_DEBUG
+#define dprintf(format, ...) fprintf(stderr, format, __VA_ARGS__)
+#else
+#define dprintf(...)
+#endif
+
+#define ABS(x)    ((x) * ((x > 0) - (x < 0)))
+#define MIN(x, y) (x > y ? y : x)
+#define MAX(x, y) (x < y ? y : x)
+
 int main(void)
 {
-  int n;
-
-  scanf("%d ", &n);
-  while (n--) {
-    char c, prev;
-
-    while ((c = getchar()) != EOF) {
-      if (c == '\n')
-        break;
-      putchar(c);
-      prev = c;
-    }
-    if (prev != '.')
-      putchar('.');
-    putchar(c);
-  }
-
   return 0;
 }
