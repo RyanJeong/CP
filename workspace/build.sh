@@ -66,7 +66,6 @@ if [[ "$1" == "c" || "$1" == "cc" ]]; then
     run_command "$CP_CPPLINT $CP_CPPLINT_ARGS $CP_TARGET"
   fi
 
-
   echo "Building $CP_TARGET using $CP_COMPILER ..."
   run_command "$CP_COMPILER -o $CP_COMPILER_OUTPUT_DEBUG $CP_TARGET \
     $CP_COMPILER_FLAGS $CP_BOJ_MACRO \
