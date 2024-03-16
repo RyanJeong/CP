@@ -6,6 +6,7 @@
   "[cpp]": {
     "editor.defaultFormatter": "xaver.clang-format"
   },
+  "_comment_todo": "update template.cc with debug feature, add cpplint rules for c codes, check compile_commands.json file, update sonarlint, clang-format, linter for markdown and json, formatting templates and all codes",
   "editor.formatOnSave": false,
   "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 2, ColumnLimit: 80, AllowShortBlocksOnASingleLine: Always }",
   "sonarlint.pathToCompileCommands": "${workspaceFolder}/workspace/compile_commands.json"
